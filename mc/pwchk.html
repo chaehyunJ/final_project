@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- $().blur : 이벤트가 포커스를 잃었을 때 요소를 전달한다 -->
+
+<table border="1" cellpadding="7" cellspacing="0"> 
+    <tr>
+        <th>비밀번호</th> 
+        <td> <input id="userpass" type="password" name="sm_pw" required maxlength="8" autocomplete="off"/> 
+            <span class="point">※ 비밀번호는 총 8자 까지 입력가능</span> 
+        </td> 
+    </tr>
+    <tr>
+        <th>비밀번호 확인</th> 
+        <td> <input id="userpasschk" type="password" name="sm_pw_chk" placeholder="동일하게 입력해주세요." required maxlength="8" autocomplete="off"/> 
+            <span class="point successPwChk"></span> 
+            <!-- <input type="hidden" id="pwDoubleChk"/>  -->
+        </td>
+
+    </tr>
+
+    <script>
+        //비밀번호 확인
+         $("#userpasschk").blur(function(){ 
+             if($("#userpasschk").val() == $("#userpass").val()){ 
+                 $(".successPwChk").text("비밀번호가 일치합니다."); 
+                 $(".successPwChk").css("color", "green"); 
+                //  $("#pwDoubleChk").val("true"); 
+            }else{ 
+                $(".successPwChk").text("비밀번호가 일치하지 않습니다."); 
+                $(".successPwChk").css("color", "red"); 
+                // $("#pwDoubleChk").val("false"); 
+            } 
+        });
+
+    </script>
+</table>
+</body>
+</html>
