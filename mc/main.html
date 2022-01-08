@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coded burger</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: inherit;
+
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            margin : 0;
+        }
+        div{
+            box-sizing: border-box;
+        }
+        body{
+            margin : 0px;
+        }
+        .top-left > ul > li {
+            width : 100px;
+        }
+        header{
+          border-bottom: 1px solid #ffbc0d;
+        }
+        .header{
+            display: flex;
+            width : 1200px;
+            justify-content: space-between;
+            margin : auto;
+        }
+        .main-logo{
+            width : 80px;
+        }
+        .search-icon{
+            width : 40px;
+        }
+        .top-left {
+            display: flex;
+        }
+        .top-left > ul > li {
+            border : 0px solid black;
+            padding-top : 30px;
+            line-height: 25px;
+            text-align: center;
+            cursor : pointer;
+        }
+        .top-left > ul > li:hover{
+            border-bottom: 2px solid #ffbc0d;
+        }
+        .top-inner{
+            display: flex;
+        }
+        .top-right{
+            margin-top: -15px;
+        }
+        .top-right > ul > li{
+            border : 0px solid black;
+            width : 90px;
+            text-align: center;       
+        }
+        .top-right > ul > li:nth-child(1), 
+        .top-right > ul > li:nth-child(2),
+        .top-right > ul > li:nth-child(3){
+            border : 0px solid black;
+            border-radius: 45px;
+            width : 110px;
+            height: 40px;
+            padding-top: 12px;
+            margin-top : 20px;
+            margin-right: 20px;
+            color : white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .top-right > ul > li:nth-child(1){
+            background-color : red;
+        }
+        .top-right > ul > li:nth-child(2){
+            background-color : #ffbc0d;
+        }
+        .top-right > ul > li:nth-child(3){
+            background-color : #264a36;
+        }
+        .top-right > ul > li:nth-child(4){
+            padding-top : 20px;
+        }
+
+        .main-slide{
+            display: flex;
+            overflow: hidden;
+            width : 1700px;
+            margin : auto;
+        }
+
+        .slide{
+           display: flex;
+           width : 11900px;
+           margin : auto;
+           transition-duration: 0.5s;
+        }
+        .slide > .slide-img{
+            width : 1700px;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .menu-inner{
+            display: block;
+            padding-left: 0px;
+            margin-right: 10px;
+            
+        }
+        /*서브메뉴*/
+        .top-menu{
+            width : 600px;
+            padding-top: 35px;
+            border : 0px solid black;
+        }
+        .top-menu > ul {
+            border: 0px solid black;
+            width : 500px;
+        }
+        .top-menu > ul > li{
+            width : 100px;
+            margin-right: 20px;
+        }
+
+        .top-menu-submenu{
+            border : 0px solid black;
+            display: none;
+            width: 150px;
+            height: 250px;
+            margin-left: -40px;
+            /* margin-right: 30px; */
+            position: absolute;
+            --transition: 0.5s;
+            background-color: white;
+        }
+        .top-menu-inner{
+            margin-top: 30px;
+            display: block;
+            border : 0px solid black;
+            width : 150px;
+            padding-left: 0px;
+            margin-left: 30px;
+            /* margin-left: 900px; */
+        }
+        .top-menu-submenu>.top-menu-inner>li{
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .top-menu-submenu>.top-menu-inner>li>a{
+            transition-duration: 0.3s;
+        }
+        .top-menu>ul:hover .top-menu-submenu{
+            display: block;
+        }
+        .main-inner{
+            border : 1px solid black;
+            width : 950px;
+            margin : auto;
+            display: flex;
+            flex-flow: wrap;
+        }
+        .main-inner-one{
+            display: flex;
+            flex-flow: wrap;
+        }
+        .main-inner-one1{
+            display: flex;
+            flex-flow: wrap;
+        }
+        .main-inner-one2{
+            display: flex;
+            flex-flow: wrap;
+        }
+        .main-inner-event{
+            width : 250px;
+            height: 280px;
+            margin : 30px;
+            border : 1px solid black;
+        }
+        .title-main{
+            width : 950px;
+            border : 1px solid black;
+            margin : auto;
+            margin-top : 30px;
+        }
+        .hidden1{
+            display: none;
+        }
+        .btn-list{
+            width : 950px;
+            border : 0px solid black;
+            margin : auto;
+        }
+        #btn, #btn1{
+            border : 0;
+            font-size: 40px;
+            background-color: #ffbc0d;
+            color : white;
+            width : 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            border :  0px solid black;
+            margin-left: 440px;
+        }
+        .footer{
+            width: 100%;
+            height: 400px;
+            margin-top: 10px;
+            background : #292929;
+        }
+        .footer-inner{
+            padding-top: 30px;            
+            display: flex;
+            width : 1100px;
+            height: inherit;
+            border : 0px solid white;
+            margin : auto;
+        }
+        .footer-left > ul {
+            list-style: none;
+            color : white;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            border : 0px solid white;
+        }
+        .footer-left > ul > li{
+            margin-bottom: 10px;
+        }
+        .footer-right > ul {
+            list-style: none;
+            color : white;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+        }
+        .footer-right > ul > li {
+            margin-bottom: 10px;
+        }
+        .footer-icon{
+            margin-left: 30px;
+        }
+        .footer-icon > a > img{
+            width : 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>    
+    <header>
+        <div class="header">
+            <div class="top-left">
+                <div>
+                    <a href="#"><img class="main-logo" src="./src/픽셀 버거2.png"></a>
+                </div>
+                <nav class="top-menu">
+                    <ul>
+                        <li class="top-menu-li">
+                            <a href="">Menu</a>
+                            <div class="top-menu-submenu">
+                                <ul class="top-menu-inner">
+                                    <li><a href="">버거</a></li>
+                                    <li><a href="">맥런치</a></li>
+                                    <li><a href="">맥모닝</a></li>
+                                    <li><a href="">사이드&디저트</a></li>
+                                    <li><a href="">맥카페&음료</a></li>
+                                    <li><a href="">해피밀</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="top-menu-li">
+                            <a href="">Store</a>
+                            <div class="top-menu-submenu">
+                                <ul class="top-menu-inner">
+                                    <li><a href="">매장찾기</a></li>
+                                    <li><a href="">맥딜리버리</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="top-menu-li">
+                            <a href="">promotion</a>
+                            <div class="top-menu-submenu">
+                                <ul class="top-menu-inner">
+                                    <li><a href="">프로모션</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="top-menu-li">
+                            <a href="">Board</a>
+                            <div class="top-menu-submenu">
+                                <ul class="top-menu-inner"> 
+                                    <li><a href="">QnABoard</a></li> 
+                                    <li><a href="">Board</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="top-right">
+                <ul>
+                    <li><a href="">회원가입</a></li>
+                    <li><a href="">주문하기</a></li>
+                    <li><a href="">로그인</a></li>
+                    <li><img class="search-icon" src="./src/검색아이콘.png" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <section class="main-slide">
+        <div class="slide">
+            <img class="slide-img" src="./src/slide/1617176534703.png" alt="">
+            <img class="slide-img" src="./src/slide/1617838609437.png" alt="">
+            <img class="slide-img" src="./src/slide/1621833457701.png" alt="">
+            <img class="slide-img" src="./src/slide/1631842026946.png" alt="">
+            <img class="slide-img" src="./src/slide/1633532684256.png" alt="">
+            <img class="slide-img" src="./src/slide/1635904486344.png" alt="">
+            <img class="slide-img" src="./src/slide/1635905159418.png" alt="">
+        </div>
+    </section>
+
+    <div class="title-main"><h2>Coded Burger Live</h2></div>
+
+    <div class="main-inner">
+        <div class="main-inner-one">
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+        </div>
+        <div class="main-inner-one1 hidden1">
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+        </div>
+        <div class="main-inner-one2 hidden1">
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+            <div class="main-inner-event"></div>
+        </div>
+    </div>
+
+    <div class="btn-list">
+        <button id="btn">+</button>
+        <button id="btn1" class="hidden1">+</button>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <ul>
+                    <li><a>개인정보 처리방침</a></li>
+                    <li><a>위치정보 이용약관</a></li>
+                    <li><a>QnABoard</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <ul>
+                    <li>Coded Burger</li>
+                    <li>공동대표 : 5조 전원</li>
+                    <li>사업자등록번호 : 1234-56-789</li>
+                    <li>회사전화 : 010-7374-5328</li>
+                    <li>COPYRIGHT © 2019 ALL RIGHTS RESERVED BY McDonald's.</li>
+                </ul>
+            </div>
+            <div class="footer-icon">
+                <a href=""><img src="./src/footer/fb.png" alt=""></a>
+                <a href=""><img src="./src/footer/insta.png" alt=""></a>
+                <a href=""><img src="./src/footer/youtube.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('btn')
+        const btn1 = document.getElementById('btn1')
+        const mainOne = document.querySelector('.main-inner-one1')
+        const mainOne2 = document.querySelector('.main-inner-one2')
+        console.log(mainOne2)
+        console.log(mainOne)
+        console.log(btn)
+        btn.onclick = function(){
+            mainOne.classList.remove('hidden1')
+            btn.classList.add('hidden1')
+            btn1.classList.remove('hidden1')
+        }
+        btn1.onclick = function(){
+            mainOne2.classList.remove('hidden1')
+            btn1.classList.add('hidden1')
+        }
+   </script>
+
+   <script>
+       const slide = document.querySelector('.slide')
+       console.log(slide)
+
+       let value = 0
+       
+       const unit = 1700
+
+       function move(){
+           value -= unit
+
+           if(value <= -11900){
+               value = 0
+           }
+           slide.style.marginLeft = value + 'px'
+       }
+
+       setInterval(move, 2000)
+   </script>
+</body>
+</html>
