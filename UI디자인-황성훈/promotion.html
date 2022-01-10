@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* promotion */
+        .promotion-container {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+        .visual-area{
+            width: 1988px;
+            height: 250px;
+            padding: 15px;
+            padding-left: 100px;
+        }
+        .visual-title {
+            position: relative;
+            top: -150px;
+            left: 375px;
+            font-size: 50px;
+            color: white;
+            font-weight: bold;
+        }
+        .visual-ul {
+            position: relative;
+            display: flex;
+            list-style: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 30px;
+            padding-left: 0;
+            top: -150px;
+            left: 380px;
+        }
+        .visual-ul li {
+            margin: 7px;
+        }
+        .visual-ul  li:nth-child(2n) {
+            color: #f5bd43;
+        }
+         /* promotion-image */
+        .promotion-imageList {
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            align-items: center;
+            padding-left: 40px;
+            margin-top: 75px;
+            width: 1250px;
+            height: 900px;
+        }
+        .promotion-imageconatiner {
+            display: flex;
+            flex-flow: column;
+            width: 360px;
+            height: 438px;
+            margin: 17px;
+            border: 1px solid #dadada;
+            border-radius: 10px;
+            box-shadow: 0 3px 4px rgb(0 0 0 / 10%);
+        }
+        .promotion-image {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            height: 438px;
+            
+        }
+        .promotion-sentence {
+            padding: 24px 30px;
+            height: 90px;
+            font-size: 18px;
+            color: #292929;
+            font-weight: bold;
+            line-height: 30px;
+            word-spacing: -1px;
+            letter-spacing: -0.7px;
+        }
+        #btnMore {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="promotion-container">
+        <div class="visual-area">
+            <img src="./src/promotion/promotion-main.jpg">
+            <div class="visual-title">맥도날드 프로모션</div>
+                <ul class="visual-ul">
+                    <li>Home</li>
+                    <li>•</li>
+                    <li>What's New</li>
+                    <li>•</li>
+                    <li>맥도날드 프로모션</li>
+                </ul>
+        </div>
+        
+        <div class="promotion-imageList">
+            <div class="promotion-imageconatiner">
+                <img class="promotion-image" src="./src/promotion/promotion-img01.png">
+                <div class="promotion-sentence">더 특별해진 행운버거<br>행운버거 골드 스페셜을 만나보세요</div>
+            </div>
+            <div class="promotion-imageconatiner">
+                <img class="promotion-image" src="./src/promotion/promotion-img02.png">
+                <div class="promotion-sentence">딸기의 상큼함을 한 잔에!<br>딸기 칠러가 돌아왔다!</div>
+            </div>
+            <div class="promotion-imageconatiner">
+                <img class="promotion-image" src="./src/promotion/promotion-img03.png">
+                <div class="promotion-sentence">달콤!바삭!쫄깃!츄러스 출시<br>새로운 해피 스낵 가을/겨울 시즌 오픈!</div>
+            </div>
+            <div class="promotion-imageconatiner">
+                <img class="promotion-image" src="./src/promotion/promotion-img04.png">
+                <div class="promotion-sentence">육즙도 3배! 진한 풍미도 3배!<br>트리플 치즈버거 컴백!</div>
+            </div>
+            <div class="promotion-imageconatiner">
+                <img class="promotion-image" src="./src/promotion/promotion-img05.png">
+                <div class="promotion-sentence">스트로베리 2종 아이스크림 출시!</div>
+             </div>
+             <div class="promotion-imageconatiner">
+                <img class="promotion-image" src="./src/promotion/promotion-img06.png">
+                <div class="promotion-sentence">신선한 맛 가득 담아 알래스카에서 왔다!<br>필레 오 피쉬 출시!</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="btnMore">
+        <img src="./src/promotion/btn-more.png">
+    </div>
+</body>
+</html>

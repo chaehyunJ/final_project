@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            user-select: none;
+        }
+        p {
+            font-size: 25px;
+        }
+        .join-address-container {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .join-address-ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            width: 800px;
+            margin: 10px;
+        }
+        .join-address-ul li {
+           width: 200px;
+           margin: 40px;
+           height: 70px;
+           line-height: 70px;
+           text-align: center;
+           border-radius: 30px;
+           color: white;
+           box-shadow: 2px 2px 2px grey;
+        }
+        #addressInput {
+            width: 480px;
+            height: 35px;
+            border: 0px;
+        }
+        #addressBtn {
+            width: 75px;
+            height: 35px;
+            border: 0px;
+            background-color: #db0007;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            border-radius: 15px;
+        }
+        #addressSubmit {
+            width: 80px;
+            height: 50px;
+            border: 0px;
+            background-color: #db0007;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            border-radius: 3px;
+        }
+        .join-address-form {
+            margin-top: 35px;
+        }
+        .join-address-form * {
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="join-address-container">
+        <ul class="join-address-ul">
+            <li style="background-color: #db0007">배달 주소 입력</li>
+            <li style="background-color: #e3a400">추가 정보 입력</li>
+            <li style="background-color: #264a36">가입 완료</li>
+        </ul>
+        <form class="join-address-form">
+            <p>지역명</p>
+            <input id="addressInput" type="text" name="addressName" placeholder="지번, 도로명, 건물명으로 입력해주세요" required autofocus>
+            <input id="addressBtn" type="button" value="검색">
+            <hr>
+            <p>상세주소</p>
+            <input id="addressInput"type="text" name="adressDetail" placeholder="나머지 주소를 입력해주세요" required>
+            <input id="addressBtn" type="button" value="입력">
+            <hr>
+            <p>최종 배달주소</p>
+            <div id="address-result" style="background-color: beige;">주소결과</div>
+            <hr>
+            <p>배달 특이사항</p>
+            <textarea type="text" name="" s rows="5" cols="50"></textarea>
+            <hr>
+            <input id="addressSubmit" type="submit" value="가입">
+        </form>
+    </div>
+</body>
+</html>
