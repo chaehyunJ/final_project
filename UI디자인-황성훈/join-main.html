@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            user-select: none;
+        }
+        p {
+            font-size: 25px;
+        }
+        a {
+            color: inherit;
+        }
+        .join-main-container {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .join-main-ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            width: 800px;
+            margin: 10px;
+        }
+        .join-main-ul li {
+           width: 200px;
+           margin: 40px;
+           height: 70px;
+           line-height: 70px;
+           text-align: center;
+           border-radius: 30px;
+           color: white;
+           box-shadow: 2px 2px 2px grey;
+        }
+        #mainInput {
+            width: 200px;
+            height: 20px;
+            margin-top: 0;
+        }
+        #mainBtn {
+            width: 75px;
+            height: 35px;
+            border: 0px;
+            background-color: #e3a400;
+            font-size: 14px;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        #mainSubmit {
+            width: 80px;
+            height: 50px;
+            border: 0px;
+            background-color: #e3a400;
+            font-size: 15px;
+            font-weight: bold;
+            color: black;
+            border-radius: 3px;
+        }
+        .join-main-form * {
+            margin: 6px;
+        }
+        #authresult {
+            width: 200px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="join-main-container">
+        <ul class="join-main-ul">
+            <li style="background-color: #db0007">배달 주소 입력</li>
+            <li style="background-color: #e3a400">추가 정보 입력</li>
+            <li style="background-color: #264a36">가입 완료</li>
+        </ul>
+        <form class="join-main-form">
+            <p>ID</p>
+            <input id="mainInput" type="text" name="joinid" placeholder="ID를 입력해 주세요" required autofocus>
+            <input id="mainBtn" type="button" value="중복확인">
+            <p>비밀번호</p>
+            <input id="mainInput" type="password" name="joinpw" placeholder="비밀번호를 입력해주세요" required>
+            <p>비밀번호 확인</p>
+            <input id="mainInput" type="password" name="joinpwCheck" placeholder="비밀번호를 다시 입력해주세요" required>
+            <p>성함</p>
+            <input id="mainInput" type="text" name="joinname" placeholder="성함을 입력해주세요" required>
+            <p>성별</p>
+            <label>
+                <input type="radio" name="gender" value="남성">남성
+                <input type="radio" name="gender" value="여성">여성
+            </label>
+            <p>휴대전화 번호</p>
+            <input id="mainInput" type="text" name="joinpnumber" placeholder="전화번호를 입력해주세요" required>
+            <p>이메일</p>
+            <input id="mainInput" type="email" name="joinemail" placeholder="이메일을 입력해주세요" required>
+            <p><a href="">이용약관</a>동의</p>
+            <input type="checkbox">동의
+            <p>휴대폰 / 이메일 인증 </p>
+            <lable>
+                <input type="radio" name="authbyphone" value="휴대폰 인증">휴대폰 인증
+                <input type="radio" name="authbyphone" value="휴대폰 인증">이메일 인증
+            </lable>
+            <br>
+            <input id= "authresult" type="text" name="authresult" placeholder="인증번호 입력">
+            <hr>
+            <input id="mainSubmit" type="submit" value="가입">
+        </form>
+    </div>
+</body>
+</html>
