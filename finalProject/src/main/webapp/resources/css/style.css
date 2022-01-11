@@ -74,6 +74,9 @@ body {
         width: 130px;
 
     }
+    .deleteBtn, span, .addminusBtn, .orderCount, .addminusBtn {
+    	margin-left: 10px;
+    }
     .deleteBtn {
         border: none;
         cursor: pointer;
@@ -95,13 +98,38 @@ body {
         font-size: 1.2rem;
     }
     .parent_order {
+    	margin: 0 auto;
         overflow-y: auto;
         overflow-x: hidden;
-        background-color: rgb(244, 248, 244);
+        background-color: #ced3ce;
         height: 200px;
-        width: 500px;
+        width: 1000px;
     }
 
     .child_order {
         margin-top: 10px;
     }
+    
+    /*메뉴바 색깔*/
+    .showColor {
+    	background-color: #FFA425;
+    	color: white;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

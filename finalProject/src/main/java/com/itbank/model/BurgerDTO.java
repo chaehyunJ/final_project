@@ -1,169 +1,169 @@
 package com.itbank.model;
 
 public class BurgerDTO {
-	private int burgerSeq;
-	private String burgerDescription;
-	private String burgerSetDescription;
-	private String burgerName;
-	private String burgerSetName;
-	private String burgerImage;
-	private String burgerSetImage;
-	private int burgerPrice;
-	private int burgerSetPrice;
-	private int mclunchPrice;
-	private String salesTime;
-	private int burgerWeight;
-	private int burgerKcal;
-	private int burgerSetKcal;
-	private int burgerSugar;
-	private int nutrientStandSugar;
-	private int burgerProtein;
-	private int nutrientStandProtein;
-	private int burgerFat;
-	private int nutrientStandFat;
-	private int burgerNatrium;
-	private int nutrientStandNatrium;
-	private String alleryInfo;
+	private int burger_seq;
+	private String burger_description;
+	private String burger_set_description;
+	private String burger_name;
+	private String burger_set_name;
+	private String burger_image;
+	private String burger_set_image;
+	private int burger_price;
+	private int burger_set_price;
+	private int mclunch_price;
+	private String sales_time;
+	private int burger_weight_g;
+	private int burger_kcal;
+	private int burger_set_kcal;
+	private int burger_sugar;
+	private int nutrient_standards_sugar;
+	private int burger_protein;
+	private int nutrient_standards_protein;
+	private int burger_fat;
+	private int nutrient_standards_fat;
+	private int burger_natrium;
+	private int nutrient_standards_natrium;
+	private String allery_info;
+	public int getBurger_seq() {
+		return burger_seq;
+	}
+	public void setBurger_seq(int burger_seq) {
+		this.burger_seq = burger_seq;
+	}
+	public String getBurger_description() {
+		return burger_description;
+	}
+	public void setBurger_description(String burger_description) {
+		this.burger_description = burger_description;
+	}
+	public String getBurger_set_description() {
+		return burger_set_description;
+	}
+	public void setBurger_set_description(String burger_set_description) {
+		this.burger_set_description = burger_set_description;
+	}
+	public String getBurger_name() {
+		return burger_name;
+	}
+	public void setBurger_name(String burger_name) {
+		this.burger_name = burger_name;
+	}
+	public String getBurger_set_name() {
+		return burger_set_name;
+	}
+	public void setBurger_set_name(String burger_set_name) {
+		this.burger_set_name = burger_set_name;
+	}
+	public String getBurger_image() {
+		return burger_image;
+	}
+	public void setBurger_image(String burger_image) {
+		this.burger_image = burger_image;
+	}
+	public String getBurger_set_image() {
+		return burger_set_image;
+	}
+	public void setBurger_set_image(String burger_set_image) {
+		this.burger_set_image = burger_set_image;
+	}
+	public int getBurger_price() {
+		return burger_price;
+	}
+	public void setBurger_price(int burger_price) {
+		this.burger_price = burger_price;
+	}
+	public int getBurger_set_price() {
+		return burger_set_price;
+	}
+	public void setBurger_set_price(int burger_set_price) {
+		this.burger_set_price = burger_set_price;
+	}
+	public int getMclunch_price() {
+		return mclunch_price;
+	}
+	public void setMclunch_price(int mclunch_price) {
+		this.mclunch_price = mclunch_price;
+	}
+	public String getSales_time() {
+		return sales_time;
+	}
+	public void setSales_time(String sales_time) {
+		this.sales_time = sales_time;
+	}
+	public int getBurger_weight_g() {
+		return burger_weight_g;
+	}
+	public void setBurger_weight_g(int burger_weight_g) {
+		this.burger_weight_g = burger_weight_g;
+	}
+	public int getBurger_kcal() {
+		return burger_kcal;
+	}
+	public void setBurger_kcal(int burger_kcal) {
+		this.burger_kcal = burger_kcal;
+	}
+	public int getBurger_set_kcal() {
+		return burger_set_kcal;
+	}
+	public void setBurger_set_kcal(int burger_set_kcal) {
+		this.burger_set_kcal = burger_set_kcal;
+	}
+	public int getBurger_sugar() {
+		return burger_sugar;
+	}
+	public void setBurger_sugar(int burger_sugar) {
+		this.burger_sugar = burger_sugar;
+	}
+	public int getNutrient_standards_sugar() {
+		return nutrient_standards_sugar;
+	}
+	public void setNutrient_standards_sugar(int nutrient_standards_sugar) {
+		this.nutrient_standards_sugar = nutrient_standards_sugar;
+	}
+	public int getBurger_protein() {
+		return burger_protein;
+	}
+	public void setBurger_protein(int burger_protein) {
+		this.burger_protein = burger_protein;
+	}
+	public int getNutrient_standards_protein() {
+		return nutrient_standards_protein;
+	}
+	public void setNutrient_standards_protein(int nutrient_standards_protein) {
+		this.nutrient_standards_protein = nutrient_standards_protein;
+	}
+	public int getBurger_fat() {
+		return burger_fat;
+	}
+	public void setBurger_fat(int burger_fat) {
+		this.burger_fat = burger_fat;
+	}
+	public int getNutrient_standards_fat() {
+		return nutrient_standards_fat;
+	}
+	public void setNutrient_standards_fat(int nutrient_standards_fat) {
+		this.nutrient_standards_fat = nutrient_standards_fat;
+	}
+	public int getBurger_natrium() {
+		return burger_natrium;
+	}
+	public void setBurger_natrium(int burger_natrium) {
+		this.burger_natrium = burger_natrium;
+	}
+	public int getNutrient_standards_natrium() {
+		return nutrient_standards_natrium;
+	}
+	public void setNutrient_standards_natrium(int nutrient_standards_natrium) {
+		this.nutrient_standards_natrium = nutrient_standards_natrium;
+	}
+	public String getAllery_info() {
+		return allery_info;
+	}
+	public void setAllery_info(String allery_info) {
+		this.allery_info = allery_info;
+	}
 	
 	
-	public String getBurgerSetImage() {
-		return burgerSetImage;
-	}
-	public void setBurgerSetImage(String burgerSetImage) {
-		this.burgerSetImage = burgerSetImage;
-	}
-	public int getBurgerSeq() {
-		return burgerSeq;
-	}
-	public void setBurgerSeq(int burgerSeq) {
-		this.burgerSeq = burgerSeq;
-	}
-	public String getBurgerDescription() {
-		return burgerDescription;
-	}
-	public void setBurgerDescription(String burgerDescription) {
-		this.burgerDescription = burgerDescription;
-	}
-	public String getBurgerSetDescription() {
-		return burgerSetDescription;
-	}
-	public void setBurgerSetDescription(String burgerSetDescription) {
-		this.burgerSetDescription = burgerSetDescription;
-	}
-	public String getBurgerName() {
-		return burgerName;
-	}
-	public void setBurgerName(String burgerName) {
-		this.burgerName = burgerName;
-	}
-	public String getBurgerSetName() {
-		return burgerSetName;
-	}
-	public void setBurgerSetName(String burgerSetName) {
-		this.burgerSetName = burgerSetName;
-	}
-	public String getBurgerImage() {
-		return burgerImage;
-	}
-	public void setBurgerImage(String burgerImage) {
-		this.burgerImage = burgerImage;
-	}
-	public int getBurgerPrice() {
-		return burgerPrice;
-	}
-	public void setBurgerPrice(int burgerPrice) {
-		this.burgerPrice = burgerPrice;
-	}
-	public int getBurgerSetPrice() {
-		return burgerSetPrice;
-	}
-	public void setBurgerSetPrice(int burgerSetPrice) {
-		this.burgerSetPrice = burgerSetPrice;
-	}
-	public int getMclunchPrice() {
-		return mclunchPrice;
-	}
-	public void setMclunchPrice(int mclunchPrice) {
-		this.mclunchPrice = mclunchPrice;
-	}
-	public String getSalesTime() {
-		return salesTime;
-	}
-	public void setSalesTime(String salesTime) {
-		this.salesTime = salesTime;
-	}
-	public int getBurgerWeight() {
-		return burgerWeight;
-	}
-	public void setBurgerWeight(int burgerWeight) {
-		this.burgerWeight = burgerWeight;
-	}
-	public int getBurgerKcal() {
-		return burgerKcal;
-	}
-	public void setBurgerKcal(int burgerKcal) {
-		this.burgerKcal = burgerKcal;
-	}
-	public int getBurgerSetKcal() {
-		return burgerSetKcal;
-	}
-	public void setBurgerSetKcal(int burgerSetKcal) {
-		this.burgerSetKcal = burgerSetKcal;
-	}
-	public int getBurgerSugar() {
-		return burgerSugar;
-	}
-	public void setBurgerSugar(int burgerSugar) {
-		this.burgerSugar = burgerSugar;
-	}
-	public int getNutrientStandSugar() {
-		return nutrientStandSugar;
-	}
-	public void setNutrientStandSugar(int nutrientStandSugar) {
-		this.nutrientStandSugar = nutrientStandSugar;
-	}
-	public int getBurgerProtein() {
-		return burgerProtein;
-	}
-	public void setBurgerProtein(int burgerProtein) {
-		this.burgerProtein = burgerProtein;
-	}
-	public int getNutrientStandProtein() {
-		return nutrientStandProtein;
-	}
-	public void setNutrientStandProtein(int nutrientStandProtein) {
-		this.nutrientStandProtein = nutrientStandProtein;
-	}
-	public int getBurgerFat() {
-		return burgerFat;
-	}
-	public void setBurgerFat(int burgerFat) {
-		this.burgerFat = burgerFat;
-	}
-	public int getNutrientStandFat() {
-		return nutrientStandFat;
-	}
-	public void setNutrientStandFat(int nutrientStandFat) {
-		this.nutrientStandFat = nutrientStandFat;
-	}
-	public int getBurgerNatrium() {
-		return burgerNatrium;
-	}
-	public void setBurgerNatrium(int burgerNatrium) {
-		this.burgerNatrium = burgerNatrium;
-	}
-	public int getNutrientStandNatrium() {
-		return nutrientStandNatrium;
-	}
-	public void setNutrientStandNatrium(int nutrientStandNatrium) {
-		this.nutrientStandNatrium = nutrientStandNatrium;
-	}
-	public String getAlleryInfo() {
-		return alleryInfo;
-	}
-	public void setAlleryInfo(String alleryInfo) {
-		this.alleryInfo = alleryInfo;
-	}
 	
 	
 }

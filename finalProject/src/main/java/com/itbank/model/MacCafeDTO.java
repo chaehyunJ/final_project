@@ -1,13 +1,13 @@
 package com.itbank.model;
 
-public class DrinkDTO {
-	private int drink_seq;
-	private String drink_description;
-	private String drink_name;
-	private	String drink_price; // 1800 // 2100 // 2600 구분으로 되있는 항목이있어서 String으로 처리
-	private String drink_img;
-	private String weight_g; // //로 구분되있는 칼럼이있음
-	private String weight_ml;   //로 구분되있는 칼럼이있음
+public class MacCafeDTO {
+	private int mccafe_seq;
+	private String mccafe_description;
+	private String mccafe_name;
+	private String mccafe_price;
+	private String mccafe_img;
+	private String weight_g;
+	private String weight_ml;
 	private String kcal;
 	private String sugar;
 	private String protein;
@@ -18,36 +18,36 @@ public class DrinkDTO {
 	private String nutrient_standards_protein;
 	private String nutrient_standards_fat;
 	private String nutrient_standards_natrium;
-	private String allergyInfo;
-	public int getDrink_seq() {
-		return drink_seq;
+	private String allergy_info;
+	public int getMccafe_seq() {
+		return mccafe_seq;
 	}
-	public void setDrink_seq(int drink_seq) {
-		this.drink_seq = drink_seq;
+	public void setMccafe_seq(int mccafe_seq) {
+		this.mccafe_seq = mccafe_seq;
 	}
-	public String getDrink_description() {
-		return drink_description;
+	public String getMccafe_description() {
+		return mccafe_description;
 	}
-	public void setDrink_description(String drink_description) {
-		this.drink_description = drink_description;
+	public void setMccafe_description(String mccafe_description) {
+		this.mccafe_description = mccafe_description;
 	}
-	public String getDrink_name() {
-		return drink_name;
+	public String getMccafe_name() {
+		return mccafe_name;
 	}
-	public void setDrink_name(String drink_name) {
-		this.drink_name = drink_name;
+	public void setMccafe_name(String mccafe_name) {
+		this.mccafe_name = mccafe_name;
 	}
-	public String getDrink_price() {
-		return drink_price;
+	public String getMccafe_price() {
+		return mccafe_price;
 	}
-	public void setDrink_price(String drink_price) {
-		this.drink_price = drink_price;
+	public void setMccafe_price(String mccafe_price) {
+		this.mccafe_price = mccafe_price;
 	}
-	public String getDrink_img() {
-		return drink_img;
+	public String getMccafe_img() {
+		return mccafe_img;
 	}
-	public void setDrink_img(String drink_img) {
-		this.drink_img = drink_img;
+	public void setMccafe_img(String mccafe_img) {
+		this.mccafe_img = mccafe_img;
 	}
 	public String getWeight_g() {
 		return weight_g;
@@ -121,11 +121,11 @@ public class DrinkDTO {
 	public void setNutrient_standards_natrium(String nutrient_standards_natrium) {
 		this.nutrient_standards_natrium = nutrient_standards_natrium;
 	}
-	public String getAllergyInfo() {
-		return allergyInfo;
+	public String getAllergy_info() {
+		return allergy_info;
 	}
-	public void setAllergyInfo(String allergyInfo) {
-		this.allergyInfo = allergyInfo;
+	public void setAllergy_info(String allergy_info) {
+		this.allergy_info = allergy_info;
 	}
 	
 	

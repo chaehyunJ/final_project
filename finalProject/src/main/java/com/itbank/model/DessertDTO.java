@@ -1,65 +1,65 @@
 package com.itbank.model;
 
 public class DessertDTO {
-	private int dessertSeq;
-	private String dessertDescription;
-	private String dessertName;
-	private int dessertPrice;
-	private String dessertImage;
-	private int weightG;
-	private int weightML;
+	private int dessert_seq;
+	private String dessert_description;
+	private String dessert_name;
+	private int dessert_price;
+	private String dessert_img;
+	private int weight_g;
+	private int weight_ml;
 	private int kcal;
 	private int sugar;
 	private	int protein;
 	private int fat;
 	private int natrium;
 	private int caffeine;
-	private int nutrientStandSugar;
-	private int nutrientStandProtein;
-	private int nutrientStandFat;
-	private int nutrientStandNatrium;
-	private String allergyInfo;
-	public int getDessertSeq() {
-		return dessertSeq;
+	private int nutrient_standards_sugar;
+	private int nutrient_standards_protein;
+	private int nutrient_standards_fat;
+	private int nutrient_standards_natrium;
+	private String allergy_info;
+	public int getDessert_seq() {
+		return dessert_seq;
 	}
-	public void setDessertSeq(int dessertSeq) {
-		this.dessertSeq = dessertSeq;
+	public void setDessert_seq(int dessert_seq) {
+		this.dessert_seq = dessert_seq;
 	}
-	public String getDessertDescription() {
-		return dessertDescription;
+	public String getDessert_description() {
+		return dessert_description;
 	}
-	public void setDessertDescription(String dessertDescription) {
-		this.dessertDescription = dessertDescription;
+	public void setDessert_description(String dessert_description) {
+		this.dessert_description = dessert_description;
 	}
-	public String getDessertName() {
-		return dessertName;
+	public String getDessert_name() {
+		return dessert_name;
 	}
-	public void setDessertName(String dessertName) {
-		this.dessertName = dessertName;
+	public void setDessert_name(String dessert_name) {
+		this.dessert_name = dessert_name;
 	}
-	public int getDessertPrice() {
-		return dessertPrice;
+	public int getDessert_price() {
+		return dessert_price;
 	}
-	public void setDessertPrice(int dessertPrice) {
-		this.dessertPrice = dessertPrice;
+	public void setDessert_price(int dessert_price) {
+		this.dessert_price = dessert_price;
 	}
-	public String getDessertImage() {
-		return dessertImage;
+	public String getDessert_img() {
+		return dessert_img;
 	}
-	public void setDessertImage(String dessertImage) {
-		this.dessertImage = dessertImage;
+	public void setDessert_img(String dessert_img) {
+		this.dessert_img = dessert_img;
 	}
-	public int getWeightG() {
-		return weightG;
+	public int getWeight_g() {
+		return weight_g;
 	}
-	public void setWeightG(int weightG) {
-		this.weightG = weightG;
+	public void setWeight_g(int weight_g) {
+		this.weight_g = weight_g;
 	}
-	public int getWeightML() {
-		return weightML;
+	public int getWeight_ml() {
+		return weight_ml;
 	}
-	public void setWeightML(int weightML) {
-		this.weightML = weightML;
+	public void setWeight_ml(int weight_ml) {
+		this.weight_ml = weight_ml;
 	}
 	public int getKcal() {
 		return kcal;
@@ -97,36 +97,34 @@ public class DessertDTO {
 	public void setCaffeine(int caffeine) {
 		this.caffeine = caffeine;
 	}
-	public int getNutrientStandSugar() {
-		return nutrientStandSugar;
+	public int getNutrient_standards_sugar() {
+		return nutrient_standards_sugar;
 	}
-	public void setNutrientStandSugar(int nutrientStandSugar) {
-		this.nutrientStandSugar = nutrientStandSugar;
+	public void setNutrient_standards_sugar(int nutrient_standards_sugar) {
+		this.nutrient_standards_sugar = nutrient_standards_sugar;
 	}
-	public int getNutrientStandProtein() {
-		return nutrientStandProtein;
+	public int getNutrient_standards_protein() {
+		return nutrient_standards_protein;
 	}
-	public void setNutrientStandProtein(int nutrientStandProtein) {
-		this.nutrientStandProtein = nutrientStandProtein;
+	public void setNutrient_standards_protein(int nutrient_standards_protein) {
+		this.nutrient_standards_protein = nutrient_standards_protein;
 	}
-	public int getNutrientStandFat() {
-		return nutrientStandFat;
+	public int getNutrient_standards_fat() {
+		return nutrient_standards_fat;
 	}
-	public void setNutrientStandFat(int nutrientStandFat) {
-		this.nutrientStandFat = nutrientStandFat;
+	public void setNutrient_standards_fat(int nutrient_standards_fat) {
+		this.nutrient_standards_fat = nutrient_standards_fat;
 	}
-	public int getNutrientStandNatrium() {
-		return nutrientStandNatrium;
+	public int getNutrient_standards_natrium() {
+		return nutrient_standards_natrium;
 	}
-	public void setNutrientStandNatrium(int nutrientStandNatrium) {
-		this.nutrientStandNatrium = nutrientStandNatrium;
+	public void setNutrient_standards_natrium(int nutrient_standards_natrium) {
+		this.nutrient_standards_natrium = nutrient_standards_natrium;
 	}
-	public String getAllergyInfo() {
-		return allergyInfo;
+	public String getAllergy_info() {
+		return allergy_info;
 	}
-	public void setAllergyInfo(String allergyInfo) {
-		this.allergyInfo = allergyInfo;
+	public void setAllergy_info(String allergy_info) {
+		this.allergy_info = allergy_info;
 	}
-	
-	
 }
