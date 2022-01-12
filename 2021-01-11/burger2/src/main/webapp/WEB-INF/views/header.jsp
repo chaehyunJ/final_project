@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/join.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/promotion.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/menuList.css">
+<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/store.css">
 </head>
 <body>
 <script src="${ cpath }/resources/js/main.js"></script>
@@ -41,7 +42,7 @@
                             </div>
                         </li>
                         <li class="top-menu-li">
-                            <a href="">Store</a>
+                            <a href="${ cpath }/store">Store</a>
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner">
                                     <li><a href="">매장찾기</a></li>
