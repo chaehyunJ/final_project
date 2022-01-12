@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itbank.component.Hash;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.BurgerDTO;
+import com.itbank.model.McMorningDTO;
 import com.itbank.promotion.PromDTO;
+import com.itbank.service.ImageService;
 import com.itbank.service.MailService;
 import com.itbank.service.MenuService;
 
@@ -27,6 +29,7 @@ public class AjaxController {
 	@Autowired private MenuService ms;
 	@Autowired private Hash hash;
 	@Autowired private MailService mailService;
+	@Autowired private ImageService is;
 	
 	@GetMapping("/ajaxPromotion")
 	public List<PromDTO> promList(){
@@ -54,6 +57,25 @@ public class AjaxController {
 		map.put("focus", dto == null ? "userpw" : "userid");
 		
 		return map;
+	}
+	
+	@GetMapping("/mac")
+	public List<McMorningDTO> mac() {
+		return is.getmacList();
+	}
+	@GetMapping("/macSet")
+	public List<McMorningDTO> macSet() {
+		return is.getmacSetList();
+	}
+	
+	@GetMapping("/burger")
+	public List<BurgerDTO> burger() {
+		return is.getburgerList();
+	}
+	
+	@GetMapping("/burgerSet")
+	public List<BurgerDTO> burgerSet() {
+		return is.getburgerSetList();
 	}
 	
 	@GetMapping("/mailto/{email}/")

@@ -11,6 +11,8 @@
 </head>
 <body>
 <script src="${ cpath }/resources/js/order.js"></script>
+<script src="${cpath }/resources/js/orderCount.js"></script>
+
 	<ul class="menuparent">
   		<li class="selectMenu showColor" data-cate="mac">맥모닝</li>
         <li class="selectMenu" data-cate="macSet">맥모닝 세트</li>
