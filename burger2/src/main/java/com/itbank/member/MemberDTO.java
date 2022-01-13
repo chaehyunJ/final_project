@@ -8,13 +8,20 @@ package com.itbank.member;
 //EMAIL     NOT NULL VARCHAR2(800)  
 //USERGRADE NOT NULL VARCHAR2(100)  
 //ADDRESS   NOT NULL VARCHAR2(1000)
-//EMAILAUTH			 VARCHAR2(50)	
+// emailAuth
 
 public class MemberDTO {
 
-	private String userid, userpw, username, gender, phone, email, usergrade, address, emailauth;
+	private String userid, userpw, username, gender, phone, email, usergrade, address, emailAuth;
 
-	
+	public String getEmailAuth() {
+		return emailAuth;
+	}
+
+	public void setEmailAuth(String emailAuth) {
+		this.emailAuth = emailAuth;
+	}
+
 	public String getUserid() {
 		return userid;
 	}
@@ -45,10 +52,6 @@ public class MemberDTO {
 
 	public String getAddress() {
 		return address;
-	}
-	
-	public String getEmailauth() {
-		return emailauth;
 	}
 
 	public void setUserid(String userid) {
@@ -83,9 +86,6 @@ public class MemberDTO {
 		this.address = address;
 	}
 
-	public void setEmailauth(String emailauth) {
-		this.emailauth = emailauth;
-	}
 		
 	
 }

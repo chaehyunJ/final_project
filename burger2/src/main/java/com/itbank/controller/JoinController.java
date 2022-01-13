@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.component.Hash;
 import com.itbank.member.MemberDTO;
 import com.itbank.service.MemberService;
 
@@ -18,6 +19,7 @@ import com.itbank.service.MemberService;
 public class JoinController {
 
 	@Autowired private MemberService ms;
+	@Autowired private Hash hash;
 	
 	@GetMapping("/join")
 	public ModelAndView step0(HttpServletRequest request) throws IOException {
@@ -47,17 +49,23 @@ public class JoinController {
 	@GetMapping("/join/step2")
 	public ModelAndView step2() {
 		ModelAndView mav = new ModelAndView("join/step2");
-		
 		return mav;
 	}
 	
 	@PostMapping("/join/step2")
 	public ModelAndView step2(MemberDTO dto) {
 		ModelAndView mav = new ModelAndView("join/step2");
+		
+		String hashpw = hash.getHash(dto.getUserpw());
+		dto.setUserpw(hashpw);
+		
 		int row = ms.join(dto);
 		if(row == 1) {
 			System.out.println("가입 성공");
-			mav.setViewName("redirect:/");
+			mav.setViewName("alert");
+			mav.addObject("msg", "가입 성공");
+			mav.addObject("url", "login");
+		
 		}
 		else {
 			System.out.println("가입 실패");

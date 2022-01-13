@@ -10,13 +10,13 @@
         </ul>
         <form class="join-address-form" action="${ cpath }/join/step2">
             <p>지역명</p>
-            <input id="addressInput" type="text" name="addressName" placeholder="지번, 도로명, 건물명으로 입력해주세요" readonly>
+            <input id="addressInput" type="text" name="addressName" placeholder="지번, 도로명, 건물명으로 입력해주세요" readonly required>
             <hr>
             <p>상세주소</p>
             <input id="detailAddressInput" type="text" name="adressDetail" placeholder="나머지 주소를 입력해주세요" required>
             <hr>
             <p>최종 배달주소</p>
-            <div id="address-result" style="background-color: beige;">
+            <div id="address-result">
             	<span id="resultAddress"></span>
             </div>
             <hr>
@@ -52,7 +52,8 @@
 
 	<script>
 		const resultAddress = document.getElementById('resultAddress')
-	
+		
+		
     	document.getElementById("addressInput").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
         new daum.Postcode({
@@ -67,10 +68,8 @@
     });
     
     	
-    	console.log(resultAddress)
-    	let address2 = $('#detailAddressInput').val()
-    	
-    	
-    	resultAddress.innerText += address2
+    	$('#detailAddressInput').blur(function(){
+    		resultAddress.innerText +=  (' ' + $('#detailAddressInput').val())
+    	})
     	
 	</script>

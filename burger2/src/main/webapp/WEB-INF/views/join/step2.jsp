@@ -14,7 +14,7 @@
             <p>ID</p>
             <input type="text" name="userid" placeholder="ID를 입력해 주세요" required autofocus autocomplete="off">
             <input id="idChkBtn" type="button" value="중복확인">
-            <span id="idChkResult"></span>
+            <p id="idChkResult"></p>
             <p>비밀번호</p>
             <input id="userpass" type="password" name="userpw" placeholder="비밀번호를 입력해주세요" required autocomplete="off">
             <p class="point2">※ 비밀번호는 총 8자에서 15자까지 입력가능</p>
@@ -22,7 +22,7 @@
             <input id="userpasschk" type="password" name="sm_pw_chk" placeholder="동일하게 입력해주세요." required maxlength="8" autocomplete="off"/>
             <p class="point successPwChk"></p>
             <p>성함</p>
-            <input type="text" name="username" placeholder="성함을 입력해주세요" required>
+            <input type="text" name="username" placeholder="성함을 입력해주세요" required autocomplete="off">
             <p>성별</p>
             <label>
             	<input type="radio" name="gender" value="남성">남성
@@ -33,11 +33,11 @@
             <p>이메일</p>
             <input type="email" name="email" placeholder="이메일을 입력해주세요" required>
             <input id="mainBtn" type="button" value="인증번호발송">
-            <span id="emailAuth"></span>
+            <p id="emailAuth"></p>
             <p>이메일 인증 </p>      
-            <input id= "authresult" type="text" name="authresult" placeholder="인증번호 입력">
+            <input id= "authResult" type="text" name="authresult" placeholder="인증번호 입력">
   			<input id="authChkBtn" type="button" value="인증확인">
-  			<span id="emailResult"></span>
+  			<p id="emailResult"></p>
             <hr>
             <input id="mainSubmit" type="submit" value="가입">
         </form>
@@ -70,7 +70,7 @@
     </footer>
     
     <script>
-    	const cpath = '${ cpath }'
+		const cpath = '${ cpath }'
     	const address = document.querySelector('input[name="address"]')
     	const idchk = document.getElementById('idChkBtn')
     	const userid = document.querySelector('input[name="userid"]')
@@ -78,8 +78,12 @@
     	const mainBtn = document.getElementById('mainBtn')
     	const email = document.querySelector('input[name="email"]')
 		const emailAuth = document.getElementById('emailAuth')
+		const authChkBtn = document.getElementById('authChkBtn') 
     	const emailResult = document.getElementById('emailResult')
-		
+		const authInput = document.querySelector('input[name="authresult"]')
+    	
+		const form = document.forms[0]
+    	
     	idchk.onclick = function(){
     		if(userid.value == ''){
     			alert('ID를 입력해주세요')
@@ -117,26 +121,33 @@
     		})
     	}
     	
-    	authChkBtn.onclick = function() {
-   
-    		const authresult = document.getElementById('authresult')
-    		
-    		const url = cpath + '/getAuthResult/' + authresult.value + '/'
+    	authChkBtn.onclick = function(){
+    		const authResult = document.querySelector('input[name="authresult"]').value
+    		console.log(authResult)
+    		const url = cpath + '/ajaxAuth/' + authResult 
     		const opt = {
-    			method: 'GET'
+    			method : 'get'
     		}
     		fetch(url, opt)
     		.then(resp => resp.json())
     		.then(json => {
     			console.log(json)
-    			emailResult.innerText = json.message
     			
-    			if(json.status == 'OK') {
+    			if(json.status == 'OK'){
+    				emailResult.innerText = json.message
     				emailResult.style.color = 'blue'
+//     				email.disabled = 'disabled'
+    				authInput.disabled = 'disabled'
+    				const emailAuth = document.createElement('input')
+    				emailAuth.name = 'emailAuth'
+    				emailAuth.type = 'hidden'
+    				emailAuth.value = 'y'
+    				form.appendChild(emailAuth)
     			}
-    			else {
+    			else{
+    				emailResult.innerText = json.message
     				emailResult.style.color = 'red'
-    				auth.select()
+    				email.select()
     			}
     		})
     	}

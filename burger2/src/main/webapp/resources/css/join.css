@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-/* step1 */
 .join-address-container {
 	display: flex;
 	flex-flow: column;
@@ -74,6 +73,13 @@
 }
 
 /* step2 */
+
+.join-main-form > input {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #dadada;
+}
+
 .join-main-container {
 	display: flex;
 	flex-flow: column;
@@ -101,16 +107,11 @@
 	box-shadow: 2px 2px 2px grey;
 }
 
-#mainInput {
-	width: 200px;
-	height: 20px;
-	margin-top: 0;
-}
 #idChkBtn{
 	width: 75px;
 	height: 35px;
 	border: 0px;
-	background-color: #e3a400;
+	background-color: #ffbc0d;
 	font-size: 14px;
 	color: black;
 	font-weight: bold;
@@ -118,10 +119,10 @@
 }
 
 #mainBtn {
-	width: 75px;
+	width: 100px;
 	height: 35px;
 	border: 0px;
-	background-color: #e3a400;
+	background-color: #ffbc0d;
 	font-size: 14px;
 	color: black;
 	font-weight: bold;
@@ -132,7 +133,7 @@
 	width: 80px;
 	height: 50px;
 	border: 0px;
-	background-color: #e3a400;
+	background-color: #ffbc0d;
 	font-size: 15px;
 	font-weight: bold;
 	color: black;
@@ -143,17 +144,13 @@
 	margin: 6px;
 }
 
-#authresult {
-	width: 200px;
-	height: 20px;
-}
-
-.hidden {
-	display: none;
-}
-
-.point2 {
-	color: green;
-	font-size: 13px;
+#authChkBtn {
+	width: 75px;
+	height: 35px;
+	border: 0px;
+	background-color: #ffbc0d;
+	font-size: 14px;
+	color: black;
 	font-weight: bold;
+	border-radius: 5px;
 }

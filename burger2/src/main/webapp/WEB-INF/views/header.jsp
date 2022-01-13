@@ -12,11 +12,17 @@
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/join.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/promotion.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/menuList.css">
+
+<!-- 추가  -->
+<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/myPage.css">
+<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/menu.css">
+<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/store.css">
 </head>
 <body>
 <script src="${ cpath }/resources/js/main.js"></script>
 <script src="${ cpath }/resources/js/step2.js"></script>
+<script src="${ cpath }/resources/js/promotion.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
@@ -62,8 +68,9 @@
                             <a href="">Board</a>
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner"> 
-                                    <li><a href="">QnABoard</a></li> 
-                                    <li><a href="">Board</a></li>
+                                   	<!--혜린 추가 내용  -->
+                                    <li><a href="${ cpath }/board/news">새로운소식</a></li>
+                                    <li><a href="${ cpath }/board/question">문의사항</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -87,7 +94,7 @@
                         <a href="${ cpath }/login">로그인</a>
                     </c:if>
                     <c:if test="${ not empty login }">
-                    	${ login.username }
+                    	<a href="${ cpath }/myPage">${ login.username }</a>
                     </c:if>
                     </li>
                     <li><img class="search-icon" src="${ cpath }/resources/src/검색아이콘.png" alt=""></li>

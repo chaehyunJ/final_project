@@ -50,23 +50,9 @@
 		const promotionImageList = document.querySelector('.promotion-imageList')
 		console.log(promotionImageList)
 		
-		const url = cpath + '/ajaxPromotion'
-		const opt = {
-			method : 'get'
-		}
-		fetch(url,opt)
-		.then(resp => resp.json())
-		.then(json => {
-			console.log(json)
-			let dom = ''
-				json.forEach(dto => {
-				dom += '<div class="promotion-imagecontainer">'
-				dom += '<img class="promotion-image" src="'+ dto.promotion_img +'">'
-				dom += '<p class="promotion-sentence">'+ dto.prmotion_content +'</p>'
-				dom += '</div>'
+		window.addEventListener('load', function(){
+			promotionAjax()
 		})
-		promotionImageList.innerHTML += dom
-	})
     </script>
 </body>
 </html>

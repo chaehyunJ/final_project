@@ -128,12 +128,20 @@ public class AjaxController {
 		return ret;
 	}
 	
-	@GetMapping("/getAuthResult/{userNumber}")
-	public HashMap<String, String> getAuthResult(@PathVariable String userNumber, HttpSession session) {
-		String sessionHash = (String) session.getAttribute("hashNumber");
+	
+	@GetMapping("/ajaxAuth/{userNumber}")
+	public HashMap<String, String> getAuthResult(@PathVariable String userNumber, HttpSession session){
+		
+//		String userNumber1 = String.valueOf(userNumber);
+		String sessionHash = (String)session.getAttribute("hashNumber");
 		String userHash = hash.getHash(userNumber);
+		
+		// 이렇게 hash 값으로 입력값과 인증번호를 비교한다
 		boolean flag = userHash.equals(sessionHash);
 		
+		System.out.println(sessionHash);
+		System.out.println(userHash);
+		System.out.println(flag);
 		
 		HashMap<String, String> ret = new HashMap<String, String>();
 		ret.put("status", flag ? "OK" : "Fail");
@@ -141,4 +149,5 @@ public class AjaxController {
 		
 		return ret;
 	}
+	
 }

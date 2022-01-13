@@ -2,6 +2,36 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
+<div class="menu-container">
+        <div class="menu-area" >
+            <h1 class="menu-title">버거</h1>
+            <p class="menu-text">빅맥®에서 맥스파이시®상하이버거까지,<br>주문 즉시 바로 조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.</p>
+            <ul class="menu-ul">
+                <li>Home</li>
+                <li>•</li>
+                <li>Menu</li>
+                <li>•</li>
+                <li>버거</li>
+            </ul>
+            <img src="${ cpath }/resources/src/menu/menu-burger.jpg">
+        </div>
+	<div class="menu-list">
+		<div class="menu-total">• 21 Products</div>
+		<div class="menu-product-list">
+		    <div class="menu-product-item"><div class="1"></div></div>
+		    <div class="menu-product-item"><div class="2"></div></div>
+		    <div class="menu-product-item"><div class="3"></div></div>
+		    <div class="menu-product-item"><div class="4"></div></div>
+		    <div class="menu-product-item"><div class="5"></div></div>
+		    <div class="menu-product-item"><div class="6"></div></div>
+		</div>
+	    
+	    <div class="menu-btn">
+	    </div>
+	</div>
+</div>
+
+
 <div class="menu-list-inner">
 
 </div>

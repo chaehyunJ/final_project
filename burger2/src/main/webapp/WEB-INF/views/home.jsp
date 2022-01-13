@@ -18,36 +18,13 @@
 
     <div class="title-main"><h2>Coded Burger Live</h2></div>
 
-    <div class="main-inner">
-        <div class="main-inner-one">
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-        </div>
-        <div class="main-inner-one1 hidden1">
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-        </div>
-        <div class="main-inner-one2 hidden1">
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-            <div class="main-inner-event"></div>
-        </div>
+    <div class="main-inner detailinfo">
+<!--         <div class="main-inner-one"></div> -->
     </div>
 
     <div class="btn-list">
-        <button id="btn">+</button>
-        <button id="btn1" class="hidden1">+</button>
+        <button id="btnOpen">+</button>
+        <button id="btnClose" class="hidden">-</button>
     </div>
 
 <%@ include file="footer.jsp" %>

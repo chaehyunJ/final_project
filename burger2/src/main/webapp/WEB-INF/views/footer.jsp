@@ -32,12 +32,12 @@
 
 <script>
 	const cpath = '${ cpath }'
-	const btn = document.getElementById('btn')
-	const btn1 = document.getElementById('btn1')
+	const btnOpen = document.getElementById('btnOpen')
+	const btnClose = document.getElementById('btnClose')
 	const mainOne = document.querySelector('.main-inner-one1')
 	const mainOne2 = document.querySelector('.main-inner-one2')
 	const slide = document.querySelector('.slide')
-	
+	const mainInner = document.querySelector('.main-inner')
 
 	
 	const promotionImageList = document.querySelector('.promotion-imageList')
@@ -48,14 +48,48 @@
 	const unit = 1700
 
 	
-	console.log(mainOne2)
-	console.log(mainOne)
-	console.log(btn)
 	
-	btn.onclick = btnHandler 
-	btn1.onclick = btn1Handler
+	btnOpen.onclick = function(){
+		let classList = document.querySelector('.detailinfo').classList; 
+		
+		if(classList.contains('main-inner')){
+			classList.remove('main-inner')
+			classList.add('main-inner1')
+			btnOpen.add('hidden')
+			btnClose.remove('hidden')
+		}
+	}
+	
+	btnClose.onclick = function(){
+		let classList = document.querySelector('.detailinfo').classList;
+		
+		if(classList.contains('main-inner1')){
+			classList.remove('main-inner1')
+			classList.add('main-inner')
+			btnOpen.remove('hidden')
+			btnClose.add('hidden')
+		}
+	}
+
 	setMoveInterval()
 	
+	
+	const url = cpath + '/ajaxPromotion'
+	const opt = {
+		method : 'get'
+	}
+	fetch(url,opt)
+	.then(resp => resp.json())
+	.then(json => {
+		console.log(json)
+		let dom = ''
+			json.forEach(dto => {
+			dom += '<div class="main-inner-event">'
+			dom += '<img src="'+ dto.promotion_img +'">'
+			dom += '</div>'
+	})
+	mainInner.innerHTML += dom
+})
 
 
 </script>

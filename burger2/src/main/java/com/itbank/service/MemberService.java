@@ -38,7 +38,8 @@ public class MemberService {
 	}
 
 	public int join(MemberDTO dto) {
-		return dao.insert(dto);
+		int row = dao.join(dto);
+		return row;
 	}
 
 }

@@ -1,5 +1,8 @@
 @charset "utf-8";
-
+.store-contents{
+	width: 1100px;
+	margin: 0 auto;
+}
 .store-banner {
 	background-image: url(https://www.mcdonalds.co.kr/uploadFolder/images/store/bg_visual_store01.jpg);
 	color: white;
@@ -41,7 +44,8 @@
 	font-size: 50px;
 }
 .store-contArea {
-	width: 1168px;
+	width: 80%;
+	margin: 0 auto;
 }
 .store-fingBg{
 	width: 100%;
@@ -51,6 +55,7 @@
 	display: block;
 }
 .store-searchbox {
+	margin-top: 30px;
 	border: 1px solid d1d1d1;
 	
 }
@@ -86,15 +91,16 @@
 	border: none;
 }
 .store-map {
-	width:1168px;
-	margin-top: 50px;
+	width:80%;
+	margin: 50px auto;
 	border-radius: 10px;
 }
 .store-tableType01 {
-	width: 1168px;
+	width: 80%;
 	padding: 25px 12px;
 	border-top: 2px solid #292929;
 	border-bottom: 2px solid #292929;
+	margin: 0 auto;
 }
 .store-tableType01 > thead {
 	border-top: 1px solid #292929;

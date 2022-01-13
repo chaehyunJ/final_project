@@ -11,6 +11,7 @@ public interface MemberDAO {
 
 	@Select("select * from user_table where userid = #{ userid }")
 	MemberDTO selectMember(String userid);
-	
-	int insert(MemberDTO dto);
+
+	int join(MemberDTO dto);
+
 }
