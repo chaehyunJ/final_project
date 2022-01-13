@@ -1,0 +1,64 @@
+.myPage-container{
+	display: flex;
+	min-height: 600px;
+}
+.myPage-list {
+	border: 1px solid white;
+	width: 10%;
+	min-width: 160px;
+	margin-right: 0px;
+}
+.myPage-table {
+	border: 1px solid white;
+	cellpadding: 7px ;
+	cellspacing: 0px ;
+	margin-left: 180px;
+}
+.myPage-tableType01{
+	border: 1px solid black;
+	cellpadding: 7px ;
+	cellspacing: 0px ;
+	justify-content: center;
+	text-align: center;
+}
+.myPage-title {
+	padding-left: 15px;
+}
+.myPage-navPath {
+	padding-left: 10px;
+}
+.myPage-navPath > li {
+	display: inline-block;
+	font-weight: 500px;
+	margin-top: 10px;
+}
+.myPage-navPath li:before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 14px 0 10px;
+    vertical-align: middle;
+    border-radius: 100%;
+    background: #f5bd43;
+}
+.myPage-History {
+	margin-left: 180px;	
+}
+.myPage-tableType01 dd:before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 14px 0 10px;
+    vertical-align: middle;
+    border-radius: 100%;
+    background: #f5bd43;
+}
+.myPage-tableType01 dd{
+	margin-inline-start: 00px;
+	text-align: left;
+}
+.memberInfo-wrap{
+	margin-left: 180px;
+}
