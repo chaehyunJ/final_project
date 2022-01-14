@@ -97,22 +97,16 @@ function imageOrderDom(event) {
     
     parent_order.appendChild(div)
     
-    console.log(parent_order.scrollHeight)
+    //console.log(parent_order.scrollHeight)
 	parent_order.scroll({top: parent_order.scrollHeight, behavior: `smooth`})
 }
 function deleteHandler(event) {
-    console.log(event.target)
         const parent_order = event.target.parentElement.parentElement
         const child_order = event.target.parentElement
         parent_order.removeChild(child_order)
 }
 
-function checkOrder(event) {
-	console.log(event.target)
-	let checkOrder_parent = event.target.partentElement
-	let parent_orderArray=parent_order.childNodes
-	console.log(parent_orderArray)
-}
+
 
 
 

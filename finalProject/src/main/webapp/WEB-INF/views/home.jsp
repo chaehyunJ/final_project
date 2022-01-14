@@ -20,6 +20,7 @@
         <li class="selectMenu" data-cate="side">스낵＆사이드</li>
         <li class="selectMenu" data-cate="drink">음료</li>
         <li class="selectMenu" data-cate="dessert">디저트</li>
+        <li class="selectMenu" data-cate="mcafe">맥카페</li>
     </ul>
     <div class="show">
     	<div class="show-frame"></div>
@@ -57,13 +58,26 @@
 				  sideImageHandler()
 			  else if(menu.dataset.cate == 'drink')
 				  drinkImageHandler()
+			  else if(menu.dataset.cate == 'mcafe')
+				  mcafeImageHandler()
 			  else
 				  dessertImageHandler()
 		   }
 	   })
 	   next.onclick = nextSildeHandler
 	   before.onclick = beforeSildeHandler
-	   
+	   parent_order.onclick = function(event) {
+           if(event.target.classList == 'deleteBtn') {
+               deleteHandler(event)
+           }
+           else if(event.target.classList == 'addminusBtn') {
+               console.log(event.target)
+               countHandler(event)    
+           }
+           else {
+               return;
+           }
+       }
 	  /*   imageOrderBtn.forEach(arr=>{
 		   arr.onclick=imageOrderDom
 	   }) */

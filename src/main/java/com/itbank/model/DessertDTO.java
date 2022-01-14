@@ -2,10 +2,10 @@ package com.itbank.model;
 
 public class DessertDTO {
 	private int dessert_seq;
-	private String description;
-	private String name;
-	private int price;
-	private String img;
+	private String dessert_description;
+	private String dessert_name;
+	private int dessert_price;
+	private String dessert_img;
 	private int weight_g;
 	private int weight_ml;
 	private int kcal;
@@ -25,29 +25,29 @@ public class DessertDTO {
 	public void setDessert_seq(int dessert_seq) {
 		this.dessert_seq = dessert_seq;
 	}
-	public String getDescription() {
-		return description;
+	public String getDessert_description() {
+		return dessert_description;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDessert_description(String dessert_description) {
+		this.dessert_description = dessert_description;
 	}
-	public String getName() {
-		return name;
+	public String getDessert_name() {
+		return dessert_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setDessert_name(String dessert_name) {
+		this.dessert_name = dessert_name;
 	}
-	public int getPrice() {
-		return price;
+	public int getDessert_price() {
+		return dessert_price;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setDessert_price(int dessert_price) {
+		this.dessert_price = dessert_price;
 	}
-	public String getImg() {
-		return img;
+	public String getDessert_img() {
+		return dessert_img;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setDessert_img(String dessert_img) {
+		this.dessert_img = dessert_img;
 	}
 	public int getWeight_g() {
 		return weight_g;

@@ -127,4 +127,6 @@ public class DessertDTO {
 	public void setAllergy_info(String allergy_info) {
 		this.allergy_info = allergy_info;
 	}
+	
+	
 }

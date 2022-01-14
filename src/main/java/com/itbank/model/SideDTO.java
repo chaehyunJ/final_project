@@ -2,10 +2,10 @@ package com.itbank.model;
 
 public class SideDTO {
 	private int side_seq;
-	private String description;
-	private String name;
-	private String img;
-	private String price;
+	private String side_description;
+	private String side_name;
+	private String side_img;
+	private String side_price;
 	private String weight_g;
 	private String kcal;
 	private String sugar;
@@ -23,29 +23,29 @@ public class SideDTO {
 	public void setSide_seq(int side_seq) {
 		this.side_seq = side_seq;
 	}
-	public String getDescription() {
-		return description;
+	public String getSide_description() {
+		return side_description;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setSide_description(String side_description) {
+		this.side_description = side_description;
 	}
-	public String getName() {
-		return name;
+	public String getSide_name() {
+		return side_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setSide_name(String side_name) {
+		this.side_name = side_name;
 	}
-	public String getImg() {
-		return img;
+	public String getSide_img() {
+		return side_img;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setSide_img(String side_img) {
+		this.side_img = side_img;
 	}
-	public String getPrice() {
-		return price;
+	public String getSide_price() {
+		return side_price;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setSide_price(String side_price) {
+		this.side_price = side_price;
 	}
 	public String getWeight_g() {
 		return weight_g;
@@ -113,4 +113,6 @@ public class SideDTO {
 	public void setAllergy_info(String allergy_info) {
 		this.allergy_info = allergy_info;
 	}
+	
+	
 }

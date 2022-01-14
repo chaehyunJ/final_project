@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itbank.model.BurgerDTO;
+import com.itbank.model.DessertDTO;
 import com.itbank.model.DrinkDTO;
+import com.itbank.model.MacCafeDTO;
 import com.itbank.model.MacMorningDTO;
 import com.itbank.model.McafeDTO;
 import com.itbank.model.SideDTO;
@@ -48,12 +50,12 @@ public class AjaxController {
 	}
 	
 	@GetMapping("/dessert")
-	public List<DrinkDTO> dessert() {
+	public List<DessertDTO> dessert() {
 		return is.getdessertList();
 	}
 	
 	@GetMapping("/mcafe")
-	public List<McafeDTO> mcafe() {
+	public List<MacCafeDTO> mcafe() {
 		return is.getmcafeList();
 	}
 }

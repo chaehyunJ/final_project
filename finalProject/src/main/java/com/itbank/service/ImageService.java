@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itbank.model.BurgerDTO;
+import com.itbank.model.DessertDTO;
+import com.itbank.model.DrinkDTO;
 import com.itbank.model.ImageDAO;
+import com.itbank.model.MacCafeDTO;
 import com.itbank.model.MacMorningDTO;
+import com.itbank.model.McafeDTO;
+import com.itbank.model.SideDTO;
 
 @Service
 public class ImageService {
@@ -24,5 +29,17 @@ public class ImageService {
 	}
 	public List<BurgerDTO> getburgerSetList() {
 		return dao.getburgerList();
+	}
+	public List<SideDTO> getsideList() {
+		return dao.getsideList();
+	}
+	public List<DrinkDTO> getdrinkList() {
+		return dao.getdrinkList();
+	}
+	public List<DessertDTO> getdessertList() {
+		return dao.getdessertList();
+	}
+	public List<MacCafeDTO> getmcafeList() {
+		return dao.getmcafeList();
 	}
 }

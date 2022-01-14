@@ -32,6 +32,7 @@ function beforeSildeHandler(event) {
 }
 
 function macImageHandler() {
+	let colors = []
 	//const url = cpath + '/order/' + cate
 	const url = cpath + '/mac'
 	const opt = {
@@ -40,15 +41,56 @@ function macImageHandler() {
 	fetch(url,opt)
 	.then(resp => resp.json())  //db에 있는 값이 알아서 json으로 바뀜
 	.then(json => {
-		render(showFrame,getMacDom(json))
-		const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
-	    imageOrderBtn.forEach(arr=>{
-	    	arr.onclick=function(event) {
-	    		checkOrder(event)   //장바구니에 목록이 이미 있는지 확인 
-	    		imageOrderDom(event)
-	    	}
-	    })
-	})
+				render(showFrame,getMacDom(json))
+				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
+				imageOrderBtn.forEach(arr=>{
+					arr.onclick=function(event) {
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) {
+							imageOrderDom(event)
+						}
+						else {  //else는 imageOrderDom을 length가 0일때 실행시키지 않기위해
+							parent_orderArray.forEach(dto =>{
+								colors.push(dto.childNodes[1].innerText)
+							})
+							imageOrderDom(event)
+						}
+						//중복배열제거
+						const arrUnique = colors.filter((val,idx)=> {
+							return colors.indexOf(val) === idx;
+						})
+						console.log('칼라:' + arrUnique)
+						parent_orderArray.forEach(dto=> {
+							let price = dto.childNodes[5].innerText.split(' ')[1]
+							price = parseInt(price.replace(/,/g,""))
+							arrUnique.forEach(dto1 => {
+								if(dto1 == dto.childNodes[1].nextElementSibling.nextElementSibling.innerText) {
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+							})
+						})
+//								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+//								price = parseInt(price.replace(/,/g,"")) //2300
+//								console.log(dto)
+//								//장바구니에있는 childnodes들과 클릭한 이미지메뉴와 비교
+//								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+//									console.log(dto)
+//									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+//									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+//									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+//									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+//								}
+//								else {
+//									imageOrderDom(event)
+//									break
+//								}
+						}
+				})
+
+			})
 }
 
 function getMacDom(json) {
@@ -78,15 +120,31 @@ function macSetImageHandler() {
 	fetch(url,opt)
 	.then(resp => resp.json())  //db에 있는 값이 알아서 json으로 바뀜
 	.then(json => {
-		render(showFrame,getMacSetDom(json))
-		const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
-	    imageOrderBtn.forEach(arr=>{
-	    	arr.onclick=function(event) {
-	    		checkOrder(event)   //장바구니에 목록이 이미 있는지 확인 
-	    		imageOrderDom(event)
-	    	}
-	    })
-	})
+				render(showFrame,getMacSetDom(json))
+				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
+				imageOrderBtn.forEach(arr=>{
+					arr.onclick=function(event) {
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) imageOrderDom(event)
+						else {
+							parent_orderArray.forEach(dto =>{
+								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+								price = parseInt(price.replace(/,/g,"")) //2300
+								
+								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+								else {
+									imageOrderDom(event)
+								}
+						})
+						}
+				}
+			})
+		})
 }
 
 function getMacSetDom(json) {
@@ -110,6 +168,7 @@ function getMacSetDom(json) {
 }
 
 function burgerImageHandler() {
+	let marr
 	console.log(check)
 	//const url = cpath + '/order/' + cate
 	const url = cpath + '/burger'
@@ -119,14 +178,31 @@ function burgerImageHandler() {
 	fetch(url,opt)
 	.then(resp => resp.json())  //db에 있는 값이 알아서 json으로 바뀜
 	.then(json => {
-		render(showFrame,getburgerDom(json))
-		const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
-	    imageOrderBtn.forEach(arr=>{
-	    	arr.onclick=function(event) {
-	    		imageOrderDom(event)
-	    	}
-	    })
-	})
+				render(showFrame,getburgerDom(json))
+				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
+				imageOrderBtn.forEach(arr=>{
+					arr.onclick=function(event) {
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) imageOrderDom(event)
+						else {
+							parent_orderArray.forEach(dto =>{
+								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+								price = parseInt(price.replace(/,/g,"")) //2300
+								
+								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+								else {
+									imageOrderDom(event)
+								}
+						})
+						}
+				}
+			})
+		})
 }
 
 function getburgerDom(json) {
@@ -157,15 +233,31 @@ function burgerSetImageHandler() {
 	fetch(url,opt)
 	.then(resp => resp.json())  //db에 있는 값이 알아서 json으로 바뀜
 	.then(json => {
-		render(showFrame,getburgerSetDom(json))
-		const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
-	    imageOrderBtn.forEach(arr=>{
-	    	arr.onclick=function(event) {
-	    		checkOrder(event)   //장바구니에 목록이 이미 있는지 확인 
-	    		imageOrderDom(event)
-	    	}
-	    })
-	})
+				render(showFrame,getburgerSetDom(json))
+				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
+				imageOrderBtn.forEach(arr=>{
+					arr.onclick=function(event) {
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) imageOrderDom(event)
+						else {
+							parent_orderArray.forEach(dto =>{
+								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+								price = parseInt(price.replace(/,/g,"")) //2300
+								
+								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+								else {
+									imageOrderDom(event)
+								}
+						})
+						}
+				}
+			})
+		})
 }
 
 function getburgerSetDom(json) {
@@ -202,8 +294,24 @@ function sideImageHandler() {
 				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
 				imageOrderBtn.forEach(arr=>{
 					arr.onclick=function(event) {
-			    		checkOrder(event)   //장바구니에 목록이 이미 있는지 확인 
-			    		imageOrderDom(event)
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) imageOrderDom(event)
+						else {
+							parent_orderArray.forEach(dto =>{
+								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+								price = parseInt(price.replace(/,/g,"")) //2300
+								
+								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+								else {
+									imageOrderDom(event)
+								}
+						})
+						}
 				}
 			})
 		})
@@ -221,8 +329,8 @@ function getsideSetDom(json) {
 	let iaar = new Array();
 	let paar = new Array();
 	json.forEach(dto =>{
-		if(dto.name.includes(" // ")) {
-			narr = dto.name.split(" // ")
+		if(dto.side_name.includes(" // ")) {
+			narr = dto.side_name.split(" // ")
 			narr.forEach(e=>{
 				if(e != 'null') {
 					naar.push(e)
@@ -230,10 +338,10 @@ function getsideSetDom(json) {
 			})
 		}
 		else {
-			naar.push(dto.name)
+			naar.push(dto.side_name)
 		}
-		if(dto.img.includes(" // ")) {
-			iarr = dto.img.split(" // ")
+		if(dto.side_img.includes(" // ")) {
+			iarr = dto.side_img.split(" // ")
 			iarr.forEach(e=>{
 				if(e != 'null') {
 					iaar.push(e)
@@ -241,10 +349,10 @@ function getsideSetDom(json) {
 			})
 		}
 		else {
-			iaar.push(dto.img)
+			iaar.push(dto.side_img)
 		}
-		if(dto.price.includes(" // ")) {
-			parr = dto.price.split(" // ")
+		if(dto.side_price.includes(" // ")) {
+			parr = dto.side_price.split(" // ")
 			parr.forEach(e=>{
 				if(e != 'null') {
 					paar.push(e)
@@ -252,7 +360,7 @@ function getsideSetDom(json) {
 			})
 		}
 		else {
-			paar.push(dto.price)
+			paar.push(dto.side_price)
 		}
 	})
 	
@@ -282,8 +390,24 @@ function drinkImageHandler() {
 				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
 				imageOrderBtn.forEach(arr=>{
 					arr.onclick=function(event) {
-			    		checkOrder(event)   //장바구니에 목록이 이미 있는지 확인 
-			    		imageOrderDom(event)
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) imageOrderDom(event)
+						else {
+							parent_orderArray.forEach(dto =>{
+								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+								price = parseInt(price.replace(/,/g,"")) //2300
+								
+								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+								else {
+									imageOrderDom(event)
+								}
+						})
+						}
 				}
 			})
 		})
@@ -301,8 +425,8 @@ function getdrinkDom(json) {
 	let iaar = new Array();
 	let paar = new Array();
 	json.forEach(dto =>{
-		if(dto.name.includes(" // ")) {
-			narr = dto.name.split(" // ")
+		if(dto.drink_name.includes(" // ")) {
+			narr = dto.drink_name.split(" // ")
 			narr.forEach(e=>{
 				if(e != 'null') {
 					naar.push(e)
@@ -310,10 +434,10 @@ function getdrinkDom(json) {
 			})
 		}
 		else {
-			naar.push(dto.name)
+			naar.push(dto.drink_name)
 		}
-		if(dto.img.includes(" // ")) {
-			iarr = dto.img.split(" // ")
+		if(dto.drink_img.includes(" // ")) {
+			iarr = dto.drink_img.split(" // ")
 			iarr.forEach(e=>{
 				if(e != 'null') {
 					iaar.push(e)
@@ -321,10 +445,10 @@ function getdrinkDom(json) {
 			})
 		}
 		else {
-			iaar.push(dto.img)
+			iaar.push(dto.drink_img)
 		}
-		if(dto.price.includes(" // ")) {
-			parr = dto.price.split(" // ")
+		if(dto.drink_price.includes(" // ")) {
+			parr = dto.drink_price.split(" // ")
 			parr.forEach(e=>{
 				if(e != 'null') {
 					paar.push(e)
@@ -332,7 +456,7 @@ function getdrinkDom(json) {
 			})
 		}
 		else {
-			paar.push(dto.price)
+			paar.push(dto.drink_price)
 		}
 	})
 	
@@ -361,8 +485,24 @@ function dessertImageHandler() {
 				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
 				imageOrderBtn.forEach(arr=>{
 					arr.onclick=function(event) {
-			    		checkOrder(event)   //장바구니에 목록이 이미 있는지 확인 
-			    		imageOrderDom(event)
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) imageOrderDom(event)
+						else {
+							parent_orderArray.forEach(dto =>{
+								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+								price = parseInt(price.replace(/,/g,"")) //2300
+								
+								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+								else {
+									imageOrderDom(event)
+								}
+						})
+						}
 				}
 			})
 		})
@@ -371,60 +511,21 @@ function dessertImageHandler() {
 function getdessertDom(json) {
 	let tag = ``
 	let i = 0
-	let namearr
-	let imgarr
-	let priarr
 	showContainTag1 = `<div class="show-contain">`
 	showContainTag2= `</div>`
-	let naar = new Array();
-	let iaar = new Array();
-	let paar = new Array();
 	json.forEach(dto =>{
-		if(dto.name.includes(" // ")) {
-			narr = dto.name.split(" // ")
-			narr.forEach(e=>{
-				if(e != 'null') {
-					naar.push(e)
-			    }
-			})
-		}
-		else {
-			naar.push(dto.name)
-		}
-		if(dto.img.includes(" // ")) {
-			iarr = dto.img.split(" // ")
-			iarr.forEach(e=>{
-				if(e != 'null') {
-					iaar.push(e)
-			    }
-			})
-		}
-		else {
-			iaar.push(dto.img)
-		}
-		if(dto.price.includes(" // ")) {
-			parr = dto.price.split(" // ")
-			parr.forEach(e=>{
-				if(e != 'null') {
-					paar.push(e)
-			    }
-			})
-		}
-		else {
-			paar.push(dto.price)
-		}
-	})
-	
-	for(let j = 0; j<naar.length; j++) {
-		if(i==0 || i%8==0) tag += showContainTag1 
+		flag = dto.dessert_image != 'null'
+		if(i==0 || i%8==0 && flag) tag += showContainTag1 
+		if(dto.dessert_image != 'null' ) {
 			tag +=	 `<div class="menu-border">`
-			tag +=		`<img class="imageOrderBtn" src="${iaar[j]}">`
-			tag +=		`<div>￦ ${paar[j].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${naar[j]}</span>`
+			tag +=		`<img class="imageOrderBtn" src="${dto.dessert_img}">`
+			tag +=		`<div>￦ ${dto.dessert_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span>${dto.dessert_name}</span>`
 			tag +=	 `</div>`
 			i++
-		if(i==0 || i%8==0) tag += showContainTag2
-	}
+		}
+		if(i==0 || i%8==0 && flag) tag += showContainTag2
+	}) 
 	return tag
 }
 
@@ -441,8 +542,24 @@ function mcafeImageHandler() {
 				const imageOrderBtn = document.querySelectorAll('.imageOrderBtn')
 				imageOrderBtn.forEach(arr=>{
 					arr.onclick=function(event) {
-			    		checkOrder(event)   //장바구니에 목록이 이미 있는지 확인 
-			    		imageOrderDom(event)
+						let parent_orderArray=parent_order.childNodes
+						if(parent_orderArray.length == 0) imageOrderDom(event)
+						else {
+							parent_orderArray.forEach(dto =>{
+								let price = dto.childNodes[5].innerText.split(' ')[1]  //2,300
+								price = parseInt(price.replace(/,/g,"")) //2300
+								
+								if(dto.childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
+									let count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
+									count = parseInt(dto.childNodes[1].nextElementSibling.nextElementSibling.innerText)
+									dto.childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+								}
+								else {
+									imageOrderDom(event)
+								}
+						})
+						}
 				}
 			})
 		})
@@ -460,8 +577,8 @@ function getmcafeDom(json) {
 	let iaar = new Array();
 	let paar = new Array();
 	json.forEach(dto =>{
-		if(dto.name.includes(" // ")) {
-			narr = dto.name.split(" // ")
+		if(dto.mccafe_name.includes(" // ")) {
+			narr = dto.mccafe_name.split(" // ")
 			narr.forEach(e=>{
 				if(e != 'null') {
 					naar.push(e)
@@ -469,10 +586,10 @@ function getmcafeDom(json) {
 			})
 		}
 		else {
-			naar.push(dto.name)
+			naar.push(dto.mccafe_name)
 		}
-		if(dto.img.includes(" // ")) {
-			iarr = dto.img.split(" // ")
+		if(dto.mccafe_img.includes(" // ")) {
+			iarr = dto.mccafe_img.split(" // ")
 			iarr.forEach(e=>{
 				if(e != 'null') {
 					iaar.push(e)
@@ -480,10 +597,10 @@ function getmcafeDom(json) {
 			})
 		}
 		else {
-			iaar.push(dto.img)
+			iaar.push(dto.mccafe_img)
 		}
-		if(dto.price.includes(" // ")) {
-			parr = dto.price.split(" // ")
+		if(dto.mccafe_price.includes(" // ")) {
+			parr = dto.mccafe_price.split(" // ")
 			parr.forEach(e=>{
 				if(e != 'null') {
 					paar.push(e)
@@ -491,7 +608,7 @@ function getmcafeDom(json) {
 			})
 		}
 		else {
-			paar.push(dto.price)
+			paar.push(dto.mccafe_price)
 		}
 	})
 	console.log(naar)

@@ -12,10 +12,10 @@ public class SideDTO {
 	private String protein;
 	private String fat;
 	private String natrium;
-	private String standards_sugar;
-	private String standards_protein;
-	private String standards_fat;
-	private String standards_natrium;
+	private String nutrient_standards_sugar;
+	private String nutrient_standards_protein;
+	private String nutrient_standards_fat;
+	private String nutrient_standards_natrium;
 	private String allergy_info;
 	public int getSide_seq() {
 		return side_seq;
@@ -83,29 +83,29 @@ public class SideDTO {
 	public void setNatrium(String natrium) {
 		this.natrium = natrium;
 	}
-	public String getStandards_sugar() {
-		return standards_sugar;
+	public String getNutrient_standards_sugar() {
+		return nutrient_standards_sugar;
 	}
-	public void setStandards_sugar(String standards_sugar) {
-		this.standards_sugar = standards_sugar;
+	public void setNutrient_standards_sugar(String nutrient_standards_sugar) {
+		this.nutrient_standards_sugar = nutrient_standards_sugar;
 	}
-	public String getStandards_protein() {
-		return standards_protein;
+	public String getNutrient_standards_protein() {
+		return nutrient_standards_protein;
 	}
-	public void setStandards_protein(String standards_protein) {
-		this.standards_protein = standards_protein;
+	public void setNutrient_standards_protein(String nutrient_standards_protein) {
+		this.nutrient_standards_protein = nutrient_standards_protein;
 	}
-	public String getStandards_fat() {
-		return standards_fat;
+	public String getNutrient_standards_fat() {
+		return nutrient_standards_fat;
 	}
-	public void setStandards_fat(String standards_fat) {
-		this.standards_fat = standards_fat;
+	public void setNutrient_standards_fat(String nutrient_standards_fat) {
+		this.nutrient_standards_fat = nutrient_standards_fat;
 	}
-	public String getStandards_natrium() {
-		return standards_natrium;
+	public String getNutrient_standards_natrium() {
+		return nutrient_standards_natrium;
 	}
-	public void setStandards_natrium(String standards_natrium) {
-		this.standards_natrium = standards_natrium;
+	public void setNutrient_standards_natrium(String nutrient_standards_natrium) {
+		this.nutrient_standards_natrium = nutrient_standards_natrium;
 	}
 	public String getAllergy_info() {
 		return allergy_info;
@@ -113,7 +113,6 @@ public class SideDTO {
 	public void setAllergy_info(String allergy_info) {
 		this.allergy_info = allergy_info;
 	}
-	
 	
 	
 }

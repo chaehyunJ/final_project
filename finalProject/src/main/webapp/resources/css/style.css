@@ -108,6 +108,7 @@ body {
 
     .child_order {
         margin-top: 10px;
+        display: flex;
     }
     
     /*메뉴바 색깔*/
@@ -116,6 +117,10 @@ body {
     	color: white;
     }
     
+    .menuname {
+    	width: 200px;
+    	padding-left: 10px;
+    }
     
     
     

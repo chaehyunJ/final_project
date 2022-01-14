@@ -1,13 +1,13 @@
 package com.itbank.model;
 
-public class DrinkDTO {
-	private int drink_seq;
-	private String drink_description;
-	private String drink_name;
-	private	String drink_price; // 1800 // 2100 // 2600 구분으로 되있는 항목이있어서 String으로 처리
-	private String drink_img;
-	private String weight_g; // //로 구분되있는 칼럼이있음
-	private String weight_ml;   //로 구분되있는 칼럼이있음
+public class McafeDTO {
+	private int mccafe_seq;
+	private String description;
+	private String name;
+	private String price;
+	private String img;
+	private String weight_g;
+	private String weight_ml;
 	private String kcal;
 	private String sugar;
 	private String protein;
@@ -17,37 +17,37 @@ public class DrinkDTO {
 	private String nutrient_standards_sugar;
 	private String nutrient_standards_protein;
 	private String nutrient_standards_fat;
-	private String nutrient_standards_natrium;
-	private String allergyInfo;
-	public int getDrink_seq() {
-		return drink_seq;
+	private String nutrient_standerds_natrium;
+	private String allery_info;
+	public int getMccafe_seq() {
+		return mccafe_seq;
 	}
-	public void setDrink_seq(int drink_seq) {
-		this.drink_seq = drink_seq;
+	public void setMccafe_seq(int mccafe_seq) {
+		this.mccafe_seq = mccafe_seq;
 	}
-	public String getDrink_description() {
-		return drink_description;
+	public String getDescription() {
+		return description;
 	}
-	public void setDrink_description(String drink_description) {
-		this.drink_description = drink_description;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getDrink_name() {
-		return drink_name;
+	public String getName() {
+		return name;
 	}
-	public void setDrink_name(String drink_name) {
-		this.drink_name = drink_name;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getDrink_price() {
-		return drink_price;
+	public String getPrice() {
+		return price;
 	}
-	public void setDrink_price(String drink_price) {
-		this.drink_price = drink_price;
+	public void setPrice(String price) {
+		this.price = price;
 	}
-	public String getDrink_img() {
-		return drink_img;
+	public String getImg() {
+		return img;
 	}
-	public void setDrink_img(String drink_img) {
-		this.drink_img = drink_img;
+	public void setImg(String img) {
+		this.img = img;
 	}
 	public String getWeight_g() {
 		return weight_g;
@@ -115,18 +115,16 @@ public class DrinkDTO {
 	public void setNutrient_standards_fat(String nutrient_standards_fat) {
 		this.nutrient_standards_fat = nutrient_standards_fat;
 	}
-	public String getNutrient_standards_natrium() {
-		return nutrient_standards_natrium;
+	public String getNutrient_standerds_natrium() {
+		return nutrient_standerds_natrium;
 	}
-	public void setNutrient_standards_natrium(String nutrient_standards_natrium) {
-		this.nutrient_standards_natrium = nutrient_standards_natrium;
+	public void setNutrient_standerds_natrium(String nutrient_standerds_natrium) {
+		this.nutrient_standerds_natrium = nutrient_standerds_natrium;
 	}
-	public String getAllergyInfo() {
-		return allergyInfo;
+	public String getAllery_info() {
+		return allery_info;
 	}
-	public void setAllergyInfo(String allergyInfo) {
-		this.allergyInfo = allergyInfo;
+	public void setAllery_info(String allery_info) {
+		this.allery_info = allery_info;
 	}
-	
-	
 }
