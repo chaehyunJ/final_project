@@ -39,6 +39,11 @@
 	const slide = document.querySelector('.slide')
 	const mainInner = document.querySelector('.main-inner')
 
+	// 모달
+	const searchIcon = document.querySelector('.search-icon')
+	const closeModal = document.getElementById('closeModal')
+	const overlay = document.querySelector('.overlay')
+	const modal = document.querySelector('.modal')
 	
 	const promotionImageList = document.querySelector('.promotion-imageList')
 	console.log(promotionImageList)
@@ -49,48 +54,40 @@
 
 	
 	
-	btnOpen.onclick = function(){
-		let classList = document.querySelector('.detailinfo').classList; 
-		
-		if(classList.contains('main-inner')){
-			classList.remove('main-inner')
-			classList.add('main-inner1')
-			btnOpen.add('hidden')
-			btnClose.remove('hidden')
-		}
-	}
+	btnOpen.onclick = btnOpenHandler
 	
-	btnClose.onclick = function(){
-		let classList = document.querySelector('.detailinfo').classList;
-		
-		if(classList.contains('main-inner1')){
-			classList.remove('main-inner1')
-			classList.add('main-inner')
-			btnOpen.remove('hidden')
-			btnClose.add('hidden')
-		}
-	}
+	btnClose.onclick = btn1Handler
 
-	setMoveInterval()
 	
+
 	
-	const url = cpath + '/ajaxPromotion'
-	const opt = {
-		method : 'get'
-	}
-	fetch(url,opt)
-	.then(resp => resp.json())
-	.then(json => {
-		console.log(json)
-		let dom = ''
-			json.forEach(dto => {
-			dom += '<div class="main-inner-event">'
-			dom += '<img src="'+ dto.promotion_img +'">'
-			dom += '</div>'
+
+	
+	window.addEventListener('load', function(){
+		ajaxPromotion()
 	})
-	mainInner.innerHTML += dom
-})
+	
+	// 기존 버튼형 슬라이더
+	$('.main-slide > .page-btns > div').click(btnSlider)
 
+	// 좌/우 버튼 추가 슬라이더
+	// 자동 슬라이드 기능도 같이 동작함
+	$('.main-slide > .side-btns > div').click(slider)
+
+	window.addEventListener('load', function(){
+		setMoveInterval()
+	})
+	
+	searchIcon.addEventListener('click', function(){
+		modal.classList.remove('hidden')
+		searchIcon.classList.add('hidden')
+	})
+// 	searchIcon.onclick = modalOpen
+	
+	closeModal.addEventListener('click', function(){
+		modal.classList.add('hidden')
+		searchIcon.classList.remove('hidden')
+	})
 
 </script>
 

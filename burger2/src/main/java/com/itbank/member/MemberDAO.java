@@ -1,6 +1,7 @@
 package com.itbank.member;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,4 +15,15 @@ public interface MemberDAO {
 
 	int join(MemberDTO dto);
 
+	@Update("update user_table set  "
+			+ "userpw=#{userpw},"
+			+ "username=#{username},"
+			+ "gender=#{gender},"
+			+ "phone=#{phone},"
+			+ "email=#{email},"
+			+ "address=#{address}"
+			+ "where userid = #{ userid }")
+	int update(MemberDTO dto);
+	
+	
 }

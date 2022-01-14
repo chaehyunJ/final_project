@@ -18,7 +18,7 @@ public class MenuService {
 
 	@Autowired private PromDAO pdao;
 	@Autowired private BurgerDAO bgdao;
-	@Autowired private MemberDAO dao;
+	
 	
 	
 	public List<PromDTO> getList() {
@@ -33,9 +33,10 @@ public class MenuService {
 		return bgdao.getList();
 	}
 
-	public MemberDTO getMember(String userid) {
-		
-		return dao.selectMember(userid);
+	public int countList() {
+		return bgdao.countList();
 	}
+
+	
 
 }

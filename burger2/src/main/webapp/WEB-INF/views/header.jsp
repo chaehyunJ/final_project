@@ -21,10 +21,18 @@
 </head>
 <body>
 <script src="${ cpath }/resources/js/main.js"></script>
+
 <script src="${ cpath }/resources/js/step2.js"></script>
 <script src="${ cpath }/resources/js/promotion.js"></script>
+<!-- 메인 슬라이더 jquery  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--  주소 API   -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- step2(회원가입) blur사용  -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- jquery 사용 / 주소,지도 관련 jquery 및 서비스키 -->
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fe8cb756f9e4d1d6a624a436989632fd&libraries=services"></script>
 
     <header>
         <div class="header">
@@ -51,13 +59,13 @@
                             <a href="${ cpath }/store">Store</a>
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner">
-                                    <li><a href="">매장찾기</a></li>
-                                    <li><a href="">맥딜리버리</a></li>
+                                    <li><a href="${ cpath }/store">매장찾기</a></li>
+                                    <li><a href="${ cpath }/order">맥딜리버리</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="top-menu-li">
-                            <a href="">promotion</a>
+                            <a href="${ cpath }/promotion">Promotion</a>
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner">
                                     <li><a href="${ cpath }/promotion">프로모션</a></li>
@@ -65,7 +73,7 @@
                             </div>
                         </li>
                         <li class="top-menu-li">
-                            <a href="">Board</a>
+                            <a href="${ cpath }/board/news">Board</a>
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner"> 
                                    	<!--혜린 추가 내용  -->
@@ -94,10 +102,19 @@
                         <a href="${ cpath }/login">로그인</a>
                     </c:if>
                     <c:if test="${ not empty login }">
-                    	<a href="${ cpath }/myPage">${ login.username }</a>
+                    	<a href="${ cpath }/myPage">마이페이지</a>
                     </c:if>
                     </li>
-                    <li><img class="search-icon" src="${ cpath }/resources/src/검색아이콘.png" alt=""></li>
+                    <li>
+                    	<img class="search-icon" src="${ cpath }/resources/src/검색아이콘.png" alt="">
+                    	<div class="modal hidden">
+                    		<div class="overlay"></div>
+                    		<div class="modal-content">
+                    			<input name="search" placeholder="메뉴를 입력해주세요">
+                    			<p><button id="closeModal">X</button></p>
+                    		</div>
+                    	</div>
+                    </li> 
                 </ul>
             </div>
         </div>

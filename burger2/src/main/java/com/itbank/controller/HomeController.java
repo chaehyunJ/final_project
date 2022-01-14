@@ -12,10 +12,5 @@ public class HomeController{
 		return "home";
 	}
 	
-	@GetMapping("/menu")
-	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView("menu/list");
-		
-		return mav;
-	}
+
 }

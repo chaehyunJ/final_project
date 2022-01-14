@@ -10,17 +10,24 @@
 }
 .myPage-table {
 	border: 1px solid white;
-	cellpadding: 7px ;
-	cellspacing: 0px ;
 	margin-left: 180px;
 }
 .myPage-tableType01{
 	border: 1px solid black;
-	cellpadding: 7px ;
-	cellspacing: 0px ;
 	justify-content: center;
-	text-align: center;
+	text-align: left;
 }
+
+
+.myPage-tableType01 input{
+	width: 200px;
+    height: 25px;
+    border: 1px solid #dadada;
+}
+.myPage-tableType01 input[name="gender"]{
+	width : 60px;
+}
+
 .myPage-title {
 	padding-left: 15px;
 }

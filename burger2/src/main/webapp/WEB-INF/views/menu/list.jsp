@@ -16,14 +16,8 @@
             <img src="${ cpath }/resources/src/menu/menu-burger.jpg">
         </div>
 	<div class="menu-list">
-		<div class="menu-total">• 21 Products</div>
+		<div class="menu-total">• ${ cnt } Products</div>
 		<div class="menu-product-list">
-		    <div class="menu-product-item"><div class="1"></div></div>
-		    <div class="menu-product-item"><div class="2"></div></div>
-		    <div class="menu-product-item"><div class="3"></div></div>
-		    <div class="menu-product-item"><div class="4"></div></div>
-		    <div class="menu-product-item"><div class="5"></div></div>
-		    <div class="menu-product-item"><div class="6"></div></div>
 		</div>
 	    
 	    <div class="menu-btn">
@@ -32,9 +26,9 @@
 </div>
 
 
-<div class="menu-list-inner">
+<!-- <div class="menu-list-inner"> -->
 
-</div>
+<!-- </div> -->
 
     <footer class="footer">
         <div class="footer-inner">
@@ -65,7 +59,7 @@
     <script>
 	// 메뉴 클릭
 		const cpath = '${ cpath }'
-		const menu = document.querySelector('.menu-list-inner')
+		const menu = document.querySelector('.menu-product-list')
 		const menuList = document.querySelectorAll('.top-menu-inner li')
 		console.log(menu)
 		console.log(menuList)
@@ -81,7 +75,7 @@
 			let dom = ''
 			
 			json.forEach(dto => {
-				dom += '<div class="burger-list">'
+				dom += '<div class="menu-product-item">'
 				dom += '<img src="'+ dto.BURGER_IMAGE +'">'
 				dom += '<div>' + dto.BURGER_NAME + '</div>'
 				dom += '<div class="burger-desc">' + dto.BURGER_DESCRIPTION + '</div>'
@@ -92,6 +86,9 @@
 		
 		
 	
+		// table의 이름을 판별해서 burger나 mcmorning이면 dom을 다르게 불러오기
+		// 그럼 한페이지 안에서 처리가능할듯
+		
 // 		menuList.forEach(list => {
 // 			list.onclick = function(event){
 // 				const table = event.target.dataset.table

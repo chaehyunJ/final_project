@@ -4,19 +4,21 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itbank.member.MemberDAO">
+
 	<insert id="join" parameterType="com.itbank.member.MemberDTO">
 		insert into user_table values (
 		user_seq.nextval,
-		#{ userid },
-		#{ userpw },
-		#{ username },
-		#{ gender },
-		#{ phone },
-		#{ email },
-		#{ usergrade },
-		#{ address },
-		#{ emailAuth }
+		<if test="userid != null">userid = #{userid},</if>
+		<if test="userpw != null">userpw = #{userpw},</if>
+		<if test="username != null">username = #{username},</if>
+		<if test="gender != null">gender = #{gender},</if>
+		<if test="phone != null">phone = #{phone},</if>
+		<if test="email != null">email = #{email},</if>
+		<if test="usergrade != null">usergrade = #{usergrade},</if>
+		<if test="address != null">address = #{address},</if>
+		<if test="emailAuth != null">emailAuth = #{emailAuth}</if>
 		)
 	</insert>
  	
 </mapper>
+

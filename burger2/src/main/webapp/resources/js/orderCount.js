@@ -1,19 +1,19 @@
 function countHandler(event) {
-            const getOperation = event.target.innerHTML
-            let getCount;
-            if(getOperation == '+') {
-                getCount = event.target.nextElementSibling.innerHTML
-                getCount = parseInt(getCount) + 1;
-                event.target.nextElementSibling.innerHTML = getCount
-            }
-            else {
-                getCount = event.target.previousElementSibling.innerHTML
-                getCount = parseInt(getCount) - 1;
-                if(getCount <= 0) {
-                    deleteHandler(event)
-                }
-                event.target.previousElementSibling.innerHTML = getCount
-            }
+    const getOperation = event.target.innerHTML
+    let getCount;
+    if(getOperation == '+') {
+       getCount = event.target.nextElementSibling.innerHTML
+       getCount = parseInt(getCount) + 1;
+       event.target.nextElementSibling.innerHTML = getCount
+       }
+    else {
+       getCount = event.target.previousElementSibling.innerHTML
+       getCount = parseInt(getCount) - 1;
+       if(getCount <= 0) {
+            deleteHandler(event)
+           }
+           event.target.previousElementSibling.innerHTML = getCount
+       }
 }
 
 function imageOrderDom(event) {

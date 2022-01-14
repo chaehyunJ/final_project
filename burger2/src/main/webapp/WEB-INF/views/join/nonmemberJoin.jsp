@@ -4,11 +4,21 @@
 
 	<div class="join-address-container">
         <ul class="join-address-ul">
-            <li style="background-color: red">배달 주소 입력</li> 
-            <li style="background-color: #ffbc0d">추가 정보 입력</li>  
-            <li style="background-color: #264a36">가입 완료</li>
+            <li style="background-color: red">비회원 주문하기</li> 
+           
         </ul>
-        <form class="join-address-form" action="${ cpath }/join/step2">
+        <form class="join-address-form" method="POST">
+        	<input type="hidden" name="address" value="${ param.addressName } ${ param.adressDetail }">
+        	<p>휴대전화 번호 </p>
+            <input type="text" name="phone" placeholder="전화번호를 입력해주세요" required>
+            <p>이메일 </p>
+            <input type="email" name="email" placeholder="이메일을 입력해주세요" required>
+            <input id="mainBtn" type="button" value="인증번호발송">
+            <p id="emailAuth"></p>
+            <p>이메일 인증 </p>      
+            <input id= "authResult" type="text" name="authresult" placeholder="인증번호 입력">
+  			<input id="authChkBtn" type="button" value="인증확인">
+  			<p id="emailResult"></p>
             <p>지역명</p>
             <input id="addressInput" type="text" name="addressName" placeholder="지번, 도로명, 건물명으로 입력해주세요" readonly>
             <hr>
@@ -20,7 +30,7 @@
             	<span id="resultAddress"></span>
             </div>
             <hr>
-            <input id="addressSubmit" type="submit" value="다음">
+  			<input id="addressSubmit" type="submit" value="주문하기">
         </form>
     </div>
 
@@ -72,5 +82,61 @@
     	$('#detailAddressInput').blur(function(){
     		resultAddress.innerText +=  (' ' + $('#detailAddressInput').val())
     	})
+    	
+		const cpath = '${ cpath }'
+    	const mainBtn = document.getElementById('mainBtn')
+    	const email = document.querySelector('input[name="email"]')
+		const emailAuth = document.getElementById('emailAuth')
+		const authChkBtn = document.getElementById('authChkBtn') 
+    	const emailResult = document.getElementById('emailResult')
+		const authInput = document.querySelector('input[name="authresult"]')
+    	
+    	mainBtn.onclick = function(){
+    		console.log(email.value)
+    		
+    		const url = cpath +'/mailto/' + email.value + '/'
+    		const opt = {
+    			method : 'get'
+    		}
+    		fetch(url, opt)
+    		.then(resp => resp.json())
+    		.then(json => {
+    			console.log(json)
+    			emailAuth.innerText = json.message
+    			emailAuth.style.color = json.status == 'OK' ? 'blue' : 'red'
+    		})
+    	}
+    	
+    	authChkBtn.onclick = function(){
+    		const authResult = document.querySelector('input[name="authresult"]').value
+    		console.log(authResult)
+    		const url = cpath + '/ajaxAuth/' + authResult 
+    		const opt = {
+    			method : 'get'
+    		}
+    		fetch(url, opt)
+    		.then(resp => resp.json())
+    		.then(json => {
+    			console.log(json)
+    			
+    			if(json.status == 'OK'){
+    				emailResult.innerText = json.message
+    				emailResult.style.color = 'blue'
+//     				email.disabled = 'disabled'
+    				authInput.disabled = 'disabled'
+    				const emailAuth = document.createElement('input')
+    				emailAuth.name = 'emailAuth'
+    				emailAuth.type = 'hidden'
+    				emailAuth.value = 'y'
+    				form.appendChild(emailAuth)
+    			}
+    			else{
+    				emailResult.innerText = json.message
+    				emailResult.style.color = 'red'
+    				email.select()
+    			}
+    		})
+    	}
+    	
     	
 	</script>

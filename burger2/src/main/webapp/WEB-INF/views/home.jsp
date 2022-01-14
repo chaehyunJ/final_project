@@ -6,18 +6,39 @@
 
     <section class="main-slide">
         <div class="slide">
-            <img class="slide-img" src="${ cpath }/resources/src/slide/1617176534703.png" alt="">
-            <img class="slide-img" src="${ cpath }/resources/src/slide/1617838609437.png" alt="">
-            <img class="slide-img" src="${ cpath }/resources/src/slide/1621833457701.png" alt="">
-            <img class="slide-img" src="${ cpath }/resources/src/slide/1631842026946.png" alt="">
-            <img class="slide-img" src="${ cpath }/resources/src/slide/1633532684256.png" alt="">
-            <img class="slide-img" src="${ cpath }/resources/src/slide/1635904486344.png" alt="">
-            <img class="slide-img" src="${ cpath }/resources/src/slide/1635905159418.png" alt="">
+	       <div class="active" style="background-image:url(${cpath}/resources/src/slide/1617176534703.png);"></div>
+	       <div style="background-image:url(${cpath}/resources/src/slide/1617838609437.png);"></div>
+	       <div style="background-image:url(${cpath}/resources/src/slide/1621833457701.png);"></div>
+	       <div style="background-image:url(${cpath}/resources/src/slide/1631842026946.png);"></div>
+	       <div style="background-image:url(${cpath}/resources/src/slide/1633532684256.png);"></div>
+	       <div style="background-image:url(${cpath}/resources/src/slide/1635904486344.png);"></div>
+	       <div style="background-image:url(${cpath}/resources/src/slide/1635905159418.png);"></div>
         </div>
+        <div class="page-btns">
+	        <div class="active"></div>
+	        <div></div>
+	        <div></div>
+	        <div></div>
+	        <div></div>
+	        <div></div>
+	        <div></div>
+    	</div>
+    	<div class="side-btns">
+	        <div>
+	            <span>&lt;</span>
+	        </div>
+	        <div>
+	            <span>></span>
+	        </div>
+    	</div>
+    	
     </section>
 
-    <div class="title-main"><h2>Coded Burger Live</h2></div>
-
+    <div class="title-main">
+    <h1>Coded Burger Live</h1>
+    <hr>
+    </div>
+	
     <div class="main-inner detailinfo">
 <!--         <div class="main-inner-one"></div> -->
     </div>

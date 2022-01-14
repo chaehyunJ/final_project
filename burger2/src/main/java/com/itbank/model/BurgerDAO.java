@@ -15,4 +15,7 @@ public interface BurgerDAO {
 	@Select("select * from burger_table")
 	List<HashMap<String, Object>> getList();
 
+	@Select("select count(*) count from burger_table")
+	int countList();
+
 }

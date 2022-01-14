@@ -21,12 +21,14 @@ import com.itbank.model.McMorningDTO;
 import com.itbank.promotion.PromDTO;
 import com.itbank.service.ImageService;
 import com.itbank.service.MailService;
+import com.itbank.service.MemberService;
 import com.itbank.service.MenuService;
 
 @RestController
 public class AjaxController {
 
 	@Autowired private MenuService ms;
+	@Autowired private MemberService memberService;
 	@Autowired private Hash hash;
 	@Autowired private MailService mailService;
 	@Autowired private ImageService is;
@@ -50,7 +52,7 @@ public class AjaxController {
 	public HashMap<String, String> idCheck(@PathVariable String userid){
 		HashMap<String, String> map = new HashMap<String, String>();
 		
-		MemberDTO dto = ms.getMember(userid);
+		MemberDTO dto = memberService.getMember(userid);
 		
 		map.put("msg", dto == null ? "사용가능한 ID입니다" : "이미 사용중인 ID입니다");
 		map.put("color", dto == null ? "blue" : "red");

@@ -3,38 +3,40 @@
 <%@ include file="../header.jsp" %>
 
 <div class="join-main-container">
-        <ul class="join-main-ul">
+        <ul class="join-address-ul">
             <li style="background-color: red">배달 주소 입력</li>
             <li style="background-color: #ffbc0d">추가 정보 입력</li>
             <li style="background-color: #264a36">가입 완료</li>
         </ul>
+        <div class="required-inputs"><span class="required-input">*</span>&nbsp;: 필수입력 </div>
         <form class="join-main-form" method="POST">
+        	
         	<input type="hidden" name="address" value="${ param.addressName } ${ param.adressDetail }">
             <input type="hidden" name="usergrade" value="회원">
-            <p>ID</p>
+            <p>ID <span class="required-input">*</span></p>
             <input type="text" name="userid" placeholder="ID를 입력해 주세요" required autofocus autocomplete="off">
             <input id="idChkBtn" type="button" value="중복확인">
             <p id="idChkResult"></p>
-            <p>비밀번호</p>
+            <p>비밀번호 <span class="required-input">*</span></p>
             <input id="userpass" type="password" name="userpw" placeholder="비밀번호를 입력해주세요" required autocomplete="off">
             <p class="point2">※ 비밀번호는 총 8자에서 15자까지 입력가능</p>
             <p>비밀번호 확인</p>
             <input id="userpasschk" type="password" name="sm_pw_chk" placeholder="동일하게 입력해주세요." required maxlength="8" autocomplete="off"/>
             <p class="point successPwChk"></p>
-            <p>성함</p>
+            <p>성함 <span class="required-input">*</span></p>
             <input type="text" name="username" placeholder="성함을 입력해주세요" required autocomplete="off">
-            <p>성별</p>
+            <p>성별 <span class="required-input">*</span></p>
             <label>
             	<input type="radio" name="gender" value="남성">남성
             	<input type="radio" name="gender" value="여성">여성
             </label>
-            <p>휴대전화 번호</p>
+            <p>휴대전화 번호 <span class="required-input">*</span></p>
             <input type="text" name="phone" placeholder="전화번호를 입력해주세요" required>
-            <p>이메일</p>
+            <p>이메일 <span class="required-input">*</span></p>
             <input type="email" name="email" placeholder="이메일을 입력해주세요" required>
             <input id="mainBtn" type="button" value="인증번호발송">
             <p id="emailAuth"></p>
-            <p>이메일 인증 </p>      
+            <p>이메일 인증 <span class="required-input">*</span></p>      
             <input id= "authResult" type="text" name="authresult" placeholder="인증번호 입력">
   			<input id="authChkBtn" type="button" value="인증확인">
   			<p id="emailResult"></p>

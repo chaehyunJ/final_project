@@ -1,6 +1,7 @@
 package com.itbank.controller;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -75,4 +76,40 @@ public class JoinController {
 		return mav;
 	}
 	
+	@GetMapping("/join/nonmemberJoin")
+	public ModelAndView nonmemberJoin() {
+		ModelAndView mav = new ModelAndView("join/nonmemberJoin");
+		return mav;
+	}
+	
+	@PostMapping("/join/nonmemberJoin")
+	public ModelAndView nonmemberJoin(MemberDTO dto) {
+		ModelAndView mav = new ModelAndView("join/nonmemberJoin");
+		
+		Random ran = new Random();
+		String nonmemberId = "";
+		for(int i = 0; i < 6; i++) {
+			nonmemberId += ran.nextInt(9);
+		}
+		
+		System.out.println("비회원 ID : " + nonmemberId);
+		System.out.println("주소 : " + dto.getAddress());
+		System.out.println("이메일 : " + dto.getEmail());
+		System.out.println("전화번호 : " + dto.getPhone());
+		System.out.println("이메일인증 : " + dto.getEmailAuth());
+		
+		dto.setUserid(nonmemberId);
+		
+		int row = ms.join(dto);
+		if(row == 1) {
+			System.out.println("비회원 가입 성공");
+			mav.setViewName("order");
+		}
+		else {
+			System.out.println("비회원 가입 실패");
+			mav.setViewName("alert");
+			mav.addObject("msg", "비회원 가입에 실패하였습니다!!");
+		}
+		return mav;
+	}
 }

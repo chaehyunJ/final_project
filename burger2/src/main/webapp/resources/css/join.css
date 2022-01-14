@@ -74,6 +74,14 @@
 
 /* step2 */
 
+.required-inputs{
+	margin-left : -220px;
+	margin-bottom: 30px;
+}
+.required-input{
+	color: #ffbc0d;
+}
+
 .join-main-form > input {
     width: 200px;
     height: 25px;
@@ -106,6 +114,8 @@
 	color: white;
 	box-shadow: 2px 2px 2px grey;
 }
+
+
 
 #idChkBtn{
 	width: 75px;
