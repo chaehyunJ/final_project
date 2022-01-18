@@ -37,12 +37,20 @@ public class MyPageController {
 	public String myPage_order() {
 		return "myPage_order";
 	}
+	
 	@GetMapping("/history")
 	public String history() {
 		return "history";
 	}
+	
 	@GetMapping("/memberInfo")
 	public String memberInfo() {
 		return "memberInfo";
 	}
+	
+	@GetMapping("/chkPw")
+	public String chkPw() {
+		return "chkPw";
+	}
 }
+

@@ -101,10 +101,6 @@
 	</script>
 	
 <script>
-	
-	
-
-	
 	$("#check_module").click(function () {
 	
 		// 아임포트 일반결제 연동하기
@@ -135,7 +131,7 @@
 			amount: 6900,
 			// amount: ${bid.b_bid},
 			// 가격 
-			buyer_name: '${ login.userid }',
+			buyer_name: '판매자',
 			// 구매자 이름, 구매자 정보도 model값으로 바꿀 수 있습니다.
 			// 구매자 정보에 여러가지도 있으므로, 자세한 내용은 맨 위 링크를 참고해주세요.
 			buyer_postcode: '123-456',

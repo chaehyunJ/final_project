@@ -8,7 +8,8 @@
 			<ul class="myPage-navPath">
 				<li><a href="${cpath }/myPage">주문 조회</a></li>
 				<li><a href="${cpath }/history">주문 내역</a></li>
-				<li><a href="${cpath }/update/${login.userid}">회원 정보</a></li>
+<%-- 				<li><a href="${cpath }/update/${login.userid}">회원 정보</a></li> --%>
+				<li><a href="${ cpath }/chkPw">회원정보</a></li>
 			</ul>
 	   </div>
 	<div class="myPage-contents">

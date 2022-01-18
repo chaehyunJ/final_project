@@ -82,6 +82,7 @@
 	closeModal.addEventListener('click', function(){
 		modalClose()
 	})
+	
 
 </script>
 

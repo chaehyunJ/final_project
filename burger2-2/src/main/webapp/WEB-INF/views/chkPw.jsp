@@ -2,13 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 
-<div class="find-pw-form">
-	<p>이메일 입력하기</p>
-	<input name="email" placeholder="이메일을 입력해주세요">
-	<input id="findPwBtn" type="button" value="입력하기">
+<div class="chk-pw-form">
+	<input type="password" name="userpw" placeholder="비밀번호를 입력하세요" required>
+	<input id="chkPwBtn" type="button" value="입력">
 </div>
 
-   <footer class="footer">
+  <footer class="footer">
         <div class="footer-inner">
             <div class="footer-left">
                 <ul>
@@ -33,10 +32,9 @@
             </div>
         </div>
     </footer>
-
-	<script>
-		const findPwBtn = document.getElementById('findPwBtn')
-		
-	</script>
+    
+    <script>
+    	const chkPwBtn = document.getElementById('chkPwBtn')
+    </script>
 </body>
 </html>

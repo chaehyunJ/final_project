@@ -36,10 +36,44 @@
 <div class="search-content">
 	<c:forEach var="ls" items="${ list }">
 		<div class="search-content-inner">
-			<img src="${ ls.type}">
-			<div class="search-content-name">
-				<span>${ ls.name }</span>
-			</div>
+			<c:if test="${ type == 'BURGER' }">
+				<img src="${ ls.BURGER_IMAGE}">
+				<div class="search-content-name">
+					<span>${ ls.BURGER_NAME }</span>
+				</div>
+			</c:if>
+			<c:if test="${ type == 'MCMORNING' }">
+				<img src="${ ls.MCMORNING_IMAGE}">
+				<div class="search-content-name">
+					<span>${ ls.MCMORNING_NAME }</span>
+				</div>
+			</c:if>
+			<c:if test="${ type == 'SIDE' }">  
+				<img src="${ ls.SIDE_IMAGE}">
+				<div class="search-content-name">
+					<span>${ ls.SIDE_NAME }</span>
+				</div>
+			</c:if>
+			<c:if test="${ type == 'MCCAFE' }">
+				<img src="${ ls.MCCAFE_IMAGE}">
+				<div class="search-content-name">
+					<span>${ ls.MCCAFE_NAME }</span>
+				</div>
+			</c:if>
+			<c:if test="${ type == 'DRINK' }">
+				<img src="${ ls.DRINK_IMG}">
+				<div class="search-content-name">
+					<span>${ ls.DRINK_NAME }</span>
+				</div>
+			</c:if>
+			<c:if test="${ type == 'DESSERT' }">
+				<img src="${ ls.DESSERT_IMAGE }">
+				<div class="search-content-name">
+					<span>${ ls.DESSERT_NAME }</span>
+				</div>
+			</c:if>
+			
+			
 		</div>
 	</c:forEach>
 </div>

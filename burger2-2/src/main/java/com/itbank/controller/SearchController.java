@@ -28,11 +28,11 @@ public class SearchController {
 		map.put("search", search);
 		map.put("type", type);
 		
-		String type1 = type.toUpperCase() + "_IMAGE";
+		String type1 = type.toUpperCase();
 		
 		System.out.println(type1);
 		
-		String name = type.toUpperCase() + "_NAME";
+		String name = type.toUpperCase();
 		
 		System.out.println(name);
 		
