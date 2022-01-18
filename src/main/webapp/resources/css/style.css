@@ -8,6 +8,7 @@ body {
         margin: 0 auto;
         flex-wrap: row;
         position: relative;
+        margin-bottom: 30px;
     }
     .show-contain {
         box-sizing: border-box;
@@ -122,7 +123,51 @@ body {
     	padding-left: 10px;
     }
     
-    
+    /*결제하기, 주문목록*/
+    .parent_order {
+    	border-radius: 20px;
+    	position: absolute;
+    	left: 30px;
+    	width: 63%;
+    }
+    .totalprice {
+    	flex-direction: column;
+    	justify-content: space-between;
+    	position: absolute;
+    	right: 30px;
+    	height: 210px;
+    }
+    .grand_order {
+    	position: relative;
+    	width: 1000px;
+    	margin: 0 auto;
+    	display: flex;
+    	justify-content: space-between;
+    }
+    .total0, .totalnotnull {
+    	background-color: #783933;
+    	color: white;
+    	width: 200px;
+    	height: 51px;
+    }
+    .deleteall {
+    	border-radius: 5px;
+    	width: 100%;
+    	height: 38px;
+    	background-color: #493e3a;
+    	color: white;
+    	text-align: center;
+    	margin: 0 auto;
+    	line-height: 38px;
+    }
+    .productcount {
+    	border-radius: 5px;
+    	margin-top: 5px;
+    	margin-bottom: 5px;
+    	background-color: #C5C8CF;
+    	width: 200px;
+    	height: 50px;
+    }
     
     
     
