@@ -4,26 +4,47 @@
 
 	<div class="join-address-container">
         <ul class="join-address-ul">
-            <li style="background-color: red">비회원 주문하기</li> 
-           
-        </ul>
-        <form class="join-address-form" method="POST">
-        	<input type="hidden" name="address" value="${ param.addressName } ${ param.adressDetail }">
-        	<p>휴대전화 번호 </p>
-            <input type="text" name="phone" placeholder="전화번호를 입력해주세요" required>
-            <p>이메일 </p>
-            <input type="email" name="email" placeholder="이메일을 입력해주세요" required>
+            <li style="background-color: red">배달 주소 입력</li> 
+            <li style="background-color: #ffbc0d">추가 정보 입력</li>  
+            <li style="background-color: #264a36">비회원 주문하기</li>           
+        </ul> 
+       
+        <div class="required-inputs1">
+        	<p>* ID는 임의로 발급됩니다(가입완료 시 알림창으로 띄워드립니다) </p>
+        	<p><span class="required-input">*</span>&nbsp;: 필수입력</p>
+       	</div>
+       
+        <form class="join-main-form" method="POST">
+<%--         	<input type="hidden" name="address" value="${ param.addressName } ${ param.adressDetail }"> --%>
+        	<input type="hidden" name="usergrade" value="비회원">
+        	<input type="hidden" name="username" value="비회원">
+        	<p>비밀번호 <span class="required-input">*</span></p>
+            <input id="userpass" type="password" name="userpw" placeholder="비밀번호를 입력해주세요" maxlength="15" required autocomplete="off">
+            <p class="point2">※ 비밀번호는 총 8자에서 15자까지 입력가능</p>
+            <p>비밀번호 확인</p>
+            <input id="userpasschk" type="password" name="sm_pw_chk" placeholder="동일하게 입력해주세요." required maxlength="15" autocomplete="off"/>
+            <p class="point successPwChk"></p>
+        	
+        	<p>휴대전화 번호 <span class="required-input">*</span></p>
+            <input type="text" name="phone" placeholder="전화번호를 입력해주세요" required autocomplete="off">
+            <p>성별 <span class="required-input">*</span></p>
+            <label>
+            	<input type="radio" name="gender" value="남성">남성
+            	<input type="radio" name="gender" value="여성">여성
+            </label>
+            <p>이메일 <span class="required-input">*</span></p>
+            <input type="email" name="email" placeholder="이메일을 입력해주세요" required autocomplete="off">
             <input id="mainBtn" type="button" value="인증번호발송">
             <p id="emailAuth"></p>
-            <p>이메일 인증 </p>      
+            <p>이메일 인증 <span class="required-input">*</span></p>      
             <input id= "authResult" type="text" name="authresult" placeholder="인증번호 입력">
   			<input id="authChkBtn" type="button" value="인증확인">
   			<p id="emailResult"></p>
-            <p>지역명</p>
+            <p>지역명 <span class="required-input">*</span></p>
             <input id="addressInput" type="text" name="addressName" placeholder="지번, 도로명, 건물명으로 입력해주세요" readonly>
             <hr>
-            <p>상세주소</p>
-            <input id="detailAddressInput" type="text" name="adressDetail" placeholder="나머지 주소를 입력해주세요" required>
+            <p>상세주소 <span class="required-input">*</span></p>
+            <input id="detailAddressInput" type="text" name="adressDetail" placeholder="나머지 주소를 입력해주세요" required autocomplete="off">
             <hr>
             <p>최종 배달주소</p>
             <div id="address-result">
@@ -61,7 +82,17 @@
 	    </footer>
 
 	<script>
+		const cpath = '${ cpath }'
+    	const mainBtn = document.getElementById('mainBtn')
+    	const email = document.querySelector('input[name="email"]')
+		const emailAuth = document.getElementById('emailAuth')
+		const authChkBtn = document.getElementById('authChkBtn') 
+    	const emailResult = document.getElementById('emailResult')
+		const authInput = document.querySelector('input[name="authresult"]')
+	
 		const resultAddress = document.getElementById('resultAddress')
+		
+		const form = document.forms[1]
 		
 		console.log(resultAddress)
 		
@@ -81,15 +112,14 @@
     	
     	$('#detailAddressInput').blur(function(){
     		resultAddress.innerText +=  (' ' + $('#detailAddressInput').val())
+    		const address = document.createElement('input')
+    		address.type = 'hidden'
+    		address.name = 'address'
+    		address.value = resultAddress.innerText
+    		form.appendChild(address)
     	})
     	
-		const cpath = '${ cpath }'
-    	const mainBtn = document.getElementById('mainBtn')
-    	const email = document.querySelector('input[name="email"]')
-		const emailAuth = document.getElementById('emailAuth')
-		const authChkBtn = document.getElementById('authChkBtn') 
-    	const emailResult = document.getElementById('emailResult')
-		const authInput = document.querySelector('input[name="authresult"]')
+
     	
     	mainBtn.onclick = function(){
     		console.log(email.value)
@@ -137,6 +167,10 @@
     			}
     		})
     	}
+    	
+        $('#userpass').blur(passchk1) 
+    	
+    	$("#userpasschk").blur(passchk2) 
     	
     	
 	</script>

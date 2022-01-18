@@ -84,8 +84,10 @@
     	const emailResult = document.getElementById('emailResult')
 		const authInput = document.querySelector('input[name="authresult"]')
     	
-		const form = document.forms[0]
-    	
+		// 헤더에 form으로 검색을 해서 이렇게 선택자로 들어와야 함
+		const form = document.querySelector('.join-main-form')
+    	console.log(form)
+		
     	idchk.onclick = function(){
     		if(userid.value == ''){
     			alert('ID를 입력해주세요')

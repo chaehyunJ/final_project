@@ -2,6 +2,7 @@ package com.itbank.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +44,15 @@ public class MemberService {
 		int row = dao.join(dto);
 		return row;
 	}
-	
+
 	// id확인
 	public MemberDTO getMember(String userid) {
 		return dao.selectMember(userid);
+	}
+	
+	// id찾기
+	public MemberDTO getMemberFindId(String email) {
+		return dao.selectMemberFindId(email);
 	}
 	
 	// 회원정보수정
@@ -58,5 +64,9 @@ public class MemberService {
 	public MemberDTO updatePage(String userid) {
 		return dao.selectMember(userid);
 	}
-
+	
+	// 비밀번호찾기
+	public int updateFindPw(HashMap<String, String> map) {
+		return dao.updateFindPw(map);
+	}
 }

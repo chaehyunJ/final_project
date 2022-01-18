@@ -8,7 +8,8 @@
 			<ul class="myPage-navPath">
 				<li><a href="${cpath }/myPage">주문 조회</a></li>
 				<li><a href="${cpath }/history">주문 내역</a></li>
-				<li><a href="${cpath }/update/${login.userid}">회원 정보</a></li>
+<%-- 				<li><a href="${cpath }/update/${login.userid}">회원 정보</a></li> --%>
+				<li><a href="${ cpath }/chkPw">회원정보</a></li>
 			</ul>
 	   </div>
 	<div class="myPage-contents">
@@ -17,7 +18,7 @@
 		<table class="myPage-tableType01" border="0" cellpadding="15" cellspacing="10">
 			<thead>
 				<tr>
-					<th scope="col">주문 번호 :</th>
+					<th scope="col">주문 번호 : </th>
 					<th scope="col">예상 배달 시간/날짜</th>
 					<th scope="col">주문 접수</th>
 					<th scope="col">준비 중</th>
@@ -27,8 +28,8 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>2022/01/12-245722</td>
-					<td>2020/01/12 11:39</td>
+					<td>${ orderList.orderDate }-${ orderList.orderSeq }</td>
+					<td>${ orderList.deliveryTime }</td>
 					<td>🗒 </td>
 					<td>🧑‍🍳</td>
 					<td> 🏍 </td>

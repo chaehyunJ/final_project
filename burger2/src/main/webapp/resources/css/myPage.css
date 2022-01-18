@@ -69,3 +69,28 @@
 .memberInfo-wrap{
 	margin-left: 180px;
 }
+
+/* chkPw */
+.chk-pw-form{
+	width : 500px;
+	border : 1px solid black;
+	margin : auto;
+	
+}
+.chk-pw-form > input[name="userpw"]{
+	width : 350px;
+	height: 50px;
+	border : 0;
+	border-bottom: 1px solid #dadada;
+}
+.chk-pw-form > input[type="button"]{
+	border : 0;
+	width : 100px;
+	height: 50px;
+	background-color :  #ffbc0d;
+	border-radius : 30px;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+	color : white;
+}

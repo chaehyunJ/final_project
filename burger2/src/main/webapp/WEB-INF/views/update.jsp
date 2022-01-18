@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+
 <div class="myPage-container">
 	<div class="myPage-list">
 		<h4 class="myPage-title">마이 페이지</h4>
@@ -26,14 +27,22 @@
 						</tr>
 						<tr>
 							<th scope="row">비밀번호 :</th>
-							<td><input type="password" name="userpw" maxlength="8" value="${update.userpw }" required></td>
+							<td>
+<%-- 							<input type="password" name="userpw" maxlength="15" value="${update.userpw }" required> --%>
+								<input id="userpass" type="password" name="userpw" placeholder="비밀번호를 입력해주세요" maxlength="15" required autocomplete="off">
+            					<span class="point2">※ 비밀번호는 총 8자에서 15자까지 입력가능</span>
+							</td>
 						</tr>
 						<tr>
 							<th scope="row">비밀번호 확인 :</th>
-							<td><input type="password" name="userpw" maxlength="8" value="${update.userpw }" required></td>
+							<td>
+<!-- 								<input type="password" name="userpw" maxlength="15"  required> -->
+								<input id="userpasschk" type="password" name="sm_pw_chk" placeholder="동일하게 입력해주세요." required maxlength="15" autocomplete="off"/>
+            					<span class="point successPwChk"></span>
+							</td>
 						</tr>
 						<tr>
-							<th scope="row">닉네임 :</th>
+							<th scope="row">성명 :</th>
 							<td><input type="text" name="username" value="${update.username }" required></td>
 						</tr>
 						<tr>
@@ -73,7 +82,7 @@
 									<input id="addressInput" type="text" name="addressName" placeholder="도로명으로 입력해주세요" readonly>
 								<hr>
 								<p>상세주소</p>
-									<input id="detailAddress" type="text" name="adress" value="" required>
+									<input id="detailAddress" type="text" name="address" value="" required>
 								<hr>
 								<input id="addressSubmit" type="submit" value="저장">
 							</td>
@@ -129,7 +138,9 @@
         }).open()
     })
     
+    $('#userpass').blur(passchk1) 
     	
+    $("#userpasschk").blur(passchk2) 
     
     	
 	</script>

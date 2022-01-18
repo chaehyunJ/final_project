@@ -10,7 +10,7 @@ function passchk1() {
 }
 
 function passchk2(){ 
-    if($("#userpasschk").val() == $("#userpass").val()){ 
+    if($("#userpasschk").val() === $("#userpass").val()){ 
         $(".successPwChk").text("비밀번호가 일치합니다."); 
         $(".successPwChk").css("color", "green"); 
        //  $(".successPwChk").css("font-size", "35px");

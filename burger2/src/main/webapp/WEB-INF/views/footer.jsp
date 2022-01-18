@@ -34,8 +34,6 @@
 	const cpath = '${ cpath }'
 	const btnOpen = document.getElementById('btnOpen')
 	const btnClose = document.getElementById('btnClose')
-	const mainOne = document.querySelector('.main-inner-one1')
-	const mainOne2 = document.querySelector('.main-inner-one2')
 	const slide = document.querySelector('.slide')
 	const mainInner = document.querySelector('.main-inner')
 
@@ -52,16 +50,14 @@
 
 	const unit = 1700
 
-	
-	
-	btnOpen.onclick = btnOpenHandler
-	
-	btnClose.onclick = btn1Handler
-
-	
-
-	
-
+	// 메인 페이지 +,- 버튼	
+	btnOpen.addEventListener('click', function(){
+		btnOpenHandler()
+	})
+		
+	btnClose.addEventListener('click', function(){
+		btn1Handler()
+	})
 	
 	window.addEventListener('load', function(){
 		ajaxPromotion()
@@ -78,16 +74,15 @@
 		setMoveInterval()
 	})
 	
+	// 모달 함수
 	searchIcon.addEventListener('click', function(){
-		modal.classList.remove('hidden')
-		searchIcon.classList.add('hidden')
+		modalOpen()
 	})
-// 	searchIcon.onclick = modalOpen
 	
 	closeModal.addEventListener('click', function(){
-		modal.classList.add('hidden')
-		searchIcon.classList.remove('hidden')
+		modalClose()
 	})
+	
 
 </script>
 

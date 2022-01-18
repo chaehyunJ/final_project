@@ -3,9 +3,9 @@ package com.itbank.model;
 public class DrinkDTO {
 
 	private int drink_seq;
-	private String description;
-	private String name;
-	private	String price; // 1800 // 2100 // 2600 구분으로 되있는 항목이있어서 String으로 처리
+	private String drink_description;
+	private String drink_name;
+	private	String drink_price; // 1800 // 2100 // 2600 구분으로 되있는 항목이있어서 String으로 처리
 	private String drink_img;
 	private String weight_g; // //로 구분되있는 칼럼이있음
 	private String weight_ml;   //로 구분되있는 칼럼이있음
@@ -24,14 +24,14 @@ public class DrinkDTO {
 	public int getDrink_seq() {
 		return drink_seq;
 	}
-	public String getDescription() {
-		return description;
+	public String getDrink_description() {
+		return drink_description;
 	}
-	public String getName() {
-		return name;
+	public String getDrink_name() {
+		return drink_name;
 	}
-	public String getPrice() {
-		return price;
+	public String getDrink_price() {
+		return drink_price;
 	}
 	public String getDrink_img() {
 		return drink_img;
@@ -78,14 +78,14 @@ public class DrinkDTO {
 	public void setDrink_seq(int drink_seq) {
 		this.drink_seq = drink_seq;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDrink_description(String drink_description) {
+		this.drink_description = drink_description;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setDrink_name(String drink_name) {
+		this.drink_name = drink_name;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setDrink_price(String drink_price) {
+		this.drink_price = drink_price;
 	}
 	public void setDrink_img(String drink_img) {
 		this.drink_img = drink_img;
@@ -129,6 +129,8 @@ public class DrinkDTO {
 	public void setAllergyInfo(String allergyInfo) {
 		this.allergyInfo = allergyInfo;
 	}
+	
+	
 	
 	
 }

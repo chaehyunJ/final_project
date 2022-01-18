@@ -86,6 +86,8 @@ public class JoinController {
 	public ModelAndView nonmemberJoin(MemberDTO dto) {
 		ModelAndView mav = new ModelAndView("join/nonmemberJoin");
 		
+		String hashpw = hash.getHash(dto.getUserpw());
+
 		Random ran = new Random();
 		String nonmemberId = "";
 		for(int i = 0; i < 6; i++) {
@@ -99,11 +101,14 @@ public class JoinController {
 		System.out.println("이메일인증 : " + dto.getEmailAuth());
 		
 		dto.setUserid(nonmemberId);
+		dto.setUserpw(hashpw);
 		
 		int row = ms.join(dto);
 		if(row == 1) {
 			System.out.println("비회원 가입 성공");
-			mav.setViewName("order");
+			mav.setViewName("alert");
+			mav.addObject("msg", "ID : " + dto.getUserid() + "입니다");
+			mav.addObject("url", "order");
 		}
 		else {
 			System.out.println("비회원 가입 실패");
@@ -112,4 +117,5 @@ public class JoinController {
 		}
 		return mav;
 	}
+	
 }

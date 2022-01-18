@@ -61,8 +61,13 @@
 		const cpath = '${ cpath }'
 		const menu = document.querySelector('.menu-product-list')
 		const menuList = document.querySelectorAll('.top-menu-inner li')
+		const productList = document.querySelector('.menu-product-list')
+		
+		console.log(document.querySelector('.menu-product-list').clientHeight)
 		console.log(menu)
 		console.log(menuList)
+		
+		
 		
 		const url = cpath + '/ajaxBurgerList'
 		const opt = {

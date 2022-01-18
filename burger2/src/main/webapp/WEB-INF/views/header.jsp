@@ -18,6 +18,7 @@
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/menu.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/store.css">
+<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/search.css">
 </head>
 <body>
 <script src="${ cpath }/resources/js/main.js"></script>
@@ -32,7 +33,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- jquery 사용 / 주소,지도 관련 jquery 및 서비스키 -->
 <script src="http://code.jquery.com/jquery-latest.js"></script> 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fe8cb756f9e4d1d6a624a436989632fd&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fe8cb756f9e4d1d6a624a436989632fd&libraries=services"></script>
 
     <header>
         <div class="header">
@@ -110,8 +111,19 @@
                     	<div class="modal hidden">
                     		<div class="overlay"></div>
                     		<div class="modal-content">
-                    			<input name="search" placeholder="메뉴를 입력해주세요">
-                    			<p><button id="closeModal">X</button></p>
+                    			<form action="${ cpath }/search">
+                    				<select name="type">
+                    					<option value="burger">버거</option>
+                    					<option value="mcmorning">맥모닝</option>
+                    					<option value="side">사이드</option>
+                    					<option value="mccafe">맥카페</option>
+                    					<option value="drink">음료</option>
+                    					<option value="dessert">디저트</option>                    				
+                    				</select>
+	                    			<input name="search" placeholder="메뉴를 입력해주세요">
+	                    			<input type="submit" value="검색하기">
+                    			</form>
+	                    			<p><button id="closeModal">X</button></p>
                     		</div>
                     	</div>
                     </li> 
