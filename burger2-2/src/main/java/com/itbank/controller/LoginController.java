@@ -70,22 +70,24 @@ public class LoginController {
 		return "findPw";
 	}
 	
-	@GetMapping("/update/{userid}")
-	public ModelAndView update(@PathVariable String userid) {
-		ModelAndView mav = new ModelAndView("update");
-		MemberDTO update = ms.updatePage(userid);
+	@GetMapping("/update")
+	public ModelAndView update(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		
-		System.out.println(update.getUserpw());
-		String pw = update.getUserpw().substring(0, 8);
+		MemberDTO member = (MemberDTO)session.getAttribute("login");
 		
-		update.setUserpw(pw);
 		
-		mav.addObject("update", update);
+		System.out.println(member.getUserpw());
+		String pw = member.getUserpw().substring(0, 8);
+		
+		member.setUserpw(pw);
+		
+		mav.addObject("member", member);
 		return mav;
 	}
 	
 	
-	@PostMapping("/update/{userid}")
+	@PostMapping("/update")
 	public ModelAndView update(MemberDTO dto) {
 		ModelAndView mav = new ModelAndView("update");
 		

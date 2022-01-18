@@ -49,7 +49,10 @@ div{
 .menu-product-list {
 	display: flex;
 	flex-flow: wrap;
+	max-height: 600px;
+	overflow: hidden;
 }
+
 .menu-product-item {
 	
 	width: 300px;

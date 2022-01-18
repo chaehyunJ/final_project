@@ -17,11 +17,11 @@
         </div>
 	<div class="menu-list">
 		<div class="menu-total">• ${ cnt } Products</div>
-		<div class="menu-product-list">
-		</div>
-	    
-	    <div class="menu-btn">
-	    </div>
+		<div class="menu-product-list"></div> 
+	</div>
+	<div class="btn-list">
+		<button id="btnOpen">+</button>
+		<button id="btnClose" class="hidden">-</button>
 	</div>
 </div>
 
@@ -59,11 +59,15 @@
     <script>
 	// 메뉴 클릭
 		const cpath = '${ cpath }'
+		const cnt = '${ cnt }'
+		const itemHeight = 600
 		const menu = document.querySelector('.menu-product-list')
 		const menuList = document.querySelectorAll('.top-menu-inner li')
 		const productList = document.querySelector('.menu-product-list')
+		const btnOpen = document.getElementById('btnOpen')
+		const btnClose = document.getElementById('btnClose')
 		
-		console.log(document.querySelector('.menu-product-list').clientHeight)
+		console.log(btnOpen)
 		console.log(menu)
 		console.log(menuList)
 		
@@ -87,9 +91,45 @@
 				dom += '</div>'
 			})
 			menu.innerHTML += dom
+			console.log(document.querySelector('.menu-product-list').clientHeight)
+			
+			
+			
+			
+					
+			
+		
 		})
 		
+		let cnt1 = Math.floor(cnt / 6)
+		let cnt2 = 1
+		console.log(cnt1)
+		console.log(cnt2)
+		btnOpen.onclick = function(){
+// 				cnt1++
+// 				productList.style.maxHeight = 'px'
+// 				productList.classList.add('maxheight1200')
+// 				for(let i = 1; i <= cnt1; i++){
+// 					productList.style.maxHeight =  i * 600 + 'px'
+// 					if(i == cnt1){
+// 						btnOpen.classList.add('hidden')
+// 					}
+// 				}
+				cnt2++
+				productList.style.maxHeight = cnt2  * 600 + 'px'
+				
+				console.log(cnt2)
+				if(cnt1 == cnt2){
+					btnOpen.classList.add('hidden')
+					btnClose.classList.remove('hidden')
+				}
+			}
 		
+		btnClose.onclick = function(){
+			productList.style.maxHeight = '600px'
+			btnOpen.classList.remove('hidden')
+			btnClose.classList.add('hidden')
+		}
 	
 		// table의 이름을 판별해서 burger나 mcmorning이면 dom을 다르게 불러오기
 		// 그럼 한페이지 안에서 처리가능할듯

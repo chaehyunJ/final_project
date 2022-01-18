@@ -24,6 +24,11 @@ public interface MemberDAO {
 			+ "address=#{address}"
 			+ "where userid = #{ userid }")
 	int update(MemberDTO dto);
+
+	@Select("select * from user_table where userpw = #{pw1}")
+	MemberDTO chkPw(String pw1);
+
+
 	
 	
 }

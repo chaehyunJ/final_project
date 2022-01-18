@@ -16,6 +16,7 @@
         	<!--  비밀번호 찾을 때 등록된 이메일을 통해서 임시비밀번호 보내주기  -->
         	<!--  비밀번호를 보내주면 DB에는 해당 계정의 비밀번호는 임시비밀번호를 해쉬로 처리한 값이 들어가야 한다   -->
         	<p class="login-p"><a href="${ cpath }/findPw"><button class="join-button">비밀번호찾기</button></a></p>
+        	<p class="login-p"><a href="${ cpath }/findId"><button class="join-button">아이디찾기</button></a></p>
     </div>
 
 <%@ include file="footer.jsp" %>

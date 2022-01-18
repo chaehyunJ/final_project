@@ -60,4 +60,9 @@ public class MemberService {
 		return dao.selectMember(userid);
 	}
 
+	// 비밀번호 일치확인
+	public MemberDTO chkMember(String pw1) {
+		return dao.chkPw(pw1);
+	}
+
 }
