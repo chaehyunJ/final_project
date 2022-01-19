@@ -35,6 +35,7 @@
 				 
 					<value>classpath:config/sqlmap-member.xml</value>
 					<value>classpath:config/sqlmap-search.xml</value>
+					<value>classpath:config/sqlmap-store.xml</value>
 					
 <!-- 					<value>classpath:config/sqlmap-book.xml</value>  -->
 <!-- 					<value>classpath:config/sqlmap-file.xml</value> -->

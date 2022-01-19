@@ -3,6 +3,7 @@ package com.itbank.controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -23,11 +24,13 @@ import com.itbank.model.DrinkDTO;
 import com.itbank.model.McMorningDTO;
 import com.itbank.model.McafeDTO;
 import com.itbank.model.SideDTO;
+import com.itbank.model.StoreInfoDTO;
 import com.itbank.promotion.PromDTO;
 import com.itbank.service.ImageService;
 import com.itbank.service.MailService;
 import com.itbank.service.MemberService;
 import com.itbank.service.MenuService;
+import com.itbank.service.StoreService;
 
 @RestController
 public class AjaxController {
@@ -37,6 +40,8 @@ public class AjaxController {
 	@Autowired private Hash hash;
 	@Autowired private MailService mailService;
 	@Autowired private ImageService is;
+	@Autowired private StoreService ss;
+	
 	
 	@GetMapping("/ajaxPromotion")
 	public List<PromDTO> promList(){
@@ -44,8 +49,13 @@ public class AjaxController {
 	}
 	
 	@GetMapping("/ajaxBurger/{table}")
-	public List<HashMap<String, Object>> burgerList(@PathVariable String table){
-		return ms.getburgerList(table);
+	public HashMap<String, Object> burgerList(@PathVariable String table){
+		HashMap<String, Object> ls = new HashMap<String, Object>();
+		List<HashMap<String, Object>> ls1 =  ms.getburgerList(table);
+		List<HashMap<String, Object>> ls2 =  ms.getBackList(table);
+		ls.put("ls1", ls1);
+		ls.put("ls2", ls2);
+		return ls;
 	}
 	
 	@GetMapping("/ajaxBurgerList")
@@ -296,6 +306,14 @@ public class AjaxController {
 		
 		return map;
 	}
+	
+	
+	// 지점 정보 검색 결과
+	@GetMapping("/ajaxStoreInfo/{info}")
+	public List<StoreInfoDTO> storeinfo(@PathVariable String info){
+		return ss.getStore(info);
+	}
+	
 	
 	// 예외처리
 	@ExceptionHandler(NullPointerException.class)

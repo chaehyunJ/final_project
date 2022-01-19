@@ -37,6 +37,10 @@ public class MenuService {
 		return bgdao.countList();
 	}
 
+	public List<HashMap<String, Object>> getBackList(String table) {
+		return bgdao.getBack(table);
+	}
+
 	
 
 }

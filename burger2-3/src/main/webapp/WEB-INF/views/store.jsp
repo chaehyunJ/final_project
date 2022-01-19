@@ -42,12 +42,12 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td class="address-name">
+						<td class="store-address-name">
 							
 						</td>
-						<td>1600-5252</td>
-						<td></td>
-						<td class="tdService">
+						<td class="store-tel"></td>
+						<td class="store-open"></td>
+						<td class="store-service">
 							<div class="service">
 							</div>
 						</td>
@@ -85,7 +85,16 @@
     </footer>
     
 <script>
-	const addressName = document.querySelector('.address-name')
+	const cpath = '${ cpath }'
+	const addressName = document.querySelector('.store-address-name')
+	const storeTel = document.querySelector('.store-tel')
+	const storeOpen = document.querySelector('.store-open')
+	const storeService = document.querySelector('.store-service > .service')
+	const searchBtn = document.getElementById('searchBtn')
+	const address = document.getElementById('address')
+	let addressValue = address.value
+	console.log(address)
+	console.log(searchBtn)
 	console.log(addressName)
 
     document.getElementById("address").addEventListener("click", function(){ //주소입력칸을 클릭하면
@@ -93,7 +102,7 @@
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
                 document.getElementById("address").value = data.address // 주소 넣기
-                addressName.innerText = data.address
+//                 addressName.innerText = data.address
             }
         }).open()
     })
@@ -112,59 +121,182 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption) 
     
 
-$('#searchBtn').click(function(){	// 버튼 클릭 시 함수 실행
-	
+searchBtn.onclick = function(){
 	// 주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
 
-	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch($('#address').val(), function(result, status) {
+// 	// 주소로 좌표를 검색합니다
+// 	geocoder.addressSearch(address.value, function(result, status) {
 
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === kakao.maps.services.Status.OK) {
+// 	    // 정상적으로 검색이 완료됐으면 
+// 	     if (status === kakao.maps.services.Status.OK) {
 
-	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+// 	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 			
-	        // 추출한 좌표를 통해 도로면 주소 추출
+// 	        // 추출한 좌표를 통해 도로면 주소 추출
 	        
-	        let lat = result[0].y;
-	        let lng = result[0].x;
+// 	        let lat = result[0].y;
+// 	        let lng = result[0].x;
 	        
-	        getAddr(lat, lng);
+// 	        getAddr(lat, lng);
 	        
-	        function getAddr(lat, lng){
-	        	let geocoder = new kakao.maps.services.Geocoder();
+// 	        function getAddr(lat, lng){
+// 	        	let geocoder = new kakao.maps.services.Geocoder();
 	        	
-	        	let coord = new kakao.maps.LatLng(lat, lng);
-	        	let callback = function(result,status){
-	        		if(status === kakao.maps.services.Status.OK){
-	        			// 추출한 도로명 주소를 해당 input의 value값으로 적용
-	        			$('#address').val(result[0].road_address.address_name);
-	        			
-	        		}
-	        	}
-	        	geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-	        }
+// 	        	let coord = new kakao.maps.LatLng(lat, lng);
+// 	        	let callback = function(result,status){
+// 	        		if(status === kakao.maps.services.Status.OK){
+// 	        			// 추출한 도로명 주소를 해당 input의 value값으로 적용
+// // 	        			addressValue(result[0].road_address.address_name);
+// 	        			$('#address').val(result[0].road_address.address_name)
+// 	        		}
+// 	        	}
+// 	        	geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+// 	        }
 	        
 	        
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new kakao.maps.Marker({
-	            map: map,
-	            position: coords
-	        })
+// 	        // 결과값으로 받은 위치를 마커로 표시합니다
+// 	        var marker = new kakao.maps.Marker({
+// 	            map: map,
+// 	            position: coords
+// 	        })
 
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;"> ' + $('#address').val() +'</div>'
-	        })
-	        infowindow.open(map, marker);
+// 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+// 	        var infowindow = new kakao.maps.InfoWindow({
+// 	            content: '<div style="width:150px;text-align:center;padding:6px 0;"> ' + $('#address').val() +'</div>'
+// 	        })
+// 	        infowindow.open(map, marker);
 
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords)
-	    } 
-	})   
+// 	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+// 	        map.setCenter(coords)
+// 	    } 
+// 	})
 	
-})
+	const url = cpath + '/ajaxStoreInfo/' + address.value
+	const opt = {
+		method : 'get'
+	}
+	fetch(url, opt)
+	.then(resp => resp.json())
+	.then(json => {
+		console.log(json)
+		
+		json.forEach(dto => {
+			
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch(address.value, function(result, status) {
+
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === kakao.maps.services.Status.OK) {
+
+			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+					
+			        // 추출한 좌표를 통해 도로면 주소 추출
+			        
+			        let lat = result[0].y;
+			        let lng = result[0].x;
+			        
+			        getAddr(lat, lng);
+			        
+			        function getAddr(lat, lng){
+			        	let geocoder = new kakao.maps.services.Geocoder();
+			        	
+			        	let coord = new kakao.maps.LatLng(lat, lng);
+			        	let callback = function(result,status){
+			        		if(status === kakao.maps.services.Status.OK){
+			        			// 추출한 도로명 주소를 해당 input의 value값으로 적용
+//		 	        			addressValue(result[0].road_address.address_name);
+			        			$('#address').val(result[0].road_address.address_name)
+			        		}
+			        	}
+			        	geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+			        }
+			        
+			        
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        })
+
+			        // 인포윈도우로 장소에 대한 설명을 표시합니다
+			        var infowindow = new kakao.maps.InfoWindow({
+			            content: '<div style="width:150px;text-align:center;padding:6px 0;"> ' + dto.store_name +'</div>'
+			        })
+			        infowindow.open(map, marker);
+
+			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			        map.setCenter(coords)
+			    } 
+			})
+			
+			
+			addressName.innerText = dto.store_name + ' / ' + dto.store_address
+			storeTel.innerText = dto.store_tel
+			storeOpen.innerText = dto.store_opening_hours
+			storeService.innerText += dto.hours24 == 'y' ? '24시간' : ''
+			storeService.innerText += dto.mcdrive == 'y' ? '맥드라이브' : ''
+			storeService.innerText += dto.mcdelivery == 'y' ? '맥딜리버리' : ''
+			storeService.innerText += dto.momorning == 'y' ? '맥모닝' : ''
+			storeService.innerText += dto.parking == 'y' ? '주차' : ''
+			storeService.innerText += dto.decaffeine == 'y' ? '디카페인 커피' : ''
+		})
+	})
+}
+
+// $('#searchBtn').click(function(){	// 버튼 클릭 시 함수 실행
+	
+// 	// 주소-좌표 변환 객체를 생성합니다
+// 	var geocoder = new kakao.maps.services.Geocoder();
+
+// 	// 주소로 좌표를 검색합니다
+// 	geocoder.addressSearch($('#address').val(), function(result, status) {
+
+// 	    // 정상적으로 검색이 완료됐으면 
+// 	     if (status === kakao.maps.services.Status.OK) {
+
+// 	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+			
+// 	        // 추출한 좌표를 통해 도로면 주소 추출
+	        
+// 	        let lat = result[0].y;
+// 	        let lng = result[0].x;
+	        
+// 	        getAddr(lat, lng);
+	        
+// 	        function getAddr(lat, lng){
+// 	        	let geocoder = new kakao.maps.services.Geocoder();
+	        	
+// 	        	let coord = new kakao.maps.LatLng(lat, lng);
+// 	        	let callback = function(result,status){
+// 	        		if(status === kakao.maps.services.Status.OK){
+// 	        			// 추출한 도로명 주소를 해당 input의 value값으로 적용
+// 	        			$('#address').val(result[0].road_address.address_name);
+	        			
+// 	        		}
+// 	        	}
+// 	        	geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+// 	        }
+	        
+	        
+// 	        // 결과값으로 받은 위치를 마커로 표시합니다
+// 	        var marker = new kakao.maps.Marker({
+// 	            map: map,
+// 	            position: coords
+// 	        })
+
+// 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+// 	        var infowindow = new kakao.maps.InfoWindow({
+// 	            content: '<div style="width:150px;text-align:center;padding:6px 0;"> ' + $('#address').val() +'</div>'
+// 	        })
+// 	        infowindow.open(map, marker);
+
+// 	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+// 	        map.setCenter(coords)
+// 	    } 
+// 	})   
+	
+// })
  
 </script>
 </body>
