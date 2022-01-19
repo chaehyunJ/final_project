@@ -10,9 +10,13 @@
 <link href="${cpath}/resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <script src="${cpath }/resources/js/order.js"></script>
 <script src="${cpath }/resources/js/orderCount.js"></script>
 <script src="${cpath }/resources/js/totalprice.js"></script>
+<script src="${cpath }/resources/js/payment.js"></script>
 	<ul class="menuparent">
         <li class="selectMenu showColor" data-cate="mac">맥모닝</li>
         <li class="selectMenu" data-cate="macSet">맥모닝 세트</li>
@@ -34,10 +38,9 @@
 	    <div class="parent_order"></div>
 	    <div class="totalprice">
 	    	<div class="deleteall">전체  삭제</div>
-	    	<div class="productcount">선택한 상품     <span style="color: #783933;">0</span>개</div>
+	    	<div class="productcount">선택한 상품   <span class="productcount1" style="color: #f7533e;">0</span>개</div>
 	    	<div>
-		    	<div class="total0"></div>
-		    	<div class="totalnotnull"></div>
+		    	<div class="payment">결제하기</div>
 	    	</div>
 	    </div>
     </div> 
@@ -49,8 +52,10 @@
 	   const menuSelectList = document.querySelectorAll('.selectMenu')
 	   const parent_order = document.querySelector('.parent_order')
 	   const totalprice = document.querySelector('.totalprice')
-	   const total0 = document.querySelector('.total0')
-	   const totalnotnull = document.querySelector('.totalnotnull')
+	   const payment = document.querySelector('.payment')
+	   const deleteall = document.querySelector('.deleteall')
+	   const productcount1 = document.querySelector('.productcount1')
+	   
 	   window.onload = macImageHandler
 	   menuSelectList.forEach(menu=>{
 		   menu.onclick = function(event) {
@@ -90,9 +95,8 @@
                return;
            }
        }
-	  /*   imageOrderBtn.forEach(arr=>{
-		   arr.onclick=imageOrderDom
-	   }) */
+	   deleteall.onclick = deleteallHandler
+	   payment.onclick = paymentHandler
 	</script>
 </body>
 </html>

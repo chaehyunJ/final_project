@@ -41,7 +41,6 @@ function countHandler(event) {
                 getCount = event.target.previousElementSibling.innerHTML
                 getCount = parseInt(getCount) - 1;
                	const minusprice = -(vargetprice/(getCount+1))
-               	totalfunction(minusprice)
                 if(getCount <= 0) {
                     deleteHandler(event)
                 }
@@ -51,6 +50,7 @@ function countHandler(event) {
                 	}
                 }
                 event.target.previousElementSibling.innerHTML = getCount
+                totalfunction(minusprice)
             }
             if(getCount >= 1)
             children[5].innerHTML = '￦ ' + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")

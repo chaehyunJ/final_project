@@ -4,7 +4,7 @@ body {
     }
     .show {
         overflow: hidden; /*옆으로 튀어나오는거 */
-        width: 1000px;
+        width: 1100px;
         margin: 0 auto;
         flex-wrap: row;
         position: relative;
@@ -12,30 +12,45 @@ body {
     }
     .show-contain {
         box-sizing: border-box;
-        width: 1000px;
-        flex-flow: wrap;
+        width: 1100px;
+        flex-flow: row wrap;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
+        margin-left: 92px; 
     }
     .show-frame {
         display:flex;
         transition: transform 1s;
     }
     .menu-border {
-        padding: 5px;
+    	box-sizing: border-box;
         text-align: center;
         border: 1px solid black;
+        width: 230px;
+        height: 256px;
     }
     img {
         height: 200px;
-        width: 225px;
+        width: 230px;
+        margin: 0 auto;
+    }
+    .imageOrderBtn {
+    	cursor: pointer;
+    	box-shadow: 0px 5px 5px #dadada;
+    	border-bottom: 1px solid #dadada;
     }
     .slide-next {
+    	color: rgba(0,0,0,0.3);
+    	font-size: 1.6rem;
+    	font-weight: bold;
         position: absolute;
         top: 45%;
         right: 0;
     }
     .slide-before {
+    	color: rgba(0,0,0,0.3);
+    	font-size: 1.6rem;
+    	font-weight: bold;
         position: absolute;
         top: 45%;
         left: 0;
@@ -51,7 +66,7 @@ body {
     }
     button:hover {
          background-color: rgba(158, 48, 161, 0.5);
-        color: chartreuse;
+         color: chartreuse;
     }
     /*상단 ul부터*/
     ul li {
@@ -109,6 +124,7 @@ body {
 
     .child_order {
         margin-top: 10px;
+        width: 700px;
         display: flex;
     }
     
@@ -119,7 +135,7 @@ body {
     }
     
     .menuname {
-    	width: 200px;
+    	width: 230px;
     	padding-left: 10px;
     }
     
@@ -144,11 +160,14 @@ body {
     	display: flex;
     	justify-content: space-between;
     }
-    .total0, .totalnotnull {
-    	background-color: #783933;
+    .payment {
+    	border-radius: 5px;
+    	background-color: #f7533e;
     	color: white;
     	width: 200px;
-    	height: 51px;
+    	height: 100px;
+    	text-align: center;
+    	line-height: 100px;
     }
     .deleteall {
     	border-radius: 5px;
@@ -159,6 +178,7 @@ body {
     	text-align: center;
     	margin: 0 auto;
     	line-height: 38px;
+    	cursor: pointer;
     }
     .productcount {
     	border-radius: 5px;
@@ -167,6 +187,8 @@ body {
     	background-color: #C5C8CF;
     	width: 200px;
     	height: 50px;
+    	text-align: center;
+    	line-height: 50px;
     }
     
     

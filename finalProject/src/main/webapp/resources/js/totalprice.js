@@ -16,22 +16,42 @@ function totalfunction(counter) {
 	}
 	console.log(priceArr)
 	getTotalPriceDom(total)
-	
+	selectproductcount(total)
 }
 
 function getTotalPriceDom(total) {
 	console.log(total)
-	if(total == 0) {
-		totalnotnull.innerHTML = ''
-		 total0.innerHTML = "결제하기"
+	if(total <= 0) {
+		 payment.innerHTML = ''
+		 payment.innerHTML = "결제하기"
 	}
 	else {
-		total0.innerHTML = ''
-		totalnotnull.innerHTML = total + '원 결제하기'
+		payment.innerHTML = ''
+		payment.innerHTML = total + ' 원 결제하기'
 	}
 }
 
-function payment(event) {
-	
+function deleteallHandler(event) {
+	productcount1.innerHTML = ''
+	productcount1.innerHTML = 0	
+	parent_order.innerHTML = ''
+	payment.innerHTML = ''
+	payment.innerHTML = "결제하기"
 }
+
+function selectproductcount(total) {
+	let counthap = 0
+	parent_order.childNodes.forEach(dto=> {
+		let count = dto.childNodes[3].innerText
+		productcount1.innerHTML = ''
+		if(parseInt(total) <= 0) {
+			productcount1.innerHTML = 0
+		}
+		else {
+			counthap += parseInt(count)
+			productcount1.innerHTML = counthap
+		}
+	})
+}
+
 

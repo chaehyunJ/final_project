@@ -5,7 +5,7 @@ let envShowContainCount;
 function nextSildeHandler(event) {
             if(check <=0 && check > -(envShowContainCount-1) ) { //check의 최대는 -(showContain갯수 -1)
                 check -= 1
-                nowPic = check * 1000
+                nowPic = check * 1100
                 showFrame.style.transform='translateX('+nowPic+'px)';
             }
             else {  //-2...
@@ -18,14 +18,14 @@ function nextSildeHandler(event) {
 function beforeSildeHandler(event) {
     if(check >= 0) {  //젤 처음일때부터 before를 누르면
         if(check == 0) check = -(envShowContainCount-1); {
-        nowPic = check * 1000
+        nowPic = check * 1100
         showFrame.style.transform='translateX('+nowPic+'px)';
         }
     }
     else {
         if(check < 0) {
             check += 1;
-            nowPic = check * 1000
+            nowPic = check * 1100
             showFrame.style.transform='translateX('+nowPic+'px)';
         }
     }
@@ -85,8 +85,8 @@ function getMacDom(json) {
 		if(i==0 || i%8==0) tag += showContainTag1
 		tag +=	 `<div class="menu-border">`
 		tag +=		`<img class="imageOrderBtn" src="${dto.mcmorning_image}">`
-		tag +=		`<div>￦ ${dto.mcmorning_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-		tag +=		`<span>${dto.mcmorning_name}</span>`
+		tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${dto.mcmorning_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+		tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${dto.mcmorning_name}</span>`
 		tag +=	 `</div>`
 		i++
 		if(i%8 ==0) tag += showContainTag2
@@ -147,8 +147,8 @@ function getMacSetDom(json) {
 		if(dto.mcmorning_set_image != 'null' ) {
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${dto.mcmorning_set_image}">`
-			tag +=		`<div>￦ ${dto.mcmorning_set_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${dto.mcmorning_set_name}</span>`
+			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${dto.mcmorning_set_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${dto.mcmorning_set_name}</span>`
 			tag +=	 `</div>`
 			i++
 		}
@@ -212,8 +212,8 @@ function getburgerDom(json) {
 		if(i==0 || i%8==0) tag += showContainTag1
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${dto.burger_image}">`
-			tag +=		`<div>￦ ${dto.burger_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${dto.burger_name}</span>`
+			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${dto.burger_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${dto.burger_name}</span>`
 			tag +=	 `</div>`
 			i++
 		if(i%8 ==0) tag += showContainTag2
@@ -276,8 +276,8 @@ function getburgerSetDom(json) {
 		if(dto.burger_set_image != 'null' ) {
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${dto.burger_set_image}">`
-			tag +=		`<div>￦ ${dto.burger_set_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${dto.burger_set_name}</span>`
+			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${dto.burger_set_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${dto.burger_set_name}</span>`
 			tag +=	 `</div>`
 			i++
 		}
@@ -380,8 +380,8 @@ function getsideSetDom(json) {
 		if(i==0 || i%8==0) tag += showContainTag1 
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${iaar[j]}">`
-			tag +=		`<div>￦ ${paar[j].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${naar[j]}</span>`
+			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${paar[j].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${naar[j]}</span>`
 			tag +=	 `</div>`
 			i++
 		if(i==0 || i%8==0) tag += showContainTag2
@@ -483,8 +483,8 @@ function getdrinkDom(json) {
 		if(i==0 || i%8==0) tag += showContainTag1 
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${iaar[j]}">`
-			tag +=		`<div>￦ ${paar[j].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${naar[j]}</span>`
+			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${paar[j].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${naar[j]}</span>`
 			tag +=	 `</div>`
 			i++
 		if(i==0 || i%8==0) tag += showContainTag2
@@ -545,8 +545,8 @@ function getdessertDom(json) {
 		if(dto.dessert_image != 'null' ) {
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${dto.dessert_img}">`
-			tag +=		`<div>￦ ${dto.dessert_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${dto.dessert_name}</span>`
+			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${dto.dessert_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${dto.dessert_name}</span>`
 			tag +=	 `</div>`
 			i++
 		}
@@ -648,10 +648,10 @@ function getmcafeDom(json) {
 	console.log(paar)
 	for(let j = 0; j<naar.length; j++) {
 		if(i==0 || i%8==0) tag += showContainTag1 
-			tag +=	 `<div class="menu-border" style="width: 237px;">`
+			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${iaar[j]}">`
-			tag +=		`<div>￦ ${paar[j].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
-			tag +=		`<span>${naar[j]}</span>`
+			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${paar[j].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
+			tag +=		`<span style="color: #3d3d3d; font-size: 14px;">${naar[j]}</span>`
 			tag +=	 `</div>`
 			i++
 		if(i==0 || i%8==0) tag += showContainTag2
@@ -665,7 +665,7 @@ function getmcafeDom(json) {
 function render(target, dom) {
 	target.innerHTML = dom
 	const showContainCount = document.getElementsByClassName('show-contain').length
-	showFrame.style.width=showContainCount*1000+'px'
+	showFrame.style.width=showContainCount*1100+'px'
 	envShowContainCount = showContainCount //전역변수화
 	
 }
