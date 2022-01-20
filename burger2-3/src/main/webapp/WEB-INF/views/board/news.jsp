@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>    
 <%@ include file="../header.jsp" %>
 
+
+<%-- <p>${ list }</p> --%>
 <div class="board-container">
         <div class="board-area" >
             <h1 class="board-title">새로운 소식</h1>
@@ -16,7 +18,7 @@
         </div>
         <div class="board-list">
         	<div class="board-list-title">
-	        	<div class="board-total">총 <span class="board-total-count" style="color: #da0000;">79건</span>의 게시글이 있습니다. </div>
+	        	<div class="board-total">총 <span class="board-total-count" style="color: #da0000;">${ list.size() }</span>의 게시글이 있습니다. </div>
 	        	<div class="board-search">
 	        		<form>
 	        			<input type="text" placeholder="검색어를 입력하세요.">
@@ -43,14 +45,40 @@
         			</div>
         		</div>
         		<div class="board-post">
-					<div class="board-post-list">
-	        			<div class="board-post-number">79</div>
-	        			<div class="board-post-title">[당첨자 발표] 맥카페X카카오톡 선물하기 이벤트</div>
-	        			<div class="board-post-date">2021.12.16</div>
-        			</div>
+        			<c:forEach var="ls" items="${ list }"> 
+						<div class="board-post-list">
+		        			<div class="board-post-number">${ ls.notice_seq }</div>
+		        			<div class="board-post-title" ><a href="${ cpath }/board/newsDetail/${ls.notice_seq}">${ ls.title }</a></div>
+<%-- 							<div class="board-post-title" data-seq="${ ls.notice_seq }">${ ls.title }</div> --%>
+		        			<div class="board-post-date">${ ls.regDate }</div>
+        				</div>
+        			</c:forEach>
         		</div>
         	</div>
         </div>
 </div>
+
+<script>
+// 	const cpath = '${ cpath }'
+// 	const boardTitle = document.querySelectorAll('.board-post-title')
+	
+// 	console.log(boardTitle)
+// 	boardTitle.forEach(dto => {
+// 		dto.onclick = function(event){
+// 			let seq = event.target.dataset.seq
+// 			console.log(seq)
+// 			const url = cpath + '/ajaxNewDetail/' + seq
+// 			const opt = {
+// 				method : 'get'
+// 			}
+// 			fetch(url, opt)
+// 			.then(resp => resp.json)
+// 			.then(json => {
+// 				console.log(json)
+// 			})
+// 		}
+// 	})
+	
+</script>
 </body>
 </html>

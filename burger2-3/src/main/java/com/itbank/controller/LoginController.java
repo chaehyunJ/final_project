@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.admin.AdminDTO;
 import com.itbank.component.Hash;
 import com.itbank.member.MemberDTO;
 import com.itbank.service.MemberService;
@@ -55,6 +56,26 @@ public class LoginController {
 		}
 		
 		
+		return mav;
+	}
+	
+	@GetMapping("/loginAdmin")
+	public String loginAdmin() {
+		return "loginAdmin";
+	}
+	
+	@PostMapping("/loginAdmin")
+	public ModelAndView loginAdmin(AdminDTO dto, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		AdminDTO adminlogin = ms.loginAdmin(dto);
+		System.out.println(adminlogin.getAdminid());
+		
+		session.setAttribute("adminlogin", adminlogin);
+		if(adminlogin != null) {
+			mav.setViewName("redirect:/");
+		}
 		return mav;
 	}
 	

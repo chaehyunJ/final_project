@@ -115,3 +115,14 @@
 	padding: 25px 12px;
 }
 
+
+/* 2022-01-20 추가 */
+
+.store_tableType01 > tbody > td > 
+.store-address-name, .store-tel, .store-open, .store-service{
+	border : 1px solid black;
+	text-align: center;
+}
+.store_tableType01 > tbody > td > .store-service{
+	font-weight: bold;
+}

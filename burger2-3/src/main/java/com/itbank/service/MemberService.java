@@ -8,6 +8,8 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itbank.admin.AdminDAO;
+import com.itbank.admin.AdminDTO;
 import com.itbank.member.MemberDAO;
 import com.itbank.member.MemberDTO;
 
@@ -15,6 +17,8 @@ import com.itbank.member.MemberDTO;
 public class MemberService {
 	
 	@Autowired private MemberDAO dao;
+	@Autowired private AdminDAO admindao;
+
 	
 	public String getAgreement(String path) throws IOException {
 		String agreement = "";
@@ -39,6 +43,12 @@ public class MemberService {
 		return login;
 	}
 
+	// 관리자 로그인
+	public AdminDTO loginAdmin(AdminDTO dto) {
+		AdminDTO login = admindao.loginAdmin(dto);
+		return login;
+	}	
+	
 	// 회원가입
 	public int join(MemberDTO dto) {
 		int row = dao.join(dto);

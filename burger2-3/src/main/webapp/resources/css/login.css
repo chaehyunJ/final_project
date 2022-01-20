@@ -1,8 +1,12 @@
 @charset "utf-8";
 
+.underline {
+	text-decoration: underline;	
+}
+
 .login-form {
 	border: 1px solid white;
-	width: 350px;
+	width: 300px;
 	margin: auto;
 	margin-top : 80px;
 	margin-bottom: 90px;
@@ -44,6 +48,29 @@
 	color : black;
 }
 
+.admin-login {
+	width: 300px;
+	height: 40px;
+	border: 0;
+	border-radius: 48px;
+	background-color: rgb(189,0,23);
+	color : white;
+	cursor: pointer;
+	font-size : 18px;
+	font-family: 'Malgun Gothic';
+	font-weight: bold;	
+}
+
+.admin-login:hover {
+	color : black;
+}
+
+.admin-login-btn	{
+	display: flex;
+	justify-content: flex-end;
+	font-size: 13px;
+}
+
 .login-submit {
 	width: 298px;
 	height: 40px;
@@ -80,6 +107,16 @@
 	display: flex;
 	align-items: center;
 }
+
+.find-btn {
+	display:flex; 
+	justify-content: space-between; 
+	align-items:center;
+	font-size: 13px;
+	width: 300px;
+}
+
+
 
 /* find-form */
 .find-form{

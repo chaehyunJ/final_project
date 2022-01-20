@@ -24,6 +24,7 @@ import com.itbank.model.DessertDTO;
 import com.itbank.model.DrinkDTO;
 import com.itbank.model.McMorningDTO;
 import com.itbank.model.McafeDTO;
+import com.itbank.model.NoticeDTO;
 import com.itbank.model.SideDTO;
 import com.itbank.model.StoreInfoDTO;
 import com.itbank.promotion.PromDTO;
@@ -31,6 +32,7 @@ import com.itbank.service.ImageService;
 import com.itbank.service.MailService;
 import com.itbank.service.MemberService;
 import com.itbank.service.MenuService;
+import com.itbank.service.NoticeService;
 import com.itbank.service.OrderService;
 import com.itbank.service.StoreService;
 
@@ -44,7 +46,8 @@ public class AjaxController {
 	@Autowired private ImageService is;
 	@Autowired private StoreService ss;
 	@Autowired private OrderService os;
-
+	@Autowired private NoticeService ns;
+	
 	// 프로모션
 	@GetMapping("/ajaxPromotion")
 	public List<PromDTO> promList(){
@@ -333,6 +336,14 @@ public class AjaxController {
 	@GetMapping("/ajaxStoreInfo/{info}")
 	public List<StoreInfoDTO> storeinfo(@PathVariable String info){
 		return ss.getStore(info);
+	}
+	
+	// newsDetail 
+	@GetMapping("/btnNewsDetail/{num}")
+	public NoticeDTO nextNews(@PathVariable int num) {
+		NoticeDTO dto = ns.getNotice(num);
+		
+		return dto; 
 	}
 	
 	
