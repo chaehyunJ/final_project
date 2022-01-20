@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itbank.model.BurgerDTO;
+import com.itbank.model.DessertDTO;
 import com.itbank.model.DrinkDTO;
 import com.itbank.model.ImageDAO;
 import com.itbank.model.McMorningDTO;
@@ -37,7 +38,7 @@ public class ImageService {
 	public List<DrinkDTO> getdrinkList() {
 		return dao.getdrinkList();
 	}
-	public List<DrinkDTO> getdessertList() {
+	public List<DessertDTO> getdessertList() {
 		return dao.getdessertList();
 	}
 	public List<McafeDTO> getmcafeList() {

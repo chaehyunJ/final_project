@@ -10,6 +10,7 @@ import com.itbank.member.MemberDAO;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.BurgerDAO;
 import com.itbank.model.BurgerDTO;
+import com.itbank.model.MenuDAO;
 import com.itbank.promotion.PromDAO;
 import com.itbank.promotion.PromDTO;
 
@@ -18,7 +19,8 @@ public class MenuService {
 
 	@Autowired private PromDAO pdao;
 	@Autowired private BurgerDAO bgdao;
-	
+	@Autowired private MenuDAO mdao;
+
 	
 	
 	public List<PromDTO> getList() {
@@ -33,14 +35,22 @@ public class MenuService {
 		return bgdao.getList();
 	}
 
-	public int countList() {
-		return bgdao.countList();
+	public int countList(String table) {
+		return mdao.countList(table);
 	}
 
 	public List<HashMap<String, Object>> getBackList(String table) {
 		return bgdao.getBack(table);
 	}
 
+	// 혜린 추가
+	public List<HashMap<String, Object>> getMenuList(String table) {
+		return mdao.selectMenuList(table);
+	}
+
+	public List<HashMap<String, Object>> getTopList(String table) {
+		return mdao.selectTopList(table);
+	}
 	
 
 }

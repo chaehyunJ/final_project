@@ -4,20 +4,20 @@
 div{
 	box-sizing: border-box;
 }
-.menu-area {
+.menu-top {
 	position: relative;
 	padding: 15px;
 	padding-left: 368px;
 	color: white;
 }
-.menu-area > .menu-title{
+.menu-top > .menu-title{
 	font-size: 40px;
 	margin-top : -10px;
 }
-.menu-area > .menu-text{
+.menu-top > .menu-text{
 	margin-bottom: 0px;
 }
-.menu-area > img{
+.menu-img{
 	position: absolute;
 	z-index: -1;
 	top: 0;
@@ -59,8 +59,8 @@ div{
 	height: 300px;
 	margin: auto;
 }
-.menu-product-item > img {
-	width : 300px;
+.menu-product-img > img {
+	width : 280px;
 	margin : auto;
 }
 .burger-desc{

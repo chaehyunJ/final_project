@@ -1,9 +1,7 @@
 package com.itbank.controller;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -14,12 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.component.Hash;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.BurgerDTO;
+import com.itbank.model.DessertDTO;
 import com.itbank.model.DrinkDTO;
 import com.itbank.model.McMorningDTO;
 import com.itbank.model.McafeDTO;
@@ -30,6 +31,7 @@ import com.itbank.service.ImageService;
 import com.itbank.service.MailService;
 import com.itbank.service.MemberService;
 import com.itbank.service.MenuService;
+import com.itbank.service.OrderService;
 import com.itbank.service.StoreService;
 
 @RestController
@@ -41,26 +43,38 @@ public class AjaxController {
 	@Autowired private MailService mailService;
 	@Autowired private ImageService is;
 	@Autowired private StoreService ss;
-	
-	
+	@Autowired private OrderService os;
+
+	// 프로모션
 	@GetMapping("/ajaxPromotion")
 	public List<PromDTO> promList(){
 		return ms.getList();
 	}
 	
-	@GetMapping("/ajaxBurger/{table}")
-	public HashMap<String, Object> burgerList(@PathVariable String table){
-		HashMap<String, Object> ls = new HashMap<String, Object>();
-		List<HashMap<String, Object>> ls1 =  ms.getburgerList(table);
-		List<HashMap<String, Object>> ls2 =  ms.getBackList(table);
-		ls.put("ls1", ls1);
-		ls.put("ls2", ls2);
-		return ls;
-	}
+//	@GetMapping("/ajaxBurger/{table}")
+//	public HashMap<String, Object> burgerList(@PathVariable String table){
+//		HashMap<String, Object> ls = new HashMap<String, Object>();
+//		List<HashMap<String, Object>> ls1 =  ms.getburgerList(table);
+//		List<HashMap<String, Object>> ls2 =  ms.getBackList(table);
+//		ls.put("ls1", ls1);
+//		ls.put("ls2", ls2);
+//		return ls;
+//	}
 	
-	@GetMapping("/ajaxBurgerList")
-	public List<HashMap<String, Object>> burList(){
-		return ms.burList();
+//	@GetMapping("/ajaxBurgerList")
+//	public List<HashMap<String, Object>> burList(){
+//		return ms.burList();
+//	}
+	
+	// 메뉴
+	@GetMapping("/ajaxMenu/{table}")
+	public HashMap<String, Object> getMenuList(@PathVariable String table){
+		HashMap<String, Object> list = new HashMap<String, Object>();
+		List<HashMap<String, Object>> tlist = ms.getTopList(table);
+		List<HashMap<String, Object>> mlist = ms.getMenuList(table);
+		list.put("tlist",tlist);
+		list.put("mlist",mlist);
+		return list;
 	}
 	
 	@GetMapping("/ajaxIdChk/{userid}")
@@ -106,7 +120,7 @@ public class AjaxController {
 	}
 	
 	@GetMapping("/dessert")
-	public List<DrinkDTO> dessert() {
+	public List<DessertDTO> dessert() {
 		return is.getdessertList();
 	}
 	
@@ -115,6 +129,13 @@ public class AjaxController {
 		return is.getmcafeList();
 	}
 	
+	@PostMapping("/payment")
+	public int payment(@RequestBody HashMap<String, String> map) {
+		if(os.payment(map) == 1) {
+			return 1;
+		}
+		else return 2;
+	}
 	
 	@GetMapping("/mailto/{email}/")
 	public HashMap<String, String> mailto(@PathVariable String email, HttpSession session) throws IOException{
