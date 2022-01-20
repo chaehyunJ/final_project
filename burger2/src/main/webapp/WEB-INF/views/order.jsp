@@ -16,6 +16,8 @@
 
 <script src="${cpath }/resources/js/order.js"></script>
 <script src="${cpath }/resources/js/orderCount.js"></script>
+<script src="${cpath }/resources/js/totalprice.js"></script>
+
 	<ul class="menuparent">
         <li class="selectMenu showColor" data-cate="mac">맥모닝</li>
         <li class="selectMenu" data-cate="macSet">맥모닝 세트</li>
@@ -32,10 +34,22 @@
         <button class="slide-next">></button>
     </div>
     
+<!--     주문목록 -->
+<!--     <div class="order-board"> -->
+<!--     	<div class="parent_order"></div> -->
+<!--     	<div class=""><button id="check_module">결제하기</button></div> -->
+<!--     </div> -->
     <!-- 주문목록 -->
-    <div class="order-board">
-    	<div class="parent_order"></div>
-    	<div class=""><button id="check_module">결제하기</button></div>
+    <div class="grand_order">
+	    <div class="parent_order"></div>
+	    <div class="totalprice">
+	    	<div class="deleteall">전체  삭제</div>
+	    	<div class="productcount">선택한 상품     <span style="color: #783933;">0</span>개</div>
+	    	<div id="check_module">
+		    	<div class="total0"></div>
+		    	<div class="totalnotnull"></div>
+	    	</div>
+	    </div>
     </div>
     
     <span>${ login.userid }</span>
@@ -47,12 +61,12 @@
 	   const showFrame = document.querySelector('.show-frame')
 	   const menuSelectList = document.querySelectorAll('.selectMenu')
 	   const parent_order = document.querySelector('.parent_order')
-	  
-	   const menuname = document.querySelectorAll('.parent_order > child_order .menuname')
-	   console.log(menuname)
+	   const totalprice = document.querySelector('.totalprice')
+	   const total0 = document.querySelector('.total0')
+	   const totalnotnull = document.querySelector('.totalnotnull')
 	   
 // 	   window.onload = macImageHandler
-
+	   
 	   window.addEventListener('load', function(){
 		   macImageHandler()
 	   })

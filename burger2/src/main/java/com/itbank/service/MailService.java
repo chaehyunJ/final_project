@@ -34,7 +34,7 @@ public class MailService {
 		final String username = account.split("/")[0];
 		final String password = account.split("/")[1];
 		
-		String subject = "[KGITBANK] 인증번호 입니다";
+		String subject = "[Coded Burger] 인증번호 입니다";
 		String body = String.format("인증번호는[%s]입니다\n\n", authNumber);
 		
 		
@@ -98,7 +98,7 @@ public class MailService {
 		return authNumber;
 	}
 	
-	public String pwChkMail(String email, String authNumber, String account) {
+public String pwChkMail(String email, String authNumber, String account) {
 		
 		// 1. 메일 발송 시 필요한 내용
 		String host = "smtp.naver.com";	// Simple Mail Transfer Protocol
@@ -106,8 +106,8 @@ public class MailService {
 		final String username = account.split("/")[0];
 		final String password = account.split("/")[1];
 		
-		String subject = "[KGITBANK] 임시 비밀번호 입니다";
-		String body = String.format("임시 비밀번호는 [%s]입니다\n\n", authNumber);
+		String subject = "[Coded Burger] 임시 비밀번호 입니다";
+		String body = String.format("임시 비밀번호는 [%s]입니다\n\n회원정보로 가서 비밀번호를 변경해주세요", authNumber);
 		
 		
 		// 2. 메일 발송 서버에 대한 인증 및 속성을 설정 (HashMap)
@@ -178,7 +178,7 @@ public class MailService {
 		final String username = account.split("/")[0];
 		final String password = account.split("/")[1];
 		
-		String subject = "[KGITBANK] ID 찾기 입니다";
+		String subject = "[Coded Burger] ID 찾기 입니다";
 		String body = String.format("고객님의 아이디는  [%s]입니다\n\n", id);
 		
 		
@@ -241,6 +241,5 @@ public class MailService {
 		// 보낸 인증번호를 다시 반환하도록 함 (body에 포함된 인증번호를 반환)
 		return id;
 	}
-
 
 }

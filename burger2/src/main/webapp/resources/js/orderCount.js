@@ -21,7 +21,7 @@ function countHandler(event) {
                 getCount = event.target.nextElementSibling.innerHTML
                 getCount = parseInt(getCount) + 1;
                 event.target.nextElementSibling.innerHTML = getCount
-                
+                totalfunction(vargetprice)
                 for(let i=getCount-1; i<getCount; i++) {
                 	if(i == 1)
                 		total = vargetprice + vargetprice
@@ -40,6 +40,8 @@ function countHandler(event) {
             else {
                 getCount = event.target.previousElementSibling.innerHTML
                 getCount = parseInt(getCount) - 1;
+               	const minusprice = -(vargetprice/(getCount+1))
+               	totalfunction(minusprice)
                 if(getCount <= 0) {
                     deleteHandler(event)
                 }
@@ -100,8 +102,13 @@ function imageOrderDom(event) {
     //console.log(parent_order.scrollHeight)
 	parent_order.scroll({top: parent_order.scrollHeight, behavior: `smooth`})
 }
+
 function deleteHandler(event) {
         const parent_order = event.target.parentElement.parentElement
-        const child_order = event.target.parentElement
-        parent_order.removeChild(child_order)
+        const child_orders = event.target.parentElement
+        let children = child_orders.childNodes
+        let vargetprice = children[5].innerText.split(' ')[1]  //2,300
+        vargetprice = parseInt(vargetprice.replace(/,/g,""))
+        totalfunction(-vargetprice)
+        parent_order.removeChild(child_orders)
 }

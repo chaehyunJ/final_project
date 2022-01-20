@@ -3,7 +3,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="find-form">
-	<p>이메일 입력하기</p>
+	<p style="font-size: 18px; font-style: italic;">PW찾기</p>
 	<input name="email" placeholder="이메일을 입력해주세요">
 	<input id="findIdBtn" type="button" value="입력하기">
 </div>
@@ -55,7 +55,7 @@
     				location.href = cpath + '/login'
     			}
     			else {
-    				alert('이메일을 확인해주세요.')
+    				alert('등록되지 않은 이메일입니다.\n이메일을 확인해주세요.')
     			}
     		})
     	}

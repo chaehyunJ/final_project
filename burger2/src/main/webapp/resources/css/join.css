@@ -64,12 +64,8 @@
 	margin-left : 400px;
 }
 
-.join-address-form {
-	margin-top: 35px;
-}
-
 .join-address-form * {
-	margin: 15px;
+	margin-bottom: 15px;
 }
 
 /* step2 */

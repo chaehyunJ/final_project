@@ -18,9 +18,5 @@
 		#{ emailAuth }
 		)
 	</insert>
-	
-<!-- 	<update id="updateFindPw" parameterType="hashmap" > -->
-<!-- 		update user_table set userpw = ${ userpw } where email = ${ email } -->
-<!-- 	</update> -->
-
+ 	
 </mapper>

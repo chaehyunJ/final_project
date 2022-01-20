@@ -1,4 +1,4 @@
-package com.itbank.controller;
+	package com.itbank.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -7,12 +7,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.admin.AdminDTO;
 import com.itbank.component.Hash;
 import com.itbank.member.MemberDTO;
 import com.itbank.service.MemberService;
@@ -55,6 +55,27 @@ public class LoginController {
 			mav.setViewName("redirect:" + url);
 		}
 		
+		
+		return mav;
+	}
+	
+	@GetMapping("/loginAdmin")
+	public String loginAdmin() {
+		return "loginAdmin";
+	}
+	
+	@PostMapping("/loginAdmin")
+	public ModelAndView loginAdmin(AdminDTO dto, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		AdminDTO adminlogin = ms.loginAdmin(dto);
+		System.out.println(adminlogin.getAdminid());
+		
+		session.setAttribute("adminlogin", adminlogin);
+		if(adminlogin != null) {
+			mav.setViewName("redirect:/");
+		}
 		return mav;
 	}
 	
@@ -63,10 +84,13 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	// 아이디 찾기
 	@GetMapping("/findId")
 	public String findId() {
 		return "findId";
 	}
+	
 	
 	// 비밀번호 찾기
 	@GetMapping("/findPw")
@@ -74,22 +98,24 @@ public class LoginController {
 		return "findPw";
 	}
 	
-	@GetMapping("/update/{userid}")
-	public ModelAndView update(@PathVariable String userid) {
-		ModelAndView mav = new ModelAndView("update");
-		MemberDTO update = ms.updatePage(userid);
+	@GetMapping("/update")
+	public ModelAndView update(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		
-		System.out.println(update.getUserpw());
-		String pw = update.getUserpw().substring(0, 8);
+		MemberDTO member = (MemberDTO)session.getAttribute("login");
 		
-		update.setUserpw(pw);
 		
-		mav.addObject("update", update);
+		System.out.println(member.getUserpw());
+		String pw = member.getUserpw().substring(0, 8);
+		
+		member.setUserpw(pw);
+		
+		mav.addObject("member", member);
 		return mav;
 	}
 	
 	
-	@PostMapping("/update/{userid}")
+	@PostMapping("/update")
 	public ModelAndView update(MemberDTO dto) {
 		ModelAndView mav = new ModelAndView("update");
 		
@@ -110,6 +136,4 @@ public class LoginController {
 		System.out.println(row==1?"success":"fail");
 		return mav;	//추가되고 나서 목록에서 확인 할 수 있도록
 	}
-	
-	
 }

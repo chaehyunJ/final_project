@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.itbank.admin.AdminDTO;
 import com.itbank.member.MemberDTO;
 
 public class LoginIntercepter extends HandlerInterceptorAdapter {
@@ -30,9 +31,11 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		
+		
 		if(login != null) {
 			return true;
 		}
+
 		
 		String url = request.getRequestURL().toString();
 		

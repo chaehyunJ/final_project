@@ -9,7 +9,7 @@
 		<ul class="myPage-navPath">
 			<li><a href="${cpath }/myPage">주문 조회</a></li>
 			<li><a href="${cpath }/history">주문 내역</a></li>
-			<li><a href="${cpath }/update/${login.userid}">회원 정보</a></li>
+			<li><a href="${cpath }/update">회원 정보</a></li>
 		</ul>
 	</div>
 	<div class="memberInfo-wrap">
@@ -22,7 +22,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">아이디 :</th>
-							<td><input type="text" name="userid" value="${update.userid }" required readonly>
+							<td><input type="text" name="userid" value="${member.userid }" required readonly>
 							</td>
 						</tr>
 						<tr>
@@ -43,34 +43,34 @@
 						</tr>
 						<tr>
 							<th scope="row">성명 :</th>
-							<td><input type="text" name="username" value="${update.username }" required></td>
+							<td><input type="text" name="username" value="${member.username }" required></td>
 						</tr>
 						<tr>
 							<th scope="row">성별 : </th>
 							<td>
 								<label>
-									<input type="radio" name="gender" value="남성" ${update.gender == '남성' ? 'checked' : '' } required>남성
+									<input type="radio" name="gender" value="남성" ${member.gender == '남성' ? 'checked' : '' } required>남성
 								</label> 
 								<label>
-									<input type="radio" name="gender" value="여성" ${update.gender == '여성' ? 'checked' : '' } required>여성
+									<input type="radio" name="gender" value="여성" ${member.gender == '여성' ? 'checked' : '' } required>여성
 								</label>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row">전화번호 :</th>
-							<td><input type="tel" name="phone" value="${update.phone }" required></td>
+							<td><input type="tel" name="phone" value="${member.phone }" required></td>
 						</tr>
 						<tr>
 						<tr>
 							<th scope="row">이메일 :</th>
-							<td><input type="email" name="email" value="${update.email }" required></td>
+							<td><input type="email" name="email" value="${member.email }" required></td>
 						</tr>
 						<tr>
 							<th scope="row">주소 :</th>
 							<td>
 								<p>최종 배달주소</p>
 								<div id="address-result">
-									<span id="userAddress">${ update.address }</span>
+									<span id="userAddress">${ member.address }</span>
 									<hr> 				
 								</div>
 							</td>

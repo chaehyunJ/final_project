@@ -10,12 +10,14 @@
         </ul>
         <form class="join-address-form" action="${ cpath }/join/step1">
            <textarea style="width: 800px; height: 400px; resize: none;" readonly>${agreement }</textarea>
-			<p>
-				<label>
-					<input type="checkbox" name="agree">위 사항을 읽었으며, 약관에 동의합니다
-				</label>	
-			</p>
-            <input id="addressSubmit" type="submit" value="다음">
+			<div style="display: flex; justify-content:space-between;">
+				<p>
+					<label>
+						<input type="checkbox" name="agree">위 사항을 읽었으며, 약관에 동의합니다
+					</label>	
+				</p>
+	            <input id="addressSubmit" type="submit" value="다음">
+            </div>
         </form>
     </div>
 

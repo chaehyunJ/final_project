@@ -3,7 +3,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="find-form">
-	<p>이메일 입력하기</p>
+	<p style="font-size: 18px; font-style: italic;">ID찾기</p>
 	<input name="email" placeholder="이메일을 입력해주세요">
 	<input id="findPwBtn" type="button" value="입력하기">
 </div>
@@ -42,21 +42,50 @@
 		findPwBtn.onclick = function(){
     		console.log(email.value)
     		
-    		const url = cpath +'/mailtoFindId/' + email.value + '/'
+    		const url = cpath + '/mailChk/' + email.value + '/'
     		const opt = {
     			method : 'get'
     		}
-    		fetch(url, opt)
+    		fetch(url,opt)
     		.then(resp => resp.json())
     		.then(json => {
-    			if(json.status == 'OK') {
-    				alert('고객님의 ID가 발송되었습니다')
-    				location.href = cpath + '/login'
+    			console.log(json)
+    			if(json.status == 'OK'){
+    				const url1 = cpath + '/mailtoFindId/' + email.value + '/'
+    				const opt1 = {
+    						method : 'get'
+    				}
+    				fetch(url1, opt1)
+    				.then(resp => resp.json())
+    				.then(json => {
+    					if(json.status == 'OK'){
+    						alert('고객님의 이메일로 ID가 발송되었습니다')
+    						location.href = cpath + '/login'
+    					}
+    				})
     			}
-    			else {
-    				alert('이메일을 확인해주세요.')
+    			else{
+    				alert('등록되지 않은 이메일 입니다. \n 이메일을 확인해주세요.')
+    				email.select()
     			}
+    			
     		})
+    		
+//     		const url = cpath +'/mailtoFindId/' + email.value + '/'
+//     		const opt = {
+//     			method : 'get'
+//     		}
+//     		fetch(url, opt)
+//     		.then(resp => resp.json())
+//     		.then(json => {
+//     			if(json.status == 'OK') {
+//     				alert('고객님의 ID가 발송되었습니다')
+//     				location.href = cpath + '/login'
+//     			}
+//     			else {
+//     				alert('이메일을 확인해주세요.')
+//     			}
+//     		})
     	}
 		
 		

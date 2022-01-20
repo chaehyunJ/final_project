@@ -177,6 +177,7 @@ public class AjaxController {
 		return ret;
 	}
 	
+	// 비밀번호 이메일로 찾기
 	@GetMapping("/mailtoFindPw/{email}/")
 	public HashMap<String, String> mailtoFindPw(@PathVariable String email, HttpSession session) throws IOException{
 		
@@ -233,20 +234,21 @@ public class AjaxController {
 		return ret;
 	}
 	
+	// 이메일로 id찾기
 	@GetMapping("/mailtoFindId/{email}/")
 	public HashMap<String, String> mailtoFindId(@PathVariable String email, HttpSession session) throws IOException{
 		
 		System.out.println("인증번호 받은 이메일 : " +  email);
 		
-		String authNumber = mailService.getAuthNumber();
-		
-		System.out.println("인증 번호 : " + authNumber);
-		
-		String hashNumber3 = hash.getHash(authNumber);
-		System.out.println("인증 해시값 : " + hashNumber3);
-		
-		// 세션은 클라이언트당 한개의 객체가 생성되니까 세션에 저장해두면 다른 클라이언트와 섞일 일이 없다
-		session.setAttribute("hashNumber3", hashNumber3);
+//		String authNumber = mailService.getAuthNumber();
+//		
+//		System.out.println("인증 번호 : " + authNumber);
+//		
+//		String hashNumber3 = hash.getHash(authNumber);
+//		System.out.println("인증 해시값 : " + hashNumber3);
+//		
+//		// 세션은 클라이언트당 한개의 객체가 생성되니까 세션에 저장해두면 다른 클라이언트와 섞일 일이 없다
+//		session.setAttribute("hashNumber3", hashNumber3);
 		
 		String account = null;
 		
@@ -282,6 +284,19 @@ public class AjaxController {
 		
 		return ret;
 	}
+	
+	// DB에 이메일 확인
+	@GetMapping("/mailChk/{email}/")
+	public HashMap<String, String> mailChk(@PathVariable String email){
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		MemberDTO dto = memberService.mailChk(email);
+		map.put("status", dto != null ? "OK" : "Fail");
+		
+		return map;
+	}
+	
+	// 예외처리
 	@ExceptionHandler(NullPointerException.class)
 	public ModelAndView exHam(NullPointerException e) {
 		ModelAndView mav = new ModelAndView("alert");
@@ -289,4 +304,6 @@ public class AjaxController {
 		System.out.println("등록되지 않은 이메일입니다, 확인해주세요");
 		return mav;
 	}
+	
+	
 }

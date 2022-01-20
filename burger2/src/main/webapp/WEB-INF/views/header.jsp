@@ -89,21 +89,24 @@
             <div class="top-right">
                 <ul>
                     <li>
-                    	<c:if test="${ empty login }">
+                    	<c:if test="${ empty login && empty adminlogin}">
  							<a href="${ cpath }/join">회원가입</a>                   	
                     	</c:if>
-                    	<c:if test="${ not empty login }">
+                    	<c:if test="${ not empty login || not empty adminlogin}">
                     		<a href="${ cpath }/logout">로그아웃</a>
                     	</c:if>
                     </li>
                     <li><a href="${ cpath }/order">주문하기</a></li>
                     
                     <li>
-                    <c:if test="${ empty login }">
+                    <c:if test="${ empty login && empty adminlogin}">
                         <a href="${ cpath }/login">로그인</a>
                     </c:if>
                     <c:if test="${ not empty login }">
                     	<a href="${ cpath }/myPage">마이페이지</a>
+                    </c:if>
+                    <c:if test="${ not empty adminlogin }">
+                    	<a href="${ cpath }/adminPage">관리자페이지</a>
                     </c:if>
                     </li>
                     <li>

@@ -8,6 +8,8 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itbank.admin.AdminDAO;
+import com.itbank.admin.AdminDTO;
 import com.itbank.member.MemberDAO;
 import com.itbank.member.MemberDTO;
 
@@ -15,6 +17,7 @@ import com.itbank.member.MemberDTO;
 public class MemberService {
 	
 	@Autowired private MemberDAO dao;
+	@Autowired private AdminDAO admindao;
 	
 	public String getAgreement(String path) throws IOException {
 		String agreement = "";
@@ -38,6 +41,11 @@ public class MemberService {
 		MemberDTO login = dao.login(dto);
 		return login;
 	}
+	// 관리자 로그인
+	public AdminDTO loginAdmin(AdminDTO dto) {
+		AdminDTO login = admindao.loginAdmin(dto);
+		return login;
+	}
 
 	// 회원가입
 	public int join(MemberDTO dto) {
@@ -47,12 +55,18 @@ public class MemberService {
 
 	// id확인
 	public MemberDTO getMember(String userid) {
+		
 		return dao.selectMember(userid);
 	}
 	
 	// id찾기
 	public MemberDTO getMemberFindId(String email) {
 		return dao.selectMemberFindId(email);
+	}
+	
+	// 비밀번호찾기
+	public int updateFindPw(HashMap<String, String> map) {
+		return dao.updateFindPw(map);
 	}
 	
 	// 회원정보수정
@@ -64,9 +78,15 @@ public class MemberService {
 	public MemberDTO updatePage(String userid) {
 		return dao.selectMember(userid);
 	}
-	
-	// 비밀번호찾기
-	public int updateFindPw(HashMap<String, String> map) {
-		return dao.updateFindPw(map);
+
+	// 비밀번호 일치확인
+	public MemberDTO chkMember(String pw1) {
+		return dao.chkPw(pw1);
 	}
+
+	// 이메일 확인하기
+	public MemberDTO mailChk(String email) {
+		return dao.mailChk(email);
+	}
+
 }
