@@ -79,26 +79,35 @@ button:hover {
 	color: chartreuse;
 }
 /*상단 ul부터*/
-ul li {
+ul > li {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
+
+.selectMenu {
+	line-height: 50px;
+}
+
+
 
 .menuparent {
 	width: 1050px;
 	padding: 5px;
 	display: flex;
 	margin: 0 auto;
+	margin-bottom: 5px;
 }
 
 .menuparent li {
 	margin: 0 auto;
 	text-align: center;
-	padding: 10px;
 	border: 1px solid black;
 	width: 130px;
 	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
+	height: 50px;
 }
 
 .deleteBtn, span, .addminusBtn, .orderCount, .addminusBtn {
@@ -175,6 +184,7 @@ ul li {
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
+	height: 190px;
 }
 
 .payment {
@@ -230,4 +240,21 @@ ul li {
 .back-form > .back-btn > a{
 	text-decoration: none;
 	color: inherit;
+}
+
+/*고객 요청사항*/
+.clientrequest {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
+}
+
+.clientrqform {
+	border-radius: 5px;
+	resize: none; 
+	margin-left: 35px;
+	background-color: rgb(226, 221, 221);
 }

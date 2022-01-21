@@ -29,11 +29,11 @@
 			<tbody>
 				<tr>
 					<td>${ orderList.orderDate }-${ orderList.orderSeq }</td>
-					<td>${ orderList.deliveryTime }</td>
-					<td>🗒 </td>
-					<td>🧑‍🍳</td>
-					<td> 🏍 </td>
-					<td>🍔</td>
+					<td><div id="timer"></div></td>
+					<td>🗒 ${orderList.orderstatus=='y'? '✔️'   :  ''}  </td>
+					<td>🍳${orderList.paystatus=='y'? '✔️'   : ''}</td>
+					<td id="mypageOrder">🏍 </td>
+					<td id="mypageComplete">🍔</td>
 				</tr>
 			</tbody>
 		</table>
@@ -42,4 +42,60 @@
 	</div>
 </div>
 
-<%@ include file="footer.jsp" %>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <ul>
+                    <li><a>개인정보 처리방침</a></li>
+                    <li><a>위치정보 이용약관</a></li>
+                    <li><a>QnABoard</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <ul>
+                    <li>Coded Burger</li>
+                    <li>공동대표 : 5조 전원</li>
+                    <li>사업자등록번호 : 1234-56-789</li>
+                    <li>회사전화 : 010-7374-5328</li>
+                    <li>COPYRIGHT © 2019 ALL RIGHTS RESERVED BY McDonald's.</li>
+                </ul>
+            </div>
+            <div class="footer-icon">
+                <a href=""><img src="${ cpath }/resources/src/footer/fb.png" alt=""></a>
+                <a href=""><img src="${ cpath }/resources/src/footer/insta.png" alt=""></a>
+                <a href=""><img src="${ cpath }/resources/src/footer/youtube.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
+
+<script>
+
+	const orderProcess = document.getElementById('mypageOrder')
+	const orderComplete = document.getElementById('mypageComplete')
+
+	let time = 5;
+	let min = "";
+	let sec = "";
+	console.log(min)
+	
+	var x = setInterval(function() {
+	   min = parseInt(time/60);
+	   sec = time%60;
+	   document.getElementById("timer").innerHTML = min + "분" + sec + "초";
+	   time--;
+	   if(time >= 4) {
+		   orderProcess.innerText +='✔️ '
+	   }
+	   if(time < 0 ) {
+	      clearInterval(x);
+	      document.getElementById("timer").innerHTML = "배달 완료";
+			orderComplete.innerText +='✔️ '
+	   }
+	}, 1000);
+	
+	
+ 
+</script>
+</body>
+</html>
+<%-- <%@ include file="footer.jsp" %> --%>

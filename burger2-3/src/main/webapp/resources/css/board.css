@@ -99,6 +99,25 @@ div{
 	text-align: center;
 }
 
+/* 성훈 추가  */
+.border-zero {
+    border: 0;
+}
+.newswrite-form {
+	margin: 0 auto;
+	width: 1200px;
+	margin-top: 10px;
+}
+.newswrite-submit {
+	width: 90px;
+	height: 40px;
+	background-color: #ff0000;
+	border: 0;
+	border-radius: 0.1cm;
+	color: white;
+	font-weight: bold;
+}
+
 /* 2022-01-20 추가 */
 
 .detail-news{

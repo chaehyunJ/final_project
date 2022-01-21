@@ -1,6 +1,7 @@
 package com.itbank.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class OrderService {
 	
 	public int payment(HashMap<String,String> map) {
 		return dao.payment(map);
+	}
+
+	public List<OrderListDTO> selectList(String userid) {
+		return dao.selectList(userid);
 	}
 
 }

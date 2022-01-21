@@ -48,9 +48,9 @@ function countHandler(event) {
                 	for(let i=getCount-1; i<getCount; i++) {
                 		total = vargetprice - (vargetprice / (getCount + 1))
                 	}
+                	totalfunction(minusprice)
                 }
                 event.target.previousElementSibling.innerHTML = getCount
-                totalfunction(minusprice)
             }
             if(getCount >= 1)
             children[5].innerHTML = '￦ ' + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")

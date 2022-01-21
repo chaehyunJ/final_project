@@ -2,6 +2,7 @@ package com.itbank.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -342,7 +343,11 @@ public class AjaxController {
 	@GetMapping("/btnNewsDetail/{num}")
 	public NoticeDTO nextNews(@PathVariable int num) {
 		NoticeDTO dto = ns.getNotice(num);
-		
+		System.out.println(dto.getRegDate());
+		Date d1 = new Date(dto.getRegDate().getTime());
+		System.out.println(d1);
+		dto.setRegDate(d1);
+		System.out.println(dto.getRegDate());
 		return dto; 
 	}
 	

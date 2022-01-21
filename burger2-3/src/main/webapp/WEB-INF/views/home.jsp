@@ -44,8 +44,8 @@
     </div>
 
     <div class="btn-list">
-        <button id="btnOpen">+</button>
-        <button id="btnClose" class="hidden">-</button>
+        <button id="btnOpen">▼</button>
+        <button id="btnClose" class="hidden">▲</button>
     </div>
 
 <%@ include file="footer.jsp" %>

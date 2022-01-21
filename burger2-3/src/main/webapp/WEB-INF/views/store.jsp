@@ -16,6 +16,12 @@
 		</div>
 		<div class="store-contArea">
 			<div class="storefind">
+				<div>24시간</div>
+				<div>맥드라이브</div>
+				<div>맥딜리버리</div>
+				<div>맥모닝</div>
+				<div>주차</div>
+				<div>디카페인 커피</div>
 					<fieldset class="store-searchbox">
 						<div class="store-form">
 							<input class="store-searchInput" type="text" id="address" name="address_kakao" placeholder="도로명을 검색해 주세요" readonly>
@@ -26,7 +32,7 @@
 					</fieldset>
 			</div>
 			<div class="storeResult">
-				<div id="map" class="store-map" style="height:600px; position: relative; overflow: hidden;"></div>
+				<div id="map" class="store-map" style="width : 1250px; height:600px; position: relative; overflow: hidden;"></div>
 <!-- 				<div id="map" class="store-map" style="height:600px; position: relative; overflow: hidden; background: url(https://t1.daumcdn.net/mapjsapi/images/bg_tile.png)"></div> -->
 			</div>
 		</div>

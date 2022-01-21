@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cpath" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,19 +18,21 @@
 <script src="${cpath }/resources/js/orderCount.js"></script>
 <script src="${cpath }/resources/js/totalprice.js"></script>
 <script src="${cpath }/resources/js/payment.js"></script>
-	<ul class="menuparent">
-        <li class="selectMenu showColor" data-cate="mac">맥모닝</li>
-        <li class="selectMenu" data-cate="macSet">맥모닝 세트</li>
-        <li class="selectMenu" data-cate="burger">버거</li>
-        <li class="selectMenu" data-cate="burgerSet">버거 세트</li>
-        <li class="selectMenu" data-cate="side">스낵＆사이드</li>
-        <li class="selectMenu" data-cate="drink">음료</li>
-        <li class="selectMenu" data-cate="dessert">디저트</li>
-        <li class="selectMenu" data-cate="mcafe">맥카페</li>
-    </ul>
+		
+		<ul class="menuparent">
+			<li><a href="${ cpath }"><img class="main-logo" src="${ cpath }/resources/src/픽셀 버거2.png" style="width: 70px; height: 53px;"></a></li>
+	        <li class="selectMenu showColor" data-cate="mac">맥모닝</li>
+	        <li class="selectMenu" data-cate="macSet">맥모닝 세트</li>
+	        <li class="selectMenu" data-cate="burger">버거</li>
+	        <li class="selectMenu" data-cate="burgerSet">버거 세트</li>
+	        <li class="selectMenu" data-cate="side">스낵＆사이드</li>
+	        <li class="selectMenu" data-cate="drink">음료</li>
+	        <li class="selectMenu" data-cate="dessert">디저트</li>
+	        <li class="selectMenu" data-cate="mcafe">맥카페</li>
+	    </ul>
     <div class="show">
     	<div class="show-frame"></div>
-    	<button class="slide-before"><</button>
+    	<button class="slide-before">&lt;</button>
         <button class="slide-next">></button>
     </div>
     
@@ -44,12 +47,24 @@
 	    	</div>
 	    </div>
     </div>
-    
-    <div class="back-form">
-    	<div class="back-btn"><a href="${ cpath }">뒤로가기</a></div>
-   </div>
+    <div class="clientrequest">
+	    <form>
+	    <p style="margin-left: 35px;">
+	    	<label id="radio"><input type="radio" class="notreq" name="clientradio" onclick="notreq()"checked>요청사항 없음</label>
+	    	<label id="radio"><input type="radio" class="isreq" name="clientradio" onclick="isreq()">요청사항 있음</label>
+		</p>
+	    	<textarea class="clientrqform hidden" placeholder="요청사항을 입력해주세요" cols="50" rows="3"></textarea>
+	    </form>
+	</div>
    <script>
+   	   const login = '${login}'
+   	   const userid = '${login.userid}'
+   	   const address = '${login.address}'
+   	   const phone = '${login.phone}'
+   	   
    	   const cpath = '${cpath}'
+   	   
+
 	   const before = document.querySelector('.slide-before')
 	   const next = document.querySelector('.slide-next')
 	   const showFrame = document.querySelector('.show-frame')
@@ -59,6 +74,9 @@
 	   const payment = document.querySelector('.payment')
 	   const deleteall = document.querySelector('.deleteall')
 	   const productcount1 = document.querySelector('.productcount1')
+	   const clientradio1 = document.querySelector('.notreq')
+	   const clientradio2 = document.querySelector('.isreq')
+	   const clientrqform = document.querySelector('.clientrqform')
 	   
 	   window.onload = macImageHandler
 	   menuSelectList.forEach(menu=>{
@@ -101,6 +119,16 @@
        }
 	   deleteall.onclick = deleteallHandler
 	   payment.onclick = paymentHandler
+	   function notreq() {
+// 		   if(clientrqform.classList.contains('hidden')) clientrqform.classList.add('hidden')
+// 		   else clientrqform.classList.remove('hidden')
+		   clientrqform.classList.add('hidden')
+	   }
+	   function isreq() {
+// 		   if(clientrqform.classList.contains('hidden')) clientrqform.classList.remove('hidden')
+// 		   else clientrqform.classList.add('hidden')
+		   clientrqform.classList.remove('hidden')
+	   }
 	</script>
 </body>
 </html>

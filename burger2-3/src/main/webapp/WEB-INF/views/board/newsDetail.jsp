@@ -20,8 +20,9 @@
 	<div class="detail-header">
 		<div class="detail-title">${dto.title }</div>
 		<div class="detail-num">
-			<div class="detail-regDate">${dto.regDate }&nbsp; <span>|</span> &nbsp;</div>
-			<div class="detail-cnt">${dto.cnt }</div>
+<%-- 			<fmt:formatDate var="formatRegDate" value="${ dto.regDate }" pattern="yyyy-MM-dd"/> --%>
+			<div class="detail-regDate">${ dto.regDate }</div>
+			<div class="detail-cnt">&nbsp;<span>|</span> &nbsp;${dto.cnt }</div>
 		</div>
 	</div>
 </div>
@@ -80,7 +81,8 @@
 	console.log(prevBtn)
 	console.log(nextBtn)
 	
-	nextBtn.onclick = function(){
+	nextBtn.onclick = function(event){
+		event.preventDefault()
 		const url = cpath + '/btnNewsDetail/' + (seq + 1)
 		const opt = {
 			method : 'get'
@@ -89,10 +91,13 @@
 		.then(resp => resp.json())
 		.then(json => {
 			console.log(json)
+// 			const date = new Date(json.regDate).getTime()
+// 			console.log(date)
 			detailTitle.innerText = ''
 			detailTitle.innerText += json.title
 			detailRegDate.innerText = ''
-			detailRegDate.innerText += new Date(json.regDate).getTime()
+			detailRegDate.innerText += (json.regDate + ' | ')
+// 			new Date(detailRegDate).getTime()
 			detailCnt.innerText = ''
 			detailCnt.innerText += json.cnt
 			detailContent.innerText = ''
@@ -101,7 +106,8 @@
 		seq++
 	}
 	
-	prevBtn.onclick = function(){
+	prevBtn.onclick = function(event){
+		event.preventDefault()
 		const url = cpath + '/btnNewsDetail/' + (seq-1)
 		const opt = {
 			method : 'get'
@@ -110,10 +116,11 @@
 		.then(resp => resp.json())
 		.then(json => {
 			console.log(json)
+// 			let date = new Date(json.regDate).getTime()
 			detailTitle.innerText = ''
 			detailTitle.innerText += json.title
 			detailRegDate.innerText = ''
-			detailRegDate.innerText += new Date(json.regDate).getTime()
+			detailRegDate.innerText += (json.regDate + ' | ') 
 			detailCnt.innerText = ''
 			detailCnt.innerText += json.cnt
 			detailContent.innerText = ''

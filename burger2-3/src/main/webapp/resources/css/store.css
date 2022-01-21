@@ -47,7 +47,7 @@
 	font-size: 50px;
 }
 .store-contArea {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 }
 .store-fingBg{
@@ -100,7 +100,7 @@
 	border-radius: 10px;
 }
 .store-tableType01 {
-	width: 80%;
+	width: 1250px;
 	padding: 25px 12px;
 	border-top: 2px solid #292929;
 	border-bottom: 2px solid #292929;

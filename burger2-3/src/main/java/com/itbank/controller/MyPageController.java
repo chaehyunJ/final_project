@@ -2,6 +2,8 @@ package com.itbank.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,9 +81,14 @@ public class MyPageController {
 		return "myPage_order";
 	}
 	
+	// 2022-01-21 추가
 	@GetMapping("/history")
-	public String history() {
-		return "history";
+	public ModelAndView history(HttpSession session) {
+		String userid = ((MemberDTO)session.getAttribute("login")).getUserid();
+		List<OrderListDTO>list = os.selectList(userid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		return mav;
 	}
 	
 	@GetMapping("/memberInfo")
