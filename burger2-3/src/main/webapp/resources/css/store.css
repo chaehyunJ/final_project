@@ -126,3 +126,34 @@
 .store_tableType01 > tbody > td > .store-service{
 	font-weight: bold;
 }
+
+
+/* 2022-01-21 추가 */
+.service-category{
+	display: flex;
+	width : 1250px;
+	border : 1px solid black;
+	margin : auto;
+	margin-top : 50px;
+	margin-bottom : 20px;
+	justify-content: space-between;
+}
+
+.service-category > div{
+	border : 1px solid #dadada;
+	border-radius: 10px;
+	width : 130px;
+	height: 130px;
+	margin : 10px;
+	cursor: pointer;
+}
+.service-category > div > img{
+	border : 0px solid black;
+	width : 110px;
+	margin-left : 7px;
+}
+.service-category > div > p{
+	padding: 0;
+	margin : 0;
+	text-align: center;
+}

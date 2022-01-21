@@ -1,5 +1,6 @@
 package com.itbank.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,11 @@ public class StoreService {
 	
 	public List<StoreInfoDTO> getStore(String info) {
 		return dao.selectStore(info);
+	}
+
+	
+	public List<HashMap<String, Object>> selectCate(String cate) {
+		return dao.selectCate(cate);
 	}
 
 }

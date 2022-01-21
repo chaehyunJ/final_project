@@ -16,12 +16,32 @@
 		</div>
 		<div class="store-contArea">
 			<div class="storefind">
-				<div>24시간</div>
-				<div>맥드라이브</div>
-				<div>맥딜리버리</div>
-				<div>맥모닝</div>
-				<div>주차</div>
-				<div>디카페인 커피</div>
+			<div class="service-category">
+				<div data-cate="hours24">
+					<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png">
+					<p>24시간</p>
+				</div>
+				<div data-cate="mcdrive">
+					<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png">
+					<p>맥드라이브</p>
+				</div>
+				<div data-cate="mcdelivery">
+					<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png">
+					<p>맥딜리버리</p>
+				</div>
+				<div data-cate="mcmorning">
+					<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png">
+					<p>맥모닝</p>
+				</div>
+				<div data-cate="parking">
+					<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png">
+					<p>주차</p>
+				</div>
+				<div data-cate="decaffeine">
+					<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png">
+					<p>디카페인 커피</p>
+				</div>
+			</div>
 					<fieldset class="store-searchbox">
 						<div class="store-form">
 							<input class="store-searchInput" type="text" id="address" name="address_kakao" placeholder="도로명을 검색해 주세요" readonly>
@@ -63,6 +83,7 @@
 					</tr>
 			</tbody>
 			</table>
+			<div id="storeResult"></div>
 		</div>
 	</div>
 </div>
@@ -102,6 +123,59 @@
 	const searchBtn = document.getElementById('searchBtn')
 	const address = document.getElementById('address')
 	let addressValue = address.value
+	
+	const storeResult = document.getElementById('storeResult')
+	console.log(storeResult)
+	
+	// 2022-01-21 추가
+	const serviceCategory = document.querySelectorAll('.service-category > div')
+	console.log(serviceCategory)
+	
+	serviceCategory.forEach(dto => {
+		dto.onclick = function(event){
+			let target = event.target
+			if(target != 'DIV'){
+				target = target.parentNode
+				const cate = target.dataset.cate
+				console.log(cate)
+				const url = cpath + '/storeCate/' + cate
+				const opt = {
+					method : 'get'
+				}
+				fetch(url, opt)
+				.then(resp => resp.json())
+				.then(json => {
+					console.log(json)
+					let dom1 = ''
+					let dom2 = ''
+					let dom3 = ''
+					let dom4 = ''
+					json.forEach(dto => {
+						dom1 += '<div>' + dto.STORE_NAME + ' / ' + dto.STORE_ADDRESS +'</div>'
+						dom2 += '<div>' + dto.STORE_TEL + '</div>'
+						dom3 += '<div>' + dto.STORE_OPENING_HOURS + '</div>'
+						dom4 +=  dto.DECAFFEINE == 'y' ? '디카페인 커피\n' : '' 
+						dom4 +=  dto.HOURS24 == 'y' ? '24시간\n' : ''
+						dom4 +=  dto.MCDELIVERY == 'y' ? '맥딜리버리\n' : ''
+						dom4 +=  dto.MCMORNING == 'y' ? '맥모닝\n' : ''
+						dom4 +=  dto.PARKING == 'y' ? '주차\n' : ''
+						dom4 +=  dto.MCDRIVE == 'y' ? '맥드라이브\n ' : ''
+// 									   + dto.HOURS24 == 'y' ? '24시간\n' : ''
+// 									   + dto.MCDELIVERY == 'y' ? '맥딜리버리\n' : ''
+// 									   + dto.MCMORNING == 'y' ? '맥모닝\n' : ''
+// 									   + dto.PARKING == 'y' ? '주차\n' : ''
+// 									   + dto.MCDRIVE == 'y' ? '맥드라이브\n ' : '' +
+								
+					})
+					addressName.innerHTML += dom1
+					storeTel.innerHTML += dom2
+					storeOpen.innerHTML += dom3
+					storeService.innerText += dom4
+// 					storeResult.innerHTML += dom
+				})
+			}
+		}
+	})
 	console.log(address)
 	console.log(searchBtn)
 	console.log(addressName)

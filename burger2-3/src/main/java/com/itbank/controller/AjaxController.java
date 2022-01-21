@@ -350,7 +350,13 @@ public class AjaxController {
 		System.out.println(dto.getRegDate());
 		return dto; 
 	}
-	
+	// store-cate
+	@GetMapping("/storeCate/{cate}")
+	public List<HashMap<String, Object>> storeCate(@PathVariable String cate){
+		List<HashMap<String, Object>> list = ss.selectCate(cate);
+		
+		return list;
+	}
 	
 	// 예외처리
 	@ExceptionHandler(NullPointerException.class)
