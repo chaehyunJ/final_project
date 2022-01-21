@@ -16,12 +16,21 @@ package com.itbank.model;
 
 public class MenuTopDTO {
 
+<<<<<<< HEAD
 	private String burger_table_description, burger_background,
 					mcmorning_table_description, mcmorning_background,
 					side_table_description, side_background,
 					drink_table_description, drink_background,
 					dessert_table_description, dessert_background,
 					mccafe_table_description, mccafe_background;
+=======
+	private String burger_table_description, burger_table_background,
+					mcmorning_table_description, mcmorning_table_background,
+					side_table_description, side_table_background,
+					drink_table_description, drink_table_background,
+					dessert_table_description, dessert_table_background,
+					mccafe_table_description, mccafe_table_background;
+>>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 
 	public String getBurger_table_description() {
 		return burger_table_description;
@@ -31,12 +40,21 @@ public class MenuTopDTO {
 		this.burger_table_description = burger_table_description;
 	}
 
+<<<<<<< HEAD
 	public String getBurger_background() {
 		return burger_background;
 	}
 
 	public void setBurger_background(String burger_background) {
 		this.burger_background = burger_background;
+=======
+	public String getBurger_table_background() {
+		return burger_table_background;
+	}
+
+	public void setBurger_table_background(String burger_table_background) {
+		this.burger_table_background = burger_table_background;
+>>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 	}
 
 	public String getMcmorning_table_description() {
@@ -47,12 +65,21 @@ public class MenuTopDTO {
 		this.mcmorning_table_description = mcmorning_table_description;
 	}
 
+<<<<<<< HEAD
 	public String getMcmorning_background() {
 		return mcmorning_background;
 	}
 
 	public void setMcmorning_background(String mcmorning_background) {
 		this.mcmorning_background = mcmorning_background;
+=======
+	public String getMcmorning_table_background() {
+		return mcmorning_table_background;
+	}
+
+	public void setMcmorning_table_background(String mcmorning_table_background) {
+		this.mcmorning_table_background = mcmorning_table_background;
+>>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 	}
 
 	public String getSide_table_description() {
@@ -63,12 +90,21 @@ public class MenuTopDTO {
 		this.side_table_description = side_table_description;
 	}
 
+<<<<<<< HEAD
 	public String getSide_background() {
 		return side_background;
 	}
 
 	public void setSide_background(String side_background) {
 		this.side_background = side_background;
+=======
+	public String getSide_table_background() {
+		return side_table_background;
+	}
+
+	public void setSide_table_background(String side_table_background) {
+		this.side_table_background = side_table_background;
+>>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 	}
 
 	public String getDrink_table_description() {
@@ -79,12 +115,21 @@ public class MenuTopDTO {
 		this.drink_table_description = drink_table_description;
 	}
 
+<<<<<<< HEAD
 	public String getDrink_background() {
 		return drink_background;
 	}
 
 	public void setDrink_background(String drink_background) {
 		this.drink_background = drink_background;
+=======
+	public String getDrink_table_background() {
+		return drink_table_background;
+	}
+
+	public void setDrink_table_background(String drink_table_background) {
+		this.drink_table_background = drink_table_background;
+>>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 	}
 
 	public String getDessert_table_description() {
@@ -95,12 +140,21 @@ public class MenuTopDTO {
 		this.dessert_table_description = dessert_table_description;
 	}
 
+<<<<<<< HEAD
 	public String getDessert_background() {
 		return dessert_background;
 	}
 
 	public void setDessert_background(String dessert_background) {
 		this.dessert_background = dessert_background;
+=======
+	public String getDessert_table_background() {
+		return dessert_table_background;
+	}
+
+	public void setDessert_table_background(String dessert_table_background) {
+		this.dessert_table_background = dessert_table_background;
+>>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 	}
 
 	public String getMccafe_table_description() {
@@ -111,6 +165,7 @@ public class MenuTopDTO {
 		this.mccafe_table_description = mccafe_table_description;
 	}
 
+<<<<<<< HEAD
 	public String getMccafe_background() {
 		return mccafe_background;
 	}
@@ -118,6 +173,17 @@ public class MenuTopDTO {
 	public void setMccafe_background(String mccafe_background) {
 		this.mccafe_background = mccafe_background;
 	}
+=======
+	public String getMccafe_table_background() {
+		return mccafe_table_background;
+	}
+
+	public void setMccafe_table_background(String mccafe_table_background) {
+		this.mccafe_table_background = mccafe_table_background;
+	}
+
+	
+>>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 	
 	
 }

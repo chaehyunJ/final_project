@@ -1,0 +1,223 @@
+@charset "utf-8";
+
+
+*{
+	font-family: Malgun Gothic;
+}
+
+/* board-container */
+div{
+	box-sizing: border-box;
+}
+.board-area {
+	position: relative;
+	padding: 15px;
+	padding-left: 368px;
+	color: white;
+}
+.board-area > img{
+	position: absolute;
+	height: 220px;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+.board-title {
+	font-size: 50px;
+	padding-top: 30px;
+	margin-bottom: 0;
+}
+.board-ul {
+	display: flex;
+	list-style: none;
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 30px;
+	padding-left: 0;
+	color: white;
+}
+.board-ul li {
+	margin: 7px;
+}
+.board-ul  li:nth-child(2n) {
+	color: #f5bd43;
+}
+.board-list {
+	width: 1170px;
+	margin: 0 auto;
+}
+.board-list div {
+	border: 1px solid black;
+}
+.board-list-title {
+	display: flex;	
+}
+.board-total {
+	line-height: 50px;
+	padding-right: 535px;
+}
+.board-search {
+	padding-right: 0;
+}
+.board-search input {
+	width: 300px;
+	height: 50px;
+	padding: 0 28px;
+	border-radius: 70px;
+	font-size: 16px;
+}
+.board-notice-list {
+	display: flex;
+	padding-left: 40px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.board-notice-icon {
+	padding-right: 60px;
+}
+.board-notice-title {
+	width: 900px;
+}
+.board-notice-date {
+	width: 150px;
+	text-align: center;
+}
+.board-post-list {
+	display: flex;
+	padding-left: 40px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.board-post-number {
+	padding-right: 65px;
+}
+.board-post-title {
+	width: 900px;
+}
+.board-post-date {
+	width: 150px;
+	text-align: center;
+}
+
+/* 성훈 추가  */
+.border-zero {
+    border: 0;
+}
+.newswrite-form {
+	margin: 0 auto;
+	width: 1200px;
+	margin-top: 10px;
+}
+.newswrite-submit {
+	width: 90px;
+	height: 40px;
+	background-color: #ff0000;
+	border: 0;
+	border-radius: 0.1cm;
+	color: white;
+	font-weight: bold;
+}
+
+/* 2022-01-20 추가 */
+
+.detail-news{
+	display: flex;
+	width : 1200px;
+	border : 1px solid black;
+	margin : auto;
+}
+
+.detail-header{
+	display: flex;
+	width : 1200px;
+	border : 1px solid black;
+	margin : auto;
+	justify-content: space-between;
+}
+.detail-header > .detail-num {
+	display : flex;
+	width : 230px;
+	border : 1px solid black;
+}
+.detail-header > div{
+	margin-right : 10px;
+}
+.detail-header > .detail-title{
+	font-weight: bold;
+	font-size: 20px;
+}
+.detail-header > .detail-num > .detail-regDate, .detail-cnt{
+	color : darkgrey;
+	font-weight: bold;
+	font-size: 20px;
+}
+.detail-header > .detail-regDate > span{
+	color : black;
+}
+
+.detail-hr{
+	width : 1200px;
+	height : 5px;
+	background-color : black;
+	margin : auto;
+	margin-top : 30px;
+	margin-bottom : 30px;
+}
+.detail-hr1 {
+	width : 1200px;
+	background-color : #dadada;
+	margin : auto;
+	margin-top : 30px;
+	margin-bottom : 30px;
+}
+.detail-content{
+	width : 1200px;
+	border: 1px solid black;
+	margin : auto;
+	text-align: center;
+}
+.btn-list1{
+	width : 1200px;
+	border : 1px solid black;
+	margin : auto;
+	display: flex;
+	justify-content: space-between;
+}
+.btn-list1 > .prev-btn, .next-btn{
+	border : 0;
+	width : 70px;
+	height: 70px;
+	font-size: 30px;
+	border-radius: 50px;
+	cursor: pointer;
+	background-color: #dadada;
+}
+.news-list-btn{
+	width : 150px;
+	height: 70px;
+	border : 0;
+	background-color: #ffbc0d;
+	border-radius: 35px;
+	font-size: 20px;
+	font-weight: bold;
+	color : white;
+	border : 1px solid black;
+	cursor: pointer;
+}
+
+/* question-css */
+.question-container {
+	width: 1200px;
+	margin: 0 auto;
+}
+table > thead > tr > th:nth-child(1) {
+	width: 75px;
+}
+table > thead > tr > th:nth-child(3), th:nth-child(4), th:nth-child(5) {
+	width: 100px;
+}
+
+table > thead > tr > th:nth-child(2) {
+	width: 500px;
+}
