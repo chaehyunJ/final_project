@@ -1,4 +1,6 @@
+
 function paymentHandler(event) {
+//	const clientcomment = clientrqform.value
 	let menuArr = []
 	let ob = {}
 	let dbob = {}
@@ -19,7 +21,7 @@ function paymentHandler(event) {
 	else {  // x개 외 totalcount - x 개
 		paycount = totalcount - count
 	}
-	
+//	console.log(clientcomment)
 	//주문목록의 메뉴이름, 가격을  ' // ' 구분자로 가져와서 문자열에 저장
 	for(let i = 0; i<parent_orderArray.length; i++) {
 		if(i == parent_orderArray.length-1) {
@@ -52,12 +54,13 @@ function paymentHandler(event) {
 			'total' : total,
 			'orderstatus' : 'y',
 			'paystatus' : 'n',
-			'userid' : 't',
-			'orderaddress' : '경기 성남시 분당구 판교역로 235 104동 102호',
-			'phone' : '010-0912-1234',
+			'userid' : userid,
+			'orderaddress' : address,
+			'phone' : phone,
+			'requirement' : $('.clientrqform').val()
 	}
 	
-	
+	console.log(dbob)
 	
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp39136694'); 
@@ -90,7 +93,8 @@ function paymentHandler(event) {
 			// success.submit();
 			// 결제 성공 시 정보를 넘겨줘야한다면 body에 form을 만든 뒤 위의 코드를 사용하는 방법이 있습니다.
 			// 자세한 설명은 구글링으로 보시는게 좋습니다.
-			const url = cpath + '/payment' 
+			const url = cpath + '/payment'
+			dbob.paystatus = 'y'
 			const opt = {
 					method: 'POST',
 					body: JSON.stringify(dbob),
@@ -108,7 +112,24 @@ function paymentHandler(event) {
 		} else {
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;
+			const url = cpath + '/payment'
+			const opt = {
+					method: 'POST',
+					body: JSON.stringify(dbob),
+					headers: {
+						'Content-Type': 'application/json; charset=utf-8'
+					}
+			}
+			fetch(url,opt)
+			.then(resp=>resp.text())
+			.then(text=> {
+				console.log(text)
+			})
 		}
 		alert(msg);
 	});
+}
+
+function clientcomment(event) {
+	console.log('dd')
 }

@@ -35,6 +35,8 @@
 				 
 					<value>classpath:config/sqlmap-member.xml</value>
 					<value>classpath:config/sqlmap-search.xml</value>
+					<value>classpath:config/sqlmap-news.xml</value>
+					<value>classpath:config/sqlmap-store.xml</value>
 					
 <!-- 					<value>classpath:config/sqlmap-book.xml</value>  -->
 <!-- 					<value>classpath:config/sqlmap-file.xml</value> -->
@@ -52,4 +54,5 @@
 	<mybatis-spring:scan base-package="com.itbank.model"/>
 	<mybatis-spring:scan base-package="com.itbank.member"/>
 	<mybatis-spring:scan base-package="com.itbank.admin"/>
+	
 </beans>

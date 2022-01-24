@@ -1,4 +1,4 @@
-	package com.itbank.controller;
+package com.itbank.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,13 +49,20 @@ public class LoginController {
 		MemberDTO login = ms.login(dto);
 		session.setAttribute("login", login);
 		
-		if(url == null) {
-			mav.setViewName("redirect:/");
-		}
-		else {
-			mav.setViewName("redirect:" + url);
+		if(login == null) {
+			mav.setViewName("alert");
+			mav.addObject("url", "login");
+			mav.addObject("msg", "로그인에 실패하였습니다");
 		}
 		
+		else {
+			if(url == null) {
+				mav.setViewName("redirect:/");
+			}
+			else {
+				mav.setViewName("redirect:" + url);
+			}
+		}
 		
 		return mav;
 	}
@@ -106,10 +114,10 @@ public class LoginController {
 		
 		
 		System.out.println(member.getUserpw());
-		String pw = member.getUserpw().substring(0, 8);
-		
-		member.setUserpw(pw);
-		
+//		String pw = member.getUserpw().substring(0, 8);
+//		
+//		member.setUserpw(pw);
+//		
 		mav.addObject("member", member);
 		return mav;
 	}
@@ -136,4 +144,5 @@ public class LoginController {
 		System.out.println(row==1?"success":"fail");
 		return mav;	//추가되고 나서 목록에서 확인 할 수 있도록
 	}
+	
 }

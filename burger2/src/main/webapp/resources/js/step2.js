@@ -1,8 +1,9 @@
 function passchk1() {
-	if ($('#userpass').val().length < 8 || $('#userpass').val().length >= 15) {
+	if ($('#userpass').val().length < 8) {
 		$('.point2').text('')
-		$('.point2').text('8자리보다 크거나 15자리보다 작습니다')
+		$('.point2').text('비밀번호가 8자리보다 작습니다')
 		$('.point2').css('color', 'red')
+		$('#userpass').focus()
 	}
 	else{
 		$('.point2').text('')

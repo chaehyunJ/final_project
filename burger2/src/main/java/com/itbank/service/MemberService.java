@@ -18,6 +18,7 @@ public class MemberService {
 	
 	@Autowired private MemberDAO dao;
 	@Autowired private AdminDAO admindao;
+
 	
 	public String getAgreement(String path) throws IOException {
 		String agreement = "";
@@ -41,12 +42,13 @@ public class MemberService {
 		MemberDTO login = dao.login(dto);
 		return login;
 	}
+
 	// 관리자 로그인
 	public AdminDTO loginAdmin(AdminDTO dto) {
 		AdminDTO login = admindao.loginAdmin(dto);
 		return login;
-	}
-
+	}	
+	
 	// 회원가입
 	public int join(MemberDTO dto) {
 		int row = dao.join(dto);
@@ -88,5 +90,9 @@ public class MemberService {
 	public MemberDTO mailChk(String email) {
 		return dao.mailChk(email);
 	}
-
+	
+	// 회원탈퇴
+	public int deleteMember(String userpw) {
+		return dao.deleteMember(userpw);
+	}
 }

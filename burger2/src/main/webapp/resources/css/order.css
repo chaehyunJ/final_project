@@ -5,18 +5,20 @@ body {
 
 .show {
 	overflow: hidden; /*옆으로 튀어나오는거 */
-	width: 1000px;
+	width: 1100px;
 	margin: 0 auto;
 	flex-wrap: row;
 	position: relative;
+	margin-bottom: 30px;
 }
 
 .show-contain {
 	box-sizing: border-box;
-	width: 1000px;
-	flex-flow: wrap;
+	width: 1100px;
+	flex-flow: row wrap;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
+	margin-left: 92px;
 }
 
 .show-frame {
@@ -25,24 +27,38 @@ body {
 }
 
 .menu-border {
-	padding: 5px;
+	box-sizing: border-box;
 	text-align: center;
 	border: 1px solid black;
+	width: 230px;
+	height: 256px;
 }
 
 img {
 	height: 200px;
-	width: 225px;
+	width: 230px;
+	margin: 0 auto;
+}
+
+.imageOrderBtn {
 	cursor: pointer;
+	box-shadow: 0px 5px 5px #dadada;
+	border-bottom: 1px solid #dadada;
 }
 
 .slide-next {
+	color: rgba(0, 0, 0, 0.3);
+	font-size: 1.6rem;
+	font-weight: bold;
 	position: absolute;
 	top: 45%;
 	right: 0;
 }
 
 .slide-before {
+	color: rgba(0, 0, 0, 0.3);
+	font-size: 1.6rem;
+	font-weight: bold;
 	position: absolute;
 	top: 45%;
 	left: 0;
@@ -63,26 +79,35 @@ button:hover {
 	color: chartreuse;
 }
 /*상단 ul부터*/
-ul li {
+ul > li {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
+
+.selectMenu {
+	line-height: 50px;
+}
+
+
 
 .menuparent {
 	width: 1050px;
 	padding: 5px;
 	display: flex;
 	margin: 0 auto;
+	margin-bottom: 5px;
 }
 
 .menuparent li {
 	margin: 0 auto;
 	text-align: center;
-	padding: 10px;
 	border: 1px solid black;
 	width: 130px;
 	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
+	height: 50px;
 }
 
 .deleteBtn, span, .addminusBtn, .orderCount, .addminusBtn {
@@ -111,43 +136,18 @@ ul li {
 	font-size: 1.2rem;
 }
 
-.order-board {
-	border: 1px solid black;
-	margin: 0 auto;
-	width: 1000px;
-	display: flex;
-	justify-content: space-between;
-}
-
-#check_module {
-	width: 200px;
-	height: 200px;
-	border-radius: 0;
-}
-
-.back-btn {
-	border: 0;
-	outline: 0;
-	background-color: rgba(250, 150, 0, 0.897);
-	font-size: 20;
-	width: 100px;
-	height: 50px;
-	border-radius: 10px;
-	text-align: center;
-	line-height: 20px;
-}
-
 .parent_order {
-	/* 	margin-left : 400px; */
+	margin: 0 auto;
 	overflow-y: auto;
 	overflow-x: hidden;
 	background-color: #ced3ce;
 	height: 200px;
-	width: 700px;
+	width: 1000px;
 }
 
 .child_order {
 	margin-top: 10px;
+	width: 700px;
 	display: flex;
 }
 
@@ -158,7 +158,7 @@ ul li {
 }
 
 .menuname {
-	width: 200px;
+	width: 230px;
 	padding-left: 10px;
 }
 
@@ -184,13 +184,18 @@ ul li {
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
+	height: 190px;
 }
 
-.total0, .totalnotnull {
-	background-color: #783933;
+.payment {
+	border-radius: 5px;
+	background-color: #f7533e;
 	color: white;
 	width: 200px;
-	height: 51px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	cursor: pointer;
 }
 
 .deleteall {
@@ -202,6 +207,7 @@ ul li {
 	text-align: center;
 	margin: 0 auto;
 	line-height: 38px;
+	cursor: pointer;
 }
 
 .productcount {
@@ -211,4 +217,44 @@ ul li {
 	background-color: #C5C8CF;
 	width: 200px;
 	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+
+/* 뒤로가기 추가 */
+.back-form{
+	width : 1100px;  
+	border : 0px solid black; 
+	margin : auto;
+}
+.back-form > .back-btn{
+	width : 90px; 
+	border : 0px solid black; 
+	margin-top : 250px; 
+	margin-left : 100px; 
+	font-size: 18px;
+	border-radius: 5px;
+	background-color: #dadada;
+	text-align: center;
+}
+.back-form > .back-btn > a{
+	text-decoration: none;
+	color: inherit;
+}
+
+/*고객 요청사항*/
+.clientrequest {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
+}
+
+.clientrqform {
+	border-radius: 5px;
+	resize: none; 
+	margin-left: 35px;
+	background-color: rgb(226, 221, 221);
 }

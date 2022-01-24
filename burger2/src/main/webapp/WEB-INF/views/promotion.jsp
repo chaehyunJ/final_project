@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-
+	
     <div class="promotion-container">
         <div class="visual-area">
             <img src="${ cpath }/resources/src/promotion/promotion-main.jpg">

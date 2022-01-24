@@ -3,7 +3,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="find-form">
-	<p style="font-size: 18px; font-style: italic;">PW찾기</p>
+	<p>PW찾기 - 이메일 입력하기</p>
 	<input name="email" placeholder="이메일을 입력해주세요">
 	<input id="findIdBtn" type="button" value="입력하기">
 </div>

@@ -16,31 +16,11 @@ function totalfunction(counter) {
 	}
 	console.log(priceArr)
 	getTotalPriceDom(total)
-<<<<<<< HEAD
-	
-=======
 	selectproductcount(total)
->>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809
 }
 
 function getTotalPriceDom(total) {
 	console.log(total)
-<<<<<<< HEAD
-	if(total == 0) {
-		totalnotnull.innerHTML = ''
-		 total0.innerHTML = "결제하기"
-	}
-	else {
-		total0.innerHTML = ''
-		totalnotnull.innerHTML = total + '원 결제하기'
-	}
-}
-
-function payment(event) {
-	
-}
-
-=======
 	if(total <= 0) {
 		 payment.innerHTML = ''
 		 payment.innerHTML = "결제하기"
@@ -73,4 +53,3 @@ function selectproductcount(total) {
 		}
 	})
 }
->>>>>>> 9b87623806eed1a07b477a8833eb3e4bf3831809

@@ -2,6 +2,7 @@ package com.itbank.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -12,21 +13,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.component.Hash;
+import com.itbank.component.Paging;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.BurgerDTO;
+import com.itbank.model.DessertDTO;
 import com.itbank.model.DrinkDTO;
 import com.itbank.model.McMorningDTO;
 import com.itbank.model.McafeDTO;
+import com.itbank.model.NoticeDTO;
 import com.itbank.model.SideDTO;
+import com.itbank.model.StoreInfoDTO;
 import com.itbank.promotion.PromDTO;
 import com.itbank.service.ImageService;
 import com.itbank.service.MailService;
 import com.itbank.service.MemberService;
 import com.itbank.service.MenuService;
+import com.itbank.service.NoticeService;
+import com.itbank.service.OrderService;
+import com.itbank.service.StoreService;
 
 @RestController
 public class AjaxController {
@@ -36,20 +49,44 @@ public class AjaxController {
 	@Autowired private Hash hash;
 	@Autowired private MailService mailService;
 	@Autowired private ImageService is;
+	@Autowired private StoreService ss;
+	@Autowired private OrderService os;
+	@Autowired private NoticeService ns;
+	@Autowired private Paging paging;
 	
+	
+	// 프로모션
 	@GetMapping("/ajaxPromotion")
 	public List<PromDTO> promList(){
 		return ms.getList();
 	}
 	
-	@GetMapping("/ajaxBurger/{table}")
-	public List<HashMap<String, Object>> burgerList(@PathVariable String table){
-		return ms.getburgerList(table);
-	}
+//	@GetMapping("/ajaxBurger/{table}")
+//	public HashMap<String, Object> burgerList(@PathVariable String table){
+//		HashMap<String, Object> ls = new HashMap<String, Object>();
+//		List<HashMap<String, Object>> ls1 =  ms.getburgerList(table);
+//		List<HashMap<String, Object>> ls2 =  ms.getBackList(table);
+//		ls.put("ls1", ls1);
+//		ls.put("ls2", ls2);
+//		return ls;
+//	}
 	
-	@GetMapping("/ajaxBurgerList")
-	public List<HashMap<String, Object>> burList(){
-		return ms.burList();
+//	@GetMapping("/ajaxBurgerList")
+//	public List<HashMap<String, Object>> burList(){
+//		return ms.burList();
+//	}
+	
+	// 메뉴
+	@GetMapping("/ajaxMenu/{table}")
+	public HashMap<String, Object> getMenuList(@PathVariable String table){
+		HashMap<String, Object> list = new HashMap<String, Object>();
+		List<HashMap<String, Object>> tlist = ms.getTopList(table);
+		List<HashMap<String, Object>> mlist = ms.getMenuList(table);
+		
+		System.out.println(tlist);
+		list.put("tlist",tlist);
+		list.put("mlist",mlist);
+		return list;
 	}
 	
 	@GetMapping("/ajaxIdChk/{userid}")
@@ -95,7 +132,7 @@ public class AjaxController {
 	}
 	
 	@GetMapping("/dessert")
-	public List<DrinkDTO> dessert() {
+	public List<DessertDTO> dessert() {
 		return is.getdessertList();
 	}
 	
@@ -104,6 +141,13 @@ public class AjaxController {
 		return is.getmcafeList();
 	}
 	
+	@PostMapping("/payment")
+	public int payment(@RequestBody HashMap<String, String> map) {
+		if(os.payment(map) == 1) {
+			return 1;
+		}
+		else return 2;
+	}
 	
 	@GetMapping("/mailto/{email}/")
 	public HashMap<String, String> mailto(@PathVariable String email, HttpSession session) throws IOException{
@@ -295,6 +339,87 @@ public class AjaxController {
 		
 		return map;
 	}
+	
+	
+	// 지점 정보 검색 결과
+	@GetMapping("/ajaxStoreInfo/{info}")
+	public List<StoreInfoDTO> storeinfo(@PathVariable String info){
+		return ss.getStore(info);
+	}
+	
+	// store-cate
+	@PostMapping("/storeCate")
+	public HashMap<String, Object> storeCate(@RequestBody HashMap<String, Object> map1){
+
+		System.out.println(map1);
+		
+		Object cate = map1.get("cate");
+	
+		String cate1 = (String)cate;
+		
+		Object page1 = map1.get("page");
+		
+//		int page1 = (int)page;
+//		
+//		int offset = (page1 - 1) * 10;
+		
+		List<HashMap<String, Object>> list = ss.selectCate(map1);
+		
+		int page = 1;
+		
+		int total = ss.selectCount(cate1);
+		
+		int pageCount = ( total / 5 );
+		
+		pageCount = total % 5 == 0 ? pageCount : pageCount+1;
+		
+		int section = paging.section(page);
+		
+		int begin = paging.begin(section);
+		
+		int end = paging.end(pageCount);
+		
+		boolean prev = paging.prev(section);
+		
+		boolean next = paging.next(pageCount, end);
+		
+		System.out.println(list.size());
+		
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("list", list);
+		map.put("total", total);
+		map.put("pageCount", pageCount);
+		map.put("section", section);
+		map.put("begin", begin);
+		map.put("end", end);
+		map.put("prev", prev);
+		map.put("next", next);
+		map.put("cate", cate1);
+		
+		return map;
+	}
+	
+	// newsDetail 
+	@GetMapping("/btnNewsDetail/{num}")
+	public NoticeDTO nextNews(@PathVariable int num) {
+		NoticeDTO dto = ns.getNotice(num);
+		System.out.println(dto.getRegDate());
+		Date d1 = new Date(dto.getRegDate().getTime());
+		System.out.println(d1);
+		dto.setRegDate(d1);
+		System.out.println(dto.getRegDate());
+		return dto; 
+	}
+	
+//	@RequestMapping(value = "/searchNews", method= {RequestMethod.POST})
+//	public List<NoticeDTO> searchNews(@RequestParam(value="page", defaultValue = "1", required = false) int page, @RequestParam(value="search", required = false) String search){
+//		List<NoticeDTO> list = ns.searchList(search);
+//		
+//		return list;
+//	}
+//	
 	
 	// 예외처리
 	@ExceptionHandler(NullPointerException.class)

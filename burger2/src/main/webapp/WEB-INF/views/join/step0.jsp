@@ -4,20 +4,18 @@
 
 	<div class="join-address-container">
         <ul class="join-address-ul">
-            <li style="background-color: red">배달 주소 입력</li> 
-            <li style="background-color: #ffbc0d">추가 정보 입력</li>  
-            <li style="background-color: #264a36">가입 완료</li>
+            <li style="background-color: #BD0017">배달 주소 입력</li>
+            <li style="background-color: #ffc836">추가 정보 입력</li>
+            <li style="background-color: #264f36">가입 완료</li>
         </ul>
         <form class="join-address-form" action="${ cpath }/join/step1">
            <textarea style="width: 800px; height: 400px; resize: none;" readonly>${agreement }</textarea>
-			<div style="display: flex; justify-content:space-between;">
-				<p>
-					<label>
-						<input type="checkbox" name="agree">위 사항을 읽었으며, 약관에 동의합니다
-					</label>	
-				</p>
-	            <input id="addressSubmit" type="submit" value="다음">
-            </div>
+			<p>
+				<label>
+					<input type="checkbox" name="agree">위 사항을 읽었으며, 약관에 동의합니다
+				</label>	
+			</p>
+            <input id="addressSubmit" type="submit" value="다음">
         </form>
     </div>
 

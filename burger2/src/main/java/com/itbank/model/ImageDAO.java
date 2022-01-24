@@ -19,7 +19,7 @@ public interface ImageDAO {
 	List<DrinkDTO> getdrinkList();
 
 	@Select("select * from dessert_table")
-	List<DrinkDTO> getdessertList();
+	List<DessertDTO> getdessertList();
 
 	@Select("select * from mccafe_table")
 	List<McafeDTO> getmcafeList();

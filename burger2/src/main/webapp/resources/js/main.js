@@ -120,5 +120,5 @@ function slider(){
 function setMoveInterval(){
 	setInterval(function(){
 	    $('.main-slide > .side-btns > div').eq(1).click();
-	}, 3000)
+	}, 6000)
 }

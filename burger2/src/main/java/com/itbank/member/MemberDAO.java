@@ -6,12 +6,10 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-import com.itbank.admin.AdminDTO;
-
 @Repository
 public interface MemberDAO {
 
-	@Select("select * from user_table where userid = #{ userid } and userpw = #{ userpw }")
+	@Select("select * from user_table where userid = #{ userid } and userpw = #{ userpw } and withdrawal = 'n'")
 	MemberDTO login(MemberDTO dto);
 
 	@Select("select * from user_table where userid = #{ userid }")
@@ -41,5 +39,10 @@ public interface MemberDAO {
 
 	@Select("select * from user_table where email = #{ email}")
 	MemberDTO mailChk(String email);
+
+	@Update("update user_table set  "
+			+ "withdrawal='y'"
+			+ "where userpw = #{ userpw }")
+	int deleteMember(String userpw);
 	
 }

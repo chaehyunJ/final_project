@@ -16,24 +16,27 @@ import java.sql.Date;
 
 public class OrderListDTO {
 
-	private int orderSeq, price;
-	private Date orderDate;
-	private String userid, deliveryTime, orderAddress, phone, menus, paystatus, orderstatus, requirement;
+	private int orderSeq;
+	private Date orderDate, deliveryTime;
+	private String userid, price, total, orderAddress, phone, menus, paystatus, orderstatus, requirement;
 	
 	public int getOrderSeq() {
 		return orderSeq;
 	}
-	public int getPrice() {
-		return price;
-	}
 	public Date getOrderDate() {
 		return orderDate;
+	}
+	public Date getDeliveryTime() {
+		return deliveryTime;
 	}
 	public String getUserid() {
 		return userid;
 	}
-	public String getDeliveryTime() {
-		return deliveryTime;
+	public String getPrice() {
+		return price;
+	}
+	public String getTotal() {
+		return total;
 	}
 	public String getOrderAddress() {
 		return orderAddress;
@@ -56,17 +59,20 @@ public class OrderListDTO {
 	public void setOrderSeq(int orderSeq) {
 		this.orderSeq = orderSeq;
 	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
+	}
+	public void setDeliveryTime(Date deliveryTime) {
+		this.deliveryTime = deliveryTime;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public void setDeliveryTime(String deliveryTime) {
-		this.deliveryTime = deliveryTime;
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public void setTotal(String total) {
+		this.total = total;
 	}
 	public void setOrderAddress(String orderAddress) {
 		this.orderAddress = orderAddress;
@@ -86,6 +92,7 @@ public class OrderListDTO {
 	public void setRequirement(String requirement) {
 		this.requirement = requirement;
 	}
+	
 	
 	
 }

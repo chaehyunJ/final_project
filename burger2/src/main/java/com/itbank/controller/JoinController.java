@@ -60,16 +60,17 @@ public class JoinController {
 		String hashpw = hash.getHash(dto.getUserpw());
 		dto.setUserpw(hashpw);
 		
+		
 		int row = ms.join(dto);
 		if(row == 1) {
-			System.out.println("가입 성공");
+			System.out.println("회원가입 성공");
 			mav.setViewName("alert");
-			mav.addObject("msg", "가입 성공");
+			mav.addObject("msg", "회원가입 성공");
 			mav.addObject("url", "login");
 		
 		}
 		else {
-			System.out.println("가입 실패");
+			System.out.println("회원가입 실패");
 			mav.setViewName("alert");
 			mav.addObject("msg", "회원가입에 실패하였습니다!!");
 		}
