@@ -11,8 +11,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NoticeDAO {
 
-	@Select("select * from notice_table where flag ='bottom' order by notice_seq desc")
-	List<NoticeDTO> selectNotice();
+	@Select("select * from notice_table "
+			+ "where flag = 'bottom' "
+			+ "order by notice_seq desc "
+			+ "offset ${ offset } rows "
+			+ "fetch first 5 rows only")
+	List<HashMap<String, Object>> selectNotice(int offset);
 
 	@Select("select * from notice_table where notice_seq = #{ seq }")
 	NoticeDTO selectNews(int seq);
@@ -35,4 +39,19 @@ public interface NoticeDAO {
 			+ "#{cnt},"
 			+ "#{flag})")
 	int insert(NoticeDTO dto);
+
+	@Select("select count(*) count from notice_table where flag = 'bottom'")
+	int getTotal();
+
+	
+	List<HashMap<String, Object>> searchList(HashMap<String, Object> map);
+//
+//	@Select("select count(*) count from notice_table "
+//			+ "where flag = 'bottom' "
+//			+ "and content like '%${ search }%' "
+//			+ "order by notice_seq desc")
+	int searchTotal(String search);
+
+//	@Select("select * from notice_table where flag = 'bottom' and content like '%#{search}%'")
+//	List<NoticeDTO> searchList(String search);
 }

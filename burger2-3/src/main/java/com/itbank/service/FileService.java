@@ -15,7 +15,7 @@ public class FileService {
 	
 	@Autowired private NoticeDAO dao;
 
-	private String uploadPath = "D://upload";  
+	private String uploadPath = "C://upload";  
 	private File dir;
 	
 	public FileService() {

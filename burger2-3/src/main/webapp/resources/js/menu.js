@@ -1,7 +1,7 @@
 function getJson(table){
 	const url = cpath + '/ajaxMenu/' + table
 	const opt = {
-		method : 'GET',
+			method : 'GET',
 	}
 	fetch(url,opt)
 	.then(resp => resp.json())
@@ -9,6 +9,7 @@ function getJson(table){
 		getMenuList(table,json)
 	})
 }
+
 function getMenuList(table,json){
 	if(table.includes('MCMORNING'))
 		getMcmorning(json)
@@ -23,6 +24,7 @@ function getMenuList(table,json){
 	else
 		getDessert(json)
 }
+
 function getMcmorning(json){
 	let menu = ``
 	let top = ``
@@ -32,35 +34,69 @@ function getMcmorning(json){
 		top += `<p class="menu-text">`+dto.MCMORNING_TABLE_DESCRIPTION+`</p>`
 		top += `<ul class="menu-ul">`
 		top += 		`<li><a href="${cpath}">Home</a></li>`
-        top +=		`<li>•</li>`
-        top += 		`<li>Menu</li>`
-        top += 		`<li>•</li>`
-        top +=		`<li>맥모닝</li>`
-        top += `</ul>`
+		top +=		`<li>•</li>`
+		top += 		`<li>Menu</li>`
+		top += 		`<li>•</li>`
+		top +=		`<li>맥모닝</li>`
+		top += `</ul>`
 		})
 	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
-		menu += `<div class="menu-product-item">`
-		menu += `<div class="menu-product-img"><img src="`+dto.MCMORNING_IMAGE+`"></div>`
-		menu += `<div class="menu-product-name">`+dto.MCMORNING_NAME+`</div>`
+		menu += `<div class="menu-product-item" data-table="mcmorning" data-seq="`+dto.MCMORNING_SEQ+`">`
+		menu += `	<div class="menu-product-img"><img src="`+dto.MCMORNING_IMAGE+`"></div>`
+		menu += `	<div class="menu-product-name">`+dto.MCMORNING_NAME+`</div>`
 		menu += `</div>`
 		})
 	menuList.innerHTML = menu
+	
+	detailClick()
 }
+
 function getBurger(json){
 	let menu = ``
+	let top = ``
+	json.tlist.forEach(dto =>{
+		top += `<img class="menu-img" src="`+dto.BURGER_TABLE_BACKGROUND+`">`
+		top += `<h1 class="menu-title">버거</h1>`
+		top += `<p class="menu-text">`+dto.BURGER_TABLE_DESCRIPTION+`</p>`
+		top += `<ul class="menu-ul">`
+		top += 		`<li><a href="${cpath}">Home</a></li>`
+	    top +=		`<li>•</li>`
+	    top += 		`<li>Menu</li>`
+	    top += 		`<li>•</li>`
+	    top +=		`<li>버거</li>`
+	    top += `</ul>`
+		})
+	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
-		menu += `<div class="menu-product-item">`
+		menu += `<div class="menu-product-item" data-table="burger" data-seq="`+dto.BURGER_SEQ+`">`
 		menu += `<div class="menu-product-img"><img src="`+dto.BURGER_IMAGE+`"></div>`
 		menu += `<div class="menu-product-name">`+dto.BURGER_NAME+`</div>`
 		menu += `</div>`
 		})
 	menuList.innerHTML = menu
+	
+	detailClick()
 }
+
 function getSide(json){
 	let menu = ``
+	let top = ``
+	json.tlist.forEach(dto =>{
+		top += `<img class="menu-img" src="`+dto.SIDE_TABLE_BACKGROUND+`">`
+		top += `<h1 class="menu-title">사이드</h1>`
+		top += `<p class="menu-text">`+dto.SIDE_TABLE_DESCRIPTION+`</p>`
+		top += `<ul class="menu-ul">`
+		top += 		`<li><a href="${cpath}">Home</a></li>`
+	    top +=		`<li>•</li>`	
+	    top += 		`<li>Menu</li>`
+	    top += 		`<li>•</li>`
+	    top +=		`<li>사이드</li>`
+	    top += `</ul>`
+		})
+	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
-		menu += `<div class="menu-product-item">`
+		menu += `<div class="menu-product-item" data-table="side" data-seq="`+dto.SIDE_SEQ+`">`
 		let iArr = dto.SIDE_IMG.split(' // ')
 		if(iArr.length == 1){
 			menu += `<div class="menu-product-img"><img src="`+iArr[0]+`"></div>`			
@@ -80,11 +116,28 @@ function getSide(json){
 		menu += `</div>`
 	})
 	menuList.innerHTML = menu
+	
+	detailClick()
 }
+
 function getMccafe(json){
 	let menu = ``
+	let top = ``
+	json.tlist.forEach(dto =>{
+		top += `<img class="menu-img" src="`+dto.MCCAFE_TABLE_BACKGROUND+`">`
+		top += `<h1 class="menu-title">맥카페</h1>`
+		top += `<p class="menu-text">`+dto.MCCAFE_TABLE_DESCRIPTION+`</p>`
+		top += `<ul class="menu-ul">`
+		top += 		`<li><a href="${cpath}">Home</a></li>`
+	    top +=		`<li>•</li>`	
+	    top += 		`<li>Menu</li>`
+	    top += 		`<li>•</li>`
+	    top +=		`<li>맥카페</li>`
+	    top += `</ul>`
+	    })
+	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
-		menu += `<div class="menu-product-item">`
+		menu += `<div class="menu-product-item" data-table="mccafe" data-seq="`+dto.MCCAFE_SEQ+`">`
 		let iArr = dto.MCCAFE_IMG.split(' // ')
 		if(iArr.length == 1){
 			menu += `<div class="menu-product-img"><img src="`+iArr[0]+`"></div>`			
@@ -104,11 +157,28 @@ function getMccafe(json){
 		menu += `</div>`
 	})
 	menuList.innerHTML = menu
+	
+	detailClick()
 }
+
 function getDrink(json){
 	let menu = ``
+	let top = ``
+	json.tlist.forEach(dto =>{
+		top += `<img class="menu-img" src="`+dto.DRINK_TABLE_BACKGROUND+`">`
+		top += `<h1 class="menu-title">음료</h1>`
+		top += `<p class="menu-text">`+dto.DRINK_TABLE_DESCRIPTION+`</p>`
+		top += `<ul class="menu-ul">`
+		top += 		`<li><a href="${cpath}">Home</a></li>`
+	    top +=		`<li>•</li>`	
+	    top += 		`<li>Menu</li>`
+	    top += 		`<li>•</li>`
+	    top +=		`<li>음료</li>`
+	    top += `</ul>`
+	    })
+	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
-		menu += `<div class="menu-product-item">`
+		menu += `<div class="menu-product-item" data-table="drink" data-seq="`+dto.DRINK_SEQ+`">`
 		let iArr = dto.DRINK_IMG.split(' // ')
 		if(iArr.length == 1){
 			menu += `<div class="menu-product-img"><img src="`+iArr[0]+`"></div>`			
@@ -129,18 +199,75 @@ function getDrink(json){
 		menu += `</div>`
 	})
 	menuList.innerHTML = menu
+	
+	detailClick()
 }
+
 function getDessert(json){
 	let menu = ``
+	let top = ``
+	json.tlist.forEach(dto =>{
+		top += `<img class="menu-img" src="`+dto.DESSERT_TABLE_BACKGROUND+`">`
+		top += `<h1 class="menu-title">디저트</h1>`
+		top += `<p class="menu-text">`+dto.DESSERT_TABLE_DESCRIPTION+`</p>`
+		top += `<ul class="menu-ul">`
+		top += 		`<li><a href="${cpath}">Home</a></li>`
+	    top +=		`<li>•</li>`	
+	    top += 		`<li>Menu</li>`
+	    top += 		`<li>•</li>`
+	    top +=		`<li>디저트</li>`
+	    top += `</ul>`
+	    })
+	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
-		menu += `<div class="menu-product-item">`
+		menu += `<div class="menu-product-item" data-table="dessert" data-seq="`+dto.DESSERT_SEQ+`">`
 		menu += `<div class="menu-product-img"><img src="`+dto.DESSERT_IMG+`"></div>`
 		menu += `<div class="menu-product-name">`+dto.DESSERT_NAME+`</div>`
 		menu += `</div>`
 		})
 	menuList.innerHTML = menu
+	
+	detailClick()
 }
 
-	
+function detailClick(){
+	const detail = document.querySelectorAll('.menu-product-item')
+	detail.forEach(d =>{
+		d.onclick = (event) =>{
+			event.stopPropagation();
+			let target = event.target
+			while(target.classList.contains('menu-product-item') == false) {
+				target = target.parentNode
+			}
+			
+			let table = target.dataset.table
+			let seq = target.dataset.seq
+			
+			detailForm(table, seq)
+		}
+	})
+}
 
+function detailForm(tableValue, seqValue){
+	const form = document.createElement('form')
+	form.method = 'POST'
+	form.action = cpath + '/menu/detail'
+
+	const table = document.createElement('input')
+	const seq = document.createElement('input')
+
+	table.type = 'hidden'
+	table.name = 'table'
+	table.value = tableValue
+
+	seq.type = 'hidden'
+	seq.name = 'seq'
+	seq.value = seqValue
 	
+	form.appendChild(table)
+	form.appendChild(seq)
+	
+	document.body.appendChild(form)
+
+	form.submit()
+}

@@ -204,3 +204,181 @@ div{
 	border : 1px solid black;
 	cursor: pointer;
 }
+
+/* 2022-01-22 추가 */
+.news-paging{
+	width : 220px;
+	border: 1px solid black;
+	margin : auto;
+	margin-top : 20px;
+}
+.news-current-btn{
+	border : 0;
+	width : 25px;
+	height : 25px;
+	font-size : 20px;
+	background-color: white;
+	margin : auto;
+	cursor: pointer;
+}
+.news-current-btn:hover{
+	color : darkgrey;
+}
+.bold{
+	color : #f5bd43;
+}
+
+/* 2022-01-23 추가  */
+
+#onOffBox {
+    position: absolute;
+    visibility: hidden;
+}
+
+#boxLabel {
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #ddd;
+    transition-duration: 0.2s;
+    margin-left: -80px;
+}
+
+#boxLabel span {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    z-index: 1;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition-duration: 0.2s;
+}
+
+#boxLabel:before,
+#boxLabel:after{
+    position: absolute;
+    top: 0;
+    width: 34px;
+    font-size: 11px;
+    line-height: 34px;
+    color: #fff;
+    text-align: center;
+}
+
+#boxLabel:before {
+    left: 0;
+    content: 'ON';
+}
+
+#boxLabel:after {
+    right: 0;
+    content: 'OFF';
+}
+
+input[name="onOff"]:checked + #boxLabel {
+    background-color: #00c73c;
+}
+
+input[name="onOff"]:checked + #boxLabel span {
+    transform: translateX(26px);
+}
+
+.QnA-top{
+	width : 1200px;
+	height: 50px;
+	border : 0px solid black;
+	margin : auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.QnA-top > .QnA-top-left{
+	display: flex;
+}
+
+.QnA-top > .QnA-top-left > div > a > .QnA-write{
+	border : 0;
+	background-color: #ffbc0d;
+	color : white;
+	width : 120px;
+	height: 40px;
+	border-radius: 20px;
+	margin-right : 10px;
+	cursor: pointer;
+}
+
+.QnA-top > .QnA-top-left > div > .QnA-search{
+	border : 0;
+	background-color: #264a36;
+	color : white;
+	width : 120px;
+	height:  40px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.QnA-top > .QnA-top-right{
+	display: flex;
+}
+
+
+.QnA-top > .QnA-top-right > .QnA-onOff{
+	margin-left : -30px;
+}
+
+.QnA-result > select{
+	border : 1px solid #dadada;
+	width: 90px;
+	padding: 5px;
+}
+
+.QnA-result > select > option{
+	padding : 5px;
+	
+}
+
+.QnA-content-left{
+	display: flex;
+	width : 1200px;
+	border : 0px solid black;
+	margin : auto;
+	padding-top : 5px;
+	margin-top : 20px;
+	border-top : 1px solid black;
+	border-bottom: 1px solid #dadada;
+}
+.QnA-content-left > .QnA-content-result{
+	width : 200px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+	
+}
+.QnA-content-left > .QnA-content-title{
+	width : 600px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+	
+}
+.QnA-content-left > .QnA-content-writer{
+	width : 200px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+	
+}
+.QnA-content-left > .QnA-content-regDate{
+	width : 200px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+}

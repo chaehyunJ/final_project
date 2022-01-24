@@ -14,8 +14,8 @@ public class BoardService {
 
 	@Autowired private NoticeDAO dao;
 	
-	public List<NoticeDTO> getNotice() {
-		return dao.selectNotice();
+	public List<HashMap<String, Object>> getNotice(int offset) {
+		return dao.selectNotice(offset);
 	}
 
 	public NoticeDTO getNews(int seq) {
@@ -30,5 +30,7 @@ public class BoardService {
 	public int cntUpdate(HashMap<String, Object> map) {
 		return dao.cntUpdate(map);
 	}
+
+	
 
 }

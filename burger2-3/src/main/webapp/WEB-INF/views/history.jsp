@@ -16,7 +16,7 @@
 	<div class="myPage-History">
 		<div class="myPage-HistoryName"><h4>주문 내역</h4></div>
 <!-- 		<div class="myPage-HistoryDate"><h4>주문 일자 : </h4></div> -->
-		<table class="myPage-tableType01" border="0" cellpadding="15" cellspacing="10">
+		<table class="myPage-tableType01" border="1" cellpadding="15" cellspacing="0">
 			<thead>
 				<tr>
 					<th scope="col">주문 번호 :</th>
@@ -31,12 +31,9 @@
 					<td>${dto.orderDate}-${dto.orderSeq }</td>
 					<td>${dto.deliveryTime }</td>
 					<td>${dto.orderAddress } </td>
-				<td class="tdName">
+					<td class="tdName">
 						<dl class="myPage-menus">
-							<dt><strong class="myPage-menuName">${dto.menus }</strong></dt>
-							<dd>버거 : 행운 버거 골드</dd>
-							<dd>음료 : 코카 콜라 라지 </dd>
-							<dd>사이드 : 컬리 후라이 라지</dd>
+							<dd>${fn:replace(dto.menus,' // ','</dd><dd>') }</dd>
 						</dl>
 					</td>
 				</tr>

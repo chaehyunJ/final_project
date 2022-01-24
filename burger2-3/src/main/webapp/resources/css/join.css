@@ -20,7 +20,7 @@
 	width: 200px;
 	margin: 40px;
 	height: 60px;
-	font-size : 23px;
+	font-size : 20px;
 	line-height : 60px;
 	text-align: center;
 	border-radius: 30px;
@@ -130,7 +130,7 @@
 	width: 75px;
 	height: 35px;
 	border: 0px;
-	background-color: #ffbc0d;
+	background-color: #ffc836;
 	font-size: 14px;
 	color: black;
 	font-weight: bold;
@@ -141,7 +141,7 @@
 	width: 100px;
 	height: 35px;
 	border: 0px;
-	background-color: #ffbc0d;
+	background-color: #ffc836;
 	font-size: 14px;
 	color: black;
 	font-weight: bold;
@@ -150,12 +150,12 @@
 
 #mainSubmit {
 	width: 80px;
-	height: 50px;
+	height: 40px;
 	border: 0px;
-	background-color: #ffbc0d;
+	background-color: #ffc836;
 	font-size: 15px;
 	font-weight: bold;
-	color: black;
+	color: white;
 	border-radius: 3px;
 }
 
@@ -167,7 +167,7 @@
 	width: 75px;
 	height: 35px;
 	border: 0px;
-	background-color: #ffbc0d;
+	background-color: #ffc836;
 	font-size: 14px;
 	color: black;
 	font-weight: bold;

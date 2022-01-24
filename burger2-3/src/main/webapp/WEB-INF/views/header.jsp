@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="cpath">${ pageContext.request.contextPath }</c:set>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,6 @@
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/login.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/join.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/promotion.css">
-<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/menuList.css">
 
 <!-- 추가  -->
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/myPage.css">
@@ -26,6 +26,7 @@
 
 <script src="${ cpath }/resources/js/step2.js"></script>
 <script src="${ cpath }/resources/js/promotion.js"></script>
+<script src="${ cpath }/resources/js/store.js"></script>
 
 <!-- 혜린 추가  -->
 <script src="${ cpath }/resources/js/menu.js"></script>
@@ -86,11 +87,11 @@
                             </div>
                         </li>
                         <li class="top-menu-li">
-                            <a href="${ cpath }/board/news">Board</a>
+                            <a href="${ cpath }/board/news?page=1">Board</a>
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner"> 
                                    	<!--혜린 추가 내용  -->
-                                    <li><a href="${ cpath }/board/news">새로운소식</a></li>
+                                    <li><a href="${ cpath }/board/news?page=1">새로운소식</a></li>
                                     <li><a href="${ cpath }/board/question">문의사항</a></li>
                                 </ul>
                             </div>

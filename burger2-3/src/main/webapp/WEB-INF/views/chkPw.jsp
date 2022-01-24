@@ -17,6 +17,8 @@
 
 		<div class="chk-pw-form">
 			<form method="post">
+			<h3 class="myPage-privacy">비밀 번호 확인</h3>
+			<h4 class="myPage-privacy2">비밀번호 확인 후 접속 가능한 페이지 입니다.</h4>
 				<input type="password" name="userpw" placeholder="비밀번호를 입력하세요" required>
 				<input type="submit" value="입력">
 			</form>
