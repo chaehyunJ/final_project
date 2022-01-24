@@ -127,7 +127,6 @@
 	font-weight: bold;
 }
 
-
 /* 2022-01-21 추가 */
 .service-category{
 	display: flex;
@@ -156,4 +155,36 @@
 	padding: 0;
 	margin : 0;
 	text-align: center;
+}
+
+/* 2022-01-23 추가  */
+.store-address-name > div{
+	height : 150px;
+	border : 1px solid black;
+	font-size : 25px;
+	text-align : center;
+	align-items : cener;
+	padding-top : 60px;
+}
+.store-tel > div{
+	height : 150px;
+	border: 1px solid black;
+	text-align: center;
+	align-items: cener;
+	padding-top : 60px;
+}
+
+.store-open > div{
+	height : 150px;
+	border: 1px solid black;
+	text-align: center;
+	align-items: cener;
+	padding-top: 60px;
+}
+
+.store-service > div{
+	height : 150px;
+	border: 1px solid black;
+	text-align: center;
+	align-items: cener;
 }

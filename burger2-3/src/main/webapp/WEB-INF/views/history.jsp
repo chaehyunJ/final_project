@@ -16,7 +16,7 @@
 	<div class="myPage-History">
 		<div class="myPage-HistoryName"><h4>주문 내역</h4></div>
 <!-- 		<div class="myPage-HistoryDate"><h4>주문 일자 : </h4></div> -->
-		<table class="myPage-tableType01" border="0" cellpadding="15" cellspacing="10">
+		<table class="myPage-tableType01" border="1" cellpadding="15" cellspacing="0">
 			<thead>
 				<tr>
 					<th scope="col">주문 번호 :</th>
@@ -31,12 +31,9 @@
 					<td>${dto.orderDate}-${dto.orderSeq }</td>
 					<td>${dto.deliveryTime }</td>
 					<td>${dto.orderAddress } </td>
-				<td class="tdName">
+					<td class="tdName">
 						<dl class="myPage-menus">
-							<dt><strong class="myPage-menuName">${dto.menus }</strong></dt>
-							<dd>버거 : 행운 버거 골드</dd>
-							<dd>음료 : 코카 콜라 라지 </dd>
-							<dd>사이드 : 컬리 후라이 라지</dd>
+							<dd>${fn:replace(dto.menus,' // ','</dd><dd>') }</dd>
 						</dl>
 					</td>
 				</tr>
@@ -47,42 +44,4 @@
 	</div>
 </div>
 
-   <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-left">
-                <ul>
-                    <li><a>개인정보 처리방침</a></li>
-                    <li><a>위치정보 이용약관</a></li>
-                    <li><a>QnABoard</a></li>
-                </ul>
-            </div>
-            <div class="footer-right">
-                <ul>
-                    <li>Coded Burger</li>
-                    <li>공동대표 : 5조 전원</li>
-                    <li>사업자등록번호 : 1234-56-789</li>
-                    <li>회사전화 : 010-7374-5328</li>
-                    <li>COPYRIGHT © 2019 ALL RIGHTS RESERVED BY McDonald's.</li>
-                </ul>
-            </div>
-            <div class="footer-icon">
-                <a href=""><img src="${ cpath }/resources/src/footer/fb.png" alt=""></a>
-                <a href=""><img src="${ cpath }/resources/src/footer/insta.png" alt=""></a>
-                <a href=""><img src="${ cpath }/resources/src/footer/youtube.png" alt=""></a>
-            </div>
-        </div>
-    </footer>
-
-<script>
-// 	const list = '${ list }'
-// 	console.log(list)
-// 	for(let i = 0; i < list.length; i++){
-// // 		console.log(list[i])
-// 	}
-	
-// 	for(key in list){
-// 		const value = list[key]
-// 		console.log(value)
-// 	}
-</script>
-
+<%@ include file="footer.jsp" %>

@@ -9,16 +9,15 @@
 			<ul class="myPage-navPath">
 				<li><a href="${cpath }/myPage">주문 조회</a></li>
 				<li><a href="${cpath }/history">주문 내역</a></li>
-<%-- 				<li><a href="${cpath }/update/${login.userid}">회원 정보</a></li> --%>
 				<li><a href="${ cpath }/chkPw">회원정보</a></li>
+				<li class="deleteBtn"><a href="${ cpath }/chkDelete">회원탈퇴</a></li>
 			</ul>
 	   	</div>
 
 
 		<div class="chk-pw-form">
 			<form method="post">
-			<h3 class="myPage-privacy">비밀 번호 확인</h3>
-			<h4 class="myPage-privacy2">비밀번호 확인 후 접속 가능한 페이지 입니다.</h4>
+				<input type="hidden" name="userid" value="${login.userid }">
 				<input type="password" name="userpw" placeholder="비밀번호를 입력하세요" required>
 				<input type="submit" value="입력">
 			</form>

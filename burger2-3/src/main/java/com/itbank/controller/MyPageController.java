@@ -4,6 +4,7 @@ package com.itbank.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,6 +123,41 @@ public class MyPageController {
 			mav.setViewName("alert");
 			mav.addObject("msg", "비밀번호가 일치하지 않습니다");
 			mav.addObject("url", "chkPw");
+		}
+		return mav;
+	}
+	
+	
+	// 회원탈퇴 추가
+	
+	@GetMapping("/chkDelete")
+	public String chkDelete() {
+		return "chkDelete";
+	}
+	
+	@PostMapping("/chkDelete")
+	public ModelAndView chkDelete(@RequestParam String userpw, HttpSession session, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		MemberDTO member = (MemberDTO)session.getAttribute("login");
+		String userid = member.getUserid();
+		System.out.println(userid);
+		
+		String member1 = member.getUserpw();
+		String pw1 = hash.getHash(userpw);
+		
+	
+		MemberDTO chkPw = ms.chkMember(pw1);
+		
+		String chkPw1 = chkPw.getUserpw();
+		
+		if(member1.equals(chkPw1)) {
+			mav.setViewName("redirect:deleteMember");		
+		}
+		else {
+			mav.setViewName("alert");
+			mav.addObject("msg", "비밀번호가 일치하지 않습니다");
+			mav.addObject("url", "chkDelete");
 		}
 		return mav;
 	}

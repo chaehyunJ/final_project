@@ -18,9 +18,13 @@ public class StoreService {
 		return dao.selectStore(info);
 	}
 
-	
-	public List<HashMap<String, Object>> selectCate(String cate) {
-		return dao.selectCate(cate);
+	public List<HashMap<String, Object>> selectCate(HashMap<String, Object> map1) {
+		return dao.selectCate(map1);
+	}
+
+	public int selectCount(String cate1) {
+		
+		return dao.selectCount(cate1);
 	}
 
 }

@@ -11,17 +11,32 @@
 	width: 10%;
 	min-width: 160px;
 	margin-right: 0px;
+	margin-left:10px;
 }
 .myPage-table {
 	border: 1px solid white;
 	margin-left: 180px;
+		width: 900px;
+	
 }
 .myPage-tableType01{
-	border: 1px solid black;
+	border: 1px solid #dadada;
 	justify-content: center;
-	text-align: left;
+	text-align: center;
+	width: 1000px;
+	border-collapse: collapse;
 }
-
+.myPage-tableType02{
+	border: 1px solid #dadada;
+	width: 1000px;
+	border-collapse: collapse;
+}
+.myPage-tableType02 th{
+	width: 150px;	
+}
+.myPage-tableType02 td{
+	width: 300px;	
+}
 
 .myPage-tableType01 input{
 	width: 200px;
@@ -54,7 +69,7 @@
     background: #f5bd43;
 }
 .myPage-History {
-	margin-left: 180px;	
+	margin-left: 180px;
 }
 .myPage-tableType01 dd:before {
     content: '';
@@ -67,7 +82,7 @@
     background: #f5bd43;
 }
 .myPage-tableType01 dd{
-	margin-inline-start: 00px;
+	margin-inline-start: 0px;
 	text-align: left;
 }
 .memberInfo-wrap{
@@ -77,23 +92,22 @@
 /* chkPw */
 .chk-pw{
 	display: flex;
-	border : 1px solid black;
-	width : 1200px;
-	margin : auto;
-	margin-top : 20px;
-	margin-bottom: 200px;
+	min-height: 600px;
 }
 
 .chk-pw-form{
 	width : 500px;
-	border : 1px solid black;
+	border : 3px solid #f5bd43;
+	border-radius: 10px;
 	margin : auto;
 	margin-top : 50px;
 	margin-bottom: 80px;
 	text-align: center;
+	margin-left: 400px;
+	height: 250px;
 }
 .chk-pw-form > form > input[name="userpw"]{
-	width : 350px;
+	width : 300px;
 	height: 50px;
 	border : 0;
 	border-bottom: 1px solid #dadada;
@@ -108,4 +122,11 @@
 	font-size: 18px;
 	font-weight: bold;
 	color : white;
+}
+.myPage-privacy2 {
+	margin-bottom: 50px;
+	color: grey;
+}
+.address-result {
+	width: 500px;
 }

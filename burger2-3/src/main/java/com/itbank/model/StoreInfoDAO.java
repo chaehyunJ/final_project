@@ -11,7 +11,14 @@ public interface StoreInfoDAO {
 
 	List<StoreInfoDTO> selectStore(String info);
 
-	@Select("select * from storeinfo_table  where ${ cate } = 'y' order by store_seq")
-	List<HashMap<String, Object>> selectCate(String cate);
+	@Select("select* from storeinfo_table "
+			+ "where ${ cate } = 'y' "
+			+ "order by store_seq "
+			+ "offset ${ offset } rows "
+			+ "fetch first 10 rows only")
+	List<HashMap<String, Object>> selectCate(HashMap<String, Object> map1);
+
+	@Select("select count(*) count from storeinfo_table where ${ cate1 } = 'y'")
+	int selectCount(String cate1);
 
 }

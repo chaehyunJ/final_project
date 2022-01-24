@@ -1,5 +1,8 @@
 package com.itbank.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,22 @@ public class NoticeService {
 	public NoticeDTO getNotice(int num) {
 		
 		return dao.nextNotice(num);
+	}
+//
+//	public List<NoticeDTO> searchList(String search) {
+//		return dao.searchList(search);
+//	}
+
+	public List<HashMap<String, Object>> searchList(HashMap<String, Object> map) {
+		return dao.searchList(map);
+	}
+	
+	public int getTotal() {
+		return dao.getTotal();
+	}
+
+	public int searchTotal(String search) {
+		return dao.searchTotal(search);
 	}
 
 }

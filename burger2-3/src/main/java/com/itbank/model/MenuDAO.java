@@ -17,4 +17,7 @@ public interface MenuDAO {
 
 	@Select("select count(*) count from ${ table }_table")
 	int countList(String table);
+
+	@Select("select * from ${table}TABLE where ${table}SEQ = ${seq}")
+	List<HashMap<String, Object>> selectDtailList(HashMap<String, Object> map);
 }
