@@ -52,6 +52,7 @@ public interface NoticeDAO {
 //			+ "order by notice_seq desc")
 	int searchTotal(String search);
 
+
 //	@Select("select * from notice_table where flag = 'bottom' and content like '%#{search}%'")
 //	List<NoticeDTO> searchList(String search);
 }

@@ -21,6 +21,9 @@
 	        	<div><button class="QnA-search">나의 Q&A 조회</button></div>
         	</div>
         	<div class="QnA-top-right">
+        		<div class="QnA-onOff-check">
+        			<span>내Q&A보기</span>
+        		</div>
 	        	<div class="QnA-onOff">
 		        	<input type="checkbox" id="onOffBox" name="onOff">
 					<label for="onOffBox" id="boxLabel"><span></span></label>
@@ -32,6 +35,7 @@
 	        			<option>답변완료</option>
 	        		</select>
 	        	</div>
+	        	
         	</div>
         </div>
         
@@ -42,13 +46,14 @@
         		<div class="QnA-content-writer">작성자</div>
         		<div class="QnA-content-regDate">작성일</div>
         	</div>
-        
-        	<div class="QnA-content-inner">
-        		<div class="QnA-inner-result"></div>
-        		<div class="QnA-inner-title"></div>
-        		<div class="QnA-inner-writer"></div>
-        		<div class="QnA-inner-regDate"></div>
-        	</div>
+<%-- 	        <c:forEach> --%>
+	        	<div class="QnA-content-inner">
+	        		<div class="QnA-inner-result"></div>
+	        		<div class="QnA-inner-title"></div>
+	        		<div class="QnA-inner-writer"></div>
+	        		<div class="QnA-inner-regDate"></div>
+	        	</div>
+<%-- 	        </c:forEach> --%>
         </div>
         
 </div>

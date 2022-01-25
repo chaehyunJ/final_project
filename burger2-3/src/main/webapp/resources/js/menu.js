@@ -43,7 +43,7 @@ function getMcmorning(json){
 	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
 		menu += `<div class="menu-product-item" data-table="mcmorning" data-seq="`+dto.MCMORNING_SEQ+`">`
-		menu += `	<div class="menu-product-img"><img src="`+dto.MCMORNING_IMAGE+`"></div>`
+		menu += `	<div class="menu-product-img"><img src="`+dto.MCMORNING_IMG+`"></div>`
 		menu += `	<div class="menu-product-name">`+dto.MCMORNING_NAME+`</div>`
 		menu += `</div>`
 		})
@@ -70,7 +70,7 @@ function getBurger(json){
 	topList.innerHTML = top
 	json.mlist.forEach(dto =>{
 		menu += `<div class="menu-product-item" data-table="burger" data-seq="`+dto.BURGER_SEQ+`">`
-		menu += `<div class="menu-product-img"><img src="`+dto.BURGER_IMAGE+`"></div>`
+		menu += `<div class="menu-product-img"><img src="`+dto.BURGER_IMG+`"></div>`
 		menu += `<div class="menu-product-name">`+dto.BURGER_NAME+`</div>`
 		menu += `</div>`
 		})

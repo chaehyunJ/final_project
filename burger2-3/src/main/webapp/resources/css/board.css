@@ -324,7 +324,11 @@ input[name="onOff"]:checked + #boxLabel span {
 .QnA-top > .QnA-top-right{
 	display: flex;
 }
-
+.QnA-top > .QnA-top-right > .QnA-onOff-check{
+	position: absolute;
+	margin-left : -200px;
+	padding-top : 5px;
+}
 
 .QnA-top > .QnA-top-right > .QnA-onOff{
 	margin-left : -30px;
@@ -381,4 +385,93 @@ input[name="onOff"]:checked + #boxLabel span {
 	border : 0px solid black;
 	text-align: center;
 	padding-top : 20px;
+}
+
+/* 2022-01-24 추가  */
+
+.QnA-write-form{
+	width : 740px;
+	height : 400px;
+	border : 1px solid black;
+	margin : auto;
+}
+
+.QnA-write-form > form > .QnA-write-top{
+	width : 690px;
+	border : 1px solid black;
+	marign : auto;
+}
+
+.QnA-write-form > form > .QnA-write-top >  .QnA-write-title{
+	width : 500px;
+	height: 40px;
+	border : 0;
+	border-bottom: 1px solid #dadada;
+	margin-left: 5px;
+}
+.QnA-write-form > form  > .QnA-write-top > .QnA-write-title:focus{
+	outline : none;
+}
+
+.QnA-write-form > form > .QnA-write-content{
+	width : 690px;
+	height: 230px;
+	border : 0px solid black;
+	border : 1px solid #dadada;
+	margin-top : 20px;
+	margin-left : 20px;
+}
+
+.QnA-write-form > form > select[name="qnaType"]{
+	width : 120px;
+	height: 40px;
+	padding : 5px;
+}
+
+.QnA-write-form > form > .QnA-write-content > p{
+	width : 60px;
+	border: 1px solid black;
+	margin-left : 600px;
+	margin-top : 5px;
+}
+
+.QnA-write-form > form > .QnA-write-content > .QnA-write-content1{
+	resize: none;
+	width : 650px;
+	height: 170px;
+	margin : auto;
+	margin-left : 10px;
+	margin-top : 15px;
+}
+
+.QnA-write-form > form > input[type="submit"]{
+	width : 150px;
+	height: 50px;
+	border :0;
+	border-radius: 25px;
+	background-color: #ffbc0d;
+	margin-left : 560px;
+	color : white;
+	font-size: 20px;
+	margin-top : 20px;
+	
+}
+.QnA-write-backBtn {
+	width : 100px;
+	height: 50px;
+	border : 0px solid black;
+	position: absolute;
+	margin-top : -50px;
+	margin-left : 25px;
+}
+.QnA-write-backBtn > a > .QnA-write-backBtn1{
+	border: 0;
+	width : 100px;
+	height: 50px;
+	background-color : #ffbc0d;
+	border-radius: 25px;
+	margin-bottom: 35px;
+	color : white;
+	cursor: pointer;
+	font-size: 20px;
 }

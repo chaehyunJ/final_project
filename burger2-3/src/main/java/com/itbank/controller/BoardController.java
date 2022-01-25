@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.admin.AdminDTO;
 import com.itbank.component.Paging;
+import com.itbank.member.MemberDTO;
 import com.itbank.model.NoticeDTO;
+import com.itbank.model.QnaBoardDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.FileService;
 import com.itbank.service.MemberService;
@@ -194,13 +197,49 @@ public class BoardController {
 	@GetMapping("/question")
 	public ModelAndView question() {
 		ModelAndView mav = new ModelAndView();
+		
+		// 아직 미구현
+//		List<QnaBoardDTO> list = bs
+		
 		return mav;
 	}
 	
 	
+	// qnaWrite get
 	@GetMapping("/qnaWrite")
-	public ModelAndView qnaWrite() {
+	public ModelAndView qnaWrite(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		MemberDTO dto =  (MemberDTO)session.getAttribute("login");
+		mav.addObject("login", dto);
+		
+		return mav;
+	}
+	
+	// 2022-01-24 추가
+	
+	@PostMapping("/qnaWrite")
+	public ModelAndView qnaWrite(HttpServletRequest request, QnaBoardDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		
+		// client ip 주소 넣어주기
+		String ipAdd = request.getRemoteAddr();
+		dto.setIpAddress(ipAdd);
+		
+		int row = bs.qnaInsert(dto);
+		
+		System.out.println(row);
+		
+		if(row == 1) {
+			mav.setViewName("alert");
+			mav.addObject("msg", "작성완료");
+			mav.addObject("url", "board/question");
+		}
+		else {
+			mav.setViewName("alert");
+			mav.addObject("msg", "작성실패");
+			mav.addObject("url", "qnaWrite");
+		}
 		
 		return mav;
 	}
