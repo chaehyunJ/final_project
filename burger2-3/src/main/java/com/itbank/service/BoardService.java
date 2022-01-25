@@ -10,12 +10,16 @@ import com.itbank.model.NoticeDAO;
 import com.itbank.model.NoticeDTO;
 import com.itbank.model.QnaBoardDAO;
 import com.itbank.model.QnaBoardDTO;
+import com.itbank.model.ReplyDAO;
+import com.itbank.model.ReplyDTO;
 
 @Service
 public class BoardService {
 
 	@Autowired private NoticeDAO dao;
 	@Autowired private QnaBoardDAO qdao;
+	@Autowired private ReplyDAO rdao;
+	
 	
 	public List<HashMap<String, Object>> getNotice(int offset) {
 		return dao.selectNotice(offset);
@@ -36,6 +40,23 @@ public class BoardService {
 
 	public int qnaInsert(QnaBoardDTO dto) {
 		return qdao.qnaInsert(dto);
+	}
+
+	public List<QnaBoardDTO> qnaList() {
+		return qdao.qnaList();
+	}
+
+	// 미답변 QnA 가져오기
+	public List<QnaBoardDTO> qnaCheck() {
+		return qdao.qnaCheck();
+	}
+
+	public int replyInsert(ReplyDTO dto) {
+		return rdao.insert(dto);
+	}
+
+	public int qnaResult(int seq) {
+		return qdao.resultUpdate(seq);
 	}
 
 	

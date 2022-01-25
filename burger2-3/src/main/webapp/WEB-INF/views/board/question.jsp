@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
+<%-- <p>${ list }</p> --%>
 <div class="board-container">
         <div class="board-area" >
             <h1 class="board-title">문의사항</h1>
@@ -46,16 +47,18 @@
         		<div class="QnA-content-writer">작성자</div>
         		<div class="QnA-content-regDate">작성일</div>
         	</div>
-<%-- 	        <c:forEach> --%>
-	        	<div class="QnA-content-inner">
-	        		<div class="QnA-inner-result"></div>
-	        		<div class="QnA-inner-title"></div>
-	        		<div class="QnA-inner-writer"></div>
-	        		<div class="QnA-inner-regDate"></div>
-	        	</div>
-<%-- 	        </c:forEach> --%>
+        	
+        	<c:forEach var="ls" items="${ list }">        	
+        		<div class="QnA-content-inner">
+					<div class="QnA-inner-result">${ ls.result == 'n' ? '미답변' : '답변완료' }</div>
+					<div class="QnA-inner-title">${ ls.title }</div>
+					<div class="QnA-inner-writer">${ ls.writer }</div>
+					<div class="QnA-inner-regDate">${ ls.regDate }</div>
+				</div>
+			</c:forEach>
         </div>
-        
+
+		
 </div>
 </body>
 </html>

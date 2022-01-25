@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class NoticeDTO {
 
 	private int notice_seq, cnt;
-//	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date regDate;
 	private String title, writer, content, flag;
 	private MultipartFile uploadFile;

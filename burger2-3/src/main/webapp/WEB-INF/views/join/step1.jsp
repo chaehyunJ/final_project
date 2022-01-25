@@ -4,13 +4,13 @@
 
 	<div class="join-address-container">
         <ul class="join-address-ul">
-            <li style="background-color: red">배달 주소 입력</li> 
-            <li style="background-color: #ffbc0d">추가 정보 입력</li>  
-            <li style="background-color: #264a36">가입 완료</li>
+            <li style="background-color: #BD0017">배달 주소 입력</li>
+            <li style="background-color: #ffc836">추가 정보 입력</li>
+            <li style="background-color: #264f36">가입 완료</li>
         </ul>
         <form class="join-address-form" action="${ cpath }/join/step2">
             <p>지역명</p>
-            <input id="addressInput" type="text" name="addressName" placeholder="지번, 도로명, 건물명으로 입력해주세요" readonly>
+            <input id="addressInput" type="text" name="addressName" placeholder="지번, 도로명, 건물명으로 입력해주세요" required>
             <hr>
             <p>상세주소</p>
             <input id="detailAddressInput" type="text" name="adressDetail" placeholder="나머지 주소를 입력해주세요" required>

@@ -3,8 +3,8 @@
 <%@ include file="header.jsp" %>
 
 	<div class="login-form">
+	        <button class="admin-login">관리자로그인</button>
         <form method="POST">
-        	<a href="${ cpath }/login"><button class="admin-login">관리자로그인</button></a>
             <p class="login-p"><input class="login-input" type="text" name="adminid" placeholder="ID" style="width : 240px;"></p>
             <p class="login-p"><input class="login-input" type="password" name="adminpw" placeholder="PW" style="width : 240px;" ></p>
             <div class="find-btn">	

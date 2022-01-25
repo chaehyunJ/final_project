@@ -4,9 +4,9 @@
 
 <div class="join-main-container">
         <ul class="join-address-ul">
-            <li style="background-color: red">배달 주소 입력</li>
-            <li style="background-color: #ffbc0d">추가 정보 입력</li>
-            <li style="background-color: #264a36">가입 완료</li>
+            <li style="background-color: #BD0017">배달 주소 입력</li>
+            <li style="background-color: #ffc836">추가 정보 입력</li>
+            <li style="background-color: #264f36">가입 완료</li>
         </ul>
         <div class="required-inputs"><span class="required-input">*</span>&nbsp;: 필수입력 </div>
         <form class="join-main-form" method="POST">
@@ -14,14 +14,14 @@
         	<input type="hidden" name="address" value="${ param.addressName } ${ param.adressDetail }">
             <input type="hidden" name="usergrade" value="회원">
             <p>ID <span class="required-input">*</span></p>
-            <input type="text" name="userid" placeholder="ID를 입력해 주세요" required autofocus autocomplete="off">
+            <input class="username_input" type="text" name="userid" check_result="fail" placeholder="ID를 입력해 주세요" required autofocus autocomplete="off">
             <input id="idChkBtn" type="button" value="중복확인">
             <p id="idChkResult"></p>
             <p>비밀번호 <span class="required-input">*</span></p>
-            <input id="userpass" type="password" name="userpw" placeholder="비밀번호를 입력해주세요" required autocomplete="off">
+            <input id="userpass" type="password" name="userpw" placeholder="비밀번호를 입력해주세요" required maxlength="15" autocomplete="off">
             <p class="point2">※ 비밀번호는 총 8자에서 15자까지 입력가능</p>
             <p>비밀번호 확인</p>
-            <input id="userpasschk" type="password" name="sm_pw_chk" placeholder="동일하게 입력해주세요." required maxlength="8" autocomplete="off"/>
+            <input id="userpasschk" type="password" name="sm_pw_chk" placeholder="동일하게 입력해주세요." required maxlength="15" autocomplete="off"/>
             <p class="point successPwChk"></p>
             <p>성함 <span class="required-input">*</span></p>
             <input type="text" name="username" placeholder="성함을 입력해주세요" required autocomplete="off">
@@ -37,7 +37,7 @@
             <input id="mainBtn" type="button" value="인증번호발송">
             <p id="emailAuth"></p>
             <p>이메일 인증 <span class="required-input">*</span></p>      
-            <input id= "authResult" type="text" name="authresult" placeholder="인증번호 입력">
+            <input id= "authResult" type="text" name="authresult" placeholder="인증번호 입력" required>
   			<input id="authChkBtn" type="button" value="인증확인">
   			<p id="emailResult"></p>
             <hr>
@@ -83,7 +83,8 @@
 		const authChkBtn = document.getElementById('authChkBtn') 
     	const emailResult = document.getElementById('emailResult')
 		const authInput = document.querySelector('input[name="authresult"]')
-    	
+    	const mainSubmit = document.getElementById('mainSubmit')
+		
 		// 헤더에 form으로 검색을 해서 이렇게 선택자로 들어와야 함
 		const form = document.querySelector('.join-main-form')
     	console.log(form)
@@ -102,9 +103,14 @@
     		.then(resp => resp.json())
     		.then(json => {
     			console.log(json)
+    			
     			msg.innerText = json.msg
     			msg.style.color = json.color
     			msg.style.fontWeight = 'bold'
+    			if(json.color == 'blue') {
+    				$('.username_input').attr("check_result", "success");
+    			}
+    			
     			document.querySelctor('input[name="'+ json.focus +'"]').select()
     		})
     	}
@@ -149,11 +155,25 @@
     				form.appendChild(emailAuth)
     			}
     			else{
-    				emailResult.innerText = json.message
+    				emailResult.innerText = json.mess
     				emailResult.style.color = 'red'
     				email.select()
     			}
     		})
+    	}
+    	
+    	mainSubmit.onclick = function(event) {
+    		event.preventDefault()
+    		
+    		if ($('.username_input').attr("check_result") == "fail"){
+    		    alert("아이디 중복체크를 해주시기 바랍니다.");
+    		    $('.username_input').focus();
+    		    return false;
+    		  }
+    		else {
+    			form.submit();
+    			return true;
+    		}
     	}
     	
     	console.log(userid)
@@ -163,6 +183,12 @@
         $('#userpass').blur(passchk1) 
     	
     	$("#userpasschk").blur(passchk2) 
+    	
+    	$('#idChkBtn').onclick(function() {
+    		$('#idChkBtn').attr("check_result", "success");
+    	})
+    	
+    	
     </script>
 </body>
 </html>

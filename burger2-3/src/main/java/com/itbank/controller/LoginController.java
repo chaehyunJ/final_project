@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,13 +49,20 @@ public class LoginController {
 		MemberDTO login = ms.login(dto);
 		session.setAttribute("login", login);
 		
-		if(url == null) {
-			mav.setViewName("redirect:/");
-		}
-		else {
-			mav.setViewName("redirect:" + url);
+		if(login == null) {
+			mav.setViewName("alert");
+			mav.addObject("url", "login");
+			mav.addObject("msg", "로그인에 실패하였습니다");
 		}
 		
+		else {
+			if(url == null) {
+				mav.setViewName("redirect:/");
+			}
+			else {
+				mav.setViewName("redirect:" + url);
+			}
+		}
 		
 		return mav;
 	}
@@ -136,4 +144,8 @@ public class LoginController {
 		System.out.println(row==1?"success":"fail");
 		return mav;	//추가되고 나서 목록에서 확인 할 수 있도록
 	}
+	
+
+		
+		
 }

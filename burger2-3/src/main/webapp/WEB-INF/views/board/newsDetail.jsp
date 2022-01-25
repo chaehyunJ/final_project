@@ -28,6 +28,15 @@
 </div>
 	<hr class="detail-hr">
 	<div class="detail-content">${ dto.content }</div>
+
+	<!-- admin로그인 시 수정 삭제 가능  -->
+	<c:if test="${not empty adminlogin }">
+	<div class="btn-list">
+		<button id="news-modify">수정</button>
+		<button id="news-delete">삭제</button>
+	</div>
+	</c:if>
+	
 	<hr class="detail-hr1">
 	<div class="btn-list1">
 		<button class="prev-btn">&lt;</button>

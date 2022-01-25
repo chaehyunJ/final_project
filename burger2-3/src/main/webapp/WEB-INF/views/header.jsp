@@ -20,6 +20,8 @@
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/store.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/search.css">
+<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/adminPage.css">
+
 </head>
 <body>
 <script src="${ cpath }/resources/js/main.js"></script>
@@ -119,7 +121,7 @@
                     	<a href="${ cpath }/myPage">마이페이지</a>
                     </c:if>
                     <c:if test="${ not empty adminlogin }">
-                    	<a href="${ cpath }/adminPage">관리자페이지</a>
+                    	<a href="${ cpath }/admin/adminPage">관리자페이지</a>
                     </c:if>
                     </li>
                     <li>

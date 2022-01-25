@@ -15,7 +15,8 @@
 		#{ email },
 		#{ usergrade },
 		#{ address },
-		#{ emailAuth }
+		#{ emailAuth },
+		'n'
 		)
 	</insert>
  	

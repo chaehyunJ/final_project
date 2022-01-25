@@ -198,9 +198,9 @@ public class BoardController {
 	public ModelAndView question() {
 		ModelAndView mav = new ModelAndView();
 		
-		// 아직 미구현
-//		List<QnaBoardDTO> list = bs
+		List<QnaBoardDTO> list = bs.qnaList();
 		
+		mav.addObject("list", list);
 		return mav;
 	}
 	
@@ -243,4 +243,7 @@ public class BoardController {
 		
 		return mav;
 	}
+	
+	
+	
 }

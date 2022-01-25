@@ -91,4 +91,8 @@ public class MemberService {
 		return dao.mailChk(email);
 	}
 
+	// 회원탈퇴
+		public int deleteMember(String userpw) {
+			return dao.deleteMember(userpw);
+	}
 }

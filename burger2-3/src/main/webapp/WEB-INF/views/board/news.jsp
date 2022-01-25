@@ -16,12 +16,12 @@
         </div>
         <div class="board-list">
         	<div class="board-list-title">
-	        	<div class="board-total">총 <span class="board-total-count" style="color: #da0000;">${ total }</span>의 게시글이 있습니다. </div>
+	        	<strong class="board-total">총 <span class="board-total-count" style="color: #da0000;">${ total }</span>의 게시글이 있습니다. </strong>
 	        	<div class="board-search">
 	        		<form>
 	        			<input type="text" name="search" placeholder="검색어를 입력하세요." value="${ param.search }">
 	        			<input class="hidden" type="number" name="page" value="1">
-						<button id="searchNews">검색</button>
+						<img class="board-searchIcon" src="${ cpath }/resources/src/btn_search.png">
 <!-- 	        			<input type="submit" value="검색"> -->
 					</form>	        	
 	        	</div>
@@ -30,27 +30,27 @@
         		<div class="board-notice">
         			<div class="board-notice-list">
 	        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
-	        			<div class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</div>
-	        			<div class="board-notice-date">2020.02.27</div>
+	        			<strong class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</strong>
+	        			<strong class="board-notice-date">2020.02.27</strong>
         			</div>
         			<div class="board-notice-list">
 	        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
-	        			<div class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</div>
-	        			<div class="board-notice-date">2020.02.27</div>
+	        			<strong class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</strong>
+	        			<strong class="board-notice-date">2020.02.27</strong>
         			</div>
         			<div class="board-notice-list">
 	        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
-	        			<div class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</div>
-	        			<div class="board-notice-date">2020.02.27</div>
+	        			<strong class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</strong>
+	        			<strong class="board-notice-date">2020.02.27</strong>
         			</div>
         		</div>
         		<div class="board-post">
         			<!--  get  -->
 		        	<c:forEach var="ls" items="${ list }"> 
 						<div class="board-post-list">
-				        	<div class="board-post-number">${ ls.NOTICE_SEQ }</div>
-				        	<div class="board-post-title" ><a href="${ cpath }/board/newsDetail/${ls.NOTICE_SEQ}">${ ls.TITLE }</a></div>
-				        	<div class="board-post-date">${ ls.REGDATE }</div>
+				        	<strong class="board-post-number">${ ls.NOTICE_SEQ }</strong>
+				        	<strong class="board-post-title" ><a href="${ cpath }/board/newsDetail/${ls.NOTICE_SEQ}">${ ls.TITLE }</a></strong>
+				        	<strong class="board-post-date">${ ls.REGDATE }</strong>
 		        		</div>
 		        	</c:forEach>
 		        
@@ -76,6 +76,32 @@
 			</c:if>
         </div>
 </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <ul>
+                    <li><a>개인정보 처리방침</a></li>
+                    <li><a>위치정보 이용약관</a></li>
+                    <li><a>QnABoard</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <ul>
+                    <li>Coded Burger</li>
+                    <li>공동대표 : 5조 전원</li>
+                    <li>사업자등록번호 : 1234-56-789</li>
+                    <li>회사전화 : 010-7374-5328</li>
+                    <li>COPYRIGHT © 2019 ALL RIGHTS RESERVED BY McDonald's.</li>
+                </ul>
+            </div>
+            <div class="footer-icon">
+                <a href=""><img src="${ cpath }/resources/src/footer/fb.png" alt=""></a>
+                <a href=""><img src="${ cpath }/resources/src/footer/insta.png" alt=""></a>
+                <a href=""><img src="${ cpath }/resources/src/footer/youtube.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
 
 <script>
 	const cpath = '${ cpath }'

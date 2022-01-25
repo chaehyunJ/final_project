@@ -40,4 +40,9 @@ public interface MemberDAO {
 	@Select("select * from user_table where email = #{ email}")
 	MemberDTO mailChk(String email);
 	
+	// 회원 탈퇴
+	@Update("update user_table set  "
+			+ "withdrawal='y'"
+			+ "where userpw = #{ userpw }")
+	int deleteMember(String userpw);
 }
