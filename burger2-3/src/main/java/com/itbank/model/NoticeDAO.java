@@ -52,7 +52,17 @@ public interface NoticeDAO {
 //			+ "order by notice_seq desc")
 	int searchTotal(String search);
 
+	@Select("select * from notice_table where flag = 'top' order by notice_seq desc")
+	List<HashMap<String, Object>> selectNoticeTop();
 
+
+	@Update("update notice_table set withdrawal = 'y' where notice_seq = #{seq}")
+	int deleteNews(int seq);
+	
+	@Select("select * from notice_table where notice_seq = ${seq}")
+	NoticeDTO selectNews2(int seq);
+
+	
 //	@Select("select * from notice_table where flag = 'bottom' and content like '%#{search}%'")
 //	List<NoticeDTO> searchList(String search);
 }

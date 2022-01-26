@@ -24,11 +24,11 @@
 	        <div></div>
     	</div>
     	<div class="side-btns">
-	        <div>
-	            <span>&lt;</span>
+	        <div class="left-div-side-btns">
+	            <button class="left-side-btns"></button>
 	        </div>
-	        <div>
-	            <span>></span>
+	        <div class="right-div-side-btns">
+	            <button class="right-side-btns"></button>
 	        </div>
     	</div>
     	

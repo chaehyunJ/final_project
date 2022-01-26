@@ -28,22 +28,15 @@
         	</div>
         	<div class="board-list-main">
         		<div class="board-notice">
-        			<div class="board-notice-list">
-	        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
-	        			<strong class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</strong>
-	        			<strong class="board-notice-date">2020.02.27</strong>
-        			</div>
-        			<div class="board-notice-list">
-	        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
-	        			<strong class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</strong>
-	        			<strong class="board-notice-date">2020.02.27</strong>
-        			</div>
-        			<div class="board-notice-list">
-	        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
-	        			<strong class="board-notice-title">주방 공개 행사 잠정 중단 안내의 건</strong>
-	        			<strong class="board-notice-date">2020.02.27</strong>
-        			</div>
+	        		<c:forEach var="tls" items="${ topList }">
+	        			<div class="board-notice-list">
+		        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
+		        			<strong class="board-notice-title"><a href="${ cpath }/board/newsDetail/${tls.NOTICE_SEQ}">${ tls.TITLE }</a></strong>
+		        			<strong class="board-notice-date">${ tls.REGDATE }</strong>
+	        			</div>
+	        		</c:forEach>
         		</div>
+        		
         		<div class="board-post">
         			<!--  get  -->
 		        	<c:forEach var="ls" items="${ list }"> 

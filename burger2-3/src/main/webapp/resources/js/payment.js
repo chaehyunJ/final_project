@@ -107,8 +107,9 @@ function paymentHandler(event) {
 			.then(text=> {
 				console.log(text)
 			})
+//			location.href = cpath + '/myPage'
 			
-			
+			location.href = cpath +'/myPage'
 		} else {
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;

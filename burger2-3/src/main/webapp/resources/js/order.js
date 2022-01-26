@@ -69,7 +69,7 @@ function macImageHandler() {
 								}
 							}
 						}
-						totalfunction()
+						totalfunction1(event)
 					}
 				})
 
@@ -131,7 +131,7 @@ function macSetImageHandler() {
 								}
 							}
 						}
-						totalfunction()
+						totalfunction1(event)
 				}
 			})
 		})
@@ -144,7 +144,7 @@ function getMacSetDom(json) {
 	showContainTag2= `</div>`
 	json.forEach(dto =>{
 		if(i==0 || i%8==0) tag += showContainTag1
-		if(dto.mcmorning_set_image != 'null' ) {
+		if(dto.mcmorning_set_img != 'null' ) {
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${dto.mcmorning_set_img}">`
 			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${dto.mcmorning_set_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
@@ -197,7 +197,7 @@ function burgerImageHandler() {
 								}
 							}
 						}
-						totalfunction()
+						totalfunction1(event)
 				}
 			})
 		})
@@ -238,28 +238,9 @@ function burgerSetImageHandler() {
 				imageOrderBtn.forEach(arr=>{
 					arr.onclick=function(event) {
 						let parent_orderArray=parent_order.childNodes
-						if(parent_orderArray.length == 0) imageOrderDom(event)
-						else { //상품리스트가 하나라도 있으면
-							for(let i = 0; i<parent_orderArray.length; i++) {
-								let price = parent_orderArray[i].childNodes[5].innerText.split(' ')[1]
-								price = parseInt(price.replace(/,/g,"")) //2300
-								
-								if(parent_orderArray[i].childNodes[1].innerText == event.target.nextElementSibling.nextElementSibling.innerText){
-									let count = parseInt(parent_orderArray[i].childNodes[1].nextElementSibling.nextElementSibling.innerText)
-									parent_orderArray[i].childNodes[1].nextElementSibling.nextElementSibling.innerText= count +1
-									count = parseInt(parent_orderArray[i].childNodes[1].nextElementSibling.nextElementSibling.innerText)
-									parent_orderArray[i].childNodes[5].innerText = '￦ ' + (price + (price / (count -1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-									break;
-								}
-								else {
-									if(i==(parent_orderArray.length-1)) {
-										imageOrderDom(event)
-										break
-									}
-								}
-							}
-						}
-						totalfunction()
+							modalHandler()
+							getsizedom(event)
+							totalfunction1(event)
 				}
 			})
 		})
@@ -271,9 +252,9 @@ function getburgerSetDom(json) {
 	showContainTag1 = `<div class="show-contain">`
 	showContainTag2= `</div>`
 	json.forEach(dto =>{
-		flag = dto.burger_set_image != 'null'
+		flag = dto.burger_set_img != 'null'
 		if(i==0 || i%8==0 && flag) tag += showContainTag1 
-		if(dto.burger_set_image != 'null' ) {
+		if(dto.burger_set_img != 'null' ) {
 			tag +=	 `<div class="menu-border">`
 			tag +=		`<img class="imageOrderBtn" src="${dto.burger_set_img}">`
 			tag +=		`<div style="color: #44900c; font-size: 14px;">￦ ${dto.burger_set_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>`
@@ -323,7 +304,7 @@ function sideImageHandler() {
 								}
 							}
 						}
-						totalfunction()
+						totalfunction1(event)
 				}
 			})
 		})
@@ -426,7 +407,7 @@ function drinkImageHandler() {
 								}
 							}
 						}
-						totalfunction()
+						totalfunction1(event)
 				}
 			})
 		})
@@ -528,7 +509,7 @@ function dessertImageHandler() {
 								}
 							}
 						}
-						totalfunction()
+						totalfunction1(event)
 				}
 			})
 		})
@@ -592,7 +573,7 @@ function mcafeImageHandler() {
 								}
 							}
 						}
-						totalfunction()
+						totalfunction1(event)
 				}
 			})
 		})

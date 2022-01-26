@@ -7,23 +7,23 @@
 		<table border="1" cellpadding="7" cellspacing="0">
 			<tr>
 				<th>제목</th>
-				<td><input class="border-zero" type="text" name="title"
+				<td><input class="border-zero" type="text" name="title" value="${dto.title }"
 					placeholder="제목을 입력해주세요" required autofocus></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input class="border-zero" type="text" name="writer"
-					value="${info.adminname }" required></td>
+				<td><input class="border-zero" type="text" name="writer" 
+					value="${dto.writer }" required></td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td><textarea class="border-zero"
 						style="width: 600px; height: 300px; padding: 0; resize: none;"
-						name="content"></textarea></td>
+						name="content" >${dto.content }</textarea></td>
 			</tr>
 			<tr>
 				<th>업로드</th>
-				<td><input type="file" name="uploadFile"></td>
+				<td><input type="file" name="uploadFile" ></td>
 			</tr>
 			<tr>
 				<th>카운트</th>

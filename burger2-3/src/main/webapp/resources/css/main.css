@@ -99,11 +99,11 @@ header {
 }
 
 .top-right>ul>li:nth-child(1) {
-	background-color: red;
+	background-color: #BD0017;
 }
 
 .top-right>ul>li:nth-child(2) {
-	background-color: #ffbc0d;
+	background-color: #ffc836;
 }
 
 .top-right>ul>li:nth-child(3) {
@@ -246,6 +246,7 @@ header {
 }
 
 /* 슬라이더 좌우 버튼 */
+/* 2022-01-26 서현 추가 */
 .main-slide > .side-btns > div {
     position:absolute;
     top:0;
@@ -258,22 +259,37 @@ header {
     left:auto;
     right:0;
 }
-.main-slide >.side-btns > div > span {
-    position:absolute;
-    top:50%;
-    left:20px;
-    transform:translatey(-50%);
-    background-color:white;
-    opacity:0.5;
-    padding:1px 13px;
-    border-radius:50px;
-    font-size:25px;
-/*     background-repeat:  */
+.left-div-side-btns > .left-side-btns {
+    position: absolute;
+    top: 50%;
+    width: 90px;
+    height: 90px;
+    margin-top: -45px;
+    overflow: hidden;
+    text-indent: -9999px;
+    border: 0;
+/*     transform:translatey(-50%); */
+/*     background-color:white; */
+/*     opacity:0.5; */
+/*     padding:1px 13px; */
+/*     border-radius:50px; */
+/*     font-size:25px; */
+    background: url("https://www.mcdonalds.co.kr/kor/images/main/bg_swiper_new.png") 0 0 no-repeat;
 }
-.main-slide >.side-btns > div:last-child > span {
-    left:auto;
-    right:20px;
+.right-div-side-btns > .right-side-btns {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    width: 90px;
+    height: 90px;
+    margin-top: -45px;
+    overflow: hidden;
+    text-indent: -9999px;
+    border: 0;
+    background: url("https://www.mcdonalds.co.kr/kor/images/main/bg_swiper_new.png") no-repeat;
+    background-position: 0 -90px;
 }
+
 
 /* .main-slide { */
 /* 	display: flex; */

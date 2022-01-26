@@ -139,21 +139,22 @@ div{
 .detail-news{
 	display: flex;
 	width : 1200px;
-	border : 1px solid black;
+	border : 0px solid black;
 	margin : auto;
 }
 
 .detail-header{
 	display: flex;
 	width : 1200px;
-	border : 1px solid black;
+	border : 0px solid black;
 	margin : auto;
 	justify-content: space-between;
 }
 .detail-header > .detail-num {
 	display : flex;
-	width : 230px;
-	border : 1px solid black;
+	width : 175px;
+	margin-right: 0;
+	border : 0px solid black;
 }
 .detail-header > div{
 	margin-right : 10px;
@@ -194,21 +195,28 @@ div{
 }
 .btn-list1{
 	width : 1200px;
-	border : 1px solid black;
+	border : 0px solid black;
 	margin : auto;
 	display: flex;
 	justify-content: space-between;
 }
-.btn-list1 > .prev-btn, .next-btn{
-	border : 0;
-	width : 70px;
-	height: 70px;
-	font-size: 30px;
-	border-radius: 50px;
+.btn-list1 > .prev-btn{
+	width: 70px;
+    height: 70px;
+    border: 0;
 	cursor: pointer;
-	background-color: #dadada;
+	background: url("https://www.mcdonalds.co.kr/kor/images/common/btn_bbs_prev.png") no-repeat;
 }
-.news-list-btn{
+.btn-list1 > .next-btn{
+	width: 70px;
+    height: 70px;
+	border: 0;
+	cursor: pointer;
+	background: url("https://www.mcdonalds.co.kr/kor/images/common/btn_bbs_prev.png") no-repeat;
+	transform: rotate(180deg);
+}
+}
+.btn-list1 > a > .news-list-btn{
 	width : 150px;
 	height: 70px;
 	border : 0;
@@ -217,7 +225,7 @@ div{
 	font-size: 20px;
 	font-weight: bold;
 	color : white;
-	border : 1px solid black;
+	border : 0px solid black;
 	cursor: pointer;
 }
 
@@ -510,6 +518,16 @@ input[name="onOff"]:checked + #boxLabel span {
 	position: absolute;
 }
 
+.detail-img {
+	border: 1px solid red;
+	width: inherit;
+	height: 500px;
+}
+.board-searchIcon {
+	margin-top: 2px;
+	margin-left: 10px;
+	position: absolute;
+}
 
 /* 2022-01-25 추가 */
 .QnA-content-inner{

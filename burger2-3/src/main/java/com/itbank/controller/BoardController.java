@@ -55,6 +55,7 @@ public class BoardController {
 		
 //		List<HashMap<String, Object>> list = bs.getNotice(offset);
 		List<HashMap<String, Object>> list = ns.searchList(map);
+		List<HashMap<String, Object>> topList = ns.topList();
 		
 //		int total = ns.getTotal();
 		
@@ -88,7 +89,7 @@ public class BoardController {
 		mav.addObject("prev", prev);
 		mav.addObject("next", next);
 		mav.addObject("list", list);
-		
+		mav.addObject("topList", topList);
 		return mav;
 	}
 	
@@ -241,6 +242,33 @@ public class BoardController {
 			mav.addObject("url", "qnaWrite");
 		}
 		
+		return mav;
+	}
+	
+	// news 삭제
+	@GetMapping("/newsDelete/{seq}")
+	public ModelAndView newsDelete(@PathVariable int seq) {
+		ModelAndView mav = new ModelAndView("alert");
+		
+		int row = ns.deleteNews(seq);
+		System.out.println(row);
+		
+		if(row == 1) {
+			mav.addObject("msg", seq + "번 도서가 삭제되었습니다");
+			mav.addObject("url", "board/news?page=1");
+		}
+		else {
+			mav.addObject("msg", seq + "번 도서 삭제에 실패하였습니다");
+		}
+		return mav;
+	}
+	
+	// news 수정
+	@GetMapping("/newsModify/{seq}")
+	public ModelAndView newsModify(@PathVariable int seq) {
+		ModelAndView mav = new ModelAndView("board/newsModify");
+		NoticeDTO dto = ns.selectNews(seq);
+		mav.addObject("dto", dto);	
 		return mav;
 	}
 	
