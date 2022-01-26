@@ -15,8 +15,15 @@
 	</div>
 
 	<div class="QnA-content-main">
+		<div class="QnA-content-left">
+        	<div class="QnA-content-result">답변상태</div>
+        	<div class="QnA-content-title">제목</div>
+       		<div class="QnA-content-writer">작성자</div>
+       		<div class="QnA-content-regDate">작성일</div>
+       	</div>
+	
 		<c:forEach var="ls" items="${ list }">
-			<div class="QnA-content-inner">
+			<div class="QnA-inner">
 				<div class="QnA-inner-result">${ ls.result == 'n' ? '미답변' : '답변완료' }</div>
 				<div class="QnA-inner-title">${ ls.title }
 					<div class="reply-form hidden">

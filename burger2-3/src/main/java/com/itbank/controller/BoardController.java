@@ -21,6 +21,7 @@ import com.itbank.component.Paging;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.NoticeDTO;
 import com.itbank.model.QnaBoardDTO;
+import com.itbank.model.ReplyDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.FileService;
 import com.itbank.service.MemberService;
@@ -196,12 +197,52 @@ public class BoardController {
 	
 	
 	@GetMapping("/question")
-	public ModelAndView question() {
+	public ModelAndView question(int page, @RequestParam(required = false) String result) {
 		ModelAndView mav = new ModelAndView();
 		
+		if(page == 0) {
+			page = 1;
+		}
 		List<QnaBoardDTO> list = bs.qnaList();
+
+		int total = bs.qnaCount(result);
 		
-		mav.addObject("list", list);
+		int pageCount = (total / 10);
+		pageCount = total % 10 == 0 ? pageCount : pageCount + 1 ;
+
+		int offset = (page-1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("offset", offset);
+		map.put("result", result);
+		
+		List<QnaBoardDTO> qlist = bs.qnaList2(map);
+		
+		int section = paging.section(page);		
+		int begin = paging.begin(section);
+		int end = paging.end(pageCount);
+		boolean prev = paging.prev(section);
+		boolean next = paging.next(pageCount, end);
+		
+		System.out.println("page : " + page);
+		System.out.println("total : " + total);
+		System.out.println("pageCount : " + pageCount);
+		System.out.println("offset : " + offset);
+		System.out.println("section : " + section);
+		System.out.println("begin : " + begin);
+		System.out.println("end : " + end);
+		System.out.println("prev : " + prev);
+		System.out.println("next : " + next);
+		
+		
+	
+		
+		mav.addObject("list", qlist);
+		mav.addObject("section", section);
+		mav.addObject("begin", begin);
+		mav.addObject("end", end);
+		mav.addObject("prev", prev);
+		mav.addObject("next", next);
 		return mav;
 	}
 	

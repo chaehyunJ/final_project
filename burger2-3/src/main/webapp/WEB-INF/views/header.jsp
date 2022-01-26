@@ -94,7 +94,7 @@
                                 <ul class="top-menu-inner"> 
                                    	<!--혜린 추가 내용  -->
                                     <li><a href="${ cpath }/board/news?page=1">새로운소식</a></li>
-                                    <li><a href="${ cpath }/board/question">문의사항</a></li>
+                                    <li><a href="${ cpath }/board/question?page=1">문의사항</a></li>
                                 </ul>
                             </div>
                         </li>

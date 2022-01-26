@@ -547,6 +547,8 @@ input[name="onOff"]:checked + #boxLabel span {
 	border : 0px solid black;
 	text-align: center;
 	padding-top : 20px;
+	/* 2022-01-26 추가 */
+	max-height: 60px;
 }
 .QnA-content-inner > .QnA-inner-title{
 	width : 600px;
@@ -601,3 +603,8 @@ input[name="onOff"]:checked + #boxLabel span {
 	font-size: 14px;
 	margin: 0 5px;
 	}
+	
+/* 2022-01-26 추가 */
+/* .QnA-answer{ */
+	
+/* } */

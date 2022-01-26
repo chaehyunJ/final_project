@@ -30,9 +30,11 @@ import com.itbank.model.DrinkDTO;
 import com.itbank.model.McMorningDTO;
 import com.itbank.model.McafeDTO;
 import com.itbank.model.NoticeDTO;
+import com.itbank.model.ReplyDTO;
 import com.itbank.model.SideDTO;
 import com.itbank.model.StoreInfoDTO;
 import com.itbank.promotion.PromDTO;
+import com.itbank.service.BoardService;
 import com.itbank.service.ImageService;
 import com.itbank.service.MailService;
 import com.itbank.service.MemberService;
@@ -52,6 +54,8 @@ public class AjaxController {
 	@Autowired private StoreService ss;
 	@Autowired private OrderService os;
 	@Autowired private NoticeService ns;
+	@Autowired private BoardService bs;
+	
 	@Autowired private Paging paging;
 	
 	
@@ -420,6 +424,24 @@ public class AjaxController {
 //		return list;
 //	}
 //	
+	
+	// qna idx로 댓글 가져오기
+	@GetMapping("/qnaReply/{idx}")
+	public HashMap<String, Object> qnaReply(@PathVariable int idx){
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		ReplyDTO dto = bs.getReply(idx);
+		
+		if(dto != null) {
+			map.put("dto", dto);
+		}
+		else {
+			map.put("msg", "댓글 작성 전 입니다");
+		}
+		
+		return map;
+	}
+	
 	
 	// 예외처리
 	@ExceptionHandler(NullPointerException.class)

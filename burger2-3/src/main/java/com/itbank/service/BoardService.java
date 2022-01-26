@@ -59,6 +59,18 @@ public class BoardService {
 		return qdao.resultUpdate(seq);
 	}
 
+	public ReplyDTO getReply(int idx) {
+		return rdao.getReply(idx);
+	}
+
+	public List<QnaBoardDTO> qnaList2(HashMap<String, Object> map) {
+		return qdao.qnaList2(map);
+	}
+
+	public int qnaCount(String result) {
+		return qdao.qnaCount(result);
+	}
+
 	
 
 }
