@@ -52,6 +52,8 @@
 		const cpath = '${ cpath }'
 		const table = '${ table }'
 		
+// 		let table = table1.toUpperCase() + '_TABLE'
+		
 		const cnt = '${ cnt }'
 		const itemHeight = 600
 		
@@ -61,7 +63,7 @@
 		const detail = document.querySelectorAll('.menu-product-list div')
 
 		console.log(topList)
-		if(table == '') { table = 'BURGER_TABLE' }
+		if(table == '') { table = 'burger_table' }
 	
 		getJson(table)
 			

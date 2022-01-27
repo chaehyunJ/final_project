@@ -169,8 +169,12 @@ public class BoardController {
 	}
 	
 	@PostMapping("/newsWrite")
-	public ModelAndView newsWrite(NoticeDTO dto) throws IllegalStateException, IOException {
+	public ModelAndView newsWrite(NoticeDTO dto) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		
+		System.out.println("dto.getTitle : " + dto.getContent());
+		System.out.println("dto.getDate : " + dto.getRegDate());
+		
 		System.out.println("dto.getUploadFile : " + dto.getUploadFile());
 //		System.out.println(dto.getUploadFile().getOriginalFilename());
 		
@@ -179,7 +183,7 @@ public class BoardController {
 		if(row == 1) {
 			mav.setViewName("alert");
 			mav.addObject("msg", "작성 성공!!");
-			mav.addObject("url", "board/news");
+			mav.addObject("url", "board/news?page=1");
 		}
 		else {
 			mav.setViewName("alert");

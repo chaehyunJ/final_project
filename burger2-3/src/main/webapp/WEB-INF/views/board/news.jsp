@@ -51,7 +51,7 @@
         		</div>
         	</div>
         	<c:if test="${not empty adminlogin}">
-        		<a href="${cpath }/board/newsWrite"><button>글쓰기</button></a>
+        		<a href="${ cpath }/board/newsWrite">글쓰기</a>
       		</c:if>
         </div>
        

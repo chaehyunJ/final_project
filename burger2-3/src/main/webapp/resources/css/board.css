@@ -578,7 +578,7 @@ input[name="onOff"]:checked + #boxLabel span {
 	margin: 0 auto;
 }
 
-#news-modify {
+#newsModify {
 	width: 75px;
 	height: 45px;
 	font-weight: bold;
@@ -590,7 +590,7 @@ input[name="onOff"]:checked + #boxLabel span {
 	margin: 0 5px;
 }
 
-#news-delete {
+#newsDelete {
 	width: 75px;
 	height: 45px;
 	font-weight: bold;

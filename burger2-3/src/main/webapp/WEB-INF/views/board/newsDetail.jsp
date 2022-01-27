@@ -36,8 +36,8 @@
 	<!-- admin로그인 시 수정 삭제 가능  -->
 	<c:if test="${not empty adminlogin }">
 	<div class="btn-list">
-		<button id="news-modify" data-seq="${dto.notice_seq }">수정</button>
-		<button id="news-delete" data-seq="${dto.notice_seq }">삭제</button>
+		<button id="newsModify" data-seq="${dto.notice_seq }">수정</button>
+		<button id="newsDelete" data-seq="${dto.notice_seq }">삭제</button>
 <%-- 	<a href="${ cpath }/board/newsModify/${ dto.notice_seq }">수정</a> --%>
 	</div>
 	</c:if>
@@ -87,6 +87,9 @@
 	const prevBtn = document.querySelector('.prev-btn')
 	const nextBtn = document.querySelector('.next-btn')
 	const listBtn = document.querySelector('.news-list-btn')
+	
+	const newsModify = document.getElementById('newsModify')
+	const newsDelete = document.getElementById('newsDelete')
 	
 	console.log(detailTitle)
 	console.log(detailRegDate)
