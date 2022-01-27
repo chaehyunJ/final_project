@@ -111,7 +111,6 @@
 	const qnaAnswer = document.querySelector('.QnA-answer')
 	
 	
-
 	console.log(qnaAnswer)
 	console.log(innerTitle)
 	

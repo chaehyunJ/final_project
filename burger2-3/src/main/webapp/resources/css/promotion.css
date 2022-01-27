@@ -84,6 +84,7 @@ body {
 	height: 300px;
 }
 
+/* padding, margin 수정 */
 .promotion-sentence {
 	font-size: 16px;
 	color: #292929;
@@ -91,6 +92,7 @@ body {
 	line-height: 30px;
 	width : 290px;
 	height : 60px;
-	margin-right : 20px;
 	overflow: hidden;
+	margin: 0px;
+	padding: 20px;
 }

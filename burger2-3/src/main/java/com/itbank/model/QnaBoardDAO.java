@@ -19,9 +19,8 @@ public interface QnaBoardDAO {
 	@Update("update qnaboard_table set result = 'y' where qna_seq = #{ seq }")
 	int resultUpdate(int seq);
 
-	
-	List<QnaBoardDTO> qnaList2(HashMap<String, Object> map);
-
 	int qnaCount(String result);
+
+	List<QnaBoardDTO> qnaList2(HashMap<String, Object> map);
 
 }

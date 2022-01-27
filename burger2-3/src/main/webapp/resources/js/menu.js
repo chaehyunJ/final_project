@@ -9,7 +9,6 @@ function getJson(table){
 		getMenuList(table,json)
 	})
 }
-
 function getMenuList(table,json){
 	if(table.includes('MCMORNING'))
 		getMcmorning(json)
@@ -24,7 +23,6 @@ function getMenuList(table,json){
 	else
 		getDessert(json)
 }
-
 function getMcmorning(json){
 	let menu = ``
 	let top = ``
@@ -51,7 +49,6 @@ function getMcmorning(json){
 	
 	detailClick()
 }
-
 function getBurger(json){
 	let menu = ``
 	let top = ``
@@ -78,7 +75,6 @@ function getBurger(json){
 	
 	detailClick()
 }
-
 function getSide(json){
 	let menu = ``
 	let top = ``
@@ -119,7 +115,6 @@ function getSide(json){
 	
 	detailClick()
 }
-
 function getMccafe(json){
 	let menu = ``
 	let top = ``
@@ -160,7 +155,6 @@ function getMccafe(json){
 	
 	detailClick()
 }
-
 function getDrink(json){
 	let menu = ``
 	let top = ``
@@ -202,7 +196,6 @@ function getDrink(json){
 	
 	detailClick()
 }
-
 function getDessert(json){
 	let menu = ``
 	let top = ``
@@ -229,7 +222,6 @@ function getDessert(json){
 	
 	detailClick()
 }
-
 function detailClick(){
 	const detail = document.querySelectorAll('.menu-product-item')
 	detail.forEach(d =>{
@@ -247,7 +239,6 @@ function detailClick(){
 		}
 	})
 }
-
 function detailForm(tableValue, seqValue){
 	const form = document.createElement('form')
 	form.method = 'POST'

@@ -21,7 +21,6 @@ import com.itbank.component.Paging;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.NoticeDTO;
 import com.itbank.model.QnaBoardDTO;
-import com.itbank.model.ReplyDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.FileService;
 import com.itbank.service.MemberService;
@@ -100,8 +99,6 @@ public class BoardController {
 		
 //		int page1 = Integer.parseInt(page);
 		
-		
-		
 		int total = ns.searchTotal(search);
 		
 		if(page == 0) {
@@ -165,19 +162,16 @@ public class BoardController {
 	
 	
 	@GetMapping("/newsWrite")
-	public ModelAndView newsWrite(HttpSession session) {
+	public ModelAndView newsWrite() {
 		ModelAndView mav = new ModelAndView();
 		
-		AdminDTO adminlogin = (AdminDTO)session.getAttribute("adminlogin");
-		AdminDTO info = ms.loginAdmin(adminlogin);
-		mav.addObject("info", info);
 		return mav;
 	}
 	
 	@PostMapping("/newsWrite")
 	public ModelAndView newsWrite(NoticeDTO dto) throws IllegalStateException, IOException {
 		ModelAndView mav = new ModelAndView();
-		
+		System.out.println("dto.getUploadFile : " + dto.getUploadFile());
 //		System.out.println(dto.getUploadFile().getOriginalFilename());
 		
 		int row = fs.upload(dto);

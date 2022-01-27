@@ -41,7 +41,7 @@ public class JoinController {
 		if(agree == null) {
 			mav.setViewName("alert");
 			mav.addObject("msg", "약관에 동의하셔야 가입이 가능합니다");
-			mav.addObject("url", referer);
+			mav.addObject("url", "join");
 		}
 		
 		return mav;

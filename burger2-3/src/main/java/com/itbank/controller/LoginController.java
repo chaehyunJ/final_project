@@ -82,7 +82,7 @@ public class LoginController {
 		
 		session.setAttribute("adminlogin", adminlogin);
 		if(adminlogin != null) {
-			mav.setViewName("redirect:/admin/adminPage");
+			mav.setViewName("redirect:admin/adminPage");
 		}
 		return mav;
 	}
