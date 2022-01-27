@@ -3,8 +3,8 @@
 <%@ include file="header.jsp" %>
 
 	<div class="login-form">
+	       <a href="${ cpath }/loginAdmin"><button class="admin-login">관리자로그인</button></a>
         <form method="POST">
-        	<a href="${ cpath }/login"><button class="admin-login">관리자로그인</button></a>
             <p class="login-p"><input class="login-input" type="text" name="adminid" placeholder="ID" style="width : 240px;"></p>
             <p class="login-p"><input class="login-input" type="password" name="adminpw" placeholder="PW" style="width : 240px;" ></p>
             <div class="find-btn">	
@@ -12,6 +12,7 @@
             </div>
             <input class="login-submit" type="submit" value="로그인">
         </form>
+        <p class="login-p"><a href="${ cpath }/join/adminJoin"><button class="join-button">회원가입</button></a></p>
     </div>
 
 <%@ include file="footer.jsp" %>

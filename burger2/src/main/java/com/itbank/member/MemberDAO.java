@@ -2,14 +2,17 @@ package com.itbank.member;
 
 import java.util.HashMap;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import com.itbank.admin.AdminDTO;
+
 @Repository
 public interface MemberDAO {
 
-	@Select("select * from user_table where userid = #{ userid } and userpw = #{ userpw } and withdrawal = 'n'")
+	@Select("select * from user_table where userid = #{ userid } and userpw = #{ userpw }")
 	MemberDTO login(MemberDTO dto);
 
 	@Select("select * from user_table where userid = #{ userid }")
@@ -19,7 +22,7 @@ public interface MemberDAO {
 	MemberDTO selectMemberFindId(String email);
 	
 	int join(MemberDTO dto);
-
+	
 	@Update("update user_table set  "
 			+ "userpw=#{userpw},"
 			+ "username=#{username},"
@@ -39,10 +42,17 @@ public interface MemberDAO {
 
 	@Select("select * from user_table where email = #{ email}")
 	MemberDTO mailChk(String email);
-
+	
+	// 회원 탈퇴
 	@Update("update user_table set  "
 			+ "withdrawal='y'"
 			+ "where userpw = #{ userpw }")
 	int deleteMember(String userpw);
+	
+	@Select("select * from user_table where phone = #{phone}")
+	MemberDTO phoneChk(String phone);
+	
+	@Select("select * from user_table where email = #{email}")
+	MemberDTO findByEmail(String email);
 	
 }

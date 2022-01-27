@@ -6,7 +6,7 @@
 <mapper namespace="com.itbank.model.NoticeDAO">
 	<select id="searchList" resultType="hashmap" parameterType="hashmap">
 		select * from notice_table 
-			where flag = 'bottom' 
+			where flag = 'bottom' and withdrawal = 'n'
 			<if test="search != null">
 				and content like '%'||#{ search }||'%' 		
 			</if>
@@ -17,7 +17,7 @@
 	
 	<select id="searchTotal" parameterType="string" resultType="int">
 		select count(*) count from notice_table 
-			where flag = 'bottom' 
+			where flag = 'bottom' and withdrawal = 'n'
 			<if test="search != null">
 				and content like '%'||#{ search }||'%'
 			</if> 

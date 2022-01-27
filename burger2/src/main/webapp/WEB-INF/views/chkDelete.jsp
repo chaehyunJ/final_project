@@ -17,6 +17,7 @@
 
 		<div class="chk-pw-form">
 			<form method="post">
+				<input type="hidden" name="userid" value="${login.userid }">
 				<input type="password" name="userpw" placeholder="비밀번호를 입력하세요" required>
 				<input type="submit" value="입력">
 			</form>

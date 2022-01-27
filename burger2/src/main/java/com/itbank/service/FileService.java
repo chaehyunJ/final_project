@@ -40,17 +40,20 @@ public class FileService {
 		
 		return dao.insert(dto);
 	}
+
+	public int uploadModify(NoticeDTO dto) throws IllegalStateException, IOException {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
+		String fileName = dto.getUploadFile().getOriginalFilename();
+		fileName = today + "_" + fileName;
+		
+		File dest = new File(dir, fileName);
+		dto.getUploadFile().transferTo(dest);
+		
+		dto.setFileName(fileName);
+		
+		return dao.update(dto);
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

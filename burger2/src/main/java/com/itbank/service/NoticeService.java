@@ -35,4 +35,16 @@ public class NoticeService {
 		return dao.searchTotal(search);
 	}
 
+	public List<HashMap<String, Object>> topList() {
+		
+		return dao.selectNoticeTop();
+	}
+
+	public int deleteNews(int seq) {
+		return dao.deleteNews(seq);
+	}
+
+	public NoticeDTO selectNews(int seq) {
+		return dao.selectNews2(seq);
+	}
 }

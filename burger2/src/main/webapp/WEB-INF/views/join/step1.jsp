@@ -4,9 +4,9 @@
 
 	<div class="join-address-container">
         <ul class="join-address-ul">
-            <li style="background-color: #BD0017">배달 주소 입력</li>
-            <li style="background-color: #ffc836">추가 정보 입력</li>
-            <li style="background-color: #264f36">가입 완료</li>
+            <li style="background-color: #BD0017">약관 동의</li>
+            <li style="background-color: #ffc836">주소 입력</li>
+            <li style="background-color: #264f36">정보 입력</li>
         </ul>
         <form class="join-address-form" action="${ cpath }/join/step2">
             <p>지역명</p>
@@ -49,7 +49,17 @@
 	            </div>
 	        </div>
 	    </footer>
-
+	 <script>
+    	const li1 = document.querySelector('.join-address-ul>li:nth-child(1)')
+		const li2 = document.querySelector('.join-address-ul>li:nth-child(2)')
+		const li3 = document.querySelector('.join-address-ul>li:nth-child(3)')
+		window.onload = function() {
+			li1.classList.add('transform-small')
+			li2.classList.add('transform-big')
+			li3.classList.add('transform-small')
+    	}
+    </script>
+	
 	<script>
 		const resultAddress = document.getElementById('resultAddress')
 		

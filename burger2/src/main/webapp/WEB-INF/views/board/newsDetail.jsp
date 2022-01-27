@@ -27,18 +27,26 @@
 	</div>
 </div>
 	<hr class="detail-hr">
-	<div class="detail-content">${ dto.content }</div>
+	<div class="detail-content">
+		<c:if test="${ dto.fileName != null}">
+			<div class="detail-img"><img src="${ dto.fileName }"></div>
+		</c:if>
+	</div>
+
+	<!-- admin로그인 시 수정 삭제 가능  -->
 	<c:if test="${not empty adminlogin }">
 	<div class="btn-list">
-		<button id="news-modify">수정</button>
-		<button id="news-delete">삭제</button>
+		<button id="newsModify" data-seq="${dto.notice_seq }">수정</button>
+		<button id="newsDelete" data-seq="${dto.notice_seq }">삭제</button>
+<%-- 	<a href="${ cpath }/board/newsModify/${ dto.notice_seq }">수정</a> --%>
 	</div>
 	</c:if>
+	
 	<hr class="detail-hr1">
 	<div class="btn-list1">
-		<button class="prev-btn">&lt;</button>
-		<button class="news-list-btn">목록보기</button>
-		<button class="next-btn">></button>
+		<button class="prev-btn"></button>
+		<a href="${ cpath }/board/news?page=1"><button class="news-list-btn">목록보기</button></a>
+		<button class="next-btn"></button>
 	</div>
 <footer class="footer">
 	<div class="footer-inner">
@@ -136,6 +144,16 @@
 	}
 	listBtn.onclick = function(){
 		location.href = cpath + '/board/news'
+	}
+	newsModify.onclick = function(event){
+		let seq = parseInt(event.target.dataset.seq)
+		location.href = cpath + '/board/newsModify/' + seq
+	}
+	newsDelete.onclick = function(event){
+		let seq = event.target.dataset.seq
+		if(confirm(seq + '번 게시글을 삭제하시겠습니까')){
+			 location.href= cpath + '/board/newsDelete/' + seq
+		}
 	}
 </script>
 

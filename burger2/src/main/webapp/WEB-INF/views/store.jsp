@@ -285,8 +285,9 @@
 					storePaging.innerHTML += pagingDom2
 					storePaging.innerHTML += pagingDom3
 					
+					
 					$('.c-Btn').on('click', function(e) {
-// 						e.preventDefault()
+						e.preventDefault()
 						console.log(e.target.dataset.page)
 						let page = parseInt(e.target.dataset.page)
 						let offset = ( page - 1) * 10
@@ -335,23 +336,6 @@
 								
 							})
 							
-							if(json.prev == true){
-								pagingDom1 += '<button>' + '이전' + '</button>'
-							}
-							else{
-								pagingDom1 += ''
-							}
-							
-							for(let i = json.begin; i <= json.end; i++){
-								pagingDom2 += '<button class="c-Btn" data-page="'+ i +'">' + i + '</button>'
-							}
-							
-							if(json.next == true){
-								pagingDom3 += '<button>' + '다음' + '</button>'
-							}
-							else{
-								pagingDom3 += ''
-							}
 							
 							addressName.innerHTML = ''
 							addressName.innerHTML += dom1
@@ -366,10 +350,7 @@
 							storeService.innerHTML += dom4
 //		 					storeResult.innerHTML += dom
 							
-							storePaging.innerHTML = ''
-							storePaging.innerHTML += pagingDom1
-							storePaging.innerHTML += pagingDom2
-							storePaging.innerHTML += pagingDom3
+
 						})
 					})
 

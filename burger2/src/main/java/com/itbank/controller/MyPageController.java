@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,36 +46,7 @@ public class MyPageController {
 	      return mav;
 	   }
 	
-	@GetMapping("/adminPage")
-	   public ModelAndView adminPage(HttpSession session) {
-			ModelAndView mav = new ModelAndView();
-					
-			AdminDTO adminlogin = (AdminDTO)session.getAttribute("adminlogin");
-			System.out.println(adminlogin);
-			mav.addObject("adminlogin", adminlogin);
-			
-	      return mav;
-	   }
-	
-	@PostMapping("/adminPage")
-	public ModelAndView adminPage(AdminDTO dto) {
-		ModelAndView mav = new ModelAndView();
-		
-		
-		/*
-		 * String member1 = member.getUserpw(); String pw1 = hash.getHash(userpw);
-		 * 
-		 * 
-		 * MemberDTO chkPw = ms.chkMember(pw1);
-		 * 
-		 * String chkPw1 = chkPw.getUserpw();
-		 * 
-		 * if(member1.equals(chkPw1)) { mav.setViewName("redirect:update"); } else {
-		 * mav.setViewName("alert"); mav.addObject("msg", "비밀번호가 일치하지 않습니다");
-		 * mav.addObject("url", "chkPw"); }
-		 */
-		return mav;
-	}
+
 	
 	
 	@GetMapping("/myPage_order")
@@ -111,7 +81,6 @@ public class MyPageController {
 		MemberDTO member = (MemberDTO)session.getAttribute("login");
 		
 		String member1 = member.getUserpw();
-		System.out.println(member1);
 		String pw1 = hash.getHash(userpw);
 		
 	
@@ -137,6 +106,8 @@ public class MyPageController {
 	public String chkDelete() {
 		return "chkDelete";
 	}
+	
+
 	
 	@PostMapping("/chkDelete")
 	public ModelAndView chkDelete(@RequestParam String userpw, HttpSession session, HttpServletRequest request, RedirectAttributes RedirectAttributes) {
@@ -190,7 +161,5 @@ public class MyPageController {
 		
 		return mav;
 	}
-	
-	
 }
 

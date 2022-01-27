@@ -13,7 +13,7 @@
 			<tr>
 				<th>작성자</th>
 				<td><input class="border-zero" type="text" name="writer"
-					value="${info.adminname }" required></td>
+					value="${ adminlogin.adminid }" required></td>
 			</tr>
 			<tr>
 				<th>내용</th>

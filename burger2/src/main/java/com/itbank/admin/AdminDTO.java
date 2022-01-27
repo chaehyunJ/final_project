@@ -51,4 +51,5 @@ public class AdminDTO {
 	public void setAdmingrade(String admingrade) {
 		this.admingrade = admingrade;
 	}
+
 }

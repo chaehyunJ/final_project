@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,16 +74,27 @@ public class LoginController {
 	}
 	
 	@PostMapping("/loginAdmin")
-	public ModelAndView loginAdmin(AdminDTO dto, HttpSession session) {
+	public ModelAndView loginAdmin(AdminDTO dto, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView();
 		
+		String auto = request.getParameter("auto");
+		System.out.println("auto :" + auto);
+		
+		if(auto != null) {
+			Cookie autoLoginAdmin = new Cookie("JSESSIONID", session.getId());
+			autoLoginAdmin.setMaxAge(7200);
+			autoLoginAdmin.setPath("/burger2_2");
+			response.addCookie(autoLoginAdmin);
+		}
+		dto.setAdminpw(hash.getHash(dto.getAdminpw()));
 		
 		AdminDTO adminlogin = ms.loginAdmin(dto);
 		System.out.println(adminlogin.getAdminid());
 		
 		session.setAttribute("adminlogin", adminlogin);
+		
 		if(adminlogin != null) {
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:admin/adminPage");
 		}
 		return mav;
 	}
@@ -114,10 +126,10 @@ public class LoginController {
 		
 		
 		System.out.println(member.getUserpw());
-//		String pw = member.getUserpw().substring(0, 8);
-//		
-//		member.setUserpw(pw);
-//		
+		String pw = member.getUserpw().substring(0, 8);
+		
+		member.setUserpw(pw);
+		
 		mav.addObject("member", member);
 		return mav;
 	}
@@ -145,4 +157,11 @@ public class LoginController {
 		return mav;	//추가되고 나서 목록에서 확인 할 수 있도록
 	}
 	
+	@ExceptionHandler(NullPointerException.class)
+	public ModelAndView exHam(NullPointerException e) {
+		ModelAndView mav = new ModelAndView("alert");
+		mav.addObject("msg", "아이디와 비밀번호를 확인해주세요");
+		mav.addObject("url", "loginAdmin");
+		return mav;
+	}	
 }

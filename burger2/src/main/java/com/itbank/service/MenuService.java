@@ -6,10 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itbank.member.MemberDAO;
-import com.itbank.member.MemberDTO;
 import com.itbank.model.BurgerDAO;
-import com.itbank.model.BurgerDTO;
 import com.itbank.model.MenuDAO;
 import com.itbank.promotion.PromDAO;
 import com.itbank.promotion.PromDTO;

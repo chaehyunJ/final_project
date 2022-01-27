@@ -49,6 +49,11 @@ public class MemberService {
 		return login;
 	}	
 	
+	// 관리자 id확인
+	public AdminDTO idChkAdmin(String userid) {
+		return admindao.getMember(userid);
+	}	
+	
 	// 회원가입
 	public int join(MemberDTO dto) {
 		int row = dao.join(dto);
@@ -90,9 +95,22 @@ public class MemberService {
 	public MemberDTO mailChk(String email) {
 		return dao.mailChk(email);
 	}
-	
+
 	// 회원탈퇴
-	public int deleteMember(String userpw) {
-		return dao.deleteMember(userpw);
+		public int deleteMember(String userpw) {
+			return dao.deleteMember(userpw);
+	}
+	
+	// 전화번호 중복확인
+	public MemberDTO getMemberByPhone(String phone) {
+		return dao.phoneChk(phone);
+	}
+
+	public MemberDTO findByEmail(String email) {
+		return dao.findByEmail(email);
+	}
+
+	public int joinAdmin(AdminDTO dto) {
+		return admindao.joinAdmin(dto);
 	}
 }

@@ -29,12 +29,11 @@ div{
 .board-ul {
 	display: flex;
 	list-style: none;
-	color: black;
-	font-weight: bold;
 	font-size: 16px;
 	padding: 30px;
 	padding-left: 0;
-	color: white;
+	color: #292929;
+	font-weight: 500;
 }
 .board-ul li {
 	margin: 7px;
@@ -45,12 +44,16 @@ div{
 .board-list {
 	width: 1170px;
 	margin: 0 auto;
+	font-weight: bold;
 }
 .board-list div {
-	border: 1px solid black;
+/* 	border: 1px solid white; */
+	color: #292929;
+	font-weight: 500;
 }
 .board-list-title {
-	display: flex;	
+	display: flex;
+	margin-bottom: 40px;	
 }
 .board-total {
 	line-height: 50px;
@@ -58,6 +61,8 @@ div{
 }
 .board-search {
 	padding-right: 0;
+	height: 50px;
+	justify-content: center;
 }
 .board-search input {
 	width: 300px;
@@ -71,6 +76,7 @@ div{
 	padding-left: 40px;
 	padding-top: 25px;
 	padding-bottom: 25px;
+	border-bottom:  1px solid #808080;
 }
 .board-notice-icon {
 	padding-right: 60px;
@@ -87,9 +93,13 @@ div{
 	padding-left: 40px;
 	padding-top: 25px;
 	padding-bottom: 25px;
+	color: #292929;
+	font-weight: 500;
+	border-bottom: 1px solid #808080;
 }
 .board-post-number {
 	padding-right: 65px;
+	width: 10px;
 }
 .board-post-title {
 	width: 900px;
@@ -97,6 +107,12 @@ div{
 .board-post-date {
 	width: 150px;
 	text-align: center;
+}
+.board-list-main {
+	background-color: #f8f8f8;
+	border-bottom: 2px solid #808080;
+	border-top: 2px solid #808080;
+	
 }
 
 /* 성훈 추가  */
@@ -108,10 +124,12 @@ div{
 	width: 1200px;
 	margin-top: 10px;
 }
+
+/* 01-27 색 수정 */
 .newswrite-submit {
 	width: 90px;
 	height: 40px;
-	background-color: #ff0000;
+	background-color: #bd0017;
 	border: 0;
 	border-radius: 0.1cm;
 	color: white;
@@ -123,21 +141,22 @@ div{
 .detail-news{
 	display: flex;
 	width : 1200px;
-	border : 1px solid black;
+	border : 0px solid black;
 	margin : auto;
 }
 
 .detail-header{
 	display: flex;
 	width : 1200px;
-	border : 1px solid black;
+	border : 0px solid black;
 	margin : auto;
 	justify-content: space-between;
 }
 .detail-header > .detail-num {
 	display : flex;
-	width : 230px;
-	border : 1px solid black;
+	width : 175px;
+	margin-right: 0;
+	border : 0px solid black;
 }
 .detail-header > div{
 	margin-right : 10px;
@@ -176,55 +195,30 @@ div{
 	margin : auto;
 	text-align: center;
 }
-/* 성훈 01-24 추가 */
-.btn-list{
-	width : 1200px;
-	display: flex;
-	justify-content: flex-end;
-	margin: 0 auto;
-}
-
-#news-modify {
-	width: 75px;
-	height: 45px;
-	font-weight: bold;
-	border-radius: 0.1cm;
-	color: white;
-	font-weight: bold;
-	background-color: #ffbc0d;
-	font-size: 14px;
-	margin: 0 5px;
-}
-
-#news-delete {
-	width: 75px;
-	height: 45px;
-	font-weight: bold;
-	border-radius: 0.1cm;
-	color: white;
-	font-weight: bold;
-	background-color: #264a36;
-	font-size: 14px;
-	margin: 0 5px;
-	}
-
 .btn-list1{
 	width : 1200px;
-	border : 1px solid black;
+	border : 0px solid black;
 	margin : auto;
 	display: flex;
 	justify-content: space-between;
 }
-.btn-list1 > .prev-btn, .next-btn{
-	border : 0;
-	width : 70px;
-	height: 70px;
-	font-size: 30px;
-	border-radius: 50px;
+.btn-list1 > .prev-btn{
+	width: 70px;
+    height: 70px;
+    border: 0;
 	cursor: pointer;
-	background-color: #dadada;
+	background: url("https://www.mcdonalds.co.kr/kor/images/common/btn_bbs_prev.png") no-repeat;
 }
-.news-list-btn{
+.btn-list1 > .next-btn{
+	width: 70px;
+    height: 70px;
+	border: 0;
+	cursor: pointer;
+	background: url("https://www.mcdonalds.co.kr/kor/images/common/btn_bbs_prev.png") no-repeat;
+	transform: rotate(180deg);
+}
+}
+.btn-list1 > a > .news-list-btn{
 	width : 150px;
 	height: 70px;
 	border : 0;
@@ -233,31 +227,37 @@ div{
 	font-size: 20px;
 	font-weight: bold;
 	color : white;
-	border : 1px solid black;
+	border : 0px solid black;
 	cursor: pointer;
 }
 
 /* 2022-01-22 추가 */
 .news-paging{
-	width : 220px;
-	border: 1px solid black;
+	width : 300px;
+	border: 1px solid white;
 	margin : auto;
 	margin-top : 20px;
 }
 .news-current-btn{
-	border : 0;
-	width : 25px;
-	height : 25px;
-	font-size : 20px;
-	background-color: white;
-	margin : auto;
-	cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 3px;
+    vertical-align: top;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
 }
 .news-current-btn:hover{
 	color : darkgrey;
+	cursor: pointer;
 }
 .bold{
 	color : #f5bd43;
+	padding-top: 2px;
+    line-height: 36px;
+    font-weight: bold;
 }
 
 /* 2022-01-23 추가  */
@@ -356,7 +356,11 @@ input[name="onOff"]:checked + #boxLabel span {
 .QnA-top > .QnA-top-right{
 	display: flex;
 }
-
+.QnA-top > .QnA-top-right > .QnA-onOff-check{
+	position: absolute;
+	margin-left : -200px;
+	padding-top : 5px;
+}
 
 .QnA-top > .QnA-top-right > .QnA-onOff{
 	margin-left : -30px;
@@ -414,3 +418,188 @@ input[name="onOff"]:checked + #boxLabel span {
 	text-align: center;
 	padding-top : 20px;
 }
+
+/* 2022-01-24 추가  */
+
+.QnA-write-form{
+	width : 740px;
+	height : 400px;
+	border : 1px solid black;
+	margin : auto;
+}
+
+.QnA-write-form > form > .QnA-write-top{
+	width : 690px;
+	border : 1px solid black;
+	marign : auto;
+}
+
+.QnA-write-form > form > .QnA-write-top >  .QnA-write-title{
+	width : 500px;
+	height: 40px;
+	border : 0;
+	border-bottom: 1px solid #dadada;
+	margin-left: 5px;
+}
+.QnA-write-form > form  > .QnA-write-top > .QnA-write-title:focus{
+	outline : none;
+}
+
+.QnA-write-form > form > .QnA-write-content{
+	width : 690px;
+	height: 230px;
+	border : 0px solid black;
+	border : 1px solid #dadada;
+	margin-top : 20px;
+	margin-left : 20px;
+}
+
+.QnA-write-form > form > select[name="qnaType"]{
+	width : 120px;
+	height: 40px;
+	padding : 5px;
+}
+
+.QnA-write-form > form > .QnA-write-content > p{
+	width : 60px;
+	border: 1px solid black;
+	margin-left : 600px;
+	margin-top : 5px;
+}
+
+.QnA-write-form > form > .QnA-write-content > .QnA-write-content1{
+	resize: none;
+	width : 650px;
+	height: 170px;
+	margin : auto;
+	margin-left : 10px;
+	margin-top : 15px;
+}
+
+.QnA-write-form > form > input[type="submit"]{
+	width : 150px;
+	height: 50px;
+	border :0;
+	border-radius: 25px;
+	background-color: #ffbc0d;
+	margin-left : 560px;
+	color : white;
+	font-size: 20px;
+	margin-top : 20px;
+}
+.QnA-write-backBtn{
+	width : 100px;
+	height: 50px;
+	border : 0px solid black;
+	position: absolute;
+	margin-top: -50px;
+	margin-left: 25px;
+}
+
+.QnA-write-backBtn > a > .QnA-write-backBtn1{
+	border : 0;
+	width: 100px;
+	height: 50px;
+	background-color: #ffbc0d;
+	border-radius: 25px;
+	margin-bottom: 35px;
+	color: white;
+	cursor: pointer;
+	font-size: 20px;
+}
+#searchNews {
+	width: 50px;
+    height: 50px;
+    margin-left: 8px;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+.board-searchIcon {
+	margin-top: 2px;
+	margin-left: 10px;
+	position: absolute;
+}
+
+.detail-img {
+	border: 1px solid red;
+	width: inherit;
+	height: 500px;
+}
+.board-searchIcon {
+	margin-top: 2px;
+	margin-left: 10px;
+	position: absolute;
+}
+
+/* 2022-01-25 추가 */
+.QnA-content-inner{
+	display: flex;
+	width : 1200px;
+	border : 0px solid black;
+	margin : auto;
+	border-bottom : 1px solid #292929;
+/* 	border-top: 1px solid #292929; */
+}
+.QnA-content-inner > div{
+	background-color:  #f8f8f8;
+}
+.QnA-content-inner > .QnA-inner-result{
+	width : 200px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+}
+.QnA-content-inner > .QnA-inner-title{
+	width : 600px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+}
+.QnA-content-inner > .QnA-inner-writer{
+	width : 200px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+}
+.QnA-content-inner > .QnA-inner-regDate{
+	width : 200px;
+	height : 60px;
+	border : 0px solid black;
+	text-align: center;
+	padding-top : 20px;
+}
+
+/* 성훈 01-24 추가 */
+.btn-list{
+	width : 1200px;
+	display: flex;
+	justify-content: flex-end;
+	margin: 0 auto;
+}
+
+#newsModify {
+	width: 75px;
+	height: 45px;
+	font-weight: bold;
+	border-radius: 0.1cm;
+	color: white;
+	font-weight: bold;
+	background-color: #ffbc0d;
+	font-size: 14px;
+	margin: 0 5px;
+}
+
+#newsDelete {
+	width: 75px;
+	height: 45px;
+	font-weight: bold;
+	border-radius: 0.1cm;
+	color: white;
+	font-weight: bold;
+	background-color: #264a36;
+	font-size: 14px;
+	margin: 0 5px;
+	}

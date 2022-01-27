@@ -26,12 +26,12 @@ package com.itbank.model;
 
 public class BurgerDTO {
 
-	private int burger_seq, burger_price, burger_set_price, mclunch_price, burger_weight_g,
-				burger_kcal, burger_set_kcal, burger_sugar, nutrient_standards_sugar,
-				burger_fat, nutrient_standards_fat, burger_natrium, nutrient_standards_natrium;
-	
+	private int burger_seq, burger_price, burger_set_price, mclunch_price, weight_g,
+    kcal, set_kcal, sugar, nutrient_standards_sugar,
+    fat, nutrient_standards_fat, natrium, nutrient_standards_natrium;
+
 	private String burger_description, burger_set_description, burger_name, burger_set_name,
-					burger_image, burger_set_image;
+       burger_img, burger_set_img;
 
 	public int getBurger_seq() {
 		return burger_seq;
@@ -49,36 +49,36 @@ public class BurgerDTO {
 		return mclunch_price;
 	}
 
-	public int getBurger_weight_g() {
-		return burger_weight_g;
+	public int getWeight_g() {
+		return weight_g;
 	}
 
-	public int getBurger_kcal() {
-		return burger_kcal;
+	public int getKcal() {
+		return kcal;
 	}
 
-	public int getBurger_set_kcal() {
-		return burger_set_kcal;
+	public int getSet_kcal() {
+		return set_kcal;
 	}
 
-	public int getBurger_sugar() {
-		return burger_sugar;
+	public int getSugar() {
+		return sugar;
 	}
 
 	public int getNutrient_standards_sugar() {
 		return nutrient_standards_sugar;
 	}
 
-	public int getBurger_fat() {
-		return burger_fat;
+	public int getFat() {
+		return fat;
 	}
 
 	public int getNutrient_standards_fat() {
 		return nutrient_standards_fat;
 	}
 
-	public int getBurger_natrium() {
-		return burger_natrium;
+	public int getNatrium() {
+		return natrium;
 	}
 
 	public int getNutrient_standards_natrium() {
@@ -101,12 +101,12 @@ public class BurgerDTO {
 		return burger_set_name;
 	}
 
-	public String getBurger_image() {
-		return burger_image;
+	public String getBurger_img() {
+		return burger_img;
 	}
 
-	public String getBurger_set_image() {
-		return burger_set_image;
+	public String getBurger_set_img() {
+		return burger_set_img;
 	}
 
 	public void setBurger_seq(int burger_seq) {
@@ -125,36 +125,36 @@ public class BurgerDTO {
 		this.mclunch_price = mclunch_price;
 	}
 
-	public void setBurger_weight_g(int burger_weight_g) {
-		this.burger_weight_g = burger_weight_g;
+	public void setWeight_g(int weight_g) {
+		this.weight_g = weight_g;
 	}
 
-	public void setBurger_kcal(int burger_kcal) {
-		this.burger_kcal = burger_kcal;
+	public void setKcal(int kcal) {
+		this.kcal = kcal;
 	}
 
-	public void setBurger_set_kcal(int burger_set_kcal) {
-		this.burger_set_kcal = burger_set_kcal;
+	public void setSet_kcal(int set_kcal) {
+		this.set_kcal = set_kcal;
 	}
 
-	public void setBurger_sugar(int burger_sugar) {
-		this.burger_sugar = burger_sugar;
+	public void setSugar(int sugar) {
+		this.sugar = sugar;
 	}
 
 	public void setNutrient_standards_sugar(int nutrient_standards_sugar) {
 		this.nutrient_standards_sugar = nutrient_standards_sugar;
 	}
 
-	public void setBurger_fat(int burger_fat) {
-		this.burger_fat = burger_fat;
+	public void setFat(int fat) {
+		this.fat = fat;
 	}
 
 	public void setNutrient_standards_fat(int nutrient_standards_fat) {
 		this.nutrient_standards_fat = nutrient_standards_fat;
 	}
 
-	public void setBurger_natrium(int burger_natrium) {
-		this.burger_natrium = burger_natrium;
+	public void setNatrium(int natrium) {
+		this.natrium = natrium;
 	}
 
 	public void setNutrient_standards_natrium(int nutrient_standards_natrium) {
@@ -177,12 +177,13 @@ public class BurgerDTO {
 		this.burger_set_name = burger_set_name;
 	}
 
-	public void setBurger_image(String burger_image) {
-		this.burger_image = burger_image;
+	public void setBurger_img(String burger_img) {
+		this.burger_img = burger_img;
 	}
 
-	public void setBurger_set_image(String burger_set_image) {
-		this.burger_set_image = burger_set_image;
+	public void setBurger_set_img(String burger_set_img) {
+		this.burger_set_img = burger_set_img;
 	}
+
 	
 }
