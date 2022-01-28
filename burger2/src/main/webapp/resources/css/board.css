@@ -124,12 +124,10 @@ div{
 	width: 1200px;
 	margin-top: 10px;
 }
-
-/* 01-27 색 수정 */
 .newswrite-submit {
 	width: 90px;
 	height: 40px;
-	background-color: #bd0017;
+	background-color: #ff0000;
 	border: 0;
 	border-radius: 0.1cm;
 	color: white;
@@ -519,12 +517,14 @@ input[name="onOff"]:checked + #boxLabel span {
 	margin-left: 10px;
 	position: absolute;
 }
-
+/* 01-28 수정 */
 .detail-img {
-	border: 1px solid red;
 	width: inherit;
-	height: 500px;
+	height: auto;
+	margin : 20px auto;
+	overflow-x: hidden;
 }
+
 .board-searchIcon {
 	margin-top: 2px;
 	margin-left: 10px;

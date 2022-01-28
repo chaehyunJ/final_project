@@ -56,4 +56,12 @@ public class MenuService {
 		return mdao.selectDtailList(map);
 	}
 
+	
+	// 메뉴 디테일 버튼
+	public HashMap<String, Object> menuDetail(HashMap<String, Object> map) {
+		return mdao.menuDetail(map);
+	}
+
+
+
 }

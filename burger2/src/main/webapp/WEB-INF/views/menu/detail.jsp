@@ -126,8 +126,11 @@
 	</div>
 	
 </div>
-
-
+	<div class="btn-list1">
+		<button class="prev-btn"></button>
+		<button class="next-btn"></button>
+	</div>
+	
 <script>
 	const cpath = '${cpath}'
 	const table = '${table}'
@@ -140,6 +143,199 @@
 	const thres = document.querySelector('.nutrition-thresholds')
 	const aller = document.querySelector('.menu-detail-allergy')
 		
+	
+	console.log("table : ",table)
+	console.log("seq : ", seq)
+	
+	// 2022-01-27 추가
+	const detailPrev = document.querySelector('.prev-btn')
+	const detailNext = document.querySelector('.next-btn')
+	
+	let seq2 = ${ sequence }
+	
+	console.log(seq2)
+	console.log(detailPrev)
+	console.log(detailNext)
+	
+	detailPrev.onclick = function(event){
+		event.preventDefault()
+		
+		let ob = {
+			'seq' : (seq2 -1),
+			'table' : table
+		}
+		
+		console.log(ob)
+		
+		const url = cpath + '/menuDetail'
+		const opt = {
+			method : 'POST',
+			body : JSON.stringify(ob),
+			headers : {
+				'Content-Type': 'application/json; charset=utf-8'
+			}
+		}
+		fetch(url, opt)
+		.then(resp => resp.json())
+		.then(json => {
+			console.log(json)
+			
+			for(key in json){
+				let kArr = key.split('_')
+				if(key.includes(kArr[0]+'_NAME')){
+					let nArr = json[key].split(' // ')
+					name.innerHTML = (nArr.length == 1) ?  nArr[0] : nArr[1]						
+				}
+				else if(key.includes(kArr[0]+'_IMG')){
+					let iArr = json[key].split(' // ')
+					img.innerHTML = '<img src ="'+((iArr.length == 1) ?  iArr[0] : iArr[1])+'">'						
+				}
+				else if(key.includes(kArr[0]+'_DESCRIPTION')){
+						desc.innerHTML = json[key]						
+				}
+				else if(key.includes('SALES_TIME')){
+						time.innerHTML = (json[key] != 0) ? '*판매시간:'+json[key] : ''					
+					}
+					
+					let nutrition = ''
+//					if(dto[key].includes(' // ')){
+//						console.log('12')
+//					}
+//					if(value.spilt(' // ')){
+//						let vArr = value.spilt(' // ')
+//						console.log(vArr)
+//					}
+//					let vArr = value.spilt(' // ')
+//					if(vArr.length != 1) {
+//						console.log(vArr)
+//					}
+					nutrition += '<th>함량</th>'
+					nutrition += '<td>'+((json['WEIGHT_G'] != 0) ? json['WEIGHT_G']+'g' : '-')+'</td>'
+  					nutrition += json['WEIGHT_ML'] != undefined ? '<td>'+(json['WEIGHT_ML'] != 0 ? json['WEIGHT_ML']+'ml' : '-')+'</td>' : '<td>-</td>'
+					nutrition += '<td>'+((json['KCAL'] != 0) ? json['KCAL']+'kcal' : '-')+'</td>'
+					nutrition += '<td>'+((json['SUGAR'] != 0) ? json['SUGAR']+'g' : '-')+'</td>'
+					nutrition += '<td>'+((json['PROTEIN'] != 0) ? json['PROTEIN']+'g' : '-')+'</td>'
+					nutrition += '<td>'+((json['FAT'] != 0) ? json['FAT']+'g' : '-')+'</td>'
+					nutrition += '<td>'+((json['NATRIUM'] != 0) ? json['NATRIUM']+'mg' : '-')+'</td>'
+  					nutrition += json['CAFFEINE'] != undefined ? '<td>'+(json['CAFFEINE'] != 0 ? json['CAFFEINE']+'mg' : '-')+'</td>' : '<td>-</td>'
+							
+					con.innerHTML = nutrition
+
+					let baseline = ''
+					baseline += '<th>영양소기준치</th>'
+					baseline += '<td>-</td>'
+					baseline += '<td>-</td>'
+					baseline += '<td>-</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_SUGAR'] != 0) ? json['NUTRIENT_STANDARDS_SUGAR']+'%' : '-')+'</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_PROTEIN'] != 0) ? json['NUTRIENT_STANDARDS_PROTEIN']+'%' : '-')+'</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_FAT'] != 0) ? json['NUTRIENT_STANDARDS_FAT']+'%' : '-')+'</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_NATRIUM'] != 0) ? json['NUTRIENT_STANDARDS_NATRIUM']+'%' : '-')+'</td>'
+					baseline += '<td>-</td>'
+					
+					thres.innerHTML = baseline		
+					
+					if(json['ALLERGY_INFO'] != 'null'){
+						let allergy = ''
+						allergy += '<h4>알레르기 정보</h4>'
+						allergy += '<p>'+json['ALLERGY_INFO']+'</p>'
+						aller.innerHTML = allergy
+					}
+			}
+			
+		})
+		seq2--
+	}
+	
+	detailNext.onclick = function(event){
+		event.preventDefault()
+		
+		let ob = {
+			'seq' : (seq2 + 1),
+			'table' : table
+		}
+		
+		console.log(ob)
+		
+		const url = cpath + '/menuDetail'
+		const opt = {
+			method : 'POST',
+			body : JSON.stringify(ob),
+			headers : {
+				'Content-Type': 'application/json; charset=utf-8'
+			}
+		}
+		fetch(url, opt)
+		.then(resp => resp.json())
+		.then(json => {
+			console.log(json)
+			
+			for(key in json){
+				let kArr = key.split('_')
+				if(key.includes(kArr[0]+'_NAME')){
+					let nArr = json[key].split(' // ')
+					name.innerHTML = (nArr.length == 1) ?  nArr[0] : nArr[1]						
+				}
+				else if(key.includes(kArr[0]+'_IMG')){
+					let iArr = json[key].split(' // ')
+					img.innerHTML = '<img src ="'+((iArr.length == 1) ?  iArr[0] : iArr[1])+'">'						
+				}
+				else if(key.includes(kArr[0]+'_DESCRIPTION')){
+						desc.innerHTML = json[key]						
+				}
+				else if(key.includes('SALES_TIME')){
+						time.innerHTML = (json[key] != 0) ? '*판매시간:'+json[key] : ''					
+					}
+					
+					let nutrition = ''
+//					if(dto[key].includes(' // ')){
+//						console.log('12')
+//					}
+//					if(value.spilt(' // ')){
+//						let vArr = value.spilt(' // ')
+//						console.log(vArr)
+//					}
+//					let vArr = value.spilt(' // ')
+//					if(vArr.length != 1) {
+//						console.log(vArr)
+//					}
+					nutrition += '<th>함량</th>'
+					nutrition += '<td>'+((json['WEIGHT_G'] != 0) ? json['WEIGHT_G']+'g' : '-')+'</td>'
+  					nutrition += json['WEIGHT_ML'] != undefined ? '<td>'+(json['WEIGHT_ML'] != 0 ? json['WEIGHT_ML']+'ml' : '-')+'</td>' : '<td>-</td>'
+					nutrition += '<td>'+((json['KCAL'] != 0) ? json['KCAL']+'kcal' : '-')+'</td>'
+					nutrition += '<td>'+((json['SUGAR'] != 0) ? json['SUGAR']+'g' : '-')+'</td>'
+					nutrition += '<td>'+((json['PROTEIN'] != 0) ? json['PROTEIN']+'g' : '-')+'</td>'
+					nutrition += '<td>'+((json['FAT'] != 0) ? json['FAT']+'g' : '-')+'</td>'
+					nutrition += '<td>'+((json['NATRIUM'] != 0) ? json['NATRIUM']+'mg' : '-')+'</td>'
+  					nutrition += json['CAFFEINE'] != undefined ? '<td>'+(json['CAFFEINE'] != 0 ? json['CAFFEINE']+'mg' : '-')+'</td>' : '<td>-</td>'
+							
+				con.innerHTML = nutrition
+
+					let baseline = ''
+					baseline += '<th>영양소기준치</th>'
+					baseline += '<td>-</td>'
+					baseline += '<td>-</td>'
+					baseline += '<td>-</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_SUGAR'] != 0) ? json['NUTRIENT_STANDARDS_SUGAR']+'%' : '-')+'</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_PROTEIN'] != 0) ? json['NUTRIENT_STANDARDS_PROTEIN']+'%' : '-')+'</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_FAT'] != 0) ? json['NUTRIENT_STANDARDS_FAT']+'%' : '-')+'</td>'
+					baseline += '<td>'+((json['NUTRIENT_STANDARDS_NATRIUM'] != 0) ? json['NUTRIENT_STANDARDS_NATRIUM']+'%' : '-')+'</td>'
+					baseline += '<td>-</td>'
+					
+					thres.innerHTML = baseline		
+					
+					if(json['ALLERGY_INFO'] != 'null'){
+						let allergy = ''
+						allergy += '<h4>알레르기 정보</h4>'
+						allergy += '<p>'+json['ALLERGY_INFO']+'</p>'
+						aller.innerHTML = allergy
+					}
+			}
+		})
+		seq2++
+	}
+	
+	
+	
 	const url = cpath + '/ajaxMenu/' +table+ '/' +seq
 	const opt = {
 		method : 'GET',
@@ -147,6 +343,7 @@
 		fetch(url,opt)
 		.then(resp => resp.json())
 		.then(json =>{
+			console.log(json)
 			json.forEach(dto =>{
 				for(key in dto){
 					let kArr = key.split('_')
@@ -166,9 +363,9 @@
  					}
  					
  					let nutrition = ''
- 					if(dto[key].includes(' // ')){
- 						console.log('12')
- 					}
+//  					if(dto[key].includes(' // ')){
+//  						console.log('12')
+//  					}
 //  					if(value.spilt(' // ')){
 //  						let vArr = value.spilt(' // ')
 //  						console.log(vArr)

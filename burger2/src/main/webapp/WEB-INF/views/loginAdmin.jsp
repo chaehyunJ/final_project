@@ -12,7 +12,6 @@
             </div>
             <input class="login-submit" type="submit" value="로그인">
         </form>
-        <p class="login-p"><a href="${ cpath }/join/adminJoin"><button class="join-button">회원가입</button></a></p>
     </div>
 
 <%@ include file="footer.jsp" %>

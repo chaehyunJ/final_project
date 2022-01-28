@@ -69,6 +69,10 @@ public class BoardService {
 		return qdao.qnaList2(map);
 	}
 
+	// 가장 최근 댓글 가져오기
+	public ReplyDTO getReply(int idx) {
+		
+		return rdao.getReply(idx);
+	}
 	
-
 }

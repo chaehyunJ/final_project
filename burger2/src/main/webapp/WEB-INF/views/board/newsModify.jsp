@@ -7,13 +7,13 @@
 		<table border="1" cellpadding="7" cellspacing="0">
 			<tr>
 				<th>제목</th>
-				<td><input class="border-zero" type="text" name="title" value="${dto.title }"
+				<td><input class="border-zero" type="text" name="title" width="600" value="${dto.title }"
 					placeholder="제목을 입력해주세요" required autofocus></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
 				<td><input class="border-zero" type="text" name="writer" 
-					value="${dto.writer }" readonly></td>
+					value="${dto.writer }" required></td>
 			</tr>
 			<tr>
 				<th>내용</th>
@@ -32,11 +32,9 @@
 			</tr>
 			<tr>
 				<th>종류</th>
-				<td>
-					<input type="radio" name="flag" value="top" ${dto.flag == 'top' ? 'checked' : '' } required>top
-					<input type="radio" name="flag" value="bottom" ${dto.flag == 'bottom' ? 'checked' : '' } required>bottom
-					<input type="hidden" name="notice_seq" value="${dto.notice_seq }" >
-				</td>
+				<td><input type="radio" name="flag" value="top"	${dto.flag == 'top' ? 'checked' : ''} required>top
+					<input type="radio" name="flag" value="bottom" ${dto.flag == 'bottom' ? 'checked' : ''} required>bottom
+					<input type="hidden" name="notice_seq" value="${dto.notice_seq }"></td>
 			</tr>
 		</table>
 		<div style="display: flex; justify-content:flex-end; width: 685px;">

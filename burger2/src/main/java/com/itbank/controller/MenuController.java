@@ -19,17 +19,19 @@ public class MenuController {
 	
 	@Autowired private MenuService ms;
 	
-
-	
 	@GetMapping("/list/{table}")
 	public ModelAndView list(@PathVariable String table) {
 		ModelAndView mav = new ModelAndView("/menu/list");
 
 		int cnt = ms.countList(table);
+						
+		System.out.println(table);
 		
 		mav.addObject("cnt", cnt);
-		mav.addObject("table", table.toUpperCase() + "_TABLE");
-
+		mav.addObject("table", table);
+//		mav.addObject("table", table.toUpperCase() + "_TABLE");
+		
+	
 		return mav;
 	}
 	

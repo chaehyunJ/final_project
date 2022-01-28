@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -74,25 +73,14 @@ public class LoginController {
 	}
 	
 	@PostMapping("/loginAdmin")
-	public ModelAndView loginAdmin(AdminDTO dto, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView loginAdmin(AdminDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		
-		String auto = request.getParameter("auto");
-		System.out.println("auto :" + auto);
-		
-		if(auto != null) {
-			Cookie autoLoginAdmin = new Cookie("JSESSIONID", session.getId());
-			autoLoginAdmin.setMaxAge(7200);
-			autoLoginAdmin.setPath("/burger2_2");
-			response.addCookie(autoLoginAdmin);
-		}
-		dto.setAdminpw(hash.getHash(dto.getAdminpw()));
 		
 		AdminDTO adminlogin = ms.loginAdmin(dto);
 		System.out.println(adminlogin.getAdminid());
 		
 		session.setAttribute("adminlogin", adminlogin);
-		
 		if(adminlogin != null) {
 			mav.setViewName("redirect:admin/adminPage");
 		}
@@ -157,11 +145,7 @@ public class LoginController {
 		return mav;	//추가되고 나서 목록에서 확인 할 수 있도록
 	}
 	
-	@ExceptionHandler(NullPointerException.class)
-	public ModelAndView exHam(NullPointerException e) {
-		ModelAndView mav = new ModelAndView("alert");
-		mav.addObject("msg", "아이디와 비밀번호를 확인해주세요");
-		mav.addObject("url", "loginAdmin");
-		return mav;
-	}	
+
+		
+		
 }

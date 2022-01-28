@@ -48,21 +48,22 @@
 	                <a href=""><img src="${ cpath }/resources/src/footer/youtube.png" alt=""></a>
 	            </div>
 	        </div>
-	    </footer>
-	 <script>
-    	const li1 = document.querySelector('.join-address-ul>li:nth-child(1)')
+	   </footer>
+	   
+	<script>
+		const li1 = document.querySelector('.join-address-ul>li:nth-child(1)')
 		const li2 = document.querySelector('.join-address-ul>li:nth-child(2)')
 		const li3 = document.querySelector('.join-address-ul>li:nth-child(3)')
 		window.onload = function() {
 			li1.classList.add('transform-small')
 			li2.classList.add('transform-big')
 			li3.classList.add('transform-small')
-    	}
+		}
     </script>
-	
+
+
 	<script>
 		const resultAddress = document.getElementById('resultAddress')
-		
 		console.log(resultAddress)
 		
     	document.getElementById("addressInput").addEventListener("click", function(){ //주소입력칸을 클릭하면
@@ -82,5 +83,4 @@
     	$('#detailAddressInput').blur(function(){
     		resultAddress.innerText +=  (' ' + $('#detailAddressInput').val())
     	})
-    	
 	</script>

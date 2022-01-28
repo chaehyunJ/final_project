@@ -169,8 +169,12 @@ public class BoardController {
 	}
 	
 	@PostMapping("/newsWrite")
-	public ModelAndView newsWrite(NoticeDTO dto) throws IllegalStateException, IOException {
+	public ModelAndView newsWrite(NoticeDTO dto) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		
+		System.out.println("dto.getTitle : " + dto.getContent());
+		System.out.println("dto.getDate : " + dto.getRegDate());
+		
 		System.out.println("dto.getUploadFile : " + dto.getUploadFile());
 //		System.out.println(dto.getUploadFile().getOriginalFilename());
 		
@@ -293,31 +297,37 @@ public class BoardController {
 			mav.addObject("url", "board/news?page=1");
 		}
 		else {
-			mav.addObject("msg", seq + "번 게시글 삭제에 실패하였습니다");
+			mav.addObject("msg", seq + "번  게시글 삭제에 실패하였습니다");
 		}
 		return mav;
 	}
 	
 	// news 수정
 	@GetMapping("/newsModify/{seq}")
-	public ModelAndView newsModify(@PathVariable int seq) {
+	public ModelAndView newsModify(@PathVariable int seq)  throws Exception {
 		ModelAndView mav = new ModelAndView("board/newsModify");
-		NoticeDTO dto = ns.selectNews(seq);
-		mav.addObject("dto", dto);	
-		return mav;
-	}
-	
-	@PostMapping("/newsModify/{seq}")
-	public ModelAndView newsModify(NoticeDTO dto)  throws IllegalStateException, IOException {
-		ModelAndView mav = new ModelAndView();
 		
-		int row = fs.uploadModify(dto);
-		
+		NoticeDTO dto = bs.getNews(seq);
+		mav.addObject("dto", dto);
 		System.out.println("1) " + dto.getTitle());
 		System.out.println("1) " + dto.getContent());
 		System.out.println("1) " + dto.getFileName());
 		System.out.println("1) " + dto.getFlag());
 		System.out.println("1) " + dto.getNotice_seq());
+		return mav;
+	}
+	
+	@PostMapping("/newsModify/{seq}")
+	public ModelAndView newsModify(NoticeDTO dto)  throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		int row = fs.uploadModify(dto);
+		
+		System.out.println("2) " + dto.getTitle());
+		System.out.println("2) " + dto.getContent());
+		System.out.println("2) " + dto.getFileName());
+		System.out.println("2) " + dto.getFlag());
+		System.out.println("2) " + dto.getNotice_seq());
 		
 		if(row == 1) {
 			mav.setViewName("alert");

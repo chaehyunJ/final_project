@@ -88,6 +88,9 @@
 	const nextBtn = document.querySelector('.next-btn')
 	const listBtn = document.querySelector('.news-list-btn')
 	
+	const newsModify = document.getElementById('newsModify')
+	const newsDelete = document.getElementById('newsDelete')
+	
 	console.log(detailTitle)
 	console.log(detailRegDate)
 	console.log(detailCnt)

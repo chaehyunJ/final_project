@@ -32,7 +32,7 @@
 	        			<div class="board-notice-list">
 		        			<div class="board-notice-icon"><img src="${ cpath }/resources/src/board/notice.png"></div>
 		        			<strong class="board-notice-title"><a href="${ cpath }/board/newsDetail/${tls.NOTICE_SEQ}">${ tls.TITLE }</a></strong>
-		        			<strong class="board-notice-date">${ tls.REGDATE }</strong>
+		        			<strong class="board-notice-date"><fmt:formatDate value="${tls.REGDATE}" pattern="yyyy-MM-dd"/></strong>
 	        			</div>
 	        		</c:forEach>
         		</div>
@@ -43,7 +43,7 @@
 						<div class="board-post-list">
 				        	<strong class="board-post-number">${ ls.NOTICE_SEQ }</strong>
 				        	<strong class="board-post-title" ><a href="${ cpath }/board/newsDetail/${ls.NOTICE_SEQ}">${ ls.TITLE }</a></strong>
-				        	<strong class="board-post-date">${ ls.REGDATE }</strong>
+				        	<strong class="board-post-date"><fmt:formatDate value="${ls.REGDATE}" pattern="yyyy-MM-dd"/></strong>
 		        		</div>
 		        	</c:forEach>
 		        

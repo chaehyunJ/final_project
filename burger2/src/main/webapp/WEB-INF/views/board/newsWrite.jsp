@@ -7,7 +7,7 @@
 		<table border="1" cellpadding="7" cellspacing="0">
 			<tr>
 				<th>제목</th>
-				<td><input class="border-zero" type="text" name="title"
+				<td><input class="border-zero" type="text" name="title" width="600"
 					placeholder="제목을 입력해주세요" required autofocus></td>
 			</tr>
 			<tr>

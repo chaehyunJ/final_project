@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface NoticeDAO {
 
 	@Select("select * from notice_table "
-			+ "where flag = 'bottom'"
+			+ "where flag = 'bottom' "
 			+ "order by notice_seq desc "
 			+ "offset ${ offset } rows "
 			+ "fetch first 5 rows only")
@@ -66,11 +66,7 @@ public interface NoticeDAO {
 
 	@Update("update notice_table set withdrawal = 'y' where notice_seq = #{seq}")
 	int deleteNews(int seq);
-	
-	@Select("select * from notice_table where notice_seq = ${seq}")
-	NoticeDTO selectNews2(int seq);
-	
-	
+
 	
 //	@Select("select * from notice_table where flag = 'bottom' and content like '%#{search}%'")
 //	List<NoticeDTO> searchList(String search);

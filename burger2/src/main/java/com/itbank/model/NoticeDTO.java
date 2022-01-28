@@ -1,6 +1,7 @@
+
 package com.itbank.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 

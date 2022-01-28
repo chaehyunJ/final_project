@@ -6,19 +6,20 @@ function getJson(table){
 	fetch(url,opt)
 	.then(resp => resp.json())
 	.then(json => {
+		console.log(json)
 		getMenuList(table,json)
 	})
 }
 function getMenuList(table,json){
-	if(table.includes('MCMORNING'))
+	if(table.includes('mcmorning'))
 		getMcmorning(json)
-	else if(table.includes('BURGER'))
+	else if(table.includes('burger'))
 		getBurger(json)
-	else if(table.includes('SIDE'))
+	else if(table.includes('side'))
 		getSide(json)
-	else if(table.includes('MCCAFE'))
+	else if(table.includes('mccafe'))
 		getMccafe(json)
-	else if(table.includes('DRINK'))
+	else if(table.includes('drink'))
 		getDrink(json)
 	else
 		getDessert(json)

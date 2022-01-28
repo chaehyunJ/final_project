@@ -6,13 +6,13 @@
         <div class="menu-top"></div>
 	
 		<div class="menu-list">
-			<div class="menu-total">• ${ cnt } Products</div>
+			<div class="menu-total"><p>•</p>${ cnt } Products</div>
 			<div class="menu-product-list"></div> 
 		</div>
 	
-		<div class="btn-list">
-			<button id="btnOpen">+</button>
-			<button id="btnClose" class="hidden">-</button>
+		<div class="menu-button">
+			<button id="menuOpen"></button>
+			<button id="menuClose" class="hidden" style="background-image: url(${ cpath}/resources/src/마이너스btn.png)"></button>
 		</div>
 	</div>
 
@@ -52,6 +52,8 @@
 		const cpath = '${ cpath }'
 		const table = '${ table }'
 		
+// 		let table = table1.toUpperCase() + '_TABLE'
+		
 		const cnt = '${ cnt }'
 		const itemHeight = 600
 		
@@ -61,36 +63,36 @@
 		const detail = document.querySelectorAll('.menu-product-list div')
 
 		console.log(topList)
-		if(table == '') { table = 'BURGER_TABLE' }
+		if(table == '') { table = 'burger_table' }
 	
 		getJson(table)
 			
 		
-		const btnOpen = document.getElementById('btnOpen')
-		const btnClose = document.getElementById('btnClose')
+		const menuOpen = document.getElementById('menuOpen')
+		const menuClose = document.getElementById('menuClose')
 		
 		let cnt1 = Math.ceil(cnt / 6)
 		let cnt2 = 2
 		console.log(cnt1)
 		console.log(cnt2)
-		btnOpen.onclick = function(){
+		menuOpen.onclick = function(){
 
 				
-				menuList.style.maxHeight = cnt2  * 700 + 'px'
+				menuList.style.maxHeight = cnt2  * 600 + 'px'
 				
 				console.log(cnt2)
 				if(cnt1 == cnt2){
-					btnOpen.classList.add('hidden')
-					btnClose.classList.remove('hidden')
+					menuOpen.classList.add('hidden')
+					menuClose.classList.remove('hidden')
 					cnt2 = 1
 				}
 				cnt2++
 			}
 		
-		btnClose.onclick = function(){
-			menuList.style.maxHeight = '700px'
-			btnOpen.classList.remove('hidden')
-			btnClose.classList.add('hidden')
+		menuClose.onclick = function(){
+			menuList.style.maxHeight = '600px'
+			menuOpen.classList.remove('hidden')
+			menuClose.classList.add('hidden')
 		}
 	
 		// table의 이름을 판별해서 burger나 mcmorning이면 dom을 다르게 불러오기

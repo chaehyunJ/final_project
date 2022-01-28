@@ -6,10 +6,10 @@
 	       <h4 class="myPage-title">마이 페이지</h4>
 	       <hr>
 			<ul class="myPage-navPath">
-				<li><a href="${cpath }/myPage">주문 조회</a></li>
+				<li><a href="${cpath }/myPage" style="text-decoration: underline; text-decoration-color: #f5bd43">주문 조회</a></li>
 				<li><a href="${cpath }/history">주문 내역</a></li>
 				<li><a href="${ cpath }/chkPw">회원 정보</a></li>
-				<li class="deleteBtn"><a href="${ cpath }/chkDelete">회원탈퇴</a></li>
+				<li class="deleteBtn"><a href="${ cpath }/chkDelete">회원 탈퇴</a></li>
 			</ul>
 	   </div>
 	<div class="myPage-contents">
@@ -29,7 +29,7 @@
 			<tbody>
 				<tr>
 					<td>${ orderList.orderDate }-${ orderList.orderSeq }</td>
-					<td><div id="timer"></div></td>
+					<td><div id="timer" ></div></td>
 					<td>🗒 ${orderList.orderstatus=='y'? '✔️'   :  ''}  </td>
 					<td>🍳${orderList.paystatus=='y'? '✔️'   : ''}    </td>
 					<td id="mypageOrder">🏍 </td>
@@ -69,11 +69,11 @@
     </footer>
 
 <script>
-
+	const timer = document.getElementById('timer')
 	const orderProcess = document.getElementById('mypageOrder')
 	const orderComplete = document.getElementById('mypageComplete')
 
-	let time = 5;
+	let time = 10;
 	let min = "";
 	let sec = "";
 	console.log(min)
@@ -83,7 +83,7 @@
 	   sec = time%60;
 	   document.getElementById("timer").innerHTML = min + "분" + sec + "초";
 	   time--;
-	   if(time >= 4) {
+	   if(time == 4) {
 		   orderProcess.innerText +='✔️ '
 	   }
 	   if(time < 0 ) {

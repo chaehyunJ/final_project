@@ -9,8 +9,8 @@
 			<ul class="myPage-navPath">
 				<li><a href="${cpath }/myPage">주문 조회</a></li>
 				<li><a href="${cpath }/history">주문 내역</a></li>
-				<li><a href="${ cpath }/chkPw">회원정보</a></li>
-				<li class="deleteBtn"><a href="${ cpath }/chkDelete">회원탈퇴</a></li>
+				<li><a href="${ cpath }/chkPw">회원 정보</a></li>
+				<li class="deleteBtn"><a href="${ cpath }/chkDelete" style="text-decoration: underline; text-decoration-color: #f5bd43">회원 탈퇴</a></li>
 			</ul>
 	   	</div>
 

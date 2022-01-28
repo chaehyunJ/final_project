@@ -2,12 +2,9 @@ package com.itbank.member;
 
 import java.util.HashMap;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-
-import com.itbank.admin.AdminDTO;
 
 @Repository
 public interface MemberDAO {
@@ -22,7 +19,7 @@ public interface MemberDAO {
 	MemberDTO selectMemberFindId(String email);
 	
 	int join(MemberDTO dto);
-	
+
 	@Update("update user_table set  "
 			+ "userpw=#{userpw},"
 			+ "username=#{username},"
@@ -54,5 +51,4 @@ public interface MemberDAO {
 	
 	@Select("select * from user_table where email = #{email}")
 	MemberDTO findByEmail(String email);
-	
 }

@@ -32,6 +32,7 @@
 
 <!-- 혜린 추가  -->
 <script src="${ cpath }/resources/js/menu.js"></script>
+<script src="${ cpath }/resources/js/menudetail.js"></script>
 
 <!-- 메인 슬라이더 jquery  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

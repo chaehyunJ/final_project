@@ -56,7 +56,7 @@
         		<div class="QnA-content-inner">
 					<div class="QnA-inner-result">${ ls.result == 'n' ? '미답변' : '답변완료' }</div>
 					<div class="QnA-inner-title" data-idx="${ ls.qna_seq }">${ ls.title }
-						<div class="QnA-answer" data-idx="${ ls.qna_seq }"></div>
+						<div class="QnA-answer ${ ls.qna_seq }" data-idx="${ ls.qna_seq }"></div>
 					</div>
 					<div class="QnA-inner-writer">${ ls.writer }</div>
 					<div class="QnA-inner-regDate">${ ls.regDate }</div>
@@ -130,14 +130,6 @@
 				console.log(json.dto)
 				console.log(json.dto.board_idx)
 				
-// 				qnaAnswer.forEach(e =>{
-// 					let idx2 = e.dataset.idx
-// 					let seq = e.nodeType - 1
-// 					console.log(idx2)
-// 					console.log(seq)
-					
-					
-// 				})
 				
 				qnaAnswer.innerText = ''
 				qnaAnswer.innerText += json.dto.content
