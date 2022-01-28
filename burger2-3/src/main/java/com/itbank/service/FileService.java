@@ -14,6 +14,7 @@ import com.itbank.model.NoticeDTO;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 @Service
@@ -40,10 +41,13 @@ public class FileService {
 	private ChannelSftp chSftp = null;
 		
 	public int upload(NoticeDTO dto) throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
+		
 		// 1. 업로드 받은 파일을 임시파일로 웹서버에 생성
 		MultipartFile file = dto.getUploadFile();
 		
-		File dest = new File(file.getOriginalFilename());
+		File dest = new File(today + file.getOriginalFilename());
 		
 		file.transferTo(dest);
 		
@@ -90,19 +94,62 @@ public class FileService {
 		return dao.insert(dto);
 	}
 	
-//	public int upload(NoticeDTO dto) throws IllegalStateException, IOException {
-//		
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		String today = sdf.format(new Date());
+	public int uploadModify(NoticeDTO dto) throws Exception {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(new Date());
 //		String fileName = dto.getUploadFile().getOriginalFilename();
 //		fileName = today + "_" + fileName;
-//		
-//		File dest = new File(dir, fileName);
-//		dto.getUploadFile().transferTo(dest);
-//		
-//		dto.setFileName(fileName);
-//		
-//		return dao.insert(dto);
-//	}
+		
+		// 1. 업로드 받은 파일을 임시파일로 웹서버에 생성
+		MultipartFile file = dto.getUploadFile();
+
+		File dest = new File(today + file.getOriginalFilename());
+
+		file.transferTo(dest);
+
+		// 2. 웹 서버에 생성된 임시파이을 파일서버에 전송
+		Session sess = null;
+		Channel channel = null;
+		JSch jsch = new JSch();
+
+		sess = jsch.getSession(serverUser, serverIP, serverPort);
+		sess.setPassword(serverPass);
+		sess.setConfig("StrictHostKeyChecking", "no");
+		sess.connect();
+
+		System.out.println("sftp > connected");
+		channel = sess.openChannel("sftp");
+		channel.connect();
+
+		// 리눅스 서버에 SFTP 형식으로 접속
+		chSftp = (ChannelSftp) channel;
+
+		FileInputStream fis = new FileInputStream(dest);
+
+		// 디렉토리 이동
+		chSftp.cd("/var/www/html");
+
+		// 동일한 이름으로 전송
+		chSftp.put(fis, dest.getName());
+
+		System.out.println("sftp > transfer complete");
+
+		fis.close();
+		chSftp.exit();
+
+		String fileName = "";
+
+		fileName += "http://";
+		fileName += serverIP;
+
+		// 기본 포트는 80이며 작성할 필요는 없으나, 서비스가 중복된다면 별도로 지정
+		fileName += ":1234";
+		fileName += "/" + dest.getName();
+		dto.setFileName(fileName);
+		
+		return dao.update(dto);
+	}
+
 }
 

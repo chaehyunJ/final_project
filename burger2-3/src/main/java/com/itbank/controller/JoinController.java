@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.admin.AdminDTO;
 import com.itbank.component.Hash;
 import com.itbank.member.MemberDTO;
 import com.itbank.service.MemberService;
@@ -114,6 +115,37 @@ public class JoinController {
 			System.out.println("비회원 가입 실패");
 			mav.setViewName("alert");
 			mav.addObject("msg", "비회원 가입에 실패하였습니다!!");
+		}
+		return mav;
+	}
+	
+	
+	@GetMapping("/join/adminJoin")
+	public ModelAndView adminJoin() {
+		ModelAndView mav = new ModelAndView("join/adminJoin");
+		return mav;
+	}
+	
+	@PostMapping("/join/adminJoin")
+	public ModelAndView adminJoin(AdminDTO dto) {
+		ModelAndView mav = new ModelAndView("join/adminJoin");
+		
+		String hashpw = hash.getHash(dto.getAdminpw());
+		dto.setAdminpw(hashpw);
+		
+		int row = ms.joinAdmin(dto);
+		
+		if(row == 1) {
+			System.out.println("가입 성공");
+			mav.setViewName("alert");
+			mav.addObject("msg", "가입 성공");
+			mav.addObject("url", "loginAdmin");
+		}
+		
+		else {
+			System.out.println("가입 실패");
+			mav.setViewName("alert");
+			mav.addObject("msg", "회원가입에 실패하였습니다!!");
 		}
 		return mav;
 	}

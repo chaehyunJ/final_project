@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.admin.AdminDTO;
 import com.itbank.component.Hash;
 import com.itbank.component.Paging;
 import com.itbank.member.MemberDTO;
@@ -114,6 +115,31 @@ public class AjaxController {
 		return map;
 	}
 	
+	@GetMapping("/ajaxIdChk2/{userid}")
+	public HashMap<String, String> idCheck2(@PathVariable String userid){
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		AdminDTO dto = memberService.idChkAdmin(userid);
+		
+		map.put("msg", dto == null ? "사용가능한 ID입니다" : "이미 사용중인 ID입니다");
+		map.put("color", dto == null ? "blue" : "red");
+		map.put("focus", dto == null ? "userpw" : "userid");
+		
+		return map;
+	}
+	
+	// 01-27 빠진거 추가
+	@GetMapping("/ajaxPhoneChk/{phone}")
+	public HashMap<String, String> phoneCheck(@PathVariable String phone){
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		MemberDTO dto = memberService.getMemberByPhone(phone);
+		
+		map.put("msg", dto == null ? "사용가능한 전화번호입니다" : "이미 사용중인 전화번호입니다");
+		map.put("color", dto == null ? "blue" : "red");
+		return map;
+	}
+	
 	@GetMapping("/mac")
 	public List<McMorningDTO> mac() {
 		return is.getmacList();
@@ -161,6 +187,7 @@ public class AjaxController {
 		else return 2;
 	}
 	
+	// 01-27 빠진거 추가
 	@GetMapping("/mailto/{email}/")
 	public HashMap<String, String> mailto(@PathVariable String email, HttpSession session) throws IOException{
 		System.out.println("인증번호 받은 이메일 : " +  email);
@@ -196,17 +223,23 @@ public class AjaxController {
 		// 메일 보내는건 service에서 처리
 		
 		// result가 인증번호
-		String result = mailService.sendMail(email, authNumber, account);
+		
+		MemberDTO dto = memberService.findByEmail(email);
 		
 		HashMap<String, String> ret = new HashMap<String, String>();
 		
-		if(result.equals(authNumber)) {
-			ret.put("status", "OK");
-			ret.put("message", "인증번호가 발송되었습니다");
-		}
-		else {
+		if(dto != null ) {
 			ret.put("status","FAIL");
-			ret.put("message","인증번호가 발송되지 않았습니다 ");
+			ret.put("message","중복되는 이메일입니다.");
+		}
+		
+		else {
+			String result = mailService.sendMail(email, authNumber, account);
+			
+			if(result.equals(authNumber)) {
+				ret.put("status", "OK");
+				ret.put("message", "인증번호가 발송되었습니다");
+			}
 		}
 		return ret;
 	}

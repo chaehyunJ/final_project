@@ -45,4 +45,10 @@ public interface MemberDAO {
 			+ "withdrawal='y'"
 			+ "where userpw = #{ userpw }")
 	int deleteMember(String userpw);
+	
+	@Select("select * from user_table where phone = #{phone}")
+	MemberDTO phoneChk(String phone);
+	
+	@Select("select * from user_table where email = #{email}")
+	MemberDTO findByEmail(String email);
 }

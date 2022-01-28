@@ -39,6 +39,14 @@ public interface NoticeDAO {
 			+ "#{cnt},"
 			+ "#{flag})")
 	int insert(NoticeDTO dto);
+	
+	@Update("update notice_table set "
+			+ "title = #{title},"
+			+ "content = #{content},"
+			+ "fileName = #{fileName},"
+			+ "flag = #{flag}"
+			+ "where notice_seq = #{notice_seq}")
+	int update(NoticeDTO dto);
 
 	@Select("select count(*) count from notice_table where flag = 'bottom'")
 	int getTotal();
@@ -52,7 +60,7 @@ public interface NoticeDAO {
 //			+ "order by notice_seq desc")
 	int searchTotal(String search);
 
-	@Select("select * from notice_table where flag = 'top' order by notice_seq desc")
+	@Select("select * from notice_table where flag = 'top' and withdrawal = 'n' order by notice_seq desc")
 	List<HashMap<String, Object>> selectNoticeTop();
 
 
