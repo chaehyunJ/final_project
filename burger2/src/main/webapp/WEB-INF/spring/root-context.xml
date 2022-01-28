@@ -34,6 +34,7 @@
 <!-- 					각각의 mapper파일이 DAO와 1:1 대응된다 -->
 				 
 					<value>classpath:config/sqlmap-member.xml</value>
+					<value>classpath:config/sqlmap-viewsearch.xml</value>
 					<value>classpath:config/sqlmap-search.xml</value>
 					<value>classpath:config/sqlmap-news.xml</value>
 					<value>classpath:config/sqlmap-store.xml</value>
