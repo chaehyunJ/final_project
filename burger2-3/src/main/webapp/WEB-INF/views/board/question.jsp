@@ -56,7 +56,7 @@
         		<div class="QnA-content-inner">
 					<div class="QnA-inner-result">${ ls.result == 'n' ? '미답변' : '답변완료' }</div>
 					<div class="QnA-inner-title" data-idx="${ ls.qna_seq }">${ ls.title }
-						<div class="QnA-answer ${ ls.qna_seq }" data-idx="${ ls.qna_seq }"></div>
+						<div class="QnA-answer hidden"  data-idx="${ ls.qna_seq }"></div>
 					</div>
 					<div class="QnA-inner-writer">${ ls.writer }</div>
 					<div class="QnA-inner-regDate">${ ls.regDate }</div>
@@ -107,6 +107,7 @@
     
 <script>
 	const cpath = '${ cpath }'
+	const inner = document.querySelectorAll('.QnA-content-inner')
 	const innerTitle = document.querySelectorAll('.QnA-inner-title')
 	const qnaAnswer = document.querySelector('.QnA-answer')
 	
@@ -116,6 +117,15 @@
 	
 	innerTitle.forEach(dto => {
 		dto.onclick = function(event){
+			console.log("event target :", event.target)
+			let ch = event.target.childNodes
+			let target = event.target.parentNode.children[1]
+			let pn = event.target.parentNode
+			
+			console.log("pn", pn)
+			console.log("target", target)
+			console.log("ch",ch)
+			
 			let idx = event.target.dataset.idx
 			console.log(idx)
 			
@@ -127,16 +137,42 @@
 			.then(resp => resp.json())
 			.then(json => {
 				console.log(json)
-				console.log(json.dto)
-				console.log(json.dto.board_idx)
+// 				console.log(json.dto)
 				
+// 				console.log(ch[1].classList.contains('hidden'))
 				
-				qnaAnswer.innerText = ''
-				qnaAnswer.innerText += json.dto.content
-				qnaAnswer.innerText += json.dto.regDate
+				if(json.msg){
+					ch[1].innerText = json.msg
+					target.style.height = '70px'
+					target.style.transitionDuration = '0.3s'
+					pn.style.maxHeight = '160px'
+					ch[1].classList.remove('hidden')
+				}
+				else{
+					ch[1].innerText = ''
+					ch[1].innerText += json.dto.content
+					ch[1].innerText += json.dto.writeDate
+					target.style.height = '70px'
+					target.style.transitionDuration = '0.3s'
+					pn.style.maxHeight = '160px'
+					ch[1].classList.remove('hidden')
+				}
+				
+// 				
 			})
-		}
-	})
+			
+			if(ch[1].classList.contains('hidden') == false){
+				console.log('hidden : false')
+				console.log('childNodes ', event.target.childNodes[1])
+				event.target.childNodes[1].style.display = 'none'
+				
+			}
+			console.log(ch[1].classList.contains('hidden'))
+					
+				
+			}
+		})
+
 </script>
 </body>
 </html>

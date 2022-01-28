@@ -32,8 +32,8 @@
 
 <script>
 	const cpath = '${ cpath }'
-	const btnOpen = document.getElementById('btnOpen')
-	const btnClose = document.getElementById('btnClose')
+	const menuOpen = document.getElementById('menuOpen')
+	const menuClose = document.getElementById('menuClose')
 	const slide = document.querySelector('.slide')
 	const mainInner = document.querySelector('.main-inner')
 
@@ -51,11 +51,11 @@
 	const unit = 1700
 
 	// 메인 페이지 +,- 버튼	
-	btnOpen.addEventListener('click', function(){
+	menuOpen.addEventListener('click', function(){
 		btnOpenHandler()
 	})
 		
-	btnClose.addEventListener('click', function(){
+	menuClose.addEventListener('click', function(){
 		btn1Handler()
 	})
 	
