@@ -40,7 +40,7 @@ public class LoginController {
 		if(auto != null) {
 			Cookie autoLogin = new Cookie("JSESSIONID", session.getId());
 			autoLogin.setMaxAge(7200);
-			autoLogin.setPath("/burger2_2");
+			autoLogin.setPath("/burger2-4");
 			response.addCookie(autoLogin);
 		}
 		dto.setUserpw(hash.getHash(dto.getUserpw()));
@@ -67,25 +67,7 @@ public class LoginController {
 		return mav;
 	}
 	
-	@GetMapping("/loginAdmin")
-	public String loginAdmin() {
-		return "loginAdmin";
-	}
 	
-	@PostMapping("/loginAdmin")
-	public ModelAndView loginAdmin(AdminDTO dto, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		
-		
-		AdminDTO adminlogin = ms.loginAdmin(dto);
-		System.out.println(adminlogin.getAdminid());
-		
-		session.setAttribute("adminlogin", adminlogin);
-		if(adminlogin != null) {
-			mav.setViewName("redirect:admin/adminPage");
-		}
-		return mav;
-	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {

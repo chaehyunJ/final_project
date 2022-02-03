@@ -5,7 +5,7 @@ let envShowContainCount;
 function nextSildeHandler(event) {
             if(check <=0 && check > -(envShowContainCount-1) ) { //check의 최대는 -(showContain갯수 -1)
                 check -= 1
-                nowPic = check * 1100
+                nowPic = check * 1200
                 showFrame.style.transform='translateX('+nowPic+'px)';
             }
             else {  //-2...
@@ -18,14 +18,14 @@ function nextSildeHandler(event) {
 function beforeSildeHandler(event) {
     if(check >= 0) {  //젤 처음일때부터 before를 누르면
         if(check == 0) check = -(envShowContainCount-1); {
-        nowPic = check * 1100
+        nowPic = check * 1200
         showFrame.style.transform='translateX('+nowPic+'px)';
         }
     }
     else {
         if(check < 0) {
             check += 1;
-            nowPic = check * 1100
+            nowPic = check * 1200
             showFrame.style.transform='translateX('+nowPic+'px)';
         }
     }
@@ -646,7 +646,7 @@ function getmcafeDom(json) {
 function render(target, dom) {
 	target.innerHTML = dom
 	const showContainCount = document.getElementsByClassName('show-contain').length
-	showFrame.style.width=showContainCount*1100+'px'
+	showFrame.style.width=showContainCount*1200+'px'
 	envShowContainCount = showContainCount //전역변수화
 	
 }

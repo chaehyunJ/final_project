@@ -43,4 +43,8 @@ public class NoticeService {
 	public int deleteNews(int seq) {
 		return dao.deleteNews(seq);
 	}
+
+	public NoticeDTO selectNews(int seq) {
+		return dao.selectNews2(seq);
+	}
 }

@@ -52,11 +52,12 @@
 					</div>
 				</fieldset>
 			</div>
+		</div>	
 			<div class="storeResult">
 				<div id="map" class="store-map" style="width : 1250px; height:600px; position: relative; overflow: hidden;"></div>
 <!-- 				<div id="map" class="store-map" style="height:600px; position: relative; overflow: hidden; background: url(https://t1.daumcdn.net/mapjsapi/images/bg_tile.png)"></div> -->
 			</div>
-		</div>
+		
 		<div class="store-table">
 			<table class="store-tableType01">
 				<thead>
@@ -82,7 +83,7 @@
 							<div class="store-service"></div>
 						</td>
 					</tr>
-			</tbody>
+				</tbody>
 			</table>
 			
 			<!--  페이징 구간  -->
@@ -119,6 +120,7 @@
         </div>
     </footer>
     
+
 <script>
 	const cpath = '${ cpath }'
 	const addressName = document.querySelector('.store-address-name')
@@ -235,11 +237,17 @@
 						dom2 += '<div>' + dto.STORE_TEL + '</div>'
 						dom3 += '<div>' + dto.STORE_OPENING_HOURS + '</div>'
 						dom4 += '<div>'
+						dom4 +=  dto.DECAFFEINE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png" style="width : 30px;">' : '' 
 						dom4 +=  dto.DECAFFEINE == 'y' ? '디카페인 커피<br>' : '' 
+						dom4 +=  dto.HOURS24 == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png" style="width : 30px;">' : ''
 						dom4 +=  dto.HOURS24 == 'y' ? '24시간<br>' : ''
+						dom4 +=  dto.MCDELIVERY == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png" style="width : 30px;">' : ''
 						dom4 +=  dto.MCDELIVERY == 'y' ? '맥딜리버리<br>' : ''
+						dom4 +=  dto.MCMORNING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png" style="width : 30px;">' : ''
 						dom4 +=  dto.MCMORNING == 'y' ? '맥모닝<br>' : ''
+						dom4 +=  dto.PARKING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png" style="width : 30px;">' : ''
 						dom4 +=  dto.PARKING == 'y' ? '주차<br>' : ''
+						dom4 +=  dto.MCDRIVE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png" style="width : 30px;">' : ''
 						dom4 +=  dto.MCDRIVE == 'y' ? '맥드라이브<br> ' : ''
 						dom4 += '</div>'
 						
@@ -250,7 +258,7 @@
 					
 					
 					if(json.prev == true){
-						pagingDom1 += '<button>' + '이전' + '</button>'
+						pagingDom1 += '<button class="p-Btn" data-page="' + (json.begin -1) + '">' + '이전' + '</button>'
 					}
 					else{
 						pagingDom1 += ''
@@ -261,7 +269,7 @@
 					}
 					
 					if(json.next == true){
-						pagingDom3 += '<button>' + '다음' + '</button>'
+						pagingDom3 += '<button class="n-Btn" data-page="'+ (json.end + 1) +'">' + '다음' + '</button>'
 					}
 					else{
 						pagingDom3 += ''
@@ -326,11 +334,17 @@
 								dom2 += '<div>' + dto.STORE_TEL + '</div>'
 								dom3 += '<div>' + dto.STORE_OPENING_HOURS + '</div>'
 								dom4 += '<div>'
+								dom4 +=  dto.DECAFFEINE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png" style="width : 30px;">' : '' 
 								dom4 +=  dto.DECAFFEINE == 'y' ? '디카페인 커피<br>' : '' 
+								dom4 +=  dto.HOURS24 == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png" style="width : 30px;">' : ''
 								dom4 +=  dto.HOURS24 == 'y' ? '24시간<br>' : ''
+								dom4 +=  dto.MCDELIVERY == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png" style="width : 30px;">' : ''
 								dom4 +=  dto.MCDELIVERY == 'y' ? '맥딜리버리<br>' : ''
+								dom4 +=  dto.MCMORNING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png" style="width : 30px;">' : ''
 								dom4 +=  dto.MCMORNING == 'y' ? '맥모닝<br>' : ''
+								dom4 +=  dto.PARKING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png" style="width : 30px;">' : ''
 								dom4 +=  dto.PARKING == 'y' ? '주차<br>' : ''
+								dom4 +=  dto.MCDRIVE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png" style="width : 30px;">' : ''
 								dom4 +=  dto.MCDRIVE == 'y' ? '맥드라이브<br> ' : ''
 								dom4 += '</div>'
 								
@@ -353,6 +367,202 @@
 
 						})
 					})
+					
+
+					
+					
+					$('.n-Btn').on('click', function(e) {
+						e.preventDefault()
+						console.log(e.target.dataset.page)
+						let page = parseInt(e.target.dataset.page)
+						let offset = ( page - 1) * 10
+						let cate = json.cate
+						
+						const ob = {
+							'page' : page,
+							'offset' : offset,
+							'cate' : cate
+						}
+						console.log(ob)
+						const url = cpath + '/storeCate'
+						const opt = {
+							method : 'post',
+							body : JSON.stringify(ob),
+							headers : {
+								'Content-Type': 'application/json; charset=utf-8'
+							}
+						}
+						fetch(url, opt)
+						.then(resp => resp.json())
+						.then(json => {
+							console.log(json)
+							console.log(json.list)
+							
+							let dom1 = ''
+							let dom2 = ''
+							let dom3 = ''
+							let dom4 = ''
+					
+							let pagingDom1 = ''
+							let pagingDom2 = ''
+							let pagingDom3 = ''
+							json.list.forEach(dto => {
+								dom1 += '<div>' + dto.STORE_NAME + ' / ' + dto.STORE_ADDRESS +'</div>'
+								dom2 += '<div>' + dto.STORE_TEL + '</div>'
+								dom3 += '<div>' + dto.STORE_OPENING_HOURS + '</div>'
+								dom4 += '<div>'
+								dom4 +=  dto.DECAFFEINE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png" style="width : 30px;">' : '' 
+								dom4 +=  dto.DECAFFEINE == 'y' ? '디카페인 커피<br>' : '' 
+								dom4 +=  dto.HOURS24 == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png" style="width : 30px;">' : ''
+								dom4 +=  dto.HOURS24 == 'y' ? '24시간<br>' : ''
+								dom4 +=  dto.MCDELIVERY == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png" style="width : 30px;">' : ''
+								dom4 +=  dto.MCDELIVERY == 'y' ? '맥딜리버리<br>' : ''
+								dom4 +=  dto.MCMORNING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png" style="width : 30px;">' : ''
+								dom4 +=  dto.MCMORNING == 'y' ? '맥모닝<br>' : ''
+								dom4 +=  dto.PARKING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png" style="width : 30px;">' : ''
+								dom4 +=  dto.PARKING == 'y' ? '주차<br>' : ''
+								dom4 +=  dto.MCDRIVE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png" style="width : 30px;">' : ''
+								dom4 +=  dto.MCDRIVE == 'y' ? '맥드라이브<br> ' : ''
+								dom4 += '</div>'
+								
+							})
+							
+							
+							addressName.innerHTML = ''
+							addressName.innerHTML += dom1
+							
+							storeTel.innerHTML = ''
+							storeTel.innerHTML += dom2
+							
+							storeOpen.innerHTML = ''
+							storeOpen.innerHTML += dom3
+							
+							storeService.innerHTML = ''
+							storeService.innerHTML += dom4
+//		 					storeResult.innerHTML += dom
+
+							if(json.prev == true){
+								pagingDom1 += '<button class="p-Btn" data-page="' + (json.begin -1) + '">' + '이전' + '</button>'
+							}
+							else{
+								pagingDom1 += ''
+							}
+							
+							for(let i = json.begin; i <= json.end; i++){
+								pagingDom2 += '<button class="c-Btn" data-page="'+ i +'">' + i + '</button>'
+							}
+							
+							if(json.next == true){
+								pagingDom3 += '<button class="n-Btn" data-page="'+ (json.end + 1) +'">' + '다음' + '</button>'
+							}
+							else{
+								pagingDom3 += ''
+							}
+								storePaging.innerHTML = ''
+								storePaging.innerHTML += pagingDom1
+								storePaging.innerHTML += pagingDom2
+								storePaging.innerHTML += pagingDom3
+							
+
+						})
+					})
+					
+					$('.p-Btn').on('click', function(e) {
+						e.preventDefault()
+						console.log(e.target.dataset.page)
+						let page = parseInt(e.target.dataset.page)
+						let offset = ( page - 1) * 10
+						let cate = json.cate
+						
+						const ob = {
+							'page' : page,
+							'offset' : offset,
+							'cate' : cate
+						}
+						console.log(ob)
+						const url = cpath + '/storeCate'
+						const opt = {
+							method : 'post',
+							body : JSON.stringify(ob),
+							headers : {
+								'Content-Type': 'application/json; charset=utf-8'
+							}
+						}
+						fetch(url, opt)
+						.then(resp => resp.json())
+						.then(json => {
+							console.log(json)
+							console.log(json.list)
+							
+							let dom1 = ''
+							let dom2 = ''
+							let dom3 = ''
+							let dom4 = ''
+					
+							let pagingDom1 = ''
+							let pagingDom2 = ''
+							let pagingDom3 = ''
+							json.list.forEach(dto => {
+								dom1 += '<div>' + dto.STORE_NAME + ' / ' + dto.STORE_ADDRESS +'</div>'
+								dom2 += '<div>' + dto.STORE_TEL + '</div>'
+								dom3 += '<div>' + dto.STORE_OPENING_HOURS + '</div>'
+								dom4 += '<div>'
+								dom4 +=  dto.DECAFFEINE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png" style="width : 30px;">' : '' 
+								dom4 +=  dto.DECAFFEINE == 'y' ? '디카페인 커피<br>' : '' 
+								dom4 +=  dto.HOURS24 == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png" style="width : 30px;">' : ''
+								dom4 +=  dto.HOURS24 == 'y' ? '24시간<br>' : ''
+								dom4 +=  dto.MCDELIVERY == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png" style="width : 30px;">' : ''
+								dom4 +=  dto.MCDELIVERY == 'y' ? '맥딜리버리<br>' : ''
+								dom4 +=  dto.MCMORNING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png" style="width : 30px;">' : ''
+								dom4 +=  dto.MCMORNING == 'y' ? '맥모닝<br>' : ''
+								dom4 +=  dto.PARKING == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png" style="width : 30px;">' : ''
+								dom4 +=  dto.PARKING == 'y' ? '주차<br>' : ''
+								dom4 +=  dto.MCDRIVE == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png" style="width : 30px;">' : ''
+								dom4 +=  dto.MCDRIVE == 'y' ? '맥드라이브<br> ' : ''
+								dom4 += '</div>'
+								
+							})
+							
+							
+							addressName.innerHTML = ''
+							addressName.innerHTML += dom1
+							
+							storeTel.innerHTML = ''
+							storeTel.innerHTML += dom2
+							
+							storeOpen.innerHTML = ''
+							storeOpen.innerHTML += dom3
+							
+							storeService.innerHTML = ''
+							storeService.innerHTML += dom4
+//		 					storeResult.innerHTML += dom
+							
+							
+							if(json.prev == true){
+								pagingDom1 += '<button class="p-Btn" data-page="' + (json.begin -1) + '">' + '이전' + '</button>'
+							}
+							else{
+								pagingDom1 += ''
+							}
+							
+							for(let i = json.begin; i <= json.end; i++){
+								pagingDom2 += '<button class="c-Btn" data-page="'+ i +'">' + i + '</button>'
+							}
+							
+							if(json.next == true){
+								pagingDom3 += '<button class="n-Btn" data-page="'+ (json.end + 1) +'">' + '다음' + '</button>'
+							}
+							else{
+								pagingDom3 += ''
+							}
+								storePaging.innerHTML = ''
+								storePaging.innerHTML += pagingDom1
+								storePaging.innerHTML += pagingDom2
+								storePaging.innerHTML += pagingDom3
+
+						})
+					})
+					
 
 					
 				})
@@ -458,12 +668,28 @@ searchBtn.onclick = function(){
 			addressName.innerText = dto.store_name + ' / ' + dto.store_address
 			storeTel.innerText = dto.store_tel
 			storeOpen.innerText = dto.store_opening_hours
-			storeService.innerText += dto.hours24 == 'y' ? '24시간\n' : ''
-			storeService.innerText += dto.mcdrive == 'y' ? '맥드라이브\n ' : ''
-			storeService.innerText += dto.mcdelivery == 'y' ? '맥딜리버리\n' : ''
-			storeService.innerText += dto.momorning == 'y' ? '맥모닝\n' : ''
-			storeService.innerText += dto.parking == 'y' ? '주차\n' : ''
-			storeService.innerText += dto.decaffeine == 'y' ? '디카페인 커피\n' : ''
+			let dom4 = ''
+// 			storeService.innerText += dto.decaffeine == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png" style="width : 30px;"> 디카페인 커피\n' : ''
+// 			storeService.innerText += dto.hours24 == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png" style="width : 30px;"> 24시간\n' : ''
+// 			storeService.innerText += dto.mcdelivery == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png" style="width : 30px;"> 맥딜리버리\n' : ''
+// 			storeService.innerText += dto.momorning == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png" style="width : 30px;"> 맥모닝\n' : ''
+// 			storeService.innerText += dto.parking == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png" style="width : 30px;"> 주차\n' : ''
+// 			storeService.innerText += dto.mcdrive == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png" style="width : 30px;"> 맥드라이브\n ' : ''
+				dom4 += '<div>'
+				dom4 +=  dto.decaffeine == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png" style="width : 30px;">' : '' 
+				dom4 +=  dto.decaffeine == 'y' ? '디카페인 커피<br>' : '' 
+				dom4 +=  dto.hours24 == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png" style="width : 30px;">' : ''
+				dom4 +=  dto.hours24 == 'y' ? '24시간<br>' : ''
+				dom4 +=  dto.mcdelivery == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png" style="width : 30px;">' : ''
+				dom4 +=  dto.mcdelivery == 'y' ? '맥딜리버리<br>' : ''
+				dom4 +=  dto.mcmorning == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png" style="width : 30px;">' : ''
+				dom4 +=  dto.mcmorning == 'y' ? '맥모닝<br>' : ''
+				dom4 +=  dto.parking== 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png" style="width : 30px;">' : ''
+				dom4 +=  dto.parking == 'y' ? '주차<br>' : ''
+				dom4 +=  dto.mcdrive == 'y' ? '<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png" style="width : 30px;">' : ''
+				dom4 +=  dto.mcdrive == 'y' ? '맥드라이브<br> ' : ''
+				dom4 += '</div>'
+				storeService.innerHTML += dom4
 		})
 	})
 }
@@ -471,5 +697,6 @@ searchBtn.onclick = function(){
 
  
 </script>
+<%@ include file="search-footer.jsp" %>
 </body>
 </html>

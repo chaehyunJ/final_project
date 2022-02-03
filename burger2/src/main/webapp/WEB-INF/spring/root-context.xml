@@ -38,6 +38,7 @@
 					<value>classpath:config/sqlmap-news.xml</value>
 					<value>classpath:config/sqlmap-store.xml</value>
 					<value>classpath:config/sqlmap-qna.xml</value>
+					<value>classpath:config/sqlmap-viewsearch.xml</value>
 					
 <!-- 					<value>classpath:config/sqlmap-book.xml</value>  -->
 <!-- 					<value>classpath:config/sqlmap-file.xml</value> -->

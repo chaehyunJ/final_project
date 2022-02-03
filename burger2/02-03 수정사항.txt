@@ -1,0 +1,19 @@
+loginAdmin.jsp	views 에서 views -> admin 으로 위치 변경
+
+login.jsp 		관리자로그인 이동 admin/loginAdmin으로 수정
+
+joincontroller	@PostMapping("/join/adminJoin") 에 url admin/loginAdmin 수정
+
+loginAdmin.jsp	<a href="${ cpath }/admin/loginAdmin"> 수정
+
+admincontroller	@GetMapping("/loginAdmin")
+		public String loginAdmin() {
+		return "admin/loginAdmin"; }		위치 수정
+
+
+		@PostMapping("/loginAdmin")
+		else {
+			mav.setViewName("alert");
+			mav.addObject("url", "admin/loginAdmin");
+			mav.addObject("msg", "로그인에 실패하였습니다");  추가
+		}

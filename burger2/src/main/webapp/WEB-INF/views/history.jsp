@@ -45,5 +45,5 @@
 	</div>
 	</div>
 </div>
-
+ <%@ include file="search-footer.jsp" %>
 <%@ include file="footer.jsp" %>

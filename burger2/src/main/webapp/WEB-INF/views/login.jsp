@@ -21,11 +21,11 @@
         </form>
         	<p class="login-p"><a href="${ cpath }/join"><button class="join-button">회원가입</button></a></p>
         	<div class="admin-login-btn">
-        		<span><a class="underline" href="${cpath }/loginAdmin">관리자로그인으로 이동</a></span>
+        		<span><a class="underline" href="${cpath }/admin/loginAdmin">관리자로그인으로 이동</a></span>
         		<span>></span>
         	</div>
         	<!--  비밀번호 찾을 때 등록된 이메일을 통해서 임시비밀번호 보내주기  -->
         	<!--  비밀번호를 보내주면 DB에는 해당 계정의 비밀번호는 임시비밀번호를 해쉬로 처리한 값이 들어가야 한다   -->
     </div>
-
+ <%@ include file="search-footer.jsp" %>
 <%@ include file="footer.jsp" %>

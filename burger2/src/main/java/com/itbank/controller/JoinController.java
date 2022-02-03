@@ -139,7 +139,7 @@ public class JoinController {
 			System.out.println("가입 성공");
 			mav.setViewName("alert");
 			mav.addObject("msg", "가입 성공");
-			mav.addObject("url", "loginAdmin");
+			mav.addObject("url", "admin/loginAdmin");
 		}
 		
 		else {

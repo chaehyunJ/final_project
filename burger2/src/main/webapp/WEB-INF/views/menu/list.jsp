@@ -46,7 +46,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
 	// 메뉴 클릭
 		const cpath = '${ cpath }'
@@ -100,5 +100,6 @@
 		
 
     </script>
+	<%@ include file ="../search-footer.jsp" %>
 </body>
 </html>

@@ -66,6 +66,9 @@ public interface NoticeDAO {
 
 	@Update("update notice_table set withdrawal = 'y' where notice_seq = #{seq}")
 	int deleteNews(int seq);
+	
+	@Select("select * from notice_table where notice_seq = ${seq}")
+	NoticeDTO selectNews2(int seq);
 
 	
 //	@Select("select * from notice_table where flag = 'bottom' and content like '%#{search}%'")

@@ -1,6 +1,5 @@
 package com.itbank.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itbank.admin.AdminDTO;
 import com.itbank.component.Paging;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.NoticeDTO;
 import com.itbank.model.QnaBoardDTO;
+import com.itbank.model.ReplyDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.FileService;
 import com.itbank.service.MemberService;
@@ -244,6 +243,79 @@ public class BoardController {
 		return mav;
 	}
 	
+	@PostMapping("/question")
+	public ModelAndView postQuestion(int page, @RequestParam String writer) {
+		ModelAndView mav = new ModelAndView();
+		
+		if(page == 0) {
+			page = 1;
+		}
+		int total = bs.userCount(writer);
+		
+
+		int pageCount = (total / 10);
+		pageCount = total % 10 == 0 ? pageCount : pageCount + 1 ;
+
+		int offset = (page-1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("offset", offset);
+		map.put("writer", writer);
+		
+		List<QnaBoardDTO> userQnaList = bs.userQnaList(map);
+		
+		int section = paging.section(page);		
+		int begin = paging.begin(section);
+		int end = paging.end(pageCount);
+		boolean prev = paging.prev(section);
+		boolean next = paging.next(pageCount, end);
+		
+		System.out.println("page : " + page);
+		System.out.println("total : " + total);
+		System.out.println("pageCount : " + pageCount);
+		System.out.println("offset : " + offset);
+		System.out.println("section : " + section);
+		System.out.println("begin : " + begin);
+		System.out.println("end : " + end);
+		System.out.println("prev : " + prev);
+		System.out.println("next : " + next);
+		
+		
+	
+		
+		mav.addObject("list", userQnaList);
+		mav.addObject("section", section);
+		mav.addObject("begin", begin);
+		mav.addObject("end", end);
+		mav.addObject("prev", prev);
+		mav.addObject("next", next);
+		return mav;
+		
+		
+	}
+	
+	// qnaDetail
+	@GetMapping("/questionDetail/{seq}")
+	public ModelAndView questionDetail(@PathVariable int seq) {
+		ModelAndView mav = new ModelAndView("board/questionDetail");
+		QnaBoardDTO que = bs.getQna(seq);
+		
+		ReplyDTO rep = bs.getReply(seq);
+		
+		mav.addObject("que", que);
+		
+		if(rep != null) {
+			mav.addObject("rep", rep);	
+		}
+		else {
+			mav.addObject("rep", "댓글 작성 전 입니다");
+		}
+		
+		
+		
+		return mav;
+	}
+	
 	
 	// qnaWrite get
 	@GetMapping("/qnaWrite")
@@ -303,17 +375,15 @@ public class BoardController {
 	}
 	
 	// news 수정
+	
 	@GetMapping("/newsModify/{seq}")
-	public ModelAndView newsModify(@PathVariable int seq)  throws Exception {
-		ModelAndView mav = new ModelAndView("board/newsModify");
+	public ModelAndView newsModify(@PathVariable int seq) {
+		ModelAndView mav = new ModelAndView();
 		
 		NoticeDTO dto = bs.getNews(seq);
+		
 		mav.addObject("dto", dto);
-		System.out.println("1) " + dto.getTitle());
-		System.out.println("1) " + dto.getContent());
-		System.out.println("1) " + dto.getFileName());
-		System.out.println("1) " + dto.getFlag());
-		System.out.println("1) " + dto.getNotice_seq());
+		
 		return mav;
 	}
 	
@@ -323,11 +393,11 @@ public class BoardController {
 		
 		int row = fs.uploadModify(dto);
 		
-		System.out.println("2) " + dto.getTitle());
-		System.out.println("2) " + dto.getContent());
-		System.out.println("2) " + dto.getFileName());
-		System.out.println("2) " + dto.getFlag());
-		System.out.println("2) " + dto.getNotice_seq());
+		System.out.println("1) " + dto.getTitle());
+		System.out.println("1) " + dto.getContent());
+		System.out.println("1) " + dto.getFileName());
+		System.out.println("1) " + dto.getFlag());
+		System.out.println("1) " + dto.getNotice_seq());
 		
 		if(row == 1) {
 			mav.setViewName("alert");
@@ -340,6 +410,7 @@ public class BoardController {
 		}
 		return mav;
 	}
+	
 	
 	
 }

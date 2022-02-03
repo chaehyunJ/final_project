@@ -10,8 +10,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderListDAO {
 
-	@Select("select * from orderlist_table where "
-			+ "orderdate=(select max(orderdate) from orderlist_table) "
+//	@Select("select * from orderlist_table where "
+//			+ "orderdate=(select max(orderdate) from orderlist_table) "
+//			+ "and userid = #{ userid }")
+	
+	@Select("select * from orderlist_table "
+			+ "where "
+			+ "to_char(orderdate, 'yyyymmdd hh24:mi:ss') > to_char(sysdate -10/24/60/60, 'yyyymmdd hh24:mi:ss') "
 			+ "and userid = #{ userid }")
 	OrderListDTO seletOrderList(String userid);
 

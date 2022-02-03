@@ -21,6 +21,7 @@
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/store.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/search.css">
 <link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/adminPage.css">
+<link rel="stylesheet" type="text/css" href="${ cpath }/resources/css/menuDetail.css">
 
 </head>
 <body>
@@ -56,12 +57,6 @@
                             <a href="${ cpath }/menu/list/burger">Menu</a>
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner">
-<!--                                     <li><a data-table="mcmorning_table">맥모닝</a></li> -->
-<!--                                     <li><a data-table="burger_table">버거</a></li> -->
-<!--                                     <li><a data-table="side_table">사이드</a></li> -->
-<!--                                     <li><a data-table="mccafe_table">맥카페</a></li> -->
-<!--                                     <li><a data-table="drink_table">음료</a></li> -->
-<!--                                     <li><a data-table="dessert_table">디저트</a></li> -->
 									<!-- 혜린 추가 -->
                                     <li><a href="${ cpath }/menu/list/mcmorning">맥모닝</a></li>
                                     <li><a href="${ cpath }/menu/list/burger">버거</a></li>
@@ -77,7 +72,7 @@
                             <div class="top-menu-submenu">
                                 <ul class="top-menu-inner">
                                     <li><a href="${ cpath }/store">매장찾기</a></li>
-                                    <li><a href="${ cpath }/order">맥딜리버리</a></li>
+                                    <li><a href="${ cpath }/order">주문하기</a></li>
                                 </ul>
                             </div>
                         </li>

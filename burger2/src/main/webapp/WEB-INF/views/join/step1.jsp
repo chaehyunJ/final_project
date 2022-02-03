@@ -49,7 +49,7 @@
 	            </div>
 	        </div>
 	   </footer>
-	   
+  
 	<script>
 		const li1 = document.querySelector('.join-address-ul>li:nth-child(1)')
 		const li2 = document.querySelector('.join-address-ul>li:nth-child(2)')
@@ -84,3 +84,6 @@
     		resultAddress.innerText +=  (' ' + $('#detailAddressInput').val())
     	})
 	</script>
+	<%@ include file ="../search-footer.jsp" %>
+</body>
+</html>

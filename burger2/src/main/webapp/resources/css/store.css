@@ -49,6 +49,7 @@
 .store-contArea {
 	width: 100%;
 	margin: 0 auto;
+	background-color: #f8f8f8;
 }
 .store-fingBg{
 	width: 100%;
@@ -58,7 +59,7 @@
 	display: block;
 }
 .store-searchbox {
-	border: 1px solid d1d1d1;
+	border: 0px solid #d1d1d1;
 	width : 1100px;
 	margin : auto;
 	margin-top: 30px;
@@ -67,12 +68,12 @@
 	position: relative;
 	padding: 40px 0;
 	padding-right: 184px;
-	border: 1px solid d1d1d1;
+	border: 0px solid #d1d1d1;
 }
 .store-searchbox .store-form > .store-searchInput {
 	height: 70px;
 	border-radius: 70px;
-	border: 1px solid d1d1d1;
+	border: 1px solid #d1d1d1;
 	width: 980px;
 	font-family: 'Malgun Gothic';
 	font-weight: 500px;
@@ -120,18 +121,22 @@
 
 .store_tableType01 > tbody > td > 
 .store-address-name, .store-tel, .store-open, .store-service{
-	border : 1px solid black;
+	border : 0px solid black;
 	text-align: center;
 }
 .store_tableType01 > tbody > td > .store-service{
 	font-weight: bold;
 }
 
+/* .store-tableType01 > tbody > tr td{ */
+/* 	border-bottom: 1px solid #dadada; */
+/* } */
+
 /* 2022-01-21 추가 */
 .service-category{
 	display: flex;
 	width : 1250px;
-	border : 1px solid black;
+	border : 0px solid black;
 	margin : auto;
 	margin-top : 50px;
 	margin-bottom : 20px;
@@ -145,6 +150,7 @@
 	height: 130px;
 	margin : 10px;
 	cursor: pointer;
+	background-color: white;
 }
 .service-category > div > img{
 	border : 0px solid black;
@@ -159,32 +165,73 @@
 
 /* 2022-01-23 추가  */
 .store-address-name > div{
-	height : 150px;
-	border : 1px solid black;
+	height : 175px;
+	border : 0px solid black;
 	font-size : 25px;
 	text-align : center;
 	align-items : cener;
 	padding-top : 60px;
+	border-bottom : 1px solid #dadada; 
 }
 .store-tel > div{
-	height : 150px;
-	border: 1px solid black;
+	height : 175px;
+	border: 0px solid black;
 	text-align: center;
 	align-items: cener;
 	padding-top : 60px;
+	border-bottom : 1px solid #dadada;
 }
 
 .store-open > div{
-	height : 150px;
-	border: 1px solid black;
+	height : 175px;
+	border: 0px solid black;
 	text-align: center;
 	align-items: cener;
 	padding-top: 60px;
+	border-bottom: 1px solid #dadada;
 }
 
 .store-service > div{
-	height : 150px;
-	border: 1px solid black;
-	text-align: center;
+	height : 175px;
+	border: 0px solid black;
+	text-align: left;
 	align-items: cener;
+	border-bottom: 1px solid #dadada;
+}
+
+/* 2022-02-01  추가  */
+.store-paging{
+	width : 400px;
+	border: 1px solid white;
+	margin : auto;
+	margin-top : 20px;
+}
+.store-paging > .c-Btn{
+	display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 3px;
+    vertical-align: top;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.store-paging > .p-Btn, .n-Btn{
+	display: inline-block;
+    width: 50px;
+    height: 40px;
+    margin: 0 3px;
+    vertical-align: top;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;	
+    cursor: pointer;
+}
+.store-paging > .p-Btn, .n-Btn, .c-Btn:hover{
+	color : darkgrey;
+	cursor: pointer;
 }

@@ -47,7 +47,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
 		const cpath = '${ cpath }'
     	const idchk = document.getElementById('idChkBtn')
@@ -62,7 +62,7 @@
 		idchk.onclick = function(){
     		if(adminid.value == ''){
     			alert('ID를 입력해주세요')
-    			userid.focus()
+    			adminid.select()
     			return
     		}
     		const url = cpath + '/ajaxIdChk2/' + adminid.value
@@ -118,5 +118,7 @@
     	
     	
     </script>
+   <%@ include file ="../search-footer.jsp" %>
+   
 </body>
 </html>

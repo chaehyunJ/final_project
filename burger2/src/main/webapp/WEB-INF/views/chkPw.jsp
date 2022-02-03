@@ -53,6 +53,6 @@
         </div>
     </footer>
     
-  
+   <%@ include file="search-footer.jsp" %>
 </body>
 </html>

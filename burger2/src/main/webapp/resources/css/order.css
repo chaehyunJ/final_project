@@ -5,7 +5,7 @@ ul, li {
 
 .show {
 	overflow: hidden; /*옆으로 튀어나오는거 */
-	width: 1100px;
+	width: 1200px;
 	margin: 0 auto;
 	flex-wrap: row;
 	position: relative;
@@ -13,13 +13,27 @@ ul, li {
 }
 
 .show-contain {
+	margin-top: 5px;
 	box-sizing: border-box;
-	width: 1100px;
+	width: 1200px;
 	flex-flow: row wrap;
 	display: flex;
 	justify-content: flex-start;
-	margin-left: 92px;
+	margin-left: 120px;
 }
+
+.show-contain > div:nth-child(1),
+.show-contain > div:nth-child(2),
+.show-contain > div:nth-child(3),
+.show-contain > div:nth-child(4), 
+.show-contain > div:nth-child(5), 
+.show-contain > div:nth-child(6), 
+.show-contain > div:nth-child(7), 
+.show-contain > div:nth-child(8) {
+	margin-bottom: 10px;
+}
+
+
 
 .show-frame {
 	display: flex;
@@ -27,23 +41,25 @@ ul, li {
 }
 
 .menu-border {
+	margin-left: 10px;
 	box-sizing: border-box;
 	text-align: center;
-	border: 1px solid black;
-	width: 230px;
+	width: 231px;
 	height: 256px;
+	border-radius: 5px;
+	box-shadow: 4px 4px 4px #dadada;
+	border: 1px solid #dadada;
 }
 
 img {
-	height: 200px;
 	width: 230px;
 	margin: 0 auto;
 }
 
 .imageOrderBtn {
+	height: 200px;
 	cursor: pointer;
-	border-radius: 10px;
-	box-shadow: 0px 5px 5px #dadada;
+	box-shadow: 0px 5px 5px 0px #dadada;
 	border-bottom: 1px solid #dadada;
 }
 
@@ -101,12 +117,13 @@ ul > li {
 
 
 .menuparent {
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
 	width: 1050px;
 	display: flex;
 	margin: 0 auto;
 	margin-bottom: 5px;
 	border-radius: 5px;
-	margin-left: 265px;
+	/* margin-left: 265px; */
 }
 
 .menuparent li {
@@ -313,17 +330,18 @@ li:nth-child(9) {
 	line-height: 50px;
 }
 
-input[id="input_check"] + label {
+.sizeselect input[type="checkbox"] {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	border: 2px solid #bcbcbc;
+	border: 2px solid red;
 	cursor: pointer;
+
 }
 
-input[type="radio"] + label {
-	background-color: red;
-	cursor: pointer;
+.sizeselect input[type="checkbox"]:checked {
+	color: #fff;
+	background-color: #3598dc;
 }
 
 .modalcountchild, .modalname, .modalpricespan {
@@ -409,3 +427,8 @@ input[type="radio"] + label {
 	margin-top: 50px;
 }
 
+/*요청사항*/
+.radioparent {
+	padding: 0;
+	margin: 12px 0px 12px 0px;
+}

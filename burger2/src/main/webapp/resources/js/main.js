@@ -4,8 +4,8 @@ function btnOpenHandler(){
 	if(classList.contains('main-inner')){
 		classList.remove('main-inner')
 		classList.add('main-inner1')
-		btnOpen.classList.add('hidden')
-		btnClose.classList.remove('hidden')
+		menuOpen.classList.add('hidden')
+		menuClose.classList.remove('hidden')
 	}
 }
 
@@ -15,8 +15,8 @@ function btn1Handler(){
 	if(classList.contains('main-inner1')){
 		classList.remove('main-inner1')
 		classList.add('main-inner')
-		btnOpen.classList.remove('hidden')
-		btnClose.classList.add('hidden')
+		menuOpen.classList.remove('hidden')
+		menuClose.classList.add('hidden')
 	}
 }
 

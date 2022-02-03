@@ -13,8 +13,8 @@ public class SearchService {
 
 	@Autowired private SearchDAO dao;
 
+	//map에는 type,search가 들어가있다. type에는 버거,맥모닝,사이드,디저트 등의 값이 , search애는 입력한 메뉴이름이 들어있다
 	public List<HashMap<String, String>> searchList(HashMap<String, String> map) {
-		// TODO Auto-generated method stub
 		return dao.search(map);
 	}
 

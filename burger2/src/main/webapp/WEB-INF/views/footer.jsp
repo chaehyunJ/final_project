@@ -32,8 +32,8 @@
 
 <script>
 	const cpath = '${ cpath }'
-	const btnOpen = document.getElementById('btnOpen')
-	const btnClose = document.getElementById('btnClose')
+	const menuOpen = document.getElementById('menuOpen')
+	const menuClose = document.getElementById('menuClose')
 	const slide = document.querySelector('.slide')
 	const mainInner = document.querySelector('.main-inner')
 
@@ -43,7 +43,7 @@
 	const overlay = document.querySelector('.overlay')
 	const modal = document.querySelector('.modal')
 	
-	const promotionImageList = document.querySelector('.promotion-imageList')
+	const promotionImageList = document.querySelector('.promotion-imageList-home')
 	console.log(promotionImageList)
 	
 	let value = 0
@@ -51,17 +51,34 @@
 	const unit = 1700
 
 	// 메인 페이지 +,- 버튼	
-	btnOpen.addEventListener('click', function(){
-		btnOpenHandler()
-	})
+	
+	
+	let cnt1 = 1
+	let cnt2 = 2
+	console.log(cnt1)
+	console.log(cnt2)
+	menuOpen.onclick = function(){		
+		promotionImageList.style.maxHeight = '1400px'
+			menuOpen.classList.add('hidden')
+			menuClose.classList.remove('hidden')	
+		}
 		
-	btnClose.addEventListener('click', function(){
-		btn1Handler()
-	})
+	menuClose.onclick = function(){
+		promotionImageList.style.maxHeight = '900px'
+		menuOpen.classList.remove('hidden')
+		menuClose.classList.add('hidden')
+	}
+// 	menuOpen.addEventListener('click', function(){
+// 		btnOpenHandler()
+// 	})
+		
+// 	menuClose.addEventListener('click', function(){
+// 		btn1Handler()
+// 	})
 	
 	window.addEventListener('load', function(){
-		ajaxPromotion()
-	})
+ 		promotionAjax()
+ 	})
 	
 	// 기존 버튼형 슬라이더
 	$('.main-slide > .page-btns > div').click(btnSlider)

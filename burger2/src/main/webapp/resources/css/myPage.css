@@ -13,6 +13,12 @@
 	margin-right: 0px;
 	margin-left:10px;
 }
+
+/* 2022-02-01 추가 */ 
+.myPage-contents{
+	height: 630px;
+}
+
 .myPage-table {
 	border: 1px solid white;
 	margin-left: 180px;
@@ -131,3 +137,4 @@
 .address-result {
 	width: 500px;
 }
+

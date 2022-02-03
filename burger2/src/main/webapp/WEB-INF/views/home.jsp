@@ -39,14 +39,16 @@
     <hr>
     </div>
 	
-    <div class="main-inner detailinfo">
-<!--         <div class="main-inner-one"></div> -->
+<!--     <div class="main-inner detailinfo"> -->
+<!-- <!--         <div class="main-inner-one"></div> --> 
+<!--     </div>         -->
+    <div class="promotion-imageList-home">   
     </div>
 
-    <div class="btn-list">
-        <button id="btnOpen">▼</button>
-        <button id="btnClose" class="hidden">▲</button>
-    </div>
+   	<div class="menu-button">
+		<button id="menuOpen"></button>
+		<button id="menuClose" class="hidden" style="background-image: url(${ cpath}/resources/src/마이너스btn.png)"></button>
+	</div>
 
 <%@ include file="footer.jsp" %>
 </body>

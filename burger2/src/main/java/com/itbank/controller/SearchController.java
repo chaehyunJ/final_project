@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.service.SearchService;
+import com.itbank.service.ViewSearchService;
 
 @Controller
 public class SearchController {
 
 	@Autowired private SearchService ss;
+	@Autowired private ViewSearchService vss;
 	
 	@GetMapping("/search")
 	public ModelAndView search(@RequestParam String search, @RequestParam String type) {
@@ -22,7 +25,7 @@ public class SearchController {
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
-		
+		List<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
 		
 		
 		map.put("search", search);
@@ -36,7 +39,14 @@ public class SearchController {
 		
 		System.out.println(name);
 		
-		List<HashMap<String, String>> list = ss.searchList(map);
+		if(type.equals("mccafe") || type.equals("drink") || type.equals("side")) {
+			System.out.println("dasd" + type);
+			System.out.println("dasd" + search);
+			list = vss.viewsearchList(map);
+		}
+		else {
+			list = ss.searchList(map);
+		}
 		
 		System.out.println(list);
 		

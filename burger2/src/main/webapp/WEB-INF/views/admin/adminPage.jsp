@@ -8,7 +8,7 @@
 	       <hr>
 			<ul class="myPage-navPath">
 				<li><a href="${cpath }/admin/adminInfo">관리자 정보</a></li>
-				<li><a href="${cpath }/admin/qnaCheck">Q&A 확인</a></li>
+				<li><a href="${cpath }/admin/qnaCheck?page=1">Q&A 확인</a></li>
 				<li><a href="${cpath }/board/news?page=1">새로운 소식 수정</a></li>
 			</ul>
 	</div>
@@ -44,7 +44,8 @@
             </div>
         </div>
     </footer>
-    	
+ 	
+
 	<script>
 		const detailAddress = document.getElementById('detailAddress')
 	
@@ -67,5 +68,7 @@
     
     	
 	</script>
+	<%@ include file ="../search-footer.jsp" %>
+	
 </body>
 </html>

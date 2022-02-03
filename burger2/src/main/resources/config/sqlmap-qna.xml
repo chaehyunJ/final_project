@@ -22,7 +22,25 @@
 	<select id="qnaCount" resultType="int" parameterType="string">
 		select count(*) count from qnaboard_table 
 		<if test="result != null">
-		where result = #{ result }
+			where result = #{ result }
 		</if>
+	</select>
+	
+	<select id="userCount" resultType="int" parameterType="string">
+		select count(*) count from qnaboard_table 
+		<if test="writer != null">
+			where writer = #{ writer }
+		</if>
+		
+	</select>
+	
+	<select id="userQnaList" parameterType="hashmap" resultType="com.itbank.model.QnaBoardDTO">
+		select * from qnaboard_table 
+			<if test="writer != null">
+				where writer = #{ writer } 
+			</if>
+			order by regDate desc 
+			offset ${ offset } rows 
+			fetch first 10 rows only
 	</select>
 </mapper>

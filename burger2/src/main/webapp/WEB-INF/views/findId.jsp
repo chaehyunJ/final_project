@@ -33,7 +33,7 @@
             </div>
         </div>
     </footer>
-
+ <%@ include file="search-footer.jsp" %>
 	<script>
 		const cpath = '${cpath}'
 		const findPwBtn = document.getElementById('findPwBtn')

@@ -19,7 +19,15 @@
         <div class="QnA-top">
         	<div class="QnA-top-left">
 	        	<div><a href="${ cpath }/board/qnaWrite"><button class="QnA-write">Q&A 작성하기</button></a></div>
-	        	<div><button class="QnA-search">나의 Q&A 조회</button></div>
+	        	<div>
+	        	<c:if test="${ not empty login }">
+	        	<form method="post">
+	        		<input class="hidden" type="number" name="page" value="1">
+	        		<input type="hidden" name="writer" value="${ login.userid }">
+	        		<button class="QnA-search">나의 Q&A 조회</button>
+	        	</form>
+	        	</c:if>
+	        	</div>
         	</div>
         	<div class="QnA-top-right">
 <!--         		<div class="QnA-onOff-check"> -->
@@ -37,10 +45,9 @@
 		        			<option ${param.result == '답변완료' ? 'selected' : '' } value="y">답변완료</option>
 		        		</select>
 		        		<input class="hidden" type="number" name="page" value="1">
-		        		<button>검색</button>
+		        		<button class="result-search">검색</button>
 	        		</form>
 	        	</div>
-	        	
         	</div>
         </div>
         
@@ -55,8 +62,11 @@
         	<c:forEach var="ls" items="${ list }">        	
         		<div class="QnA-content-inner">
 					<div class="QnA-inner-result">${ ls.result == 'n' ? '미답변' : '답변완료' }</div>
-					<div class="QnA-inner-title" data-idx="${ ls.qna_seq }">${ ls.title }
-						<div class="QnA-answer ${ ls.qna_seq }" data-idx="${ ls.qna_seq }"></div>
+					<div class="QnA-inner-title" data-idx="${ ls.qna_seq }">
+						<a href="${ cpath  }/board/questionDetail/${ ls.qna_seq }">${ ls.content }</a> 
+<%-- 						<button class="question" id="que-${ ls.qna_seq }"><span id="que-1-toggle">+</span><span>${ ls.title }</span></button>  --%>
+<%-- 							<div class="QnA-answer" id="ans-${ ls.qna_seq }"></div> --%>
+<%-- 					<div class="QnA-answer hidden" data-idx="${ ls.qna_seq }"></div>	 --%>
 					</div>
 					<div class="QnA-inner-writer">${ ls.writer }</div>
 					<div class="QnA-inner-regDate">${ ls.regDate }</div>
@@ -104,39 +114,92 @@
             </div>
         </div>
     </footer>
-    
+  
 <script>
 	const cpath = '${ cpath }'
+	const inner = document.querySelectorAll('.QnA-content-inner')
 	const innerTitle = document.querySelectorAll('.QnA-inner-title')
 	const qnaAnswer = document.querySelector('.QnA-answer')
 	
+	// 추가
+	const items = document.querySelectorAll('.question')
 	
+	console.log(items)
 	console.log(qnaAnswer)
 	console.log(innerTitle)
 	
-	innerTitle.forEach(dto => {
-		dto.onclick = function(event){
-			let idx = event.target.dataset.idx
-			console.log(idx)
+// 	innerTitle.forEach(dto => {
+// 		dto.onclick = function(event){
+// 			console.log("event target :", event.target)
+// 			let ch = event.target.childNodes
+// 			let target = event.target.parentNode.children[1]
+// 			let pn = event.target.parentNode
 			
-			const url = cpath + '/qnaReply/' + idx
-			const opt = {
-				method : 'get'
-			}
-			fetch(url, opt)
-			.then(resp => resp.json())
-			.then(json => {
-				console.log(json)
-				console.log(json.dto)
-				console.log(json.dto.board_idx)
+// 			console.log("pn", pn)
+// 			console.log("target", target)
+// 			console.log("ch",ch)
+			
+// 			let idx = event.target.dataset.idx
+// 			console.log(idx)
+			
+// 			const url = cpath + '/qnaReply/' + idx
+// 			const opt = {
+// 				method : 'get'
+// 			}
+// 			fetch(url, opt)
+// 			.then(resp => resp.json())
+// 			.then(json => {
+// 				console.log(json)
+// // 				console.log(json.dto)
 				
+// // 				console.log(ch[1].classList.contains('hidden'))
 				
-				qnaAnswer.innerText = ''
-				qnaAnswer.innerText += json.dto.content
-				qnaAnswer.innerText += json.dto.regDate
-			})
-		}
-	})
+// 				if(json.msg){
+// 					ch[1].innerText = json.msg
+// 					target.style.height = '70px'
+// 					target.style.transitionDuration = '0.3s'
+// 					pn.style.maxHeight = '160px'
+// 					ch[1].classList.remove('hidden')
+// 				}
+// 				else{
+// 					ch[1].innerText = ''
+// 					ch[1].innerText += json.dto.content
+// 					ch[1].innerText += json.dto.writeDate
+// 					target.style.height = '70px'
+// 					target.style.transitionDuration = '0.3s'
+// 					pn.style.maxHeight = '160px'
+// 					ch[1].classList.remove('hidden')
+// 				}
+				
+// // 				
+// 			})
+			
+// 			if(ch[1].classList.contains('hidden') == false){
+// 				console.log('hidden : false')
+// 				console.log('childNodes ', event.target.childNodes[1])
+// 				event.target.childNodes[1].style.display = 'none'
+// 				event.target.childNodes[1].classList.add('hidden')
+// 				event.target.childNodes[1].style.height = '60px'
+// 				pn.style.maxHeight = '60px'
+// 				event.target.childNodes[1].style.transitionDuration = '0.3s'	
+// 			}
+// 			else{
+// 				console.log("hidden : true")
+// 				console.log('childNodes ', event.target.childNodes[1])
+// 				event.target.childNodes[1].style.display = 'block'
+// 				event.target.childNodes[1].classList.remove('hidden')
+// 				event.target.childNodes[1].style.height = '70px'
+// 				pn.style.maxHeight = '160px'
+// 				event.target.childNodes[1].style.transitionDuration = '0.3s'
+// 			}
+// 			console.log(ch[1].classList.contains('hidden'))
+					
+				
+// 			}
+// 		})
+
 </script>
+<%@ include file ="../search-footer.jsp" %>
+
 </body>
 </html>

@@ -21,7 +21,7 @@
 	        		<form>
 	        			<input type="text" name="search" placeholder="검색어를 입력하세요." value="${ param.search }">
 	        			<input class="hidden" type="number" name="page" value="1">
-						<img class="board-searchIcon" src="${ cpath }/resources/src/btn_search.png">
+						<button class="board-searchIcon"></button>
 <!-- 	        			<input type="submit" value="검색"> -->
 					</form>	        	
 	        	</div>
@@ -125,5 +125,6 @@
 // 		})
 // 	}
 </script>
+<%@ include file ="../search-footer.jsp" %>
 </body>
 </html>

@@ -2,6 +2,9 @@
 
 
 /* 전역 태그 지정 */
+*{
+	font-family: Malgun Gothic;
+}
 a {
 	text-decoration: none;
 	color: inherit;
@@ -54,11 +57,13 @@ header {
 
 .top-left>.top-menu>ul {
 	display: flex;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .top-left>ul>li {
 	border: 0px solid black;
-	padding-top: 30px;
+	padding-top: 35px;
 	line-height: 25px;
 	text-align: center;
 	cursor: pointer;
@@ -90,7 +95,7 @@ header {
 	border-radius: 45px;
 	width: 110px;
 	height: 40px;
-	padding-top: 12px;
+	padding-top: 15px;
 	margin-top: 20px;
 	margin-right: 20px;
 	color: white;
@@ -402,6 +407,7 @@ header {
 }
 
 .top-menu-inner {
+	height : 400px;
 	margin-top: 30px;
 	display: block;
 	border: 0px solid black;
@@ -409,19 +415,21 @@ header {
 	padding-left: 0px;
 	margin-left: 30px;
 	/* margin-left: 900px; */
+	
 }
 
 .top-menu-submenu>.top-menu-inner>li {
-	font-size: 18px;
-	margin-bottom: 10px;
+	font-size: 16px;
+	margin-bottom: 15px;
 	cursor: pointer;
 	font-weight: bold;
 	color: darkgrey;
+
 }
 
 .top-menu-submenu>.top-menu-inner>li:hover{
 	text-decoration: underline;
-	color: black;
+	color: #ffbc0d;
 }
 
 .top-menu-submenu>.top-menu-inner>li>a {
@@ -501,6 +509,19 @@ header {
 	border: 0px solid black;
 	margin-left: 440px;
 	align-items: center;
+}
+
+.promotion-imageList-home{
+	margin: 0 auto;
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 75px;
+	width: 1100px;
+	height: 1500px;
+	max-height: 900px;	
+	overflow: hidden;
 }
 
 /* footer - css */

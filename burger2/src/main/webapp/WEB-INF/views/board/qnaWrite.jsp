@@ -41,8 +41,8 @@
 				<input type="submit" value="작성하기">
 	        </form>
 	        
-	        <div class="QnA-write-backBtn"><a href="${ cpath }/board/question"><button class="QnA-write-backBtn1">Back</button></a></div>
+	        <div class="QnA-write-backBtn"><a href="${ cpath }/board/question?page=1"><button class="QnA-write-backBtn1">Back</button></a></div>
         </div>
     </div>
-
 <%@ include file="../footer.jsp" %>
+<%@ include file ="../search-footer.jsp" %>

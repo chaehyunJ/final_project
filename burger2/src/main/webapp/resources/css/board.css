@@ -8,7 +8,7 @@
 div{
 	box-sizing: border-box;
 }
-.board-area {
+.board-area{
 	position: relative;
 	padding: 15px;
 	padding-left: 368px;
@@ -37,6 +37,7 @@ div{
 }
 .board-ul li {
 	margin: 7px;
+	color : white;
 }
 .board-ul  li:nth-child(2n) {
 	color: #f5bd43;
@@ -192,6 +193,7 @@ div{
 	border: 1px solid black;
 	margin : auto;
 	text-align: center;
+	margin-bottom: 30px;
 }
 .btn-list1{
 	width : 1200px;
@@ -215,7 +217,7 @@ div{
 	background: url("https://www.mcdonalds.co.kr/kor/images/common/btn_bbs_prev.png") no-repeat;
 	transform: rotate(180deg);
 }
-}
+
 .btn-list1 > a > .news-list-btn{
 	width : 150px;
 	height: 70px;
@@ -231,7 +233,7 @@ div{
 
 /* 2022-01-22 추가 */
 .news-paging{
-	width : 300px;
+	width : 400px;
 	border: 1px solid white;
 	margin : auto;
 	margin-top : 20px;
@@ -247,7 +249,19 @@ div{
     background: #fff;
     font-size: 16px;
 }
-.news-current-btn:hover{
+
+.news-prev-btn, .news-next-btn{
+	display: inline-block;
+    width: 50px;
+    height: 40px;
+    margin: 0 3px;
+    vertical-align: top;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
+}
+.news-prev-btn, .news-next-btn, .news-current-btn:hover{
 	color : darkgrey;
 	cursor: pointer;
 }
@@ -341,7 +355,7 @@ input[name="onOff"]:checked + #boxLabel span {
 	cursor: pointer;
 }
 
-.QnA-top > .QnA-top-left > div > .QnA-search{
+.QnA-top > .QnA-top-left > div > form > .QnA-search{
 	border : 0;
 	background-color: #264a36;
 	color : white;
@@ -364,15 +378,34 @@ input[name="onOff"]:checked + #boxLabel span {
 	margin-left : -30px;
 }
 
-.QnA-result > select{
+.QnA-result{
+	width : 210px;
+	border : 0px solid black;
+}
+
+.QnA-result > form > select{
 	border : 1px solid #dadada;
-	width: 90px;
-	padding: 5px;
+	width : 110px;
+	height : 40px; 
+	padding: 10px;
+	border-radius: 25px;
 }
 
 .QnA-result > select > option{
 	padding : 5px;
-	
+	margin-bottom: 5px;
+	border-radius: 10px;
+}
+
+.QnA-result > form > .result-search{
+	border : 0;
+	background-color: #ffbc0d;
+	width : 80px;
+	height: 40px;
+	margin-left : 10px;
+	border-radius: 25px;
+	cursor: pointer;
+	color: white;
 }
 
 .QnA-content-left{
@@ -517,14 +550,13 @@ input[name="onOff"]:checked + #boxLabel span {
 	margin-left: 10px;
 	position: absolute;
 }
-/* 01-28 수정 */
+
 .detail-img {
 	width: inherit;
 	height: auto;
 	margin : 20px auto;
 	overflow-x: hidden;
 }
-
 .board-searchIcon {
 	margin-top: 2px;
 	margin-left: 10px;
@@ -538,6 +570,9 @@ input[name="onOff"]:checked + #boxLabel span {
 	border : 0px solid black;
 	margin : auto;
 	border-bottom : 1px solid #292929;
+	max-height: 60px;
+	cursor: pointer;
+	
 /* 	border-top: 1px solid #292929; */
 }
 .QnA-content-inner > div{
@@ -549,6 +584,7 @@ input[name="onOff"]:checked + #boxLabel span {
 	border : 0px solid black;
 	text-align: center;
 	padding-top : 20px;
+	border-bottom: 1px solid #e0e0e0;
 }
 .QnA-content-inner > .QnA-inner-title{
 	width : 600px;
@@ -556,6 +592,7 @@ input[name="onOff"]:checked + #boxLabel span {
 	border : 0px solid black;
 	text-align: center;
 	padding-top : 20px;
+	border-bottom: 1px solid #e0e0e0;
 }
 .QnA-content-inner > .QnA-inner-writer{
 	width : 200px;
@@ -563,6 +600,7 @@ input[name="onOff"]:checked + #boxLabel span {
 	border : 0px solid black;
 	text-align: center;
 	padding-top : 20px;
+	border-bottom: 1px solid #e0e0e0;
 }
 .QnA-content-inner > .QnA-inner-regDate{
 	width : 200px;
@@ -570,6 +608,7 @@ input[name="onOff"]:checked + #boxLabel span {
 	border : 0px solid black;
 	text-align: center;
 	padding-top : 20px;
+	border-bottom: 1px solid #e0e0e0;
 }
 
 /* 성훈 01-24 추가 */
@@ -602,4 +641,141 @@ input[name="onOff"]:checked + #boxLabel span {
 	background-color: #264a36;
 	font-size: 14px;
 	margin: 0 5px;
-	}
+}
+
+.QnA-answer{
+	max-height: 60px;
+	border : 1px solid black;
+}
+
+/* 2022--01-30 추가  */
+ .answer {
+ 	display: none;
+ 	padding-bottom: 30px;
+ }
+ 
+ .question{
+ 	font-size: 15px;
+ 	padding: 30px 0;
+ 	cursor: pointer;
+ 	border : none;
+ 	outline: none;
+ 	background: #f8f8f8;
+ 	width : 100%;
+ 	text-align: center;
+ }
+ [id$="-toggle"]{
+	 margin-right : 15px;
+}
+
+/* 2022-01-31  추가 */
+.detail-question{
+	width : 1200px;
+	border : 0px solid black;
+	margin : auto;
+}
+.reply-detail{
+	width : 1200px;
+	margin : auto;
+	border : 0px solid black;
+	border-radius: 25px;
+}
+.reply-detail > .replt-title{
+	width : 1200px;
+	display: flex;
+	justify-content: space-between;
+	border-bottom:  0px solid #dadada;
+	margin-bottom: 20px;	
+	padding-bottom: 20px;
+	padding : 15px;
+	font-weight: bold;
+	font-size: 20px;
+}
+/* .reply-detail > .replt-title > div{ */
+/* 	width : 90px; */
+/* 	height : 50px; */
+/* 	border : 0px solid black; */
+/* 	background-color: #ffbc0d; */
+/* 	font-weight: bold; */
+/* 	color : white; */
+/* 	border-radius: 35px; */
+/* 	padding: 10px; */
+/* 	text-align: center; */
+/* } */
+.reply-detail > .reply-inner{
+	width : 1200px;
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+	border-bottom: 1px solid #dadada;
+}
+.que-detail-btn{
+	width : 180px;
+	border : 0px solid black;
+	margin : auto;
+	margin-top : 30px;
+	margin-bottom: 50px;
+}
+.que-detail-btn > a > .news-list-btn{
+	width : 150px;
+	height: 70px;
+	border : 0;
+	background-color: #ffbc0d;
+	border-radius: 35px;
+	font-size: 20px;
+	font-weight: bold;
+	color : white;
+	border : 0px solid black;
+	cursor: pointer;
+}
+.modal1{
+    width : 100%;
+    position: absolute;
+    top : 0;
+    left : 0;
+    height: 100%;
+    margin : auto;
+}
+
+.overlay1{
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.8);
+     z-index: 1;
+}
+.modal-content1{
+     width: 1000px;
+     height : 400px;
+     display: flex;
+     flex-flow: column;
+     justify-content: center;
+     align-items: center;
+/*      box-shadow: 3px 3px 2px grey; */
+/*      border-radius: 10px; */
+     margin: auto;
+     margin-top: 60px;
+/*      border : 1px solid black; */
+/*      background-color: white; */
+     position : relative;
+     z-index: 6;
+}
+.modal-content1 > .qna-title{
+	width : 200px;
+	height : 50px;
+	padding : 10px;
+	background-color: white;
+	border-radius: 20px;
+}
+.modal-content1 > form > textarea{
+	resize: none;
+	border-radius: 25px;
+	padding: 10px;
+}
+.modal-content1 > form > p > input[type="submit"]{
+	width : 80px;
+	height: 30px;
+	border : 0;
+	background-color: #ffbc0d;
+	color : white;
+}

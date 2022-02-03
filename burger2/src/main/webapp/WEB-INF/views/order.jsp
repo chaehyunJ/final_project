@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${cpath}/resources/css/order.css" rel="stylesheet" type="text/css">
+<link href="${cpath}/resources/css/orderradiocheckbox.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -31,7 +32,13 @@
 	    		 	<div class="modalprice" style="text-align: right;"></div>
 	    		 	<div class="modalcount" style="display: flex; justify-content: space-between;"></div>
     		    	<div class="inputorderdiv">
-    		    		<div class="sizeselect"><label id="input_check"><input class="sizeinput" id="input_check1" type="checkbox">사이즈업그레이드[+700]</label><p>700원을 추가하시면 감자튀김과 콜라를 SizeUp</p></div>
+    		    		<div class="sizeselect" style="display: flex; margin-top: 5px;">
+    		    			<input class="sizeinput" id="input_check1" type="checkbox">
+    		    			<label class="ic" for="input_check1"></label><span style="display: block; font-size: 1rem; color: red; padding-bottom: 2px;">사이즈업그레이드[+700]</span>
+    		    		</div>
+    		    		<div>
+    		    			<p style="font-size: 14px; width: 350px;">📢 700원을 추가하시면 감자튀김과 콜라를 SizeUp</p>
+    		    		</div>
     		 		    <div class='inputorder'></div>  
     		 		    <div class='inputordernot'></div>
     		 		</div> <!-- 담기버튼 -->
@@ -72,9 +79,11 @@
     </div>
     <div class="clientrequest">
 	    <form>
-	    <p style="margin-left: 35px;">
-	    	<label id="radio"><input type="radio" class="notreq" name="clientradio" onclick="notreq()"checked>요청사항 없음</label>
-	    	<label id="radio"><input type="radio" class="isreq" name="clientradio" onclick="isreq()">요청사항 있음</label>
+	    <p class="radioparent" style="margin-left: 35px;">
+	    	<input type="radio" id="input_radio1" class="notreq" name="clientradio" onclick="notreq()"checked>
+	    	<label class="icradio" for="input_radio1"></label><span style="font-size: 14px;">요청사항 없음</span>
+	    	<input type="radio" id="input_radio2" class="isreq" name="clientradio" onclick="isreq()">
+	     	<label class="icradio" for="input_radio2"></label><span style="font-size: 14px;">요청사항 있음</span>
 		</p>
 	    	<textarea class="clientrqform hidden" placeholder="요청사항을 입력해주세요" cols="50" rows="3"></textarea>
 	    </form>
@@ -113,9 +122,8 @@
 	   const sizeselect = document.querySelector('.sizeselect')
 	   const sizeinput = document.querySelector('.sizeinput')
 	   const surangspan = document.querySelector('.surangspan')
-	   const inputcheck = document.getElementById('input_check1')
+	   const inputcheck1 = document.getElementById('input_check1')
 	   
-	 
 	   window.onload = macImageHandler
 	   menuSelectList.forEach(menu=>{
 		   menu.onclick = function(event) {
@@ -167,7 +175,7 @@
 	   
 	   sizeinput.onclick = function(event) {
 		   let count = parseInt(modalcount.childNodes[0].childNodes[1].innerHTML)
-		   let sizeup = inputcheck.checked
+		   let sizeup = inputcheck1.checked
 		   let price = parseInt(modalprice.childNodes[0].innerHTML.split(' ')[0].replace(/,/g,""))
 		   console.log('참이니: ' + event.target.classList)
 		   if(event.target.classList=='sizeinput' && sizeup == false) { //체크를 해제 했을 때 기존값이 사라지고 700원이 감소한값
@@ -186,7 +194,7 @@
 	   
 	   //모달안의 +, - 클릭 시
 	   modalcount.onclick = function(event) {
-		   const sizeup = document.getElementById("input_check").checked
+		   const sizeup = document.getElementById("input_check1").checked
 		   if(event.target.classList == 'modaladdminusBtn1')
               modalcountHandler(event,sizeup)
        }

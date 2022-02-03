@@ -47,8 +47,8 @@ public class BoardService {
 	}
 
 	// 미답변 QnA 가져오기
-	public List<QnaBoardDTO> qnaCheck() {
-		return qdao.qnaCheck();
+	public List<QnaBoardDTO> qnaCheck(int offset) {
+		return qdao.qnaCheck(offset);
 	}
 
 	public int replyInsert(ReplyDTO dto) {
@@ -70,9 +70,32 @@ public class BoardService {
 	}
 
 	// 가장 최근 댓글 가져오기
-	public ReplyDTO getReply(int idx) {
+	public ReplyDTO getReply(int seq) {
 		
-		return rdao.getReply(idx);
+		return rdao.getReply(seq);
 	}
+
+	// QnA 가져오기
+	public QnaBoardDTO getQna(int seq) {
+		return qdao.getQna(seq);
+	}
+
+	// 미 답변 댓글 총 개수
+	public int qnaCheckCnt() {	
+		return qdao.qnaCnt();
+	}
+
+	// 회원 댓글만 보기 카운트
+	public int userCount(String writer) {
+		
+		return qdao.userCount(writer);
+	}
+
+	// 회원 댓글만 보기
+	public List<QnaBoardDTO> userQnaList(HashMap<String, Object> map) {
+		return qdao.userQnaList(map);
+	}
+
 	
+
 }

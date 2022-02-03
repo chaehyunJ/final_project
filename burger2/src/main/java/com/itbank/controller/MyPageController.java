@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itbank.admin.AdminDTO;
 import com.itbank.component.Hash;
+import com.itbank.component.Timer;
 import com.itbank.member.MemberDTO;
 import com.itbank.model.OrderListDTO;
 import com.itbank.service.MemberService;
@@ -28,6 +29,7 @@ public class MyPageController {
 	@Autowired private OrderService os;
 	@Autowired private MemberService ms;
 	@Autowired private Hash hash;
+	@Autowired private Timer timer;
 	
 	@GetMapping("/myPage")
 	   public ModelAndView myPage(HttpSession session) {
@@ -40,8 +42,18 @@ public class MyPageController {
 			
 //			System.out.println(orderList.getOrderSeq());
 			
+			System.out.println(orderList);
+			
+			int time = 1800;
+			
 			if(orderList != null) {
 				mav.addObject("orderList", orderList);	
+				mav.addObject("min", timer.min(time));
+				mav.addObject("sec", timer.sec(time));
+				mav.addObject("timer", timer.timer(time));
+			}
+			else {
+				mav.addObject("msg", "주문한 상품이 없습니다");
 			}
 	      return mav;
 	   }

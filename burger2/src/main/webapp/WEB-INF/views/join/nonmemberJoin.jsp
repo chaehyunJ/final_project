@@ -174,3 +174,6 @@
     	
     	
 	</script>
+<%@ include file ="../search-footer.jsp" %>
+</body>
+</html>
