@@ -4,9 +4,9 @@
 
 	<div class="join-address-container">
         <ul class="join-address-ul">
-            <li style="background-color: red">배달 주소 입력</li> 
-            <li style="background-color: #ffbc0d">추가 정보 입력</li>  
-            <li style="background-color: #264a36">비회원 주문하기</li>           
+            <li style="background-color: #BD0017">정보 입력</li>
+            <li style="background-color: #ffc836">주소 입력</li>
+            <li style="background-color: #264f36">비회원 주문</li>         
         </ul> 
        
         <div class="required-inputs1">
@@ -80,7 +80,17 @@
 	            </div>
 	        </div>
 	    </footer>
-
+	 <script>
+    	const li1 = document.querySelector('.join-address-ul>li:nth-child(1)')
+		const li2 = document.querySelector('.join-address-ul>li:nth-child(2)')
+		const li3 = document.querySelector('.join-address-ul>li:nth-child(3)')
+		window.onload = function() {
+    		li1.classList.add('transform-big')
+			li2.classList.add('transform-small')
+			li3.classList.add('transform-small')
+    	}
+    </script>
+	
 	<script>
 		const cpath = '${ cpath }'
     	const mainBtn = document.getElementById('mainBtn')

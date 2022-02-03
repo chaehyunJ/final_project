@@ -5,6 +5,7 @@
 <div class="newswrite-form">
 	<form method="POST" enctype="multipart/form-data">
 		<table border="1" cellpadding="7" cellspacing="0">
+			<input type="hidden" name="notice_seq" value="${dto.notice_seq }" required>
 			<tr>
 				<th>제목</th>
 				<td><input class="border-zero" type="text" name="title" value="${dto.title }"
@@ -33,7 +34,8 @@
 			<tr>
 				<th>종류</th>
 				<td><input type="radio" name="flag" value="top" required>top
-					<input type="radio" name="flag" value="bottom" required>bottom</td>
+					<input type="radio" name="flag" value="bottom" required>bottom
+					</td>
 			</tr>
 		</table>
 		<div style="display: flex; justify-content:flex-end; width: 685px;">

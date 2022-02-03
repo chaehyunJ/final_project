@@ -378,7 +378,7 @@ public class BoardController {
 	
 	@GetMapping("/newsModify/{seq}")
 	public ModelAndView newsModify(@PathVariable int seq) {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("board/newsModify");
 		
 		NoticeDTO dto = bs.getNews(seq);
 		
